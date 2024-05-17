@@ -16,7 +16,7 @@ export default function Home() {
           <div className="flex gap-6">
             <CopyableCode code="npm i @empyreanui/core" />
             <Link href="/core">
-              <Button className="bg-blue-600 px-7 py-7 text-white rounded-md font-semibold text-lg hover:scale-105 transition-all duration-200">
+              <Button className="bg-blue-600 px-7 py-7 text-white rounded-md font-semibold text-lg hover:bg-blue-700 hover:scale-105 transition-all duration-200">
                 Explore Components
               </Button>
             </Link>

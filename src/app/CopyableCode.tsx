@@ -18,7 +18,7 @@ const CopyableCode: React.FC<CopyableCodeProps> = ({ code }) => {
 
   return (
     <div
-      className="inline-flex gap-6 w-fit py-4 px-6 border border-solid border-foreground rounded-lg bg-muted cursor-pointer"
+      className="inline-flex gap-6 w-fit py-4 px-6 border border-solid border-foreground rounded-lg bg-muted/30 cursor-pointer"
       onClick={handleCopy}>
       <code className="">{code}</code>
       {copied ? <ClipboardCopy className="text-green-500" /> : <Clipboard />}

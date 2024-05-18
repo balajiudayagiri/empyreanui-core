@@ -1,8 +1,15 @@
-// ComponentRenderer.tsx
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "empyreanui/components/ui/sheet";
+import { Button } from "empyreanui/components/ui/button";
+import { Menu } from "lucide-react";
 
 export interface ComponentDoc {
   title: string;
@@ -64,7 +71,8 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
 
   return (
     <div className="flex h-full">
-      <aside className="w-1/5 p-6 shadow-lg border-r overflow-y-auto">
+      {/* Desktop Sidebar */}
+      <aside className="hidden lg:block w-1/5 p-6 shadow-lg border-r overflow-y-auto">
         <h2 className="text-2xl font-bold mb-6">Components</h2>
         <ul>
           {components.map((component) => (
@@ -73,7 +81,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
                 className={clsx(
                   "w-full text-left px-4 py-3 rounded-lg transition duration-200",
                   {
-                    "bg-blue-500 text-white":
+                    "bg-primary text-black":
                       selectedComponent?.path === component.path,
                     "hover:bg-gray-200/40":
                       selectedComponent?.path !== component.path,
@@ -86,10 +94,46 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
           ))}
         </ul>
       </aside>
-      <main className="w-4/5 p-8 overflow-y-auto">
+
+      {/* Mobile Sidebar */}
+
+      <main className="flex-grow p-8 overflow-y-auto">
+        <div className="lg:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" className="">
+                <Menu />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-64">
+              <h2 className="text-2xl font-bold mb-6">Components</h2>
+              <ul>
+                {components.map((component) => (
+                  <SheetClose asChild>
+                    <li key={component.path} className="mb-4">
+                      <button
+                        className={clsx(
+                          "w-full text-left px-4 py-3 rounded-lg transition duration-200",
+                          {
+                            "bg-primary text-black":
+                              selectedComponent?.path === component.path,
+                            "hover:bg-gray-200/40":
+                              selectedComponent?.path !== component.path,
+                          }
+                        )}
+                        onClick={() => handleComponentSelect(component)}>
+                        {component.title}
+                      </button>
+                    </li>
+                  </SheetClose>
+                ))}
+              </ul>
+            </SheetContent>
+          </Sheet>
+        </div>
         {selectedComponent ? (
           <div className="p-6 rounded-lg shadow-lg">
-            <h1 className="text-3xl font-bold mb-4">
+            <h1 className="text-6xl font-bold mb-4 text-primary border-b-2">
               {selectedComponent.title}
             </h1>
             <p className="mb-6">{selectedComponent.description}</p>
@@ -105,43 +149,45 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
               <code>{selectedComponent.usage}</code>
             </pre>
             <h2 className="text-2xl font-semibold mb-3">Props</h2>
-            <table className="w-full mb-6 border shadow-sm">
-              <thead>
-                <tr>
-                  <th className="p-3 border-b text-left">Name</th>
-                  <th className="p-3 border-b text-left">Type</th>
-                  <th className="p-3 border-b text-left">Description</th>
-                  <th className="p-3 border-b text-left">Required</th>
-                  <th className="p-3 border-b text-left">Default Value</th>
-                  <th className="p-3 border-b text-left">Set Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedComponent.props.map((prop) => (
-                  <tr key={prop.name}>
-                    <td className="p-3 border-b">{prop.name}</td>
-                    <td className="p-3 border-b">{prop.type}</td>
-                    <td className="p-3 border-b">{prop.description}</td>
-                    <td className="p-3 border-b">
-                      {prop.required ? "Yes" : "No"}
-                    </td>
-                    <td className="p-3 border-b">
-                      {prop.defaultValue?.toString()}
-                    </td>
-                    <td className="p-3 border-b">
-                      <input
-                        type="text"
-                        value={componentProps[prop.name] || ""}
-                        onChange={(e) =>
-                          handlePropChange(prop.name, e.target.value)
-                        }
-                        className="w-full p-2 border rounded"
-                      />
-                    </td>
+            <div className="overflow-y-auto w-full">
+              <table className="w-full mb-6 border shadow-sm ">
+                <thead>
+                  <tr>
+                    <th className="p-3 border-b text-left">Name</th>
+                    <th className="p-3 border-b text-left">Type</th>
+                    <th className="p-3 border-b text-left">Description</th>
+                    <th className="p-3 border-b text-left">Required</th>
+                    <th className="p-3 border-b text-left">Default Value</th>
+                    <th className="p-3 border-b text-left w-80">Set Value</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {selectedComponent.props.map((prop) => (
+                    <tr key={prop.name}>
+                      <td className="p-3 border-b">{prop.name}</td>
+                      <td className="p-3 border-b">{prop.type}</td>
+                      <td className="p-3 border-b">{prop.description}</td>
+                      <td className="p-3 border-b">
+                        {prop.required ? "Yes" : "No"}
+                      </td>
+                      <td className="p-3 border-b">
+                        {prop.defaultValue?.toString()}
+                      </td>
+                      <td className="p-3 border-b min-w-56">
+                        <input
+                          type="text"
+                          value={componentProps[prop.name] || ""}
+                          onChange={(e) =>
+                            handlePropChange(prop.name, e.target.value)
+                          }
+                          className="w-80 p-2 border rounded"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         ) : (
           <div className="flex items-center justify-center h-full">

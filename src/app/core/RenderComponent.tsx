@@ -9,12 +9,10 @@ function RenderComponent() {
   const component = searchParams.get("component");
 
   return (
-    <div className="h-[calc(100vh-80px)]">
-      <ComponentRenderer
-        components={components}
-        initialComponentPath={component as string}
-      />
-    </div>
+    <ComponentRenderer
+      components={components}
+      initialComponentPath={component as string}
+    />
   );
 }
 

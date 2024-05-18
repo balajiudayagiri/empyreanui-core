@@ -11,6 +11,9 @@ import {
 import { Button } from "empyreanui/components/ui/button";
 import { Menu } from "lucide-react";
 
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 export interface ComponentDoc {
   title: string;
   path: string;
@@ -72,7 +75,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
   return (
     <div className="flex h-full">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-1/5 p-6 shadow-lg border-r overflow-y-auto">
+      <aside className="hidden lg:block w-1/5 p-6 shadow-lg border-r overflow-y-auto bg-background/80">
         <h2 className="text-2xl font-bold mb-6">Components</h2>
         <ul>
           {components.map((component) => (
@@ -94,11 +97,9 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
           ))}
         </ul>
       </aside>
-
-      {/* Mobile Sidebar */}
-
-      <main className="flex-grow p-8 overflow-y-auto">
-        <div className="lg:hidden">
+      <main className="md:w-4/5 w-full md:p-8 p-2 overflow-y-auto">
+        {/* Mobile Sidebar */}
+        <div className="lg:hidden mb-3">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" className="">
@@ -132,7 +133,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
           </Sheet>
         </div>
         {selectedComponent ? (
-          <div className="p-6 rounded-lg shadow-lg">
+          <div className="p-6 rounded-lg shadow-lg bg-background border">
             <h1 className="text-6xl font-bold mb-4 text-primary border-b-2">
               {selectedComponent.title}
             </h1>
@@ -145,9 +146,15 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
               )}
             </div>
             <h2 className="text-2xl font-semibold mb-3">Usage</h2>
-            <pre className="p-4 border rounded-lg bg-foreground text-muted overflow-x-auto mb-6">
-              <code>{selectedComponent.usage}</code>
-            </pre>
+            <SyntaxHighlighter
+              language="jsx"
+              style={vscDarkPlus}
+              customStyle={{
+                padding: 0,
+                borderRadius: 6,
+              }}>
+              {selectedComponent.usage}
+            </SyntaxHighlighter>
             <h2 className="text-2xl font-semibold mb-3">Props</h2>
             <div className="overflow-y-auto w-full">
               <table className="w-full mb-6 border shadow-sm ">

@@ -12,7 +12,7 @@ import {
 
 function Header() {
   return (
-    <header className="h-20 border-b flex items-center px-5 md:px-9 justify-between">
+    <header className="h-20 border-b flex items-center px-5 md:px-9 justify-between bg-background">
       <Link href="/">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
           Empyrean<span className="text-yellow-500">UI</span>

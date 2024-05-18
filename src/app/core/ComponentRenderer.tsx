@@ -134,7 +134,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
         </div>
         {selectedComponent ? (
           <div className="p-6 rounded-lg shadow-lg bg-background border">
-            <h1 className="text-6xl font-bold mb-4 text-primary border-b-2">
+            <h1 className="text-2xl md:text-6xl font-bold mb-4 text-primary border-b-2">
               {selectedComponent.title}
             </h1>
             <p className="mb-6">{selectedComponent.description}</p>

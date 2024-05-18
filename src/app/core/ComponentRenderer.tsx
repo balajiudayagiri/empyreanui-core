@@ -109,8 +109,8 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
               <h2 className="text-2xl font-bold mb-6">Components</h2>
               <ul>
                 {components.map((component) => (
-                  <SheetClose asChild>
-                    <li key={component.path} className="mb-4">
+                  <li key={component.path} className="mb-4">
+                    <SheetClose asChild>
                       <button
                         className={clsx(
                           "w-full text-left px-4 py-3 rounded-lg transition duration-200",
@@ -124,8 +124,8 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
                         onClick={() => handleComponentSelect(component)}>
                         {component.title}
                       </button>
-                    </li>
-                  </SheetClose>
+                    </SheetClose>
+                  </li>
                 ))}
               </ul>
             </SheetContent>

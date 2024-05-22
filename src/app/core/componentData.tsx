@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
-import { CodeEditor, ScrollAnimationWrapper } from "@empyreanui/core";
+import {
+  CodeEditor,
+  ErrorBoundary,
+  ScrollAnimationWrapper,
+} from "@empyreanui/core";
 
 type ComponentProp = {
   name: string;
@@ -8,6 +12,7 @@ type ComponentProp = {
   description: string;
   required: boolean;
   defaultValue?: any;
+  propType?: string;
 };
 
 type ComponentDoc = {
@@ -15,9 +20,21 @@ type ComponentDoc = {
   path: string;
   description: string;
   props: ComponentProp[];
-  example: JSX.Element;
+  preview: JSX.Element;
   usage: string;
   render?: (props: Record<string, any>) => JSX.Element;
+};
+
+const ErrorTrigger = () => {
+  const [hasError, setHasError] = React.useState(false);
+
+  if (hasError) {
+    throw new Error("An intentional error!");
+  }
+
+  return (
+    <button onClick={() => setHasError(true)}>Click to trigger error</button>
+  );
 };
 
 export const components: ComponentDoc[] = [
@@ -52,7 +69,7 @@ export const components: ComponentDoc[] = [
         },
       },
     ],
-    example: (
+    preview: (
       <div
         style={{
           height: 300,
@@ -72,7 +89,17 @@ export const components: ComponentDoc[] = [
         </button>
       );
     `,
-    render: (props) => <button {...props}>Example Button</button>,
+    render: (props) => (
+      <div
+        style={{
+          height: 300,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <button {...props}>Example Button</button>
+      </div>
+    ),
   },
   {
     title: "Input",
@@ -109,7 +136,7 @@ export const components: ComponentDoc[] = [
         defaultValue: false,
       },
     ],
-    example: (
+    preview: (
       <div
         style={{
           height: 300,
@@ -132,7 +159,6 @@ export const components: ComponentDoc[] = [
         />
       );
     `,
-    render: (props) => <input {...props} />,
   },
   {
     title: "CodeEditor",
@@ -264,7 +290,7 @@ export const components: ComponentDoc[] = [
         required: false,
       },
     ],
-    example: (
+    preview: (
       <div style={{ height: "280px" }}>
         <CodeEditor
           data={{
@@ -303,7 +329,6 @@ export const components: ComponentDoc[] = [
         />
       );
     `,
-    render: (props) => <CodeEditor {...props} height={"300px"} />,
   },
   {
     title: "ScrollAnimationWrapper",
@@ -323,6 +348,7 @@ export const components: ComponentDoc[] = [
         description:
           "CSS class that defines the animation to apply when the element comes into view.",
         required: true,
+        propType: "options",
       },
       {
         name: "element",
@@ -339,7 +365,7 @@ export const components: ComponentDoc[] = [
         required: false,
       },
     ],
-    example: (
+    preview: (
       <div
         style={{
           height: 300,
@@ -365,7 +391,120 @@ export const components: ComponentDoc[] = [
       </ScrollAnimationWrapper>
     );
   `,
+    render: (props) => {
+      const { animationClass } = props;
+      return (
+        <div
+          style={{
+            height: 300,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+          <ScrollAnimationWrapper
+            animationClass={animationClass || "fadeIn"}
+            {...props}>
+            <div className="content">
+              This animate when scrolled into view. please look into the props
+              and try updating the with different types of animate
+            </div>
+          </ScrollAnimationWrapper>
+        </div>
+      );
+    },
   },
+  {
+    title: "ErrorBoundary",
+    path: "components/ErrorBoundary",
+    description:
+      "A component that acts as an error boundary to catch JavaScript errors in its child component tree, log those errors, and provide a fallback UI.",
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description:
+          "The children components that will be wrapped by the error boundary.",
+        required: true,
+      },
+      {
+        name: "fallbackText",
+        type: "string",
+        description: "The text to display in the fallback UI.",
+        required: false,
+      },
+      {
+        name: "className",
+        type: "string",
+        description: "Optional className for the wrapper div.",
+        required: false,
+      },
+      {
+        name: "style",
+        type: "CSSProperties",
+        description: "Optional inline styles for the wrapper div.",
+        required: false,
+      },
+      {
+        name: "fallbackComponent",
+        type: "ReactNode",
+        description:
+          "Optional custom fallback component to render when an error is caught.",
+        required: false,
+      },
+      {
+        name: "onError",
+        type: "(error: Error) => void",
+        description: "Optional callback function to handle the error.",
+        required: false,
+      },
+    ],
+    preview: (
+      <div
+        style={{
+          height: 300,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <ErrorBoundary fallbackText="Something went wrong!">
+          <div>
+            <ErrorTrigger />
+          </div>
+        </ErrorBoundary>
+      </div>
+    ),
+    usage: `
+      import React from 'react';
+      import { ErrorBoundary } from './ErrorBoundary';
 
+      const App = () => {
+        const ErrorTrigger = () => {
+          throw new Error("An intentional error!");
+        };
+        return (
+          <ErrorBoundary fallbackText="Something went wrong!">
+            <ErrorTrigger />
+          </ErrorBoundary>
+        );
+      };
+
+      export default App;
+    `,
+    render: (props) => (
+      <div
+        style={{
+          height: 300,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <ErrorBoundary {...props}>
+          <div>
+            <ErrorTrigger />
+          </div>
+        </ErrorBoundary>
+      </div>
+    ),
+  },
   // Add more components as needed
 ];

@@ -24,16 +24,23 @@ export interface ComponentDoc {
     description: string;
     required: boolean;
     defaultValue?: any;
+    propType?: string;
   }[];
-  example: React.ReactNode;
+  preview: React.ReactNode;
   usage: string;
   defaultProps?: Record<string, any>;
+  render?: (props: Record<string, any>) => JSX.Element;
 }
 
 interface ComponentRendererProps {
   components: ComponentDoc[];
   initialComponentPath?: string;
 }
+
+const extractOptionsFromType = (type: string): string[] => {
+  const match = type.match(/"([^"]+)"/g);
+  return match ? match.map((option) => option.replace(/"/g, "")) : [];
+};
 
 const ComponentRenderer: React.FC<ComponentRendererProps> = ({
   components,
@@ -138,12 +145,14 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
               {selectedComponent.title}
             </h1>
             <p className="mb-6">{selectedComponent.description}</p>
-            <h2 className="text-2xl font-semibold mb-3">Example</h2>
+            <h2 className="text-2xl font-semibold mb-3">Preview</h2>
             <div className="p-4 border rounded-lg min-h-80">
-              {React.cloneElement(
-                selectedComponent.example as React.ReactElement,
-                componentProps
-              )}
+              {selectedComponent.render
+                ? selectedComponent.render(componentProps)
+                : React.cloneElement(
+                    selectedComponent.preview as React.ReactElement,
+                    { ...componentProps, key: JSON.stringify(componentProps) }
+                  )}
             </div>
             <h2 className="text-2xl font-semibold mb-3">Usage</h2>
             <SyntaxHighlighter
@@ -181,14 +190,29 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
                         {prop.defaultValue?.toString()}
                       </td>
                       <td className="p-3 border-b min-w-56">
-                        <input
-                          type="text"
-                          value={componentProps[prop.name] || ""}
-                          onChange={(e) =>
-                            handlePropChange(prop.name, e.target.value)
-                          }
-                          className="w-80 p-2 border rounded"
-                        />
+                        {prop.propType === "options" ? (
+                          <select
+                            value={componentProps[prop.name] || ""}
+                            onChange={(e) =>
+                              handlePropChange(prop.name, e.target.value)
+                            }
+                            className="w-80 p-2 border rounded">
+                            {extractOptionsFromType(prop.type).map((option) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <input
+                            type="text"
+                            value={componentProps[prop.name] || ""}
+                            onChange={(e) =>
+                              handlePropChange(prop.name, e.target.value)
+                            }
+                            className="w-80 p-2 border rounded"
+                          />
+                        )}
                       </td>
                     </tr>
                   ))}

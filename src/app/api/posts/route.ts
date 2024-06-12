@@ -6,20 +6,20 @@ export async function GET(req: NextRequest) {
   try {
     await dbConnect();
     const id = req.nextUrl.searchParams.get("id");
-    if (!id) {
-      return NextResponse.json(
-        { success: false, error: "ID is required" },
-        { status: 400 }
-      );
+
+    if (id) {
+      const post = await Post.findById(id);
+      if (!post) {
+        return NextResponse.json(
+          { success: false, error: "Post not found" },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json({ success: true, data: post });
+    } else {
+      const posts = await Post.find({});
+      return NextResponse.json({ success: true, data: posts });
     }
-    const post = await Post.findById(id);
-    if (!post) {
-      return NextResponse.json(
-        { success: false, error: "Post not found" },
-        { status: 404 }
-      );
-    }
-    return NextResponse.json({ success: true, data: post });
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json(

@@ -16,7 +16,7 @@ export default function Home() {
             consistent, high-quality user interfaces.
           </p>
           <div className="flex flex-col md:flex-row gap-4 md:gap-6mb-5">
-            <Link href="/core">
+            <Link href="/empyreanuicomponents">
               <Button className="bg-yellow-500 text-gray-800 px-5 py-3 md:px-7 md:py-4 text-lg rounded-md font-semibold hover:bg-yellow-600 hover:scale-105 transition-all duration-200 h-full">
                 Explore Components
               </Button>

@@ -12,7 +12,7 @@ import {
 
 function Header() {
   return (
-    <header className="h-20 border-b flex items-center px-5 md:px-9 justify-between bg-background">
+    <header className="h-20 border-b flex items-center px-5 md:px-9 justify-between bg-background sticky top-0">
       <Link href="/">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
           Empyrean<span className="text-yellow-500">UI</span>
@@ -25,10 +25,15 @@ function Header() {
           Home
         </Link>
         <Link
-          href="/core"
+          href="/empyreanuicomponents"
           className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
           Explore Components
         </Link>
+        {/* <Link
+          href="/components"
+          className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
+          empyreanui Components
+        </Link> */}
         <ModeToggle />
       </nav>
       <div className="md:hidden block">
@@ -51,11 +56,18 @@ function Header() {
                 </SheetClose>
                 <SheetClose asChild>
                   <Link
-                    href="/core"
+                    href="/empyreanuicomponents"
                     className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
                     Explore Components
                   </Link>
                 </SheetClose>
+                {/* <SheetClose asChild>
+                  <Link
+                    href="/components"
+                    className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                    empyreanui Components
+                  </Link>
+                </SheetClose> */}
               </nav>
             </SheetContent>
           </Sheet>

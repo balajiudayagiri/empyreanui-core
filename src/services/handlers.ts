@@ -1,4 +1,4 @@
-// src/lib/handlers.ts
+// src/services/handlers.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "./dbConnect";
 import Post from "../models/Post";

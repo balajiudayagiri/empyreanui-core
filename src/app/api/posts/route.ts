@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "empyreanui/services/dbConnect";
 import Post from "empyreanui/models/Post";
+import { generateCustomUUID } from "empyreanui/utils";
 
 export async function GET(req: NextRequest) {
   try {
@@ -38,7 +39,12 @@ export async function POST(req: NextRequest) {
   try {
     await dbConnect();
     const body = await req.json();
-    const post = await Post.create(body);
+    const customId = generateCustomUUID(10);
+    const postData = {
+      customId,
+      ...body,
+    };
+    const post = await Post.create(postData);
     return NextResponse.json({ success: true, data: post }, { status: 201 });
   } catch (error) {
     if (error instanceof Error) {

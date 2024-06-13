@@ -28,6 +28,12 @@
       "@components/*": [
         "./src/components/ui/*"
       ],
+      "@apiservices/*": [
+        "./src/app/apiServices/*"
+      ],
+      "@apiservices": [
+        "./src/app/apiServices"
+      ]
     }
   },
   "include": [

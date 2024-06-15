@@ -29,10 +29,16 @@
         "./src/components/ui/*"
       ],
       "@apiservices/*": [
-        "./src/app/apiServices/*"
+        "./src/apiServices/*"
       ],
       "@apiservices": [
-        "./src/app/apiServices"
+        "./src/apiServices"
+      ],
+      "@customcomponent": [
+        "./src/customComponents"
+      ],
+      "@hooks": [
+        "./src/utils/hooks"
       ]
     }
   },

@@ -1,4 +1,3 @@
-"use client";
 import { ModeToggle } from "empyreanui/components/ui/ModeToggle";
 import Link from "next/link";
 import React from "react";
@@ -9,10 +8,11 @@ import {
   SheetContent,
   SheetTrigger,
 } from "empyreanui/components/ui/sheet";
+import { CreateNewComponent } from "@customcomponent";
 
 function Header() {
   return (
-    <header className="h-20 border-b flex items-center px-5 md:px-9 justify-between bg-background sticky top-0">
+    <header className="h-14 border-b flex items-center px-5 md:px-9 justify-between bg-background/70 backdrop-blur-lg sticky top-0 z-50">
       <Link href="/">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
           Empyrean<span className="text-yellow-500">UI</span>
@@ -29,6 +29,7 @@ function Header() {
           className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
           Explore Components
         </Link>
+        <CreateNewComponent />
         {/* <Link
           href="/components"
           className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">

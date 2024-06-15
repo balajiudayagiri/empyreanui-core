@@ -1,11 +1,8 @@
 "use client";
-import { Button } from "empyreanui/components/ui/button";
 import React, { useEffect, useState } from "react";
 import { usePostCode } from "@apiservices";
 import { useToast } from "empyreanui/components/ui/use-toast";
-import PostCodeDialog, {
-  PostData,
-} from "./PostCodeDialog"; // Adjust the import path as needed
+import PostCodeDialog, { PostData } from "./PostCodeDialog"; // Adjust the import path as needed
 import { Editor } from "@monaco-editor/react";
 import {
   Select,
@@ -26,7 +23,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "empyreanui/components/ui/tabs";
-import { CodeXml } from "lucide-react";
+import { CSSICON, Html5ColoredIcon } from "empyreanui/customComponents";
 
 const EditorRenderer: React.FC = () => {
   const [cssFramework, setCssFramework] = useState("tailwind");
@@ -88,26 +85,33 @@ const EditorRenderer: React.FC = () => {
       (result: string) => {
         toast({
           title: "Hurray",
-          description: "Code posted successfully!" + result,
+          description: "Code posted successfully!",
         });
         closeDialog();
         console.log(result);
       },
       (error: string) => {
         toast({
-          title: "Failed to post code",
-          description: error,
+          title: "Failed!",
+          description: "Failed to post code" + error,
         });
         console.error(error);
       }
     );
   };
+  const handlesetCssFramework = (value: string) => {
+    setCssFramework(value);
+    setCssContent("");
+    setHtmlContent("");
+  };
 
   return (
     <div className="">
-      <h1>Editor and Renderer</h1>
-      <nav className="border border-solid">
-        <Select onValueChange={(e) => setCssFramework(e)}>
+      <h1 className="text-3xl font-black mb-4 text-center text-primary">
+        Editor
+      </h1>
+      <nav className="flex justify-end mb-4 gap-4">
+        <Select onValueChange={handlesetCssFramework}>
           <SelectTrigger className="w-[180px]">
             <SelectValue defaultValue={cssFramework} placeholder="Tailwind" />
           </SelectTrigger>
@@ -116,30 +120,38 @@ const EditorRenderer: React.FC = () => {
             <SelectItem value="css">CSS</SelectItem>
           </SelectContent>
         </Select>
+        <PostCodeDialog
+          onSubmit={handlePostCode}
+          isLoading={isLoading}
+          disabled={!htmlContent.trim()}
+        />
       </nav>
       <ResizablePanelGroup
         direction={isHorizontal ? "horizontal" : "vertical"}
-        className="w-full rounded-lg border min-h-[500px]">
-        <ResizablePanel defaultSize={50}>
+        className="min-h-[500px]">
+        <ResizablePanel defaultSize={50} className="border rounded-lg">
           <IframeRenderer
             htmlContent={htmlContent}
             cssContent={cssContent}
             cssFramework={cssFramework}
+            style={{ height: "100%" }}
           />
         </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={50}>
+        <ResizableHandle withHandle className="mx-2 border-2" />
+        <ResizablePanel defaultSize={50} className="border rounded-lg">
           <Tabs defaultValue="html">
-            <TabsList>
-              <TabsTrigger value="html">
-                <CodeXml className="text-current w-10" /> HTML
+            <TabsList className="m-1">
+              <TabsTrigger value="html" className="flex items-center gap-2">
+                <Html5ColoredIcon height={16} width={16} /> <span>HTML</span>
               </TabsTrigger>
               {cssFramework === "css" && (
-                <TabsTrigger value="css">CSS</TabsTrigger>
+                <TabsTrigger value="css" className="flex items-center gap-2">
+                  <CSSICON size={16} /> <span>CSS</span>
+                </TabsTrigger>
               )}
             </TabsList>
-            <TabsContent value="html">
-              <div className="w-full mt-2">
+            <TabsContent value="html" className="mt-0">
+              <div className="w-full mt-0">
                 <Editor
                   height="500px"
                   defaultLanguage="html"
@@ -150,8 +162,8 @@ const EditorRenderer: React.FC = () => {
               </div>
             </TabsContent>
             {cssFramework === "css" && (
-              <TabsContent value="css">
-                <div className="w-full mt-2">
+              <TabsContent value="css" className="mt-0">
+                <div className="w-full mt-0">
                   <Editor
                     height="500px"
                     defaultLanguage="css"
@@ -165,7 +177,6 @@ const EditorRenderer: React.FC = () => {
           </Tabs>
         </ResizablePanel>
       </ResizablePanelGroup>
-      <PostCodeDialog onSubmit={handlePostCode} isLoading={isLoading} />
     </div>
   );
 };

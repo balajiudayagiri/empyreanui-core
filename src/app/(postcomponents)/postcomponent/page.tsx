@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import EditorRenderer from "./EditorRenderer";
+import { EditorRenderer } from "@customcomponent";
 
 function page() {
   return (
-    <div className="w-full">
+    <div className="lg:mx-9">
       <EditorRenderer />
     </div>
   );

@@ -1,15 +1,18 @@
-import React, { useEffect, useRef } from "react";
+"use client";
+import React, { CSSProperties, useEffect, useRef } from "react";
 
 interface IframeRendererProps {
   htmlContent: string;
   cssContent: string;
   cssFramework: string;
+  style?: CSSProperties;
 }
 
 const IframeRenderer: React.FC<IframeRendererProps> = ({
   htmlContent,
   cssContent,
   cssFramework,
+  style,
 }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -32,6 +35,16 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rendered Content</title>
+         <style>
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+          }
+        </style>
         ${cssLink}
       </head>
       <body>
@@ -48,9 +61,10 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
       ref={iframeRef}
       style={{
         width: "100%",
-        height: "100%",
+        minWidth: 320,
+        height: "350px",
         border: "1px solid #ccc",
-        marginTop: "20px",
+        ...style,
       }}></iframe>
   );
 };

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import {
   Dialog,
@@ -8,6 +9,8 @@ import {
   DialogClose,
 } from "empyreanui/components/ui/dialog";
 import { Button } from "empyreanui/components/ui/button";
+import { Loader } from "lucide-react";
+import { Input } from "empyreanui/components/ui/input";
 
 interface User {
   firstName: string;
@@ -23,11 +26,13 @@ export interface PostData {
 interface PostCodeDialogProps {
   onSubmit: (data: PostData, closeDialog: () => void) => void;
   isLoading: boolean;
+  disabled?: boolean;
 }
 
 const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
   onSubmit,
   isLoading,
+  disabled,
 }) => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -51,8 +56,10 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button onClick={() => setIsOpen(true)}>Post Code</Button>
+      <DialogTrigger asChild disabled={disabled}>
+        <Button disabled={disabled} onClick={() => setIsOpen(true)}>
+          Post Code
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Post Your Code</DialogTitle>
@@ -60,28 +67,28 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
           Fill in the details to post your code.
         </DialogDescription>
         <div className="flex flex-col gap-2 mt-4">
-          <input
+          <Input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="First Name"
             className="w-full mt-2"
           />
-          <input
+          <Input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder="Last Name"
             className="w-full mt-2"
           />
-          <input
+          <Input
             type="text"
             value={componentName}
             onChange={(e) => setComponentName(e.target.value)}
             placeholder="Component Name"
             className="w-full mt-2"
           />
-          <input
+          <Input
             type="text"
             value={componentCategory}
             onChange={(e) => setComponentCategory(e.target.value)}
@@ -89,7 +96,14 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
             className="w-full mt-2"
           />
           <Button onClick={handleSubmit} disabled={isLoading} className="mt-4">
-            {isLoading ? "Posting..." : "Submit"}
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <Loader className="animate-spin" size={16} />
+                <span>Posting...</span>
+              </span>
+            ) : (
+              "Submit"
+            )}
           </Button>
           <DialogClose asChild>
             <Button variant="ghost" className="mt-4">

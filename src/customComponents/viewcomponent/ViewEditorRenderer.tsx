@@ -54,59 +54,113 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
 
   return (
     <div className="">
-      <ResizablePanelGroup
-        direction={isHorizontal ? "horizontal" : "vertical"}
-        className="lg:min-h-[500px] min-h-[calc(100dvh-10px)]">
-        <ResizablePanel
-          defaultSize={50}
-          className="border rounded-lg bg-background">
-          <IframeRenderer
-            htmlContent={htmlContent}
-            cssContent={cssContent}
-            cssFramework={cssFramework}
-            style={{ height: "100%" }}
-          />
-        </ResizablePanel>
-        <ResizableHandle withHandle className="mx-2 border-2" />
-        <ResizablePanel defaultSize={50} className="border rounded-lg">
-          <Tabs defaultValue="html">
-            <TabsList className="m-1">
-              <TabsTrigger value="html">
-                <Html5ColoredIcon height={16} width={16} /> <span>HTML</span>
-              </TabsTrigger>
-              {cssFramework === "css" && (
-                <TabsTrigger value="css" className="flex items-center gap-2">
-                  <CSSICON size={16} /> <span>CSS</span>
+      <div className="hidden md:block">
+        <ResizablePanelGroup
+          direction={isHorizontal ? "horizontal" : "vertical"}
+          className="min-h-[500px]">
+          <ResizablePanel defaultSize={50} className="border rounded-lg">
+            <IframeRenderer
+              htmlContent={htmlContent}
+              cssContent={cssContent}
+              cssFramework={cssFramework}
+              style={{ height: "100%" }}
+            />
+          </ResizablePanel>
+          <ResizableHandle withHandle className="mx-2 border-2" />
+          <ResizablePanel defaultSize={50} className="border rounded-lg">
+            <Tabs defaultValue="html">
+              <TabsList className="m-1">
+                <TabsTrigger value="html" className="flex items-center gap-2">
+                  <Html5ColoredIcon height={16} width={16} /> <span>HTML</span>
                 </TabsTrigger>
-              )}
-            </TabsList>
-            <TabsContent value="html" className="mt-0">
-              <div className="w-full mt-0">
-                <Editor
-                  height="500px"
-                  defaultLanguage="html"
-                  value={htmlContent}
-                  onChange={(value) => setHtmlContent(value || "")}
-                  theme="vs-dark"
-                />
-              </div>
-            </TabsContent>
-            {cssFramework === "css" && (
-              <TabsContent value="css" className="mt-0">
+                {cssFramework === "css" && (
+                  <TabsTrigger value="css" className="flex items-center gap-2">
+                    <CSSICON size={16} /> <span>CSS</span>
+                  </TabsTrigger>
+                )}
+              </TabsList>
+              <TabsContent value="html" className="mt-0">
                 <div className="w-full mt-0">
                   <Editor
                     height="500px"
-                    defaultLanguage="css"
-                    value={cssContent}
-                    onChange={(value) => setCssContent(value || "")}
+                    defaultLanguage="html"
+                    value={htmlContent}
+                    onChange={(value) => setHtmlContent(value || "")}
                     theme="vs-dark"
                   />
                 </div>
               </TabsContent>
-            )}
-          </Tabs>
-        </ResizablePanel>
-      </ResizablePanelGroup>
+              {cssFramework === "css" && (
+                <TabsContent value="css" className="mt-0">
+                  <div className="w-full mt-0">
+                    <Editor
+                      height="500px"
+                      defaultLanguage="css"
+                      value={cssContent}
+                      onChange={(value) => setCssContent(value || "")}
+                      theme="vs-dark"
+                    />
+                  </div>
+                </TabsContent>
+              )}
+            </Tabs>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+      <div className="md:hidden block">
+        <Tabs defaultValue="preview" className="w-vw h-[calc(100dvh-224px)]">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="code">Code</TabsTrigger>
+          </TabsList>
+          <TabsContent value="preview" className="h-[calc(100dvh-224px)]">
+            <IframeRenderer
+              htmlContent={htmlContent}
+              cssContent={cssContent}
+              cssFramework={cssFramework}
+              style={{ height: "100%" }}
+            />
+          </TabsContent>
+          <TabsContent value="code" className="h-[calc(100dvh-224px)]">
+            <Tabs defaultValue="html">
+              <TabsList className="m-1">
+                <TabsTrigger value="html" className="flex items-center gap-2">
+                  <Html5ColoredIcon height={16} width={16} /> <span>HTML</span>
+                </TabsTrigger>
+                {cssFramework === "css" && (
+                  <TabsTrigger value="css" className="flex items-center gap-2">
+                    <CSSICON size={16} /> <span>CSS</span>
+                  </TabsTrigger>
+                )}
+              </TabsList>
+              <TabsContent value="html" className="mt-0">
+                <div className="w-full mt-0">
+                  <Editor
+                    height="calc(100dvh - 272px)"
+                    defaultLanguage="html"
+                    value={htmlContent}
+                    onChange={(value) => setHtmlContent(value || "")}
+                    theme="vs-dark"
+                  />
+                </div>
+              </TabsContent>
+              {cssFramework === "css" && (
+                <TabsContent value="css" className="mt-0">
+                  <div className="w-full mt-0">
+                    <Editor
+                      height="calc(100dvh - 272px)"
+                      defaultLanguage="css"
+                      value={cssContent}
+                      onChange={(value) => setCssContent(value || "")}
+                      theme="vs-dark"
+                    />
+                  </div>
+                </TabsContent>
+              )}
+            </Tabs>
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };

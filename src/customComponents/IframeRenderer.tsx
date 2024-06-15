@@ -62,7 +62,7 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
       style={{
         width: "100%",
         minWidth: 320,
-        height: "350px",
+        height: "500px",
         border: "1px solid #ccc",
         ...style,
       }}></iframe>

@@ -110,7 +110,7 @@ const EditorRenderer: React.FC = () => {
       <h1 className="text-3xl font-black mb-4 text-center text-primary">
         Editor
       </h1>
-      <nav className="flex justify-end mb-4 gap-4">
+      <nav className="flex justify-end mb-4 gap-4 max-md:justify-center">
         <Select onValueChange={handlesetCssFramework}>
           <SelectTrigger className="w-[180px]">
             <SelectValue defaultValue={cssFramework} placeholder="Tailwind" />
@@ -128,7 +128,7 @@ const EditorRenderer: React.FC = () => {
       </nav>
       <ResizablePanelGroup
         direction={isHorizontal ? "horizontal" : "vertical"}
-        className="min-h-[500px]">
+        className="lg:min-h-[500px] min-h-[calc(100dvh-10px)]">
         <ResizablePanel defaultSize={50} className="border rounded-lg">
           <IframeRenderer
             htmlContent={htmlContent}

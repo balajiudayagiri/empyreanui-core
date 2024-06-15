@@ -56,7 +56,7 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
     <div className="">
       <ResizablePanelGroup
         direction={isHorizontal ? "horizontal" : "vertical"}
-        className="min-h-[500px]">
+        className="lg:min-h-[500px] min-h-[calc(100dvh-10px)]">
         <ResizablePanel
           defaultSize={50}
           className="border rounded-lg bg-background">

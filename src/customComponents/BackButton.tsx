@@ -17,7 +17,7 @@ const BackButton: React.FC = () => {
   return (
     <nav
       className={cn(
-        "flex justify-between items-center sticky top-14 z-40",
+        "flex justify-between items-center sticky top-14 z-40 max-md:pl-1",
         !isEmpyreanUIComponentsRoute && "px-4 py-2"
       )}>
       {!isEmpyreanUIComponentsRoute && (

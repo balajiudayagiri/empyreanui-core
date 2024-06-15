@@ -62,13 +62,11 @@ function Header() {
                     Explore Components
                   </Link>
                 </SheetClose>
-                {/* <SheetClose asChild>
-                  <Link
-                    href="/components"
-                    className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
-                    empyreanui Components
-                  </Link>
-                </SheetClose> */}
+                <SheetClose asChild>
+                  <span>
+                    <CreateNewComponent />
+                  </span>
+                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>

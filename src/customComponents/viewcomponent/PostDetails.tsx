@@ -52,20 +52,21 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
 
   return (
     <div>
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-4xl font-bold mb-2 text-primary">
-          {post.componentName}
+      <div className="flex max-lg:flex-col lg:items-center max-lg:pl-4 gap-2 mb-2">
+        <span className="flex items-center gap-2 flex-wrap lg:text-4xl text-xl font-bold mb-2 text-primary">
+          {post.componentName}{" "}
+          <GetIconFramework
+            size={24}
+            framework={post.code.styleType as "css" | "tailwind"}
+          />
         </span>
-        <GetIconFramework
-          size={24}
-          framework={post.code.styleType as "css" | "tailwind"}
-        />
+
         <span>
           By {post.user.firstName} {post.user.lastName}
         </span>
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="ml-auto flex gap-2">
+            <Button className="ml-auto flex gap-2 ">
               <Download size={16} />
               <span>Download code</span>
             </Button>

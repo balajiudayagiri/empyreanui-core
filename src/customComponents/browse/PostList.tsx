@@ -116,7 +116,7 @@ const PostList: React.FC = () => {
               </li>
             </SheetClose>
             {categories.map((category) => (
-              <SheetClose asChild>
+              <SheetClose asChild key={category}>
                 <li
                   key={category}
                   className={`cursor-pointer py-2 px-4 hover:bg-gray-500/50 rounded-lg mb-2 ${

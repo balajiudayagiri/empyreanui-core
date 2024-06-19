@@ -1,5 +1,5 @@
 "use client";
-import { Clapperboard, Clipboard, ClipboardCopy } from "lucide-react";
+import { Check, Clapperboard, Clipboard, ClipboardCopy } from "lucide-react";
 import React, { useState } from "react";
 
 interface CopyableCodeProps {
@@ -18,10 +18,10 @@ const CopyableCode: React.FC<CopyableCodeProps> = ({ code }) => {
 
   return (
     <div
-      className="inline-flex gap-6 w-fit py-4 px-6 border border-solid border-foreground rounded-lg bg-muted/30 cursor-pointer"
+      className="flex gap-6 justify-between py-4 px-6 border border-solid border-foreground rounded-lg bg-muted/30 cursor-pointer mb-5"
       onClick={handleCopy}>
       <code className="">{code}</code>
-      {copied ? <ClipboardCopy className="text-green-500" /> : <Clipboard />}
+      {copied ? <Check className="text-green-500" /> : <Clipboard />}
     </div>
   );
 };

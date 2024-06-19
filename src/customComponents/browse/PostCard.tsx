@@ -40,7 +40,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           />
         </span>
         <Link href={`/viewcomponent/${post._id}`}>
-          <div className="absolute  bg-black  opacity-0 group-hover:opacity-100 flex p-2 gap-2 rounded-xl bottom-1 right-1">
+          <div className="absolute  bg-black text-white  opacity-0 group-hover:opacity-100 flex p-2 gap-2 rounded-xl bottom-1 right-1">
             <CodeXml /> <span>Code</span>
           </div>
         </Link>

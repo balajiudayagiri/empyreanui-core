@@ -1,15 +1,14 @@
 import React, { Suspense } from "react";
-import RenderComponent from "./RenderComponent";
-import Maintenance from "empyreanui/lib/maintenance/maintenance";
+import RenderComponent from "../../customComponents/core/RenderComponent";
+import { Loader } from "lucide-react";
 
 function Page() {
   return (
-    // <div className="h-[calc(100vh-80px)]">
-    //   <Suspense fallback={"Loading..."}>
-    //     <RenderComponent />
-    //   </Suspense>
-    // </div>
-    <Maintenance />
+    <div className="h-[calc(100vh-80px)]">
+      <Suspense fallback={<Loader className="animate-spin" />}>
+        <RenderComponent />
+      </Suspense>
+    </div>
   );
 }
 

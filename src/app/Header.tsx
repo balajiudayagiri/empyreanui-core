@@ -20,21 +20,16 @@ function Header() {
       </Link>
       <nav className="hidden md:flex items-center gap-3 md:gap-5">
         <Link
-          href="/"
+          href="/browse"
           className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
-          Home
+          Browse
         </Link>
         <Link
-          href="/empyreanuicomponents"
+          href="/core"
           className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
-          Explore Components
+          EmpyreanUI Core
         </Link>
         <CreateNewComponent />
-        {/* <Link
-          href="/components"
-          className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
-          empyreanui Components
-        </Link> */}
         <ModeToggle />
       </nav>
       <div className="md:hidden block">
@@ -57,9 +52,16 @@ function Header() {
                 </SheetClose>
                 <SheetClose asChild>
                   <Link
-                    href="/empyreanuicomponents"
+                    href="/browse"
                     className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
-                    Explore Components
+                    Browse
+                  </Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link
+                    href="/core"
+                    className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                    EmpyreanUI Core
                   </Link>
                 </SheetClose>
                 <SheetClose asChild>

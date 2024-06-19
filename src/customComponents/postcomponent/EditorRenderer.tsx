@@ -30,9 +30,16 @@ const EditorRenderer: React.FC = () => {
   const [htmlContent, setHtmlContent] = useState("");
   const [cssContent, setCssContent] = useState("");
   const [isHorizontal, setIsHorizontal] = useState(true);
+  const [isPostDisabled, setIsPostDisabled] = useState(false);
 
   const { postCode, isLoading } = usePostCode();
   const { toast } = useToast();
+
+  const forbiddenTags = ["<head>", "<html>", "<script>"];
+
+  const checkForbiddenTags = (content: string) => {
+    return forbiddenTags.some((tag) => content.includes(tag));
+  };
 
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
@@ -99,10 +106,26 @@ const EditorRenderer: React.FC = () => {
       }
     );
   };
+
+  const handleHtmlContentChange = (value: string) => {
+    setHtmlContent(value || "");
+    if (checkForbiddenTags(value || "")) {
+      toast({
+        title: "Invalid Content",
+        description:
+          "The htmlContent should not contain <head>, <html>, or <script> tags.",
+      });
+      setIsPostDisabled(true);
+    } else {
+      setIsPostDisabled(false);
+    }
+  };
+
   const handlesetCssFramework = (value: string) => {
     setCssFramework(value);
     setCssContent("");
     setHtmlContent("");
+    setIsPostDisabled(false);
   };
 
   return (
@@ -123,7 +146,7 @@ const EditorRenderer: React.FC = () => {
         <PostCodeDialog
           onSubmit={handlePostCode}
           isLoading={isLoading}
-          disabled={!htmlContent.trim()}
+          disabled={isPostDisabled || !htmlContent.trim()}
         />
       </nav>
       <div className="hidden md:block">
@@ -157,7 +180,7 @@ const EditorRenderer: React.FC = () => {
                     height="500px"
                     defaultLanguage="html"
                     value={htmlContent}
-                    onChange={(value) => setHtmlContent(value || "")}
+                    onChange={(value) => handleHtmlContentChange(value || "")}
                     theme="vs-dark"
                   />
                 </div>
@@ -211,7 +234,7 @@ const EditorRenderer: React.FC = () => {
                     height="calc(100dvh - 272px)"
                     defaultLanguage="html"
                     value={htmlContent}
-                    onChange={(value) => setHtmlContent(value || "")}
+                    onChange={(value) => handleHtmlContentChange(value || "")}
                     theme="vs-dark"
                   />
                 </div>

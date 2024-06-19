@@ -13,6 +13,7 @@ import { Menu } from "lucide-react";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyableCode from "empyreanui/app/CopyableCode";
 
 export interface ComponentDoc {
   title: string;
@@ -89,7 +90,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
             <li key={component.path} className="mb-4">
               <button
                 className={clsx(
-                  "w-full text-left px-4 py-3 rounded-lg transition duration-200",
+                  "w-full text-left px-4 py-3 rounded-lg transition duration-200 overflow-hidden",
                   {
                     "bg-primary text-black":
                       selectedComponent?.path === component.path,
@@ -145,6 +146,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
               {selectedComponent.title}
             </h1>
             <p className="mb-6">{selectedComponent.description}</p>
+            <CopyableCode code={"npm i @empyreanui/core"} />
             <h2 className="text-2xl font-semibold mb-3">Preview</h2>
             <div className="p-4 border rounded-lg min-h-80">
               {selectedComponent.render

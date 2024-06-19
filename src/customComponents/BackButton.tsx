@@ -8,7 +8,7 @@ import { cn } from "empyreanui/lib/utils";
 const BackButton: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const isEmpyreanUIComponentsRoute = pathname === "/empyreanuicomponents";
+  const isEmpyreanUIComponentsRoute = pathname === "/browse";
 
   const handleBackClick = () => {
     router.back();

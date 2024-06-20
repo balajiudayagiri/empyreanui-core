@@ -13,7 +13,7 @@ import { CreateNewComponent } from "@customcomponent";
 
 function Header() {
   return (
-    <header className="h-14 border-b flex items-center px-5 md:px-9 justify-between bg-background/70 backdrop-blur-lg sticky top-0 z-50">
+    <header className="h-14 border-b flex items-center px-5 md:px-9 justify-between bg-background/70 backdrop-blur-lg fixed w-full top-0 z-50">
       <Link href="/">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
           Empyrean<span className="text-yellow-500">UI</span>
@@ -41,8 +41,8 @@ function Header() {
                 <MenuIcon className="w-6 h-6" />
               </button>
             </DrawerTrigger>
-            <DrawerContent className="h-dvh">
-              <DrawerTitle>
+            <DrawerContent className="h-dvh backdrop-blur-lg bg-background/40">
+              <DrawerTitle className="mt-10">
                 <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center">
                   Empyrean<span className="text-yellow-500">UI</span>
                 </h1>

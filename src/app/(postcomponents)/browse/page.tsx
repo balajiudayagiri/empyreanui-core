@@ -4,8 +4,8 @@ import { Loader } from "lucide-react";
 
 function page() {
   return (
-    <div className="w-full">
-      <main className="py-20 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black">
+    <div className="w-full relative">
+      <main className="pt-40 pb-10 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black">
         <div className="container mx-auto px-6 text-center md:text-left">
           <h1 className="text-4xl md:text-6xl font-bold text-black leading-tight mb-4">
             Welcome to Empyrean
@@ -50,6 +50,29 @@ function page() {
           </div>
         </div>
       </main>
+      {/* <!--Waves Container--> */}
+      <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 mb-11">
+        <svg
+          className="waves"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shape-rendering="auto">
+          <defs>
+            <path
+              id="gentle-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+            />
+          </defs>
+          <g className="parallax">
+            <use xlinkHref="#gentle-wave" x="48" y="0" fill="#00000070" />
+            <use xlinkHref="#gentle-wave" x="48" y="3" fill="#00000050" />
+            <use xlinkHref="#gentle-wave" x="48" y="5" fill="#00000030" />
+            <use xlinkHref="#gentle-wave" x="48" y="7" fill="#000" />
+          </g>
+        </svg>
+      </div>
       <section>
         <Suspense fallback={<Loader className="animate-spin" />}>
           <PostList />

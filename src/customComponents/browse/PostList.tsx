@@ -19,6 +19,7 @@ import {
   PopoverTrigger,
 } from "empyreanui/components/ui/popover";
 import { PopoverArrow } from "@radix-ui/react-popover";
+import { cn } from "empyreanui/lib/utils";
 
 const DynamicPostCard = dynamic(() =>
   import("@customcomponent").then((mod) => mod.PostCard)
@@ -132,7 +133,12 @@ const PostList: React.FC = () => {
       </main>
       {/* popover for larger screen */}
       <Popover>
-        <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border-2 border-solid border-primary bg-primary/20 backdrop-blur-xl  rounded-full flex max-lg:hidden">
+        <aside
+          className={cn(
+            "fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border-2 border-solid border-primary",
+            " bg-primary/20 backdrop-blur-xl  rounded-full flex max-lg:hidden shadow shadow-primary",
+            "max-lg:hidden"
+          )}>
           <PopoverTrigger asChild>
             <Button className="mr-2 rounded-full px-2 py-1">
               <List />

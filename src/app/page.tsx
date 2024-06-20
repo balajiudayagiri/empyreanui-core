@@ -4,8 +4,8 @@ import CopyableCode from "./CopyableCode";
 
 export default function Home() {
   return (
-    <div>
-      <main className="relative h-[calc(100dvh-208px)] flex items-center justify-center overflow-y-auto p-8 md:p-24 bg-gradient-to-r from-yellow-400 to-yellow-600">
+    <div className="h-dvh">
+      <main className="relative h-[calc(100dvh-208px)] max-md:h-4/5 flex items-center justify-center overflow-y-auto p-8 max-lg:pt-32 md:p-24 bg-gradient-to-r from-yellow-400 to-yellow-600">
         <div className="h-full max-w-md md:max-w-xl space-y-6 flex text-black items-center">
           <div>
             <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-5">
@@ -41,7 +41,7 @@ export default function Home() {
         </div>
       </main>
       <div
-        className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 h-52"
+        className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 h-52 max-md:h-1/5"
         style={{
           width: "100vw",
         }}>

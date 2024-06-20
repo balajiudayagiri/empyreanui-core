@@ -15,7 +15,7 @@ export function ModeToggle() {
   return (
     <Button
       onClick={toggleTheme}
-      className={`size-5 border-none bg-background p-0 text-foreground shadow-none transition-all hover:-rotate-90 hover:bg-background focus-visible:ring-0`}>
+      className={`size-5 hover:text-primary border-none p-0 text-foreground shadow-none transition-all hover:-rotate-90 bg-transparent hover:bg-transparent focus-visible:ring-0`}>
       <Moon className="size-[1.2rem] scale-0 dark:scale-100" />
       <Sun className="absolute size-[1.2rem] scale-100 dark:scale-0" />
       <span className="sr-only">Toggle theme</span>

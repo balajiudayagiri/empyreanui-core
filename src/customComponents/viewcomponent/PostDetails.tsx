@@ -16,6 +16,7 @@ import {
   DialogClose,
   DialogFooter,
 } from "empyreanui/components/ui/dialog";
+import { CreateNewComponent } from "@customcomponent";
 
 const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
   const { post, isLoading, error, fetchPostById } = useFetchPostById();
@@ -66,7 +67,7 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
         </span>
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="ml-auto flex gap-2 ">
+            <Button className="ml-auto flex gap-2 rounded-full">
               <Download size={16} />
               <span>Download code</span>
             </Button>
@@ -100,6 +101,9 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
           initialHtmlContent={post.code.htmlCode}
         />
       </div>
+      <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl  rounded-full flex max-lg:hidden">
+        <CreateNewComponent className="px-3 rounded-full" />
+      </aside>
     </div>
   );
 };

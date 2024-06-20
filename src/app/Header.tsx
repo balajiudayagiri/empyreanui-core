@@ -3,11 +3,12 @@ import Link from "next/link";
 import React from "react";
 import { MenuIcon } from "lucide-react";
 import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "empyreanui/components/ui/sheet";
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerTitle,
+  DrawerTrigger,
+} from "empyreanui/components/ui/drawer";
 import { CreateNewComponent } from "@customcomponent";
 
 function Header() {
@@ -21,57 +22,65 @@ function Header() {
       <nav className="hidden md:flex items-center gap-3 md:gap-5">
         <Link
           href="/browse"
-          className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
-          Browse
+          className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
+          UI Gallery
         </Link>
         <Link
           href="/core"
-          className="hover:bg-yellow-500/10 px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200">
+          className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           EmpyreanUI Core
         </Link>
-        <CreateNewComponent />
         <ModeToggle />
       </nav>
       <div className="md:hidden block">
         <div className="flex items-center">
           <ModeToggle />
-          <Sheet>
-            <SheetTrigger asChild>
+          <Drawer>
+            <DrawerTrigger asChild>
               <button className="focus:outline-none ml-3">
                 <MenuIcon className="w-6 h-6" />
               </button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col items-center gap-3 p-4">
-                <SheetClose asChild>
-                  <Link
-                    href="/"
-                    className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
-                    Home
-                  </Link>
-                </SheetClose>
-                <SheetClose asChild>
-                  <Link
-                    href="/browse"
-                    className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
-                    Browse
-                  </Link>
-                </SheetClose>
-                <SheetClose asChild>
-                  <Link
-                    href="/core"
-                    className="hover:bg-yellow-500/10 w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
-                    EmpyreanUI Core
-                  </Link>
-                </SheetClose>
-                <SheetClose asChild>
-                  <span>
-                    <CreateNewComponent />
-                  </span>
-                </SheetClose>
+            </DrawerTrigger>
+            <DrawerContent className="h-dvh">
+              <DrawerTitle>
+                <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center">
+                  Empyrean<span className="text-yellow-500">UI</span>
+                </h1>
+              </DrawerTitle>
+              <nav className="flex flex-col items-center gap-3 p-4 justify-between h-[calc(100dvh-56px)]">
+                <div className="flex flex-col mt-6">
+                  <DrawerClose asChild>
+                    <Link
+                      href="/"
+                      className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                      Home
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/browse"
+                      className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                      UI Gallery
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/core"
+                      className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                      EmpyreanUI Core
+                    </Link>
+                  </DrawerClose>
+                </div>
+                <div>
+                  <DrawerClose asChild>
+                    <span>
+                      <CreateNewComponent className="rounded-full" />
+                    </span>
+                  </DrawerClose>
+                </div>
               </nav>
-            </SheetContent>
-          </Sheet>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
     </header>

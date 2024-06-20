@@ -7,7 +7,7 @@ export default function EmpyreanUIComponentsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="max-w-vw">
+    <section className="w-vw">
       <BackButton />
       {children}
     </section>

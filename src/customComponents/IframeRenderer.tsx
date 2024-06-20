@@ -43,6 +43,9 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
             height: 100vh;
             margin: 0;
             overflow: hidden;
+            background-image: radial-gradient(circle at center, #00000017 0.1rem, transparent 0), radial-gradient(circle at center, #00000017 0.1rem, transparent 0);
+            background-size: 1.3rem 1.3rem;
+            background-position: 0 0, 0.6rem 0.6rem;
           }
         </style>
         ${cssLink}

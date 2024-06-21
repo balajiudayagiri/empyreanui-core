@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
-import bcrypt from "bcryptjs";
 
 interface IUser extends Document {
   userID: string;
@@ -18,14 +17,14 @@ const userSchema: Schema<IUser> = new Schema({
 
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+    // Replace this with your preferred hashing mechanism if needed
+    this.password = this.password; // No hashing
   }
   next();
 });
 
 userSchema.methods.comparePassword = function (password: string) {
-  return bcrypt.compare(password, this.password);
+  return Promise.resolve(this.password === password);
 };
 
 const User: Model<IUser> =

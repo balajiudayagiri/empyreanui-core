@@ -30,24 +30,22 @@ function Header() {
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           EmpyreanUI Core
         </Link>
-        <ModeToggle />
       </nav>
       <div className="md:hidden block">
         <div className="flex items-center">
-          <ModeToggle />
           <Drawer>
             <DrawerTrigger asChild>
               <button className="focus:outline-none ml-3">
                 <MenuIcon className="w-6 h-6" />
               </button>
             </DrawerTrigger>
-            <DrawerContent className="h-dvh backdrop-blur-lg bg-background/40">
+            <DrawerContent className="h-dvh">
               <DrawerTitle className="mt-10">
                 <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center">
                   Empyrean<span className="text-yellow-500">UI</span>
                 </h1>
               </DrawerTitle>
-              <nav className="flex flex-col items-center gap-3 p-4 justify-between h-[calc(100dvh-56px)]">
+              <nav className="flex flex-col items-center gap-3 p-4 justify-between h-[calc(100dvh-77.04px)]">
                 <div className="flex flex-col mt-6">
                   <DrawerClose asChild>
                     <Link

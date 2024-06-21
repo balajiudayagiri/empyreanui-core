@@ -74,7 +74,7 @@ const PostList: React.FC = () => {
 
   return (
     <div className="flex relative w-vw">
-      <Sheet>
+      {/* <Sheet>
         <SheetTrigger asChild>
           <Button
             variant="outline"
@@ -114,7 +114,7 @@ const PostList: React.FC = () => {
             ))}
           </ul>
         </SheetContent>
-      </Sheet>
+      </Sheet> */}
       <main className="md:p-4 w-vw mx-auto mb-20">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center mb-4">
           <span className="text-yellow-500">UI</span> Gallery
@@ -136,11 +136,10 @@ const PostList: React.FC = () => {
         <aside
           className={cn(
             "fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border-2 border-solid border-primary",
-            " bg-primary/20 backdrop-blur-xl  rounded-full flex max-lg:hidden shadow shadow-primary",
-            "max-lg:hidden"
+            " bg-primary/20 backdrop-blur-xl  rounded-full flex shadow shadow-primary"
           )}>
           <PopoverTrigger asChild>
-            <Button className="mr-2 rounded-full px-2 py-1">
+            <Button className="mr-2 rounded-full px-2 py-1 hover:bg-yellow-500 hover:scale-105 transition-transform duration-300">
               <List />
             </Button>
           </PopoverTrigger>
@@ -172,7 +171,7 @@ const PostList: React.FC = () => {
             </div>
             <PopoverArrow className="PopoverArrow" />
           </PopoverContent>
-          <CreateNewComponent className="px-3 rounded-full" />
+          <CreateNewComponent className="px-3 rounded-full hover:bg-yellow-500 hover:scale-105 transition-transform duration-300" />
         </aside>
       </Popover>
     </div>

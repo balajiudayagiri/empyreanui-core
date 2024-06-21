@@ -3,7 +3,7 @@ import { PostDetails } from "@customcomponent";
 
 function page({ params }: { params: { id: string } }) {
   return (
-    <div className="lg:mx-9">
+    <div className="lg:mx-9 mt-14">
       <PostDetails postId={params.id} />
     </div>
   );

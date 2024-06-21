@@ -4,7 +4,7 @@ import { EditorRenderer } from "@customcomponent";
 
 function page() {
   return (
-    <div className="lg:mx-9">
+    <div className="lg:mx-9 mt-14">
       <EditorRenderer />
     </div>
   );

@@ -11,6 +11,8 @@ import {
 import { Button } from "empyreanui/components/ui/button";
 import { Loader } from "lucide-react";
 import { Input } from "empyreanui/components/ui/input";
+import { Label } from "@radix-ui/react-select";
+import { Textarea } from "empyreanui/components/ui/textarea";
 
 interface User {
   firstName: string;
@@ -21,6 +23,7 @@ export interface PostData {
   user: User;
   componentName: string;
   componentCategory: string;
+  description: string;
 }
 
 interface PostCodeDialogProps {
@@ -39,7 +42,7 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
   const [componentName, setComponentName] = useState<string>("");
   const [componentCategory, setComponentCategory] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const [description, setDescription] = useState<string>("");
   const handleSubmit = () => {
     onSubmit(
       {
@@ -49,6 +52,7 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
         },
         componentName,
         componentCategory,
+        description,
       },
       () => setIsOpen(false)
     );
@@ -94,6 +98,12 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
             onChange={(e) => setComponentCategory(e.target.value)}
             placeholder="Component Category"
             className="w-full mt-2"
+          />
+          <label htmlFor="Description">Description</label>
+          <Textarea
+            id="Description"
+            placeholder="Type your description here."
+            onChange={(e) => setDescription(e.target.value)}
           />
           <Button onClick={handleSubmit} disabled={isLoading} className="mt-4">
             {isLoading ? (

@@ -73,7 +73,7 @@ function page() {
           </g>
         </svg>
       </div>
-      <section>
+      <section className="">
         <Suspense fallback={<Loader className="animate-spin" />}>
           <PostList />
         </Suspense>

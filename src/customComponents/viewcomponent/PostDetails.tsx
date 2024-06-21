@@ -101,6 +101,10 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
           initialHtmlContent={post.code.htmlCode}
         />
       </div>
+      <div className="mt-5">
+        <h1 className="font-semibold text-xl">Description:</h1>
+        <span>{post.description}</span>
+      </div>
       <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl  rounded-full flex max-lg:hidden">
         <CreateNewComponent className="px-3 rounded-full" />
       </aside>

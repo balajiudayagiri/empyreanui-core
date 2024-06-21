@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 interface Post {
   _id: string;
@@ -14,6 +14,7 @@ interface Post {
     cssCode: string;
     tailwindCode: string;
   };
+  description: string;
   date: string;
 }
 

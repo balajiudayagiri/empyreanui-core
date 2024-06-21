@@ -14,6 +14,7 @@ export interface IPost extends Document {
     cssCode?: string;
     tailwindCode?: string;
   };
+  description: string;
   date: Date;
 }
 
@@ -37,6 +38,7 @@ const PostSchema: Schema = new Schema({
     }),
     required: true,
   },
+  description: { type: String, required: false },
   date: { type: Date, default: Date.now },
 });
 

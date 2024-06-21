@@ -33,7 +33,6 @@ const PostList: React.FC = () => {
   useEffect(() => {
     fetchPosts({
       onSuccess: (data) => {
-        console.log("Posts fetched successfully:", data);
         setFilteredPosts(data);
 
         // Normalize category names to lower case

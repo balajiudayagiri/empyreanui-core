@@ -9,6 +9,7 @@ export const usePostCode = () => {
     onSuccess: (result: any) => void,
     onError: (error: any) => void
   ) => {
+    console.log({ postData });
     setIsLoading(true);
     try {
       const response = await fetch("/api/posts", {

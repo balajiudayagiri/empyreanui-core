@@ -1,16 +1,8 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
 import { useFetchPosts } from "@apiservices";
-import { List, Loader, Menu } from "lucide-react";
+import { ArrowLeft, ArrowRight, List, Loader } from "lucide-react";
 import dynamic from "next/dynamic";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "empyreanui/components/ui/sheet";
 import { Button } from "empyreanui/components/ui/button";
 import { CreateNewComponent } from "@customcomponent";
 import {
@@ -20,6 +12,7 @@ import {
 } from "empyreanui/components/ui/popover";
 import { PopoverArrow } from "@radix-ui/react-popover";
 import { cn } from "empyreanui/lib/utils";
+import { paginate } from "empyreanui/utils";
 
 const DynamicPostCard = dynamic(() =>
   import("@customcomponent").then((mod) => mod.PostCard)
@@ -30,6 +23,9 @@ const PostList: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10; // Define the number of items per page
+
   useEffect(() => {
     fetchPosts({
       onSuccess: (data) => {
@@ -49,6 +45,7 @@ const PostList: React.FC = () => {
 
   const filterByCategory = (category: string) => {
     setSelectedCategory(category);
+    setCurrentPage(0); // Reset to the first page when category changes
     if (category === "") {
       setFilteredPosts(data);
     } else {
@@ -58,6 +55,8 @@ const PostList: React.FC = () => {
       setFilteredPosts(filtered);
     }
   };
+
+  const paginatedPosts = paginate(filteredPosts, itemsPerPage);
 
   if (isLoading) {
     return (
@@ -73,62 +72,69 @@ const PostList: React.FC = () => {
 
   return (
     <div className="flex relative w-vw">
-      {/* <Sheet>
-        <SheetTrigger asChild>
-          <Button
-            variant="outline"
-            className="lg:hidden fixed top-16 left-2 z-30 p-2">
-            <List />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side={"left"} className="backdrop-blur-xl">
-          <SheetHeader>
-            <SheetTitle>Categories</SheetTitle>
-          </SheetHeader>
-          <ul className="max-h-[calc(100dvh-60px)] overflow-scroll">
-            <SheetClose asChild>
-              <li
-                className={`cursor-pointer py-2 px-4 hover:bg-gray-500/50 rounded-lg mb-2 ${
-                  selectedCategory === ""
-                    ? "font-bold hover:bg-primary bg-primary text-black"
-                    : ""
-                }`}
-                onClick={() => filterByCategory("")}>
-                All
-              </li>
-            </SheetClose>
-            {categories.map((category) => (
-              <SheetClose asChild key={category}>
-                <li
-                  key={category}
-                  className={`cursor-pointer py-2 px-4 hover:bg-gray-500/50 rounded-lg mb-2 ${
-                    selectedCategory === category
-                      ? "font-bold hover:bg-primary bg-primary text-black"
-                      : ""
-                  }`}
-                  onClick={() => filterByCategory(category)}>
-                  {category}
-                </li>
-              </SheetClose>
-            ))}
-          </ul>
-        </SheetContent>
-      </Sheet> */}
       <main className="md:p-4 w-vw mx-auto mb-20">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center mb-4">
           <span className="text-yellow-500">UI</span> Gallery
         </h1>
-        <section className="flex flex-wrap justify-center gap-10">
-          <Suspense fallback={<Loader className="animate-spin" />}>
-            {Array.isArray(filteredPosts) && filteredPosts.length > 0 ? (
-              filteredPosts.map((post: any) => (
+        <Suspense fallback={<Loader className="animate-spin" />}>
+          {paginatedPosts.length > 1 && (
+            <div className="flex justify-between w-screen mt-4 px-6 my-7">
+              <Button
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage <= 0}>
+                <ArrowLeft />
+                <span>Prev</span>
+              </Button>
+              <Button
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage >= paginatedPosts.length - 1}>
+                <ArrowRight />
+                <span>Next</span>
+              </Button>
+            </div>
+          )}
+          <section className="flex flex-wrap justify-center gap-10">
+            {Array.isArray(paginatedPosts) && paginatedPosts.length > 0 ? (
+              paginatedPosts[currentPage].map((post: any) => (
                 <DynamicPostCard key={post._id} post={post} />
               ))
             ) : (
               <div>No posts available</div>
             )}
-          </Suspense>
-        </section>
+          </section>
+          {paginatedPosts.length > 1 && (
+            <div className="flex justify-between w-screen px-6 mt-16 mb-7">
+              <Button
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage <= 0}>
+                <ArrowLeft />
+                <span>Prev</span>
+              </Button>
+              <span>
+                {paginatedPosts.map((_, index) => (
+                  <Button
+                    key={index}
+                    variant={"outline"}
+                    onClick={() => setCurrentPage(index)}
+                    className={cn(
+                      "mx-1",
+                      currentPage === index
+                        ? "font-bold bg-primary text-black"
+                        : ""
+                    )}>
+                    {index + 1}
+                  </Button>
+                ))}
+              </span>
+              <Button
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage >= paginatedPosts.length - 1}>
+                <ArrowRight />
+                <span>Next</span>
+              </Button>
+            </div>
+          )}
+        </Suspense>
       </main>
       {/* popover for larger screen */}
       <Popover>

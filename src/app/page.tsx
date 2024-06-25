@@ -30,15 +30,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden md:flex h-full relative w-full md:w-1/2  items-center justify-center mt-10 md:mt-0">
-          {/* <img
-          src="/path-to-your-image.png"
-          alt="EmpyreanUI Preview"
-          className="w-full h-auto max-w-xs md:max-w-md rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105"
-          /> */}
-          <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400 rounded-full opacity-20 blur-xl"></div>
-          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-yellow-400 rounded-full opacity-20 blur-xl"></div>
-        </div>
+        <div className="hidden md:flex h-full relative w-full md:w-1/2  items-center justify-center mt-10 md:mt-0"></div>
       </main>
       <div
         className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 h-52 max-md:h-1/5"
@@ -51,7 +43,7 @@ export default function Home() {
           xmlnsXlink="http://www.w3.org/1999/xlink"
           viewBox="0 24 150 28"
           preserveAspectRatio="none"
-          shape-rendering="auto">
+          shapeRendering="auto">
           <defs>
             <path
               id="gentle-wave"

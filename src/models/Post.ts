@@ -1,5 +1,12 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
+export interface IRating {
+  _id: any;
+  ratedBy: string;
+  rating: number; // should be between 1-5
+  comment: string;
+}
+
 export interface IPost extends Document {
   user: {
     firstName: string;
@@ -15,8 +22,15 @@ export interface IPost extends Document {
     tailwindCode?: string;
   };
   description: string;
+  ratings: IRating[];
   date: Date;
 }
+
+const RatingSchema: Schema = new Schema({
+  ratedBy: { type: String, required: true },
+  rating: { type: Number, required: true, min: 1, max: 5 },
+  comment: { type: String, required: true },
+});
 
 const PostSchema: Schema = new Schema({
   user: {
@@ -39,6 +53,7 @@ const PostSchema: Schema = new Schema({
     required: true,
   },
   description: { type: String, required: false },
+  ratings: { type: [RatingSchema], required: false, default: [] },
   date: { type: Date, default: Date.now },
 });
 

@@ -4,7 +4,7 @@ import { IframeRenderer } from "@customcomponent";
 import { CodeXml } from "lucide-react";
 import { GetIconFramework } from "empyreanui/utils/getIconFramwork";
 
-interface PostCardProps {
+export interface PostCardProps {
   post: {
     _id: string;
     user: {

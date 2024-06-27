@@ -30,6 +30,11 @@ function Header() {
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           EmpyreanUI Core
         </Link>
+        <Link
+          href="/palette"
+          className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
+          Color Palette
+        </Link>
       </nav>
       <div className="md:hidden block">
         <div className="flex items-center">
@@ -66,6 +71,13 @@ function Header() {
                       href="/core"
                       className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
                       EmpyreanUI Core
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/palette"
+                      className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                      Color Palette
                     </Link>
                   </DrawerClose>
                 </div>

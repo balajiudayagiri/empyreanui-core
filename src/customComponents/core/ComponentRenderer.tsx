@@ -13,7 +13,7 @@ import { Menu } from "lucide-react";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyableCode from "empyreanui/app/CopyableCode";
+import { CopyableCode } from "@customcomponent";
 
 export interface ComponentDoc {
   title: string;

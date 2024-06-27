@@ -22,7 +22,6 @@ export const useFetchPosts = () => {
           throw new Error("Network response was not ok");
         }
         const { data } = await res.json();
-        console.log("Fetched data:", data); // Log the fetched data
         setData(data);
         if (onSuccess) {
           onSuccess(data);

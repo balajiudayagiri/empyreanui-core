@@ -6,6 +6,7 @@ import Header from "./Header";
 import { cn } from "empyreanui/lib/utils";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "empyreanui/components/ui/toaster";
+import Footer from "./Footer";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange>
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
         <Toaster />
       </body>

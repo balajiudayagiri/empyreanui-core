@@ -9,6 +9,9 @@ import CreateNewComponent from "empyreanui/customComponents/CreateNewComponent";
 
 import { Html5ColoredIcon } from "empyreanui/utils/getIconFramwork";
 import { CSSICON } from "empyreanui/utils/getIconFramwork";
+import Palette from "empyreanui/customComponents/palette/Palette";
+import { ScrollToTopButton } from "empyreanui/customComponents/ScrollToTopButton";
+import CopyableCode from "empyreanui/customComponents/CopyableCode";
 export {
   IframeRenderer,
   PostCard,
@@ -20,4 +23,7 @@ export {
   CreateNewComponent,
   Html5ColoredIcon,
   CSSICON,
+  Palette,
+  ScrollToTopButton,
+  CopyableCode,
 };

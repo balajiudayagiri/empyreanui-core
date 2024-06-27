@@ -1,6 +1,5 @@
 import { Button } from "empyreanui/components/ui/button";
 import Link from "next/link";
-import CopyableCode from "./CopyableCode";
 
 export default function Home() {
   return (
@@ -32,6 +31,7 @@ export default function Home() {
         </div>
         <div className="hidden md:flex h-full relative w-full md:w-1/2  items-center justify-center mt-10 md:mt-0"></div>
       </main>
+      {/* bottom animated component */}
       <div
         className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 h-52 max-md:h-1/5"
         style={{

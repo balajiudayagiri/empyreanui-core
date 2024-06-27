@@ -12,7 +12,7 @@ import ImageColorExtractor from "empyreanui/customComponents/palette/ImageColorE
 
 function Palette() {
   return (
-    <Tabs defaultValue="colorpalette" className="w-full h-[calc(100dvh-96px)]">
+    <Tabs defaultValue="colorpalette" className="w-full">
       <TabsList className="flex w-full grid-cols-3 rounded-none fixed z-30 top-14 bg-background/70 backdrop-blur-lg flex-wrap h-fit max-md:gap-2">
         <TabsTrigger
           value="colorpalette"

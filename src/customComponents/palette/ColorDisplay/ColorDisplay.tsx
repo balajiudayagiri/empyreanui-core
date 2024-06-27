@@ -25,11 +25,16 @@ const ColorDisplay: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 py-8 px-4 lg:px-16 min-h-screen">
+    <div className="flex flex-col py-8 px-4 lg:px-16 min-h-screen">
       <h1 className="text-4xl font-extrabold text-center mb-10 flex justify-center gap-2">
         <Palette size={48} />
         <span>Color Palette</span>
       </h1>
+      <p className="text-center mb-10 text-lg text-gray-300">
+        Discover a vibrant array of colors to enhance your designs. Click on any
+        color to copy its value to your clipboard and easily integrate it into
+        your projects.
+      </p>
       {Object.entries(colors as Colors).map(([colorKey, shades]) => (
         <div
           key={colorKey}

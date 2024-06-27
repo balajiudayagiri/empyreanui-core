@@ -16,7 +16,6 @@ interface Color {
 }
 
 const ImageColorExtractor: React.FC = () => {
-  const isDarkMode = true;
   const [image, setImage] = useState<string | null>(null);
   const [colors, setColors] = useState<string[]>([]);
   const [contextMenuStyle, setContextMenuStyle] = useState<CSSProperties>({
@@ -153,6 +152,9 @@ const ImageColorExtractor: React.FC = () => {
 
   return (
     <div className={"min-h-screen p-5"}>
+      <h1 className="text-4xl font-extrabold text-center mb-10 flex justify-center gap-2">
+        <span>Image Color Extractor</span>
+      </h1>
       <div className="container mx-auto">
         {!image ? (
           <div className="flex flex-col items-center">
@@ -192,7 +194,7 @@ const ImageColorExtractor: React.FC = () => {
                 onValueChange={(e) => handleSliderChange(e[0])}
                 className="w-full mt-2"
               />
-              <p className="text-gray-500 mt-2">
+              <p className="text-gray-300 mt-2">
                 Use the slider to adjust the scale of color extraction. Lower
                 values increase precision.
               </p>

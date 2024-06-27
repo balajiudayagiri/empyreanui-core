@@ -53,6 +53,12 @@ const GradientDisplay: React.FC = () => {
         <Palette size={48} />
         <span>Gradient Gallery</span>
       </h1>
+      <p className="text-center mb-10 text-lg text-gray-300">
+        Explore our extensive collection of beautiful gradient backgrounds.
+        Choose any gradient to see how it enhances your design. Click on a
+        gradient to copy the CSS code and elevate your projects with stunning
+        color transitions.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {gradientInfos.map((info, index) => (
           <div

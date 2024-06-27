@@ -25,7 +25,7 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
       cssLink = `<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>`;
     } else {
-      cssLink = `<style>${cssContent}</style>`;
+      cssLink = `<style id="custom-css">${cssContent}</style>`;
     }
 
     const iframeContent = `
@@ -35,7 +35,8 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rendered Content</title>
-         <style>
+        ${cssLink}
+        <style>
           body {
             display: flex;
             justify-content: center;
@@ -48,16 +49,39 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
             background-position: 0 0, 0.6rem 0.6rem;
           }
         </style>
-        ${cssLink}
       </head>
       <body>
-        ${htmlContent}
+        <div id="root">${htmlContent}</div>
       </body>
       </html>
     `;
 
     iframe.srcdoc = iframeContent;
-  }, [htmlContent, cssContent, cssFramework]);
+  }, [cssFramework]);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const updateContent = () => {
+      const iframeDoc =
+        iframe.contentDocument || iframe.contentWindow?.document;
+      if (iframeDoc) {
+        const rootElement = iframeDoc.getElementById("root");
+        const customCss = iframeDoc.getElementById("custom-css");
+
+        if (rootElement) {
+          rootElement.innerHTML = htmlContent;
+        }
+
+        if (customCss) {
+          customCss.innerHTML = cssContent;
+        }
+      }
+    };
+
+    updateContent();
+  }, [htmlContent, cssContent]);
 
   return (
     <iframe

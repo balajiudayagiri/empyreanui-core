@@ -72,7 +72,7 @@ const PostList: React.FC = () => {
 
   return (
     <div className="flex relative w-vw">
-      <main className="md:p-4 w-vw mx-auto mb-20">
+      <main className="mx-auto mb-20">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center mb-4">
           <span className="text-yellow-500">UI</span> Gallery
         </h1>

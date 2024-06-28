@@ -203,7 +203,7 @@ const EditorRenderer: React.FC = () => {
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>
-      <div className="md:hidden block">
+      <div className="md:hidden block overflow-hidden">
         <Tabs defaultValue="preview" className="w-vw h-[calc(100dvh-224px)]">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="preview">Preview</TabsTrigger>
@@ -214,7 +214,7 @@ const EditorRenderer: React.FC = () => {
               htmlContent={htmlContent}
               cssContent={cssContent}
               cssFramework={cssFramework}
-              style={{ height: "100%" }}
+              style={{ height: "h-[calc(100dvh-224px)]" }}
             />
           </TabsContent>
           <TabsContent value="code" className="h-[calc(100dvh-224px)]">

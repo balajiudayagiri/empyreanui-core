@@ -13,20 +13,20 @@ import ImageColorExtractor from "empyreanui/customComponents/palette/ImageColorE
 function Palette() {
   return (
     <Tabs defaultValue="colorpalette" className="w-full">
-      <TabsList className="flex w-full grid-cols-3 rounded-none fixed z-30 top-14 bg-background/70 backdrop-blur-lg flex-wrap h-fit max-md:gap-2">
+      <TabsList className="flex justify-center w-full md:gap-5 grid-cols-3 rounded-none fixed z-30 top-14 bg-background/70 backdrop-blur-lg flex-wrap h-fit max-md:gap-2">
         <TabsTrigger
           value="colorpalette"
-          className="data-[state=active]:bg-primary max-md:border max-md:border-solid max-md:border-primary grow data-[state=active]:text-black font-bold data-[state=inactive]:text-primary min-w-fit">
+          className="data-[state=active]:bg-primary max-md:border max-md:border-solid max-md:border-primary data-[state=active]:text-black font-bold data-[state=inactive]:text-primary min-w-fit">
           Color Palette
         </TabsTrigger>
         <TabsTrigger
           value="gradientdisplay"
-          className="data-[state=active]:bg-primary max-md:border max-md:border-solid max-md:border-primary grow data-[state=active]:text-black font-bold data-[state=inactive]:text-primary min-w-fit">
+          className="data-[state=active]:bg-primary max-md:border max-md:border-solid max-md:border-primary data-[state=active]:text-black font-bold data-[state=inactive]:text-primary min-w-fit">
           Gradient Gallery
         </TabsTrigger>
         <TabsTrigger
           value="imagecolorextractor"
-          className="data-[state=active]:bg-primary max-md:border max-md:border-solid max-md:border-primary grow data-[state=active]:text-black font-bold data-[state=inactive]:text-primary min-w-fit">
+          className="data-[state=active]:bg-primary max-md:border max-md:border-solid max-md:border-primary data-[state=active]:text-black font-bold data-[state=inactive]:text-primary min-w-fit">
           Image Color Extractor
         </TabsTrigger>
       </TabsList>

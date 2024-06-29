@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import colors from "./colors"; // Update the path accordingly
 import { Palette } from "lucide-react";

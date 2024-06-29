@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import "./gradiantColors.css";
 import { Palette } from "lucide-react";

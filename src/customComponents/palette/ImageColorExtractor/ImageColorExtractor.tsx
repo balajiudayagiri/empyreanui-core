@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "empyreanui/components/ui/button";
 import { Slider } from "empyreanui/components/ui/slider";
 import { rgbStringToAllColors } from "empyreanui/utils";

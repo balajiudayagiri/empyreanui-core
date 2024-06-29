@@ -18,11 +18,28 @@ function Footer() {
         <Link href="/core" className="hover:text-primary text-sm">
           EmpyreanUI Core
         </Link>
-        <Link href="/palette" className="hover:text-primary text-sm">
+        <Link
+          href="/colorpalette"
+          className="hover:text-primary text-sm">
           Color Palette
         </Link>
         <Link href="/postcomponent" className="hover:text-primary text-sm">
           Create a Component
+        </Link>
+        <Link
+          href="/gradientpalette"
+          className="hover:text-primary text-sm">
+          Gradient Palette
+        </Link>{" "}
+        <Link
+          href="/imagecolorextractor"
+          className="hover:text-primary text-sm">
+          Image Color Extractor
+        </Link>{" "}
+        <Link
+          href="/gradiantgenerator"
+          className="hover:text-primary text-sm">
+          Gradiant Generator
         </Link>
       </nav>
       <div className="max-w-7xl mx-auto">

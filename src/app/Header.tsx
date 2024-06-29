@@ -31,7 +31,7 @@ function Header() {
           EmpyreanUI Core
         </Link>
         <Link
-          href="/palette"
+          href="/colorpalette"
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           Color Palette
         </Link>
@@ -75,7 +75,7 @@ function Header() {
                   </DrawerClose>
                   <DrawerClose asChild>
                     <Link
-                      href="/palette"
+                      href="/colorpalette"
                       className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
                       Color Palette
                     </Link>

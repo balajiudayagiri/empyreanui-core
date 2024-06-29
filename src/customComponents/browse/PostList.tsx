@@ -184,8 +184,8 @@ const PostList: React.FC = () => {
                   </Button>
                 ))}
               </span>
-              <span className="md:hidden border rounded-lg size-10 flex items-center justify-center">
-                <span>
+              <span className="md:hidden">
+                <span className="border rounded-lg size-10 flex items-center justify-center">
                   {currentPage + 1}/{paginatedPosts.length}
                 </span>
               </span>

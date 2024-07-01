@@ -4,6 +4,7 @@ import React, { CSSProperties, useEffect, useRef } from "react";
 interface IframeRendererProps {
   htmlContent: string;
   cssContent: string;
+  jsContent: string;
   cssFramework: string;
   style?: CSSProperties;
 }
@@ -11,6 +12,7 @@ interface IframeRendererProps {
 const IframeRenderer: React.FC<IframeRendererProps> = ({
   htmlContent,
   cssContent,
+  jsContent,
   cssFramework,
   style,
 }) => {
@@ -52,6 +54,7 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
       </head>
       <body>
         <div id="root">${htmlContent}</div>
+        <script>${jsContent}</script>
       </body>
       </html>
     `;
@@ -69,6 +72,7 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
       if (iframeDoc) {
         const rootElement = iframeDoc.getElementById("root");
         const customCss = iframeDoc.getElementById("custom-css");
+        const customScript = iframeDoc.querySelector("script");
 
         if (rootElement) {
           rootElement.innerHTML = htmlContent;
@@ -77,11 +81,15 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
         if (customCss) {
           customCss.innerHTML = cssContent;
         }
+
+        if (customScript) {
+          customScript.innerHTML = jsContent;
+        }
       }
     };
 
     updateContent();
-  }, [htmlContent, cssContent]);
+  }, [htmlContent, cssContent, jsContent]);
 
   return (
     <iframe

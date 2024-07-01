@@ -18,6 +18,7 @@ export interface PostCardProps {
       htmlCode: string;
       cssCode: string;
       tailwindCode: string;
+      javascriptCode: string;
     };
     date: string;
     slug: string;
@@ -36,6 +37,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             height: 460,
             width: 360,
           }}
+          jsContent={post.code.javascriptCode}
         />
         <span className="absolute text-black top-2 left-2 font-bold text-xs">
           <GetIconFramework

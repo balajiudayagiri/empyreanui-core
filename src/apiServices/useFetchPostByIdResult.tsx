@@ -13,6 +13,7 @@ interface Post {
     htmlCode: string;
     cssCode: string;
     tailwindCode: string;
+    javascriptCode: string;
   };
   description: string;
   date: string;

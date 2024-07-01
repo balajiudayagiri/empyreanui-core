@@ -15,20 +15,16 @@ function Footer() {
         <Link href="/browse" className="hover:text-primary text-sm">
           UI Gallery
         </Link>
-        <Link href="/core" className="hover:text-primary text-sm">
+        {/* <Link href="/core" className="hover:text-primary text-sm">
           EmpyreanUI Core
-        </Link>
-        <Link
-          href="/colorpalette"
-          className="hover:text-primary text-sm">
+        </Link> */}
+        <Link href="/colorpalette" className="hover:text-primary text-sm">
           Color Palette
         </Link>
         <Link href="/postcomponent" className="hover:text-primary text-sm">
           Create a Component
         </Link>
-        <Link
-          href="/gradientpalette"
-          className="hover:text-primary text-sm">
+        <Link href="/gradientpalette" className="hover:text-primary text-sm">
           Gradient Palette
         </Link>{" "}
         <Link
@@ -36,17 +32,15 @@ function Footer() {
           className="hover:text-primary text-sm">
           Image Color Extractor
         </Link>{" "}
-        <Link
-          href="/gradiantgenerator"
-          className="hover:text-primary text-sm">
+        <Link href="/gradiantgenerator" className="hover:text-primary text-sm">
           Gradiant Generator
         </Link>
       </nav>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto text-foreground/50">
         <p className="text-xs md:text-sm font-medium  text-center">
           &copy; 2024{" "}
           <span className="font-bold">
-            Empyrean<span className="text-yellow-500">UI</span>
+            Empyrean<span className="text-yellow-500/50">UI</span>
           </span>
           . All rights reserved.
         </p>

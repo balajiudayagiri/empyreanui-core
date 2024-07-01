@@ -25,11 +25,11 @@ function Header() {
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           UI Gallery
         </Link>
-        <Link
+        {/* <Link
           href="/core"
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           EmpyreanUI Core
-        </Link>
+        </Link> */}
         <Link
           href="/colorpalette"
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
@@ -66,13 +66,13 @@ function Header() {
                       UI Gallery
                     </Link>
                   </DrawerClose>
-                  <DrawerClose asChild>
+                  {/* <DrawerClose asChild>
                     <Link
                       href="/core"
                       className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
                       EmpyreanUI Core
                     </Link>
-                  </DrawerClose>
+                  </DrawerClose> */}
                   <DrawerClose asChild>
                     <Link
                       href="/colorpalette"

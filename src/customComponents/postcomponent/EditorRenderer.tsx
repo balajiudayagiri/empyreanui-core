@@ -23,19 +23,20 @@ import {
   TabsList,
   TabsTrigger,
 } from "empyreanui/components/ui/tabs";
-import { CSSICON, Html5ColoredIcon } from "empyreanui/customComponents";
+import { CSSICON, Html5ColoredIcon, JSIcon } from "empyreanui/customComponents";
 
 const EditorRenderer: React.FC = () => {
   const [cssFramework, setCssFramework] = useState("tailwind");
   const [htmlContent, setHtmlContent] = useState("");
   const [cssContent, setCssContent] = useState("");
+  const [jsContent, setJsContent] = useState("");
   const [isHorizontal, setIsHorizontal] = useState(true);
   const [isPostDisabled, setIsPostDisabled] = useState(false);
 
   const { postCode, isLoading } = usePostCode();
   const { toast } = useToast();
 
-  const forbiddenTags = ["<head>", "<html>", "<script>"];
+  const forbiddenTags = ["<head", "<html", "<script", "<img"];
 
   const checkForbiddenTags = (content: string) => {
     return forbiddenTags.some((tag) => content.includes(tag));
@@ -85,6 +86,7 @@ const EditorRenderer: React.FC = () => {
         htmlCode: htmlContent,
         cssCode: cssFramework === "css" ? cssContent : "",
         tailwindCode: cssFramework === "tailwind" ? htmlContent : "",
+        javascriptCode: jsContent,
       },
     };
     console.log({ postData });
@@ -114,7 +116,7 @@ const EditorRenderer: React.FC = () => {
       toast({
         title: "Invalid Content",
         description:
-          "The htmlContent should not contain <head>, <html>, or <script> tags.",
+          "The HTML Content should not contain <head>, <html>, <img/>, or <script> tags.",
       });
       setIsPostDisabled(true);
     } else {
@@ -126,6 +128,7 @@ const EditorRenderer: React.FC = () => {
     setCssFramework(value);
     setCssContent("");
     setHtmlContent("");
+    setJsContent("");
     setIsPostDisabled(false);
   };
 
@@ -158,6 +161,7 @@ const EditorRenderer: React.FC = () => {
             <IframeRenderer
               htmlContent={htmlContent}
               cssContent={cssContent}
+              jsContent={jsContent}
               cssFramework={cssFramework}
               style={{ height: "100%" }}
             />
@@ -174,6 +178,9 @@ const EditorRenderer: React.FC = () => {
                     <CSSICON size={16} /> <span>CSS</span>
                   </TabsTrigger>
                 )}
+                <TabsTrigger value="js" className="flex items-center gap-2">
+                  <JSIcon size={16} /> <span>JavaScript</span>
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="html" className="mt-0">
                 <div className="w-full mt-0">
@@ -199,6 +206,17 @@ const EditorRenderer: React.FC = () => {
                   </div>
                 </TabsContent>
               )}
+              <TabsContent value="js" className="mt-0">
+                <div className="w-full mt-0">
+                  <Editor
+                    height="500px"
+                    defaultLanguage="javascript"
+                    value={jsContent}
+                    onChange={(value) => setJsContent(value || "")}
+                    theme="vs-dark"
+                  />
+                </div>
+              </TabsContent>
             </Tabs>
           </ResizablePanel>
         </ResizablePanelGroup>
@@ -213,6 +231,7 @@ const EditorRenderer: React.FC = () => {
             <IframeRenderer
               htmlContent={htmlContent}
               cssContent={cssContent}
+              jsContent={jsContent}
               cssFramework={cssFramework}
               style={{ height: "h-[calc(100dvh-224px)]" }}
             />
@@ -228,6 +247,9 @@ const EditorRenderer: React.FC = () => {
                     <CSSICON size={16} /> <span>CSS</span>
                   </TabsTrigger>
                 )}
+                <TabsTrigger value="js" className="flex items-center gap-2">
+                  <JSIcon size={16} /> <span>JavaScript</span>
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="html" className="mt-0">
                 <div className="w-full mt-0">
@@ -253,6 +275,17 @@ const EditorRenderer: React.FC = () => {
                   </div>
                 </TabsContent>
               )}
+              <TabsContent value="js" className="mt-0">
+                <div className="w-full mt-0">
+                  <Editor
+                    height="calc(100dvh - 272px)"
+                    defaultLanguage="javascript"
+                    value={jsContent}
+                    onChange={(value) => setJsContent(value || "")}
+                    theme="vs-dark"
+                  />
+                </div>
+              </TabsContent>
             </Tabs>
           </TabsContent>
         </Tabs>

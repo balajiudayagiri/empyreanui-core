@@ -9,6 +9,8 @@ import CreateNewComponent from "empyreanui/customComponents/CreateNewComponent";
 
 import { Html5ColoredIcon } from "empyreanui/utils/getIconFramwork";
 import { CSSICON } from "empyreanui/utils/getIconFramwork";
+import { JSIcon } from "empyreanui/utils/getIconFramwork";
+
 import Palette from "empyreanui/customComponents/palette/Palette";
 import { ScrollToTopButton } from "empyreanui/customComponents/ScrollToTopButton";
 import CopyableCode from "empyreanui/customComponents/CopyableCode";
@@ -23,6 +25,7 @@ export {
   CreateNewComponent,
   Html5ColoredIcon,
   CSSICON,
+  JSIcon,
   Palette,
   ScrollToTopButton,
   CopyableCode,

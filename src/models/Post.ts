@@ -20,6 +20,7 @@ export interface IPost extends Document {
     htmlCode: string;
     cssCode?: string;
     tailwindCode?: string;
+    javascriptCode?: string;
   };
   description: string;
   ratings: IRating[];
@@ -49,6 +50,7 @@ const PostSchema: Schema = new Schema({
       htmlCode: { type: String, required: true },
       cssCode: { type: String, required: false },
       tailwindCode: { type: String, required: false },
+      javascriptCode: { type: String, required: false },
     }),
     required: true,
   },

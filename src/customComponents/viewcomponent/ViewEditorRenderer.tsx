@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useToast } from "empyreanui/components/ui/use-toast";
 import { Editor } from "@monaco-editor/react";
 
 import {
@@ -15,12 +14,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "empyreanui/components/ui/tabs";
-import { CSSICON, Html5ColoredIcon } from "empyreanui/customComponents";
+import { CSSICON, Html5ColoredIcon, JSIcon } from "empyreanui/customComponents";
 
 interface EditorRendererProps {
   initialCssFramework?: string;
   initialHtmlContent?: string;
   initialCssContent?: string;
+  initialJsContent?: string;
   initialIsHorizontal?: boolean;
 }
 
@@ -28,11 +28,13 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
   initialCssFramework = "tailwind",
   initialHtmlContent = "",
   initialCssContent = "",
+  initialJsContent = "",
   initialIsHorizontal = true,
 }) => {
   const [cssFramework] = useState(initialCssFramework);
   const [htmlContent, setHtmlContent] = useState(initialHtmlContent);
   const [cssContent, setCssContent] = useState(initialCssContent);
+  const [jsContent, setJsContent] = useState(initialJsContent);
   const [isHorizontal, setIsHorizontal] = useState(initialIsHorizontal);
 
   useEffect(() => {
@@ -62,6 +64,7 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
             <IframeRenderer
               htmlContent={htmlContent}
               cssContent={cssContent}
+              jsContent={jsContent}
               cssFramework={cssFramework}
               style={{ height: "100%" }}
             />
@@ -78,6 +81,9 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
                     <CSSICON size={16} /> <span>CSS</span>
                   </TabsTrigger>
                 )}
+                <TabsTrigger value="js" className="flex items-center gap-2">
+                  <JSIcon size={16} /> <span>JavaScript</span>
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="html" className="mt-0">
                 <div className="w-full mt-0">
@@ -103,6 +109,17 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
                   </div>
                 </TabsContent>
               )}
+              <TabsContent value="js" className="mt-0">
+                <div className="w-full mt-0">
+                  <Editor
+                    height="500px"
+                    defaultLanguage="javascript"
+                    value={jsContent}
+                    onChange={(value) => setJsContent(value || "")}
+                    theme="vs-dark"
+                  />
+                </div>
+              </TabsContent>
             </Tabs>
           </ResizablePanel>
         </ResizablePanelGroup>
@@ -117,6 +134,7 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
             <IframeRenderer
               htmlContent={htmlContent}
               cssContent={cssContent}
+              jsContent={jsContent}
               cssFramework={cssFramework}
               style={{ height: "100%" }}
             />
@@ -132,6 +150,9 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
                     <CSSICON size={16} /> <span>CSS</span>
                   </TabsTrigger>
                 )}
+                <TabsTrigger value="js" className="flex items-center gap-2">
+                  <JSIcon size={16} /> <span>JavaScript</span>
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="html" className="mt-0">
                 <div className="w-full mt-0">
@@ -157,6 +178,17 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
                   </div>
                 </TabsContent>
               )}
+              <TabsContent value="js" className="mt-0">
+                <div className="w-full mt-0">
+                  <Editor
+                    height="calc(100dvh - 272px)"
+                    defaultLanguage="javascript"
+                    value={jsContent}
+                    onChange={(value) => setJsContent(value || "")}
+                    theme="vs-dark"
+                  />
+                </div>
+              </TabsContent>
             </Tabs>
           </TabsContent>
         </Tabs>

@@ -10,8 +10,8 @@ function ColorPaletteHero() {
       <ColorPalletSvg className="lg:w-1/2" />
       <div className="lg:w-1/2 lg:h-[inherit] flex justify-center items-center">
         <div className="text-primary">
-          <h1 className="text-4xl md:text-6xl font-bold  leading-tight mb-4 text-primary flex justify-center gap-2">
-            <Palette size={50} />
+          <h1 className="text-3xl md:text-6xl font-bold  leading-tight mb-4 text-primary flex items-center text-center justify-center gap-2">
+            <Palette className="md:size-12 size-8" />
             <span>Color Palette</span>
           </h1>
           <p className="text-center mb-10 text-lg text-gray-300">

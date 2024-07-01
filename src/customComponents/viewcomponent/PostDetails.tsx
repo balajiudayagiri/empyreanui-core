@@ -46,6 +46,7 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
     downloadZip(
       post.code.htmlCode,
       post.code.cssCode,
+      post.code.javascriptCode,
       post.code.styleType,
       post.componentName
     );

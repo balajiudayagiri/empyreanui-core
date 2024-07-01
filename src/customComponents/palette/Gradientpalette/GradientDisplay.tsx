@@ -51,7 +51,7 @@ const GradientDisplay: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-extrabold text-center mb-10 flex justify-center gap-2">
-        <Palette size={48} />
+        <Palette size={38} />
         <span>Gradient Gallery</span>
       </h1>
       <p className="text-center mb-10 text-lg text-gray-300">

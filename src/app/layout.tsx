@@ -24,7 +24,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(montserrat.className, "h-dvh")}>
         <SpeedInsights />
-
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

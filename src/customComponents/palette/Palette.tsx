@@ -1,23 +1,14 @@
 "use client";
-import {
-  Tabs,
-  // TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "empyreanui/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "empyreanui/components/ui/tabs";
 import React from "react";
-// import ColorDisplay from "empyreanui/customComponents/palette/ColorDisplay/ColorDisplay";
-// import GradientDisplay from "empyreanui/customComponents/palette/Gradientpalette/GradientDisplay";
-// import ImageColorExtractor from "empyreanui/customComponents/palette/ImageColorExtractor/ImageColorExtractor";
-// import GradiantGenerator from "./GradiantGenerator/GradiantGenerator";
 import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
 
 function Palette() {
+  const params = usePathname();
+  const activeTab = params.split("/")[1];
   return (
-    <Tabs
-      defaultValue="colorpalette"
-      className="w-full"
-      onValueChange={(value) => console.log(value)}>
+    <Tabs defaultValue={activeTab} className="w-full">
       <TabsList className="flex justify-center w-full md:gap-5 grid-cols-3 rounded-none fixed z-30 top-14 bg-background/70 backdrop-blur-lg flex-wrap h-fit max-md:gap-2 border-b">
         <Link href={"/colorpalette"}>
           <TabsTrigger

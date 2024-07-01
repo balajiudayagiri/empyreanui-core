@@ -1,9 +1,14 @@
 import { Button } from "empyreanui/components/ui/button";
+import ColorPaletteHero from "empyreanui/customComponents/_colorpalette";
+import GradientGeneratorHero from "empyreanui/customComponents/_gradiantgenerator";
+import GradientPaletteHero from "empyreanui/customComponents/_gradientpalette";
+import ImageColorExtractorHero from "empyreanui/customComponents/_imagecolorextractor";
+import UiGalleryHero from "empyreanui/customComponents/_uigallery";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="h-dvh">
+    <>
       <main className="relative h-[calc(100dvh-208px)] max-md:h-4/5 flex items-center justify-center overflow-y-auto p-8 max-lg:pt-32 md:p-24 bg-gradient-to-r from-yellow-400 to-yellow-600">
         <div className="h-full max-w-md md:max-w-xl space-y-6 flex text-black items-center">
           <div>
@@ -58,6 +63,14 @@ export default function Home() {
           </g>
         </svg>
       </div>
-    </div>
+      <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-24 mt-12">
+        {/* <UiGalleryHero /> */}
+        <ColorPaletteHero />
+        <GradientPaletteHero />
+        {/* <ImageColorExtractorHero /> */}
+        {/* <GradientGeneratorHero /> */}
+        {/* <GradientPaletteHero /> */}
+      </div>
+    </>
   );
 }

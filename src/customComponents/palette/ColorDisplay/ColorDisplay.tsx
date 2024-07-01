@@ -28,7 +28,7 @@ const ColorDisplay: React.FC = () => {
   return (
     <div className="flex flex-col py-8 px-4 lg:px-16 min-h-screen">
       <h1 className="text-4xl font-extrabold text-center mb-10 flex justify-center gap-2">
-        <Palette size={48} />
+        <Palette size={38} />
         <span>Color Palette</span>
       </h1>
       <p className="text-center mb-10 text-lg text-gray-300">

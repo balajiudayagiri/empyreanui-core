@@ -1,6 +1,8 @@
 import React from "react";
 import GradiantSvg from "./GradiantSvg";
 import { Palette } from "lucide-react";
+import Link from "next/link";
+import { Button } from "empyreanui/components/ui/button";
 
 function GradientPaletteHero() {
   return (
@@ -17,6 +19,11 @@ function GradientPaletteHero() {
             gradient to copy the CSS code and elevate your projects with
             stunning color transitions.
           </p>
+          <div className="w-full text-center">
+            <Link href={"/gradientpalette"}>
+              <Button className="font-semibold">Go to Color Palette</Button>
+            </Link>
+          </div>
         </div>
       </div>
       <GradiantSvg className="lg:w-1/2" />

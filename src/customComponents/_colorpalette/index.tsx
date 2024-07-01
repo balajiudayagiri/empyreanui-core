@@ -1,6 +1,8 @@
 import React from "react";
 import ColorPalletSvg from "./ColorPalletSvg";
 import { Palette } from "lucide-react";
+import { Button } from "empyreanui/components/ui/button";
+import Link from "next/link";
 
 function ColorPaletteHero() {
   return (
@@ -17,6 +19,11 @@ function ColorPaletteHero() {
             any color to copy its value to your clipboard and easily integrate
             it into your projects.
           </p>
+          <div className="w-full text-center">
+            <Link href={"/colorpalette"}>
+              <Button className="font-semibold">Go to Color Palette</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

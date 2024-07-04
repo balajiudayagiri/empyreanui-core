@@ -78,7 +78,6 @@ const EditorRenderer: React.FC = () => {
   }, []);
 
   const handlePostCode = (data: PostData, closeDialog: () => void) => {
-    console.log("data", { data });
     const postData = {
       ...data,
       code: {
@@ -89,7 +88,6 @@ const EditorRenderer: React.FC = () => {
         javascriptCode: jsContent,
       },
     };
-    console.log({ postData });
     postCode(
       postData,
       (result: string) => {

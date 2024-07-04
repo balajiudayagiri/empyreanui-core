@@ -35,6 +35,11 @@ function Header() {
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           Color Palette
         </Link>
+        <Link
+          href="/blogs"
+          className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
+          Blogs
+        </Link>
       </nav>
       <div className="md:hidden block">
         <div className="flex items-center">

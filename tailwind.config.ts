@@ -78,6 +78,9 @@ const config = {
         lg: "6px 6px 8px rgba(0, 0, 0, 0.1)",
         xl: "8px 8px 10px rgba(0, 0, 0, 0.1)",
       },
+      boxShadow: {
+        cardShadow: "6px 6px 12px #bebebe, -6px -6px 12px #ffffff",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

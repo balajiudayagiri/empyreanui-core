@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import {
   Dialog,
@@ -62,7 +61,10 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
   const isValidBase64 = (str: string) => {
     const base64Regex =
       /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
-    return base64Regex.test(str);
+    const base64ImageRegex =
+      /^data:image\/(png|jpg|jpeg|gif);base64,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
+
+    return base64Regex.test(str) || base64ImageRegex.test(str);
   };
 
   const handleSubmit = () => {

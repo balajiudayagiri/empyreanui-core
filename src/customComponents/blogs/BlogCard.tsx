@@ -13,7 +13,7 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
     <Link href={`/viewblog/${data._id}`}>
       <div
         key={key}
-        className="shadow-cardShadow rounded-3xl p-6 hover:scale-105 transition-transform duration-200 ease-out w-full max-w-md mx-auto bg-white cursor-pointer">
+        className="shadow-cardShadow rounded-3xl p-6 h-full hover:scale-105 transition-transform duration-200 ease-out w-full max-w-md mx-auto bg-white cursor-pointer">
         <h1 className="text-2xl lg:text-3xl font-bold capitalize mb-4 text-gray-800">
           {data.title}
         </h1>

@@ -9,7 +9,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "empyreanui/components/ui/tabs";
-
 import { useFetchBlog } from "empyreanui/apiServices/blogsServices";
 import { toast } from "empyreanui/components/ui/use-toast";
 import { Blog } from "./Blogtypes";
@@ -20,6 +19,7 @@ const BlogPage: React.FC = () => {
   const [blogs, setBlogs] = useState<string>("");
   const [activeTab, setActiveTab] = useState<string>("editor");
   const { postBlog, isLoading } = useFetchBlog();
+
   const addBlog = (content: string) => {
     setBlogs(content);
   };
@@ -68,17 +68,17 @@ const BlogPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div>
-        <div className="flex justify-between">
-          <h1 className="text-2xl font-bold mb-4">Publish your Blogs</h1>
-          <PostBlogDialog
-            onSubmit={handlePostCode}
-            isLoading={isLoading}
-            disabled={!blogs}
-          />
-        </div>
-        <p className="mb-4">
+    <div className="container mx-auto p-4 min-h-screen ">
+      <div className="p-8 rounded-lg shadow-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <h1 className="text-5xl mb-3 font-bold text-center">
+          Publish Your Blogs
+        </h1>
+        <PostBlogDialog
+          onSubmit={handlePostCode}
+          isLoading={isLoading}
+          disabled={!blogs}
+        />
+        <p className="mb-4 text-center">
           Use this page to write and preview your blog posts. Switch between the
           &quot;Editor&quot; and &quot;Preview&quot; tabs to see your content in
           real-time. Once you&apos;re satisfied with your post, click the
@@ -87,36 +87,58 @@ const BlogPage: React.FC = () => {
       </div>
       <Tabs
         defaultValue="editor"
-        className="w-full"
+        className="w-full mt-4"
         onValueChange={(value) => setActiveTab(value)}>
-        <TabsList className="w-full bg-transparent gap-1 items-center justify-center">
+        <TabsList className="flex justify-center space-x-4 bg-transparent">
           <TabsTrigger
             value="editor"
-            className="data-[state=active]:border-2 data-[state=active]:font-semibold data-[state=inactive]:border-2 data-[state=inactive]:text-black ">
+            className={cn(
+              "px-4 py-2 rounded-md",
+              "transition duration-200",
+              "border border-gray-300",
+              activeTab === "editor"
+                ? "bg-black text-white"
+                : "bg-white text-gray-700"
+            )}>
             Editor
           </TabsTrigger>
           <TabsTrigger
             disabled={!blogs}
             value="preview"
-            className="data-[state=active]:border-2 data-[state=active]:font-semibold data-[state=inactive]:border-2 data-[state=inactive]:text-black ">
+            className={cn(
+              "px-4 py-2 rounded-md",
+              "transition duration-200",
+              "border border-gray-300",
+              activeTab === "preview"
+                ? "bg-black text-white"
+                : "bg-white text-gray-700"
+            )}>
             Preview
           </TabsTrigger>
         </TabsList>
         <TabsContent
           value="editor"
           className={cn(
-            activeTab === "editor" ? "slide-right" : "slide-left",
-            "h-[calc(100dvh-300px)] blog-editor border-b border-solid border-gray-400/50"
+            activeTab === "editor"
+              ? "animate-slide-right"
+              : "animate-slide-left",
+            "h-[calc(100vh-300px)] blog-editor border-t border-gray-300 bg-white"
           )}>
-          <Editor onChangeText={addBlog} text={blogs} />
+          <Editor
+            onChangeText={addBlog}
+            text={blogs}
+            placeholder="Describe your blog here..."
+          />
         </TabsContent>
         <TabsContent
           value="preview"
           className={cn(
-            activeTab === "preview" ? "slide-left" : "slide-right",
-            "h-[calc(100dvh-325px)]"
+            activeTab === "preview"
+              ? "animate-slide-left"
+              : "animate-slide-right",
+            "h-[calc(100vh-325px)]"
           )}>
-          <div className="border">
+          <div className="border-t border-gray-300 h-full p-4 bg-white rounded-lg shadow-inner">
             <IframeContent content={blogs} />
           </div>
         </TabsContent>
@@ -140,11 +162,11 @@ const BlogPage: React.FC = () => {
           }
         }
 
-        .slide-left {
+        .animate-slide-left {
           animation: slideLeft 0.5s forwards;
         }
 
-        .slide-right {
+        .animate-slide-right {
           animation: slideRight 0.5s forwards;
         }
       `}</style>

@@ -1,7 +1,7 @@
 import IframeRenderer from "empyreanui/customComponents/IframeRenderer";
 import PostCard from "empyreanui/customComponents/browse/PostCard";
 import PostList from "empyreanui/customComponents/browse/PostList";
-import EditorRenderer from "empyreanui/customComponents/postcomponent/EditorRenderer";
+import EditorExporter from "empyreanui/customComponents/postcomponent/EditorExporter";
 import PostCodeDialog from "empyreanui/customComponents/postcomponent/PostCodeDialog";
 import PostDetails from "empyreanui/customComponents/viewcomponent/PostDetails";
 import BackButton from "empyreanui/customComponents/BackButton";
@@ -18,7 +18,7 @@ export {
   IframeRenderer,
   PostCard,
   PostList,
-  EditorRenderer,
+  EditorExporter,
   PostCodeDialog,
   PostDetails,
   BackButton,

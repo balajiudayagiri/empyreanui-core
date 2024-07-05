@@ -8,9 +8,10 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 export interface EditorProps {
   onChangeText: (content: string) => void;
   text?: string;
+  placeholder?: string;
 }
 
-const Editor: React.FC<EditorProps> = ({ onChangeText, text }) => {
+const Editor: React.FC<EditorProps> = ({ onChangeText, text, placeholder }) => {
   const handleChange = (value: string) => {
     onChangeText(value);
   };
@@ -60,6 +61,7 @@ const Editor: React.FC<EditorProps> = ({ onChangeText, text }) => {
         onChange={handleChange}
         modules={modules}
         formats={formats}
+        placeholder={placeholder}
       />
     </div>
   );

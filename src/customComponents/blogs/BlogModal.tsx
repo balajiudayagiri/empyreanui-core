@@ -45,7 +45,10 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild disabled={disabled}>
-        <Button disabled={disabled} onClick={() => setIsOpen(true)}>
+        <Button
+          disabled={disabled}
+          onClick={() => setIsOpen(true)}
+          className="fixed z-50 top-16 right-4">
           Post Code
         </Button>
       </DialogTrigger>

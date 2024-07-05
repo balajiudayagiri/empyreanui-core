@@ -85,6 +85,13 @@ function Header() {
                       Color Palette
                     </Link>
                   </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/blogs"
+                      className="hover:bg-primary/20 hover:text-primary w-full text-center px-4 py-2 rounded-lg transition-all duration-200">
+                      Blogs
+                    </Link>
+                  </DrawerClose>
                 </div>
                 <div>
                   <DrawerClose asChild>

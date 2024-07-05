@@ -4,8 +4,8 @@ import React from "react";
 
 function page() {
   return (
-    <main className="bg-white text-black pt-14 h-dvh">
-      <BackButton />
+    <main className="bg-white text-black pt-14 min-h-dvh">
+      <BackButton className="bg-white/50 backdrop-blur-lg" />
       <BlogPage />
     </main>
   );

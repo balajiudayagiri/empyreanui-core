@@ -5,21 +5,24 @@ import Link from "next/link";
 
 function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   const date = new Date(data.date).toLocaleDateString();
-  const formatedDate =
-    months[date.split("/")[1] as unknown as number] +
-    " / " +
-    date.split("/")[2];
+  const formattedDate =
+    months[parseInt(date.split("/")[1], 10)] + " / " + date.split("/")[2];
+
   return (
     <Link href={`/viewblog/${data._id}`}>
       <div
         key={key}
-        className="shadow-cardShadow rounded-3xl p-5 hover:scale-105 transition-all duration-100 w-full">
-        <h1 className="text-4xl capitalize font-bold">{data.title}</h1>
-        <h1 className="mb-9">
-          <span className="font-bold capitalize">{data.author}</span> -{" "}
-          <span className="text-sm"> on {formatedDate}</span>
+        className="shadow-cardShadow rounded-3xl p-6 hover:scale-105 transition-transform duration-200 ease-out w-full max-w-md mx-auto bg-white cursor-pointer">
+        <h1 className="text-2xl lg:text-3xl font-bold capitalize mb-4 text-gray-800">
+          {data.title}
         </h1>
-        <p className="line-clamp-4">{data.content}</p>
+        <h2 className="mb-4 text-gray-600">
+          <span className="font-semibold capitalize">{data.author}</span>{" "}
+          <span className="text-sm text-gray-500">on {formattedDate}</span>
+        </h2>
+        <p className="line-clamp-4 text-gray-700 leading-relaxed">
+          {data.content}
+        </p>
       </div>
     </Link>
   );

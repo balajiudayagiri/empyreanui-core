@@ -38,10 +38,28 @@ function BlogsListing() {
   }
 
   return (
-    <main className="flex flex-col gap-8 lg:w-4/5">
-      {blogs.map((item: BlogsTypes, index: number) => (
-        <BlogCard key={index} data={item} />
-      ))}
+    <main className="flex flex-col items-center gap-8 lg:w-4/5 mx-auto p-4">
+      <section className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-10 rounded-3xl text-center mb-8 shadow-lg">
+        <h1 className="text-4xl lg:text-6xl font-bold mb-4">
+          Welcome to EmpyreanUI Blogs
+        </h1>
+        <p className="text-lg lg:text-xl mb-6">
+          Discover the latest news, tips, and insights from our experts. Stay
+          updated with the newest trends and stories that matter to you.
+        </p>
+        <a
+          href="#blogs"
+          className="bg-white text-indigo-600 font-bold py-2 px-4 rounded-full hover:bg-indigo-100 transition-colors duration-300">
+          Explore Now
+        </a>
+      </section>
+      <section
+        id="blogs"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+        {blogs.map((item: BlogsTypes, index: number) => (
+          <BlogCard key={index} data={item} />
+        ))}
+      </section>
     </main>
   );
 }

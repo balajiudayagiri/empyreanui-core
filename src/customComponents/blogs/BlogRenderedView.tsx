@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFetchBlogById } from "empyreanui/apiServices/useFetchBlogById";
 import { Loader } from "lucide-react";
 import IframeContent from "./IframeContent";
@@ -7,45 +7,72 @@ import { months } from "empyreanui/utils";
 
 function BlogRenderedView({ id }: { id: string }) {
   const { blog, isLoading, error, fetchBlogById } = useFetchBlogById();
+  const [iframeHeight, setIframeHeight] = useState("auto");
 
   useEffect(() => {
     fetchBlogById(id);
   }, [id, fetchBlogById]);
 
+  useEffect(() => {
+    const handleResizeMessage = (event: {
+      data: { type: string; height: any };
+    }) => {
+      if (event.data.type === "resize") {
+        setIframeHeight(`${event.data.height}px`);
+      }
+    };
+    window.addEventListener("message", handleResizeMessage);
+    return () => {
+      window.removeEventListener("message", handleResizeMessage);
+    };
+  }, []);
+
   if (isLoading) {
     return (
-      <div className="h-dvh flex items-center justify-center">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <Loader className="text-primary animate-spin" size={32} />
       </div>
     );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="text-red-600 font-bold">Error: {error}</div>
+      </div>
+    );
   }
 
   if (!blog) {
-    return <div>No post found</div>;
-  }
-  const date = new Date(blog.date).toLocaleDateString();
-  const formatedDate =
-    months[date.split("/")[1] as unknown as number] +
-    " / " +
-    date.split("/")[2];
-  return (
-    <div className="flex flex-col items-center">
-      <div className="h-[160px] text-black">
-        {" "}
-        <h1 className="text-4xl capitalize font-bold">{blog.title}</h1>
-        <h1 className="mb-9">
-          <span className="font-bold capitalize">{blog.author}</span> -{" "}
-          <span className="text-sm"> on {formatedDate}</span>
-        </h1>
-        <p className="line-clamp-2">{blog.content}</p>
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="text-gray-600">No post found</div>
       </div>
+    );
+  }
+
+  const date = new Date(blog.date).toLocaleDateString();
+  const formattedDate =
+    months[parseInt(date.split("/")[1])] + " / " + date.split("/")[2];
+
+  return (
+    <div className="flex flex-col items-center bg-white p-4 md:p-8 lg:p-12 max-w-4xl mx-auto">
+      <header className="text-center mb-6 bg-gradient-to-r from-purple-500 to-indigo-500 p-4 rounded-lg shadow-md w-full">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold capitalize text-white">
+          {blog.title}
+        </h1>
+        <p className="mt-2 text-sm md:text-base lg:text-lg text-white">
+          <span className="font-semibold">{blog.author}</span> - on{" "}
+          {formattedDate}
+        </p>
+      </header>
+      <section className="mb-6 p-4 rounded-lg shadow-lg">
+        <p className="line-clamp-3 text-gray-700">{blog.content}</p>
+      </section>
       <IframeContent
         content={blog.data}
-        className="border-none h-[calc(100dvh-216px)] md:w-4/5"
+        className="w-full shadow-md rounded-lg"
+        style={{ height: iframeHeight }}
       />
     </div>
   );

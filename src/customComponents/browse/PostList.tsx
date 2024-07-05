@@ -32,9 +32,13 @@ const PostList: React.FC = () => {
   useEffect(() => {
     fetchPosts({
       onSuccess: (data) => {
-        setFilteredPosts(data);
+        // Sort posts by date in descending order
+        const sortedPosts = data.sort(
+          (a: any, b: any) =>
+            new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
 
-        // Normalize category names to lower case
+        setFilteredPosts(sortedPosts);
         const uniqueCategories = Array.from(
           new Set(data.map((post: any) => post.componentCategory.toLowerCase()))
         );

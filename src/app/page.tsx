@@ -1,9 +1,6 @@
 import { Button } from "empyreanui/components/ui/button";
 import ColorPaletteHero from "empyreanui/customComponents/_colorpalette";
-import GradientGeneratorHero from "empyreanui/customComponents/_gradiantgenerator";
 import GradientPaletteHero from "empyreanui/customComponents/_gradientpalette";
-import ImageColorExtractorHero from "empyreanui/customComponents/_imagecolorextractor";
-import UiGalleryHero from "empyreanui/customComponents/_uigallery";
 import Link from "next/link";
 
 export default function Home() {

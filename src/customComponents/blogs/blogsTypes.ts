@@ -5,4 +5,5 @@ export interface BlogsTypes {
   author: string;
   data: string;
   date: Date;
+  thumbnail: string;
 }

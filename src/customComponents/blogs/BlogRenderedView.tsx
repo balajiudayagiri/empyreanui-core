@@ -4,6 +4,7 @@ import { useFetchBlogById } from "empyreanui/apiServices/useFetchBlogById";
 import { Loader } from "lucide-react";
 import IframeContent from "./IframeContent";
 import { months } from "empyreanui/utils";
+import Image from "next/image";
 
 function BlogRenderedView({ id }: { id: string }) {
   const { blog, isLoading, error, fetchBlogById } = useFetchBlogById();
@@ -66,6 +67,15 @@ function BlogRenderedView({ id }: { id: string }) {
           {formattedDate}
         </p>
       </header>
+      {blog.thumbnail ? (
+        <Image
+          src={blog.thumbnail}
+          alt={blog.thumbnail}
+          height={1000}
+          width={1000}
+          className="size-40 mb-3"
+        />
+      ) : null}
       <section className="mb-6 p-4 rounded-lg shadow-lg">
         <p className="line-clamp-3 text-gray-700">{blog.content}</p>
       </section>

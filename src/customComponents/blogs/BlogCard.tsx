@@ -15,13 +15,14 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
       key={key}
       className="group h-full shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col">
       {data.thumbnail ? (
-        <div className="relative w-full h-48">
+        <div className="w-full h-48">
           <Image
             src={data.thumbnail}
             alt={data.title}
-            layout="fill"
+            width={1000}
+            height={1000}
             objectFit="cover"
-            className="rounded-t-xl transition-transform duration-300 group-hover:scale-105"
+            className="transition-transform duration-300 group-hover:scale-105 h-48"
           />
         </div>
       ) : null}

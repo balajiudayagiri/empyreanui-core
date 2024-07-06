@@ -171,3 +171,8 @@
   -webkit-backdrop-filter: var(--tw-backdrop-blur);
   backdrop-filter: var(--tw-backdrop-blur);
 }
+
+.custom-line-clamp {
+  -webkit-line-clamp: 10;
+  line-clamp: 10;
+}

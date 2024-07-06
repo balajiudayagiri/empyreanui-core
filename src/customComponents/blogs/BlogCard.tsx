@@ -1,6 +1,6 @@
 import React from "react";
 import { BlogsTypes } from "./blogsTypes";
-import { months } from "empyreanui/utils";
+import { makeUrlFriendly, months } from "empyreanui/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "empyreanui/components/ui/button";
@@ -30,15 +30,17 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
           <h1 className="text-2xl font-bold capitalize mb-2 text-gray-800">
             {data.title}
           </h1>
-          <h2 className="text-sm text-gray-600 mb-4">
-            {data.author} on {formattedDate}
-          </h2>
+
           <p className="line-clamp-3 text-gray-700 leading-relaxed text-sm mb-4">
             {data.content}
           </p>
         </div>
-        <div className="flex justify-end mt-4">
-          <Link href={`/viewblog/${data._id}`}>
+        <h2 className="text-xs font-semibold text-gray-600 mt-4">
+          {data.author} on {formattedDate}
+        </h2>
+        <div className="flex justify-between mt-4">
+          <div></div>
+          <Link href={`/viewblog/${makeUrlFriendly(data.title)}-${data._id}`}>
             <Button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-200">
               Read More
             </Button>

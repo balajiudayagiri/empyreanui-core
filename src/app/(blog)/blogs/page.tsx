@@ -21,7 +21,7 @@ export async function generateMetadata() {
 function page() {
   return (
     <main className="bg-gray-100 text-black min-h-screen pt-14">
-      <nav className="sticky top-14 z-10 bg-gray-100/50 backdrop-blur-lg  shadow-md px-5 py-2 flex justify-between items-center">
+      <nav className="sticky top-14 z-10 bg-gray-100/50 backdrop-blur-lg backdrop-blur-safari  shadow-md px-5 py-2 flex justify-between items-center">
         <div className="text-xl font-bold">EmpyreanUI Blogs</div>
         <Link href="/postblogs">
           <Button className="flex gap-3 bg-blue-500 text-white border-2 border-transparent hover:bg-blue-600 transition ease-in-out duration-300 ml-auto">

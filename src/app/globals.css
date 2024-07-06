@@ -166,3 +166,8 @@
     min-height: 100px;
   }
 }
+
+.backdrop-blur-safari {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur);
+  backdrop-filter: var(--tw-backdrop-blur);
+}

@@ -73,12 +73,13 @@ function BlogRenderedView({ id }: { id: string }) {
           alt={blog.thumbnail}
           height={1000}
           width={1000}
-          className="size-40 mb-3"
+          className="w-3/5 mb-3"
         />
       ) : null}
-      <section className="mb-6 p-4 rounded-lg shadow-lg">
+      <section className="mb-6 p-4 rounded-lg">
         <p className="line-clamp-3 text-gray-700">{blog.content}</p>
       </section>
+      <hr className="w-full my-4" />
       <IframeContent
         content={blog.data}
         className="w-full shadow-md rounded-lg"

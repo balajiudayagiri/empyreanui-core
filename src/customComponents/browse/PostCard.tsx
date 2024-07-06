@@ -27,7 +27,7 @@ export interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
   return (
-    <article className="group h-full max-w-full backdrop-blur-2xl bg-primary/10 rounded-xl cursor-pointer border border-solid border-primary/35">
+    <article className="group h-full max-w-full backdrop-blur-2xl backdrop-blur-safari bg-primary/10 rounded-xl cursor-pointer border border-solid border-primary/35">
       <div className="relative rounded-lg overflow-hidden bg-white">
         <IframeRenderer
           htmlContent={post.code.htmlCode}

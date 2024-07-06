@@ -107,7 +107,7 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
         <span>{post.description}</span>
       </div>
 
-      <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl  rounded-full flex max-lg:hidden">
+      <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl backdrop-blur-safari rounded-full flex max-lg:hidden">
         <CreateNewComponent className="px-3 rounded-full" />
       </aside>
     </div>

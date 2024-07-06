@@ -50,6 +50,7 @@ const IframeRenderer: React.FC<IframeRendererProps> = ({
             background-size: 1.3rem 1.3rem;
             background-position: 0 0, 0.6rem 0.6rem;
           }
+          
         </style>
       </head>
       <body>

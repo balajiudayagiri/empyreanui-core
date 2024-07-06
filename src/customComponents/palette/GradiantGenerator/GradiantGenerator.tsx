@@ -90,7 +90,7 @@ const GradientGenerator: React.FC = () => {
           className="fixed h-80 -z-1 w-screen top-72 max-md:hidden"
           style={{ background: `${gradient}` }}
         />
-        <div className="bg-black/50 backdrop-blur-xl p-6 rounded-lg shadow-lg w-full max-w-5xl relative z-10 md:mt-10 mt-11">
+        <div className="bg-black/50 backdrop-blur-xl backdrop-blur-safari p-6 rounded-lg shadow-lg w-full max-w-5xl relative z-10 md:mt-10 mt-11">
           <div
             className="absolute flex justify-center items-center md:w-[95%] -top-[50px] max-md:left-0 w-full h-32 mb-4 rounded-lg border border-gray-300 overflow-hidden"
             style={{ background: gradient }}></div>

@@ -81,6 +81,21 @@ const config = {
       boxShadow: {
         cardShadow: "6px 6px 12px #bebebe, -6px -6px 12px #ffffff",
       },
+      backdropBlur: {
+        none: "none",
+        sm: "4px",
+        DEFAULT: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "24px",
+        "2xl": "40px",
+        "3xl": "64px",
+      },
+    },
+  },
+  variants: {
+    extend: {
+      backdropBlur: ["responsive"],
     },
   },
   plugins: [require("tailwindcss-animate")],

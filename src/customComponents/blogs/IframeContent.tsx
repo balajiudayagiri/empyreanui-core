@@ -30,7 +30,15 @@ const IframeContent: React.FC<IframeContentProps> = ({
               width: 0;
               height: 0;
             }
-
+            .ql-container img {
+              width: 75%;
+              margin: 0px auto;
+              display: flex;
+              justify-content: center;
+            }
+              .ql-snow .ql-editor img{
+              max-width: 75%;
+              }
             pre.ql-syntax {
               border-radius: 5px;
               white-space: pre-wrap !important;
@@ -71,7 +79,7 @@ const IframeContent: React.FC<IframeContentProps> = ({
   return (
     <iframe
       ref={iframeRef}
-      className={cn("w-full border-none", className)}
+      className={cn("w-full border-none h-full", className)}
       sandbox="allow-same-origin allow-scripts"
       style={style}
     />

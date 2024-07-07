@@ -1,7 +1,7 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
 import { useFetchPosts } from "@apiservices";
-import { ArrowLeft, ArrowRight, List, Loader } from "lucide-react";
+import { ArrowLeft, ArrowRight, List, Loader, Search } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Button } from "empyreanui/components/ui/button";
 import { CSSICON, CreateNewComponent } from "@customcomponent";
@@ -15,6 +15,7 @@ import { cn } from "empyreanui/lib/utils";
 import { paginate } from "empyreanui/utils";
 import { Tabs, TabsList, TabsTrigger } from "empyreanui/components/ui/tabs";
 import { Tailwind } from "empyreanui/utils/getIconFramwork";
+import { Input } from "empyreanui/components/ui/input";
 
 const DynamicPostCard = dynamic(() =>
   import("@customcomponent").then((mod) => mod.PostCard)
@@ -27,6 +28,8 @@ const PostList: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(0);
   const [styleType, setStyleType] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   const itemsPerPage = 10; // Define the number of items per page
 
   useEffect(() => {
@@ -53,13 +56,13 @@ const PostList: React.FC = () => {
   const filterByCategory = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(0); // Reset to the first page when category changes
-    applyFilters(category, styleType);
+    applyFilters(category, styleType, searchTerm);
   };
 
   const filterByStyleType = (type: string) => {
     setStyleType(type);
     setCurrentPage(0); // Reset to the first page when style type changes
-    applyFilters(selectedCategory, type);
+    applyFilters(selectedCategory, type, searchTerm);
 
     if (type !== "all") {
       const uniqueCategories = Array.from(
@@ -78,7 +81,13 @@ const PostList: React.FC = () => {
     }
   };
 
-  const applyFilters = (category: string, type: string) => {
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+    setCurrentPage(0); // Reset to the first page when search term changes
+    applyFilters(selectedCategory, styleType, term);
+  };
+
+  const applyFilters = (category: string, type: string, term: string) => {
     let filtered = data;
 
     if (category !== "") {
@@ -90,6 +99,14 @@ const PostList: React.FC = () => {
     if (type !== "all") {
       filtered = filtered.filter(
         (post: any) => post.code.styleType.toLowerCase() === type
+      );
+    }
+
+    if (term !== "") {
+      filtered = filtered.filter(
+        (post: any) =>
+          post.componentName.toLowerCase().includes(term.toLowerCase()) ||
+          post.componentCategory.toLowerCase().includes(term.toLowerCase())
       );
     }
 
@@ -116,6 +133,35 @@ const PostList: React.FC = () => {
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center mb-4">
           <span className="text-yellow-500">UI</span> Gallery
         </h1>
+        <div className="w-full mb-4 sticky top-16 z-10 md:flex md:justify-center md:gap-2 items-center">
+          <Tabs
+            defaultValue="all"
+            className="w-fit max-md:mx-auto"
+            onValueChange={(value) => filterByStyleType(value)}>
+            <TabsList className="flex">
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="css">
+                <span className="flex items-center gap-2">
+                  <CSSICON size={16} />
+                  CSS
+                </span>
+              </TabsTrigger>
+              <TabsTrigger value="tailwind">
+                <span className="flex items-center gap-2">
+                  <Tailwind size={16} />
+                  Tailwind
+                </span>
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+          <div className="max-md:hidden">
+            <Input
+              placeholder="Search Components..."
+              value={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+          </div>
+        </div>
         <Suspense fallback={<Loader className="animate-spin" />}>
           {paginatedPosts.length > 1 && (
             <div className="flex justify-between w-screen mt-4 px-6 my-7">
@@ -133,28 +179,6 @@ const PostList: React.FC = () => {
               </Button>
             </div>
           )}
-          <div className="w-full mb-4 sticky top-16 z-10">
-            <Tabs
-              defaultValue="all"
-              className="w-fit mx-auto"
-              onValueChange={(value) => filterByStyleType(value)}>
-              <TabsList className="flex">
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="css">
-                  <span className="flex items-center gap-2">
-                    <CSSICON size={16} />
-                    CSS
-                  </span>
-                </TabsTrigger>
-                <TabsTrigger value="tailwind">
-                  <span className="flex items-center gap-2">
-                    <Tailwind size={16} />
-                    Tailwind
-                  </span>
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
           <section className="flex flex-wrap justify-center gap-10">
             {Array.isArray(paginatedPosts) && paginatedPosts.length > 0 ? (
               paginatedPosts[currentPage].map((post: any) => (

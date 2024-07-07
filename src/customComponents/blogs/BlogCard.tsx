@@ -25,7 +25,7 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
       ) : null}
       <div className="p-6 flex flex-col flex-grow">
         <div className="flex-grow">
-          <h1 className="text-2xl font-bold capitalize mb-2 text-gray-800">
+          <h1 className="text-lg font-bold capitalize mb-2 text-gray-800">
             {data.title}
           </h1>
 
@@ -39,7 +39,7 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
         <div className="flex justify-between mt-4">
           <div></div>
           <Link href={`/viewblog/${makeUrlFriendly(data.title)}-${data._id}`}>
-            <Button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-200">
+            <Button className="border-2 border-solid border-black bg-transparent font-semibold rounded-full hover:bg-black/20">
               Read More
             </Button>
           </Link>

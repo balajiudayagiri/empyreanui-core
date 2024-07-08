@@ -11,12 +11,12 @@ function ColorPalletSvg({
 }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width={height}
       height={width}
       className={className}
-      viewBox="0 0 1088 496"
-      fill="none">
+      viewBox="0 0 1088 547"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_9_38)">
         <rect
           width="1088"
@@ -128,7 +128,7 @@ function ColorPalletSvg({
       </g>
       <defs>
         <clipPath id="clip0_9_38">
-          <rect width="1088" height="496" fill="white" />
+          <rect width="1088" height="547" fill="white" />
         </clipPath>
       </defs>
     </svg>

@@ -1,9 +1,19 @@
 import React from "react";
 import { BlogsTypes } from "./blogsTypes";
-import { makeUrlFriendly, months } from "empyreanui/utils";
+import {
+  getAvatarBgColor,
+  getAvatarInitials,
+  makeUrlFriendly,
+  months,
+} from "empyreanui/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "empyreanui/components/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "empyreanui/components/ui/avatar";
 
 function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   const date = new Date(data.date).toLocaleDateString();
@@ -33,11 +43,24 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
             {data.content}
           </p>
         </div>
-        <h2 className="text-xs font-semibold text-gray-600 mt-4">
-          {data.author} on {formattedDate}
-        </h2>
-        <div className="flex justify-between mt-4">
-          <div></div>
+
+        <div className="flex justify-between font-medium items-center">
+          <div className="flex gap-3">
+            <Avatar className="size-8">
+              <AvatarImage src="" alt="@shadcn" />
+              <AvatarFallback
+                className="text-white text-sm"
+                style={{
+                  backgroundColor: getAvatarBgColor(),
+                }}>
+                {getAvatarInitials(data.author)}
+              </AvatarFallback>
+            </Avatar>
+            <span>
+              <h2 className="text-[10px]  text-gray-600">{data.author}</h2>
+              <h5 className="text-[10px]  text-gray-600">{formattedDate}</h5>
+            </span>
+          </div>
           <Link href={`/viewblog/${makeUrlFriendly(data.title)}-${data._id}`}>
             <Button className="border-2 border-solid border-black bg-transparent font-semibold rounded-full hover:bg-black/20">
               Read More

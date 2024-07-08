@@ -1,4 +1,5 @@
 import { Button } from "empyreanui/components/ui/button";
+import { ScrollToTopButton } from "empyreanui/customComponents";
 import BlogsListing from "empyreanui/customComponents/blogs/BlogsListing";
 import { SquarePen } from "lucide-react";
 import Link from "next/link";
@@ -33,6 +34,7 @@ function page() {
       <section className="md:p-6 flex flex-col items-center">
         <BlogsListing />
       </section>
+      <ScrollToTopButton />
     </main>
   );
 }

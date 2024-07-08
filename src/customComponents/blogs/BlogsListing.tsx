@@ -32,11 +32,15 @@ function BlogsListing() {
 
   const handleFocus = () => {
     previousScrollY.current = window.scrollY;
-    window.scrollTo({ top: 200, behavior: "smooth" });
+    window.scrollTo({ top: 350, behavior: "smooth" });
+    // Set font size to prevent zoom on mobile
+    document.documentElement.style.setProperty("--input-font-size", "16px");
   };
 
   const handleBlur = () => {
     window.scrollTo({ top: previousScrollY.current, behavior: "smooth" });
+    // Reset font size
+    document.documentElement.style.setProperty("--input-font-size", "inherit");
   };
 
   const filteredBlogs = blogs.filter((blog) =>
@@ -66,14 +70,15 @@ function BlogsListing() {
           updated with the newest trends and stories that matter to you.
         </p>
       </section>
-      <section className="sticky top-28 w-full z-30 py-3">
+      <section className="w-full py-3">
         <Input
           placeholder="Search blogs..."
-          className="w-full text-black p-4 border border-gray-300 rounded-xl bg-white shadow-sm focus:outline-none focus:border-indigo-500"
+          className="w-full focus-visible:outline-none focus-within:outline-none focus-visible:border-none   text-black p-4 border border-gray-300 rounded-xl bg-white shadow-sm focus:outline-none focus:border-indigo-500"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          style={{ fontSize: "var(--input-font-size, inherit)" }}
         />
       </section>
       {filteredBlogs.length > 0 ? (

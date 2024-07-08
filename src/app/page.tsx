@@ -1,6 +1,7 @@
 import { Button } from "empyreanui/components/ui/button";
 import ColorPaletteHero from "empyreanui/customComponents/_colorpalette";
 import GradientPaletteHero from "empyreanui/customComponents/_gradientpalette";
+import ImageColorExtractorHero from "empyreanui/customComponents/_imagecolorextractor";
 import Link from "next/link";
 
 export default function Home() {
@@ -60,11 +61,11 @@ export default function Home() {
           </g>
         </svg>
       </div>
-      <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-24 mt-12">
+      <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-12 mt-12">
         {/* <UiGalleryHero /> */}
         <ColorPaletteHero />
         <GradientPaletteHero />
-        {/* <ImageColorExtractorHero /> */}
+        <ImageColorExtractorHero />
         {/* <GradientGeneratorHero /> */}
         {/* <GradientPaletteHero /> */}
       </div>

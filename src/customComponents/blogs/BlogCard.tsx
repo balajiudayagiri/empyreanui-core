@@ -23,15 +23,22 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   return (
     <div
       key={key}
-      className="group h-full max-md:h-fit shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col">
+      className="group h-full max-md:h-fit shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col"
+      style={{ minHeight: "400px" }}>
+      {" "}
+      {/* Added min-height */}
       {data.thumbnail ? (
-        <Image
-          src={data.thumbnail}
-          alt={data.title}
-          width={1000}
-          height={1000}
-          className="transition-transform duration-300 group-hover:scale-105 h-48 w-full"
-        />
+        <div className="relative h-48 w-full overflow-hidden">
+          {" "}
+          {/* Added container for the image */}
+          <Image
+            src={data.thumbnail}
+            alt={data.title}
+            layout="fill"
+            objectFit="cover"
+            className="transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
       ) : null}
       <div className="p-6 flex flex-col flex-grow">
         <div className="flex-grow">
@@ -44,7 +51,7 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
           </p>
         </div>
 
-        <div className="flex justify-between font-medium items-center">
+        <div className="flex justify-between font-medium items-center mt-4">
           <div className="flex gap-3">
             <Avatar className="size-8">
               <AvatarImage src="" alt="@shadcn" />
@@ -57,8 +64,8 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
               </AvatarFallback>
             </Avatar>
             <span>
-              <h2 className="text-[10px]  text-gray-600">{data.author}</h2>
-              <h5 className="text-[10px]  text-gray-600">{formattedDate}</h5>
+              <h2 className="text-[12px] text-gray-600">{data.author}</h2>
+              <h5 className="text-[10px] text-gray-600">{formattedDate}</h5>
             </span>
           </div>
           <Link href={`/viewblog/${makeUrlFriendly(data.title)}-${data._id}`}>

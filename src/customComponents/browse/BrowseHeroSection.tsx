@@ -1,6 +1,7 @@
 "use client";
+import dynamic from "next/dynamic";
 import React from "react";
-import { Vortex } from "empyreanui/components/ui/vortex";
+const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"));
 
 function BrowseHeroSection() {
   return (

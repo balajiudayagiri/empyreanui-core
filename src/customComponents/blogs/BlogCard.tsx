@@ -23,7 +23,7 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   return (
     <div
       key={key}
-      className="hover:outline-2 hover:outline hover:outline-primary group h-full max-md:h-fit shadow-sm rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col"
+      className="hover:outline-2 hover:outline hover:outline-purple-500 group h-full max-md:h-fit shadow-sm rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col"
       style={{ minHeight: "400px" }}>
       {" "}
       {/* Added min-height */}

@@ -3,14 +3,17 @@ import React from "react";
 import { Button } from "empyreanui/components/ui/button";
 import { FlipWords } from "empyreanui/components/ui/flip-words";
 import Link from "next/link";
-import { Vortex } from "empyreanui/components/ui/vortex";
+// import { Vortex } from "empyreanui/components/ui/vortex";
+import dynamic from "next/dynamic";
+
+const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"));
 
 function HeroSection() {
   const words = [
-    "better",
-    "cute",
-    "beautiful",
-    "modern",
+    "Better",
+    "Cute",
+    "Beautiful",
+    "Modern",
     "Innovative",
     "Intuitive",
     "Responsive",
@@ -26,7 +29,7 @@ function HeroSection() {
   return (
     <Vortex
       backgroundColor="black"
-      baseHue={10}
+      baseHue={320}
       className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full">
       <main className="relative h-[calc(100dvh-208px)] flex items-center justify-center overflow-y-auto p-8 md:p-24">
         <div className="h-full w-full space-y-6 flex  items-center">
@@ -50,7 +53,7 @@ function HeroSection() {
             <div className="flex flex-col md:flex-row gap-4 md:gap-6mb-5">
               <Link href="/blogs">
                 <Button className="bg-primary text-black px-5 py-3 md:px-7 md:py-3 text-lg rounded-full font-semibold hover:bg-yellow-500 hover:scale-105 transition-all duration-200 h-full">
-                  Blogs
+                  Explore Blogs
                 </Button>
               </Link>
               <Link href="/browse">

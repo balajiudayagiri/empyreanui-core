@@ -7,7 +7,8 @@ import BlogCard from "./BlogCard";
 import { Input } from "empyreanui/components/ui/input";
 import Link from "next/link";
 import { Button } from "empyreanui/components/ui/button";
-import { Vortex } from "empyreanui/components/ui/vortex";
+import dynamic from "next/dynamic";
+const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"));
 
 function BlogsListing() {
   const { fetchBlogs, isLoading, error } = useFetchBlogs();
@@ -63,6 +64,7 @@ function BlogsListing() {
   return (
     <main className="flex flex-col items-center gap-8 lg:w-4/5 mx-auto">
       <Vortex
+        baseHue={240}
         backgroundColor="black"
         className="flex items-center flex-col justify-center px-2 md:px-10 w-full h-full">
         <section className="w-full text-white p-10 rounded-3xl text-center">

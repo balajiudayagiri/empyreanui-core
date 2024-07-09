@@ -6,22 +6,35 @@ import Link from "next/link";
 import { Vortex } from "empyreanui/components/ui/vortex";
 
 function HeroSection() {
-  const words = ["better", "cute", "beautiful", "modern"];
+  const words = [
+    "better",
+    "cute",
+    "beautiful",
+    "modern",
+    "Innovative",
+    "Intuitive",
+    "Responsive",
+    "Modern",
+    "Elegant",
+    "Robust",
+    "Versatile",
+    "Fast",
+    "Customizable",
+    "Seamless",
+  ];
 
   return (
     <Vortex
       backgroundColor="black"
-      rangeY={800}
-      particleCount={500}
-      baseHue={5}
+      baseHue={10}
       className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full">
-      <main className="relative h-[calc(100dvh-208px)] max-md:h-4/5 flex items-center justify-center overflow-y-auto p-8 max-lg:pt-32 md:p-24">
+      <main className="relative h-[calc(100dvh-208px)] flex items-center justify-center overflow-y-auto p-8 md:p-24">
         <div className="h-full w-full space-y-6 flex  items-center">
           <div>
-            <div className="flex items-center font-bold text-6xl">
-              <div className="md:text-6xl text-4xl  mb-5">
+            <div className="flex items-center font-semibold text-6xl">
+              <div className="md:text-6xl text-2xl mb-5">
                 Build
-                <FlipWords words={words} className="font-bold " /> <br />
+                <FlipWords words={words} className="font-bold" /> <br />
                 websites with{" "}
                 <span className="font-extrabold">
                   Empyrean
@@ -29,7 +42,7 @@ function HeroSection() {
                 </span>
               </div>
             </div>
-            <p className="text-lg md:text-xl font-medium mb-5">
+            <p className="text-md md:text-lg font-medium mb-5">
               EmpyreanUI is a robust UI library offering a range of components,
               hooks, and animating wrappers to streamline development and ensure
               consistent, high-quality user interfaces.

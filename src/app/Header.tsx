@@ -1,4 +1,3 @@
-import { ModeToggle } from "empyreanui/components/ui/ModeToggle";
 import Link from "next/link";
 import React from "react";
 import { MenuIcon } from "lucide-react";
@@ -10,15 +9,20 @@ import {
   DrawerTrigger,
 } from "empyreanui/components/ui/drawer";
 import { CreateNewComponent } from "@customcomponent";
+import HeaderNavLink from "empyreanui/customComponents/HeaderNav";
 
 function Header() {
   return (
     <header className="h-14 border-b flex items-center px-5 md:px-9 justify-between bg-background/70 backdrop-blur-lg backdrop-blur-safari fixed w-full top-0 z-50">
-      <Link href="/">
-        <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-          Empyrean<span className="text-yellow-500">UI</span>
-        </h1>
-      </Link>
+      <span className="flex">
+        <Link href="/">
+          <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
+            Empyrean<span className="text-yellow-500">UI</span>
+          </h1>
+        </Link>
+        <HeaderNavLink />
+        
+      </span>
       <nav className="hidden md:flex items-center gap-3 md:gap-5">
         <Link
           href="/browse"

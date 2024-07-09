@@ -22,8 +22,7 @@ export async function generateMetadata() {
 function page() {
   return (
     <main className="bg-gray-100 text-black min-h-screen pt-14">
-      <nav className="sticky top-14 z-10 bg-gray-100/50 backdrop-blur-lg backdrop-blur-safari  shadow-md px-5 py-2 flex justify-between items-center">
-        <div className="text-xl font-bold">EmpyreanUI Blogs</div>
+      <nav className="sticky top-14 z-30 bg-black/50 backdrop-blur-sm backdrop-blur-safari  shadow-md px-5 py-2 flex justify-end items-center">
         <Link href="/postblogs">
           <Button className="flex gap-3 bg-blue-500 text-white border-2 border-transparent hover:bg-blue-600 transition ease-in-out duration-300 ml-auto">
             <SquarePen className="w-5 h-5" aria-hidden="true" />
@@ -31,7 +30,7 @@ function page() {
           </Button>
         </Link>
       </nav>
-      <section className="md:p-6 flex flex-col items-center">
+      <section className=" flex flex-col items-center">
         <BlogsListing />
       </section>
       <ScrollToTopButton />

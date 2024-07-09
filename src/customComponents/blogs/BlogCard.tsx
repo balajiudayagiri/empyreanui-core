@@ -23,13 +23,12 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   return (
     <div
       key={key}
-      className="group h-full max-md:h-fit shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col"
+      className="hover:outline-2 hover:outline hover:outline-primary group h-full max-md:h-fit shadow-sm rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col"
       style={{ minHeight: "400px" }}>
       {" "}
       {/* Added min-height */}
       {data.thumbnail ? (
         <div className="relative h-48 w-full overflow-hidden">
-          {" "}
           {/* Added container for the image */}
           <Image
             src={data.thumbnail}

@@ -7,6 +7,7 @@ import BlogCard from "./BlogCard";
 import { Input } from "empyreanui/components/ui/input";
 import Link from "next/link";
 import { Button } from "empyreanui/components/ui/button";
+import { Vortex } from "empyreanui/components/ui/vortex";
 
 function BlogsListing() {
   const { fetchBlogs, isLoading, error } = useFetchBlogs();
@@ -32,7 +33,7 @@ function BlogsListing() {
 
   const handleFocus = () => {
     previousScrollY.current = window.scrollY;
-    window.scrollTo({ top: 350, behavior: "smooth" });
+    window.scrollTo({ top: 300, behavior: "smooth" });
     // Set font size to prevent zoom on mobile
     document.documentElement.style.setProperty("--input-font-size", "16px");
   };
@@ -60,20 +61,24 @@ function BlogsListing() {
   }
 
   return (
-    <main className="flex flex-col items-center gap-8 lg:w-4/5 mx-auto p-4">
-      <section className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-10 rounded-3xl text-center shadow-lg">
-        <h1 className="text-4xl lg:text-6xl font-bold mb-4">
-          Welcome to EmpyreanUI Blogs
-        </h1>
-        <p className="text-lg lg:text-xl mb-6">
-          Discover the latest news, tips, and insights from our experts. Stay
-          updated with the newest trends and stories that matter to you.
-        </p>
-      </section>
-      <section className="w-full py-3">
+    <main className="flex flex-col items-center gap-8 lg:w-4/5 mx-auto">
+      <Vortex
+        backgroundColor="black"
+        className="flex items-center flex-col justify-center px-2 md:px-10 w-full h-full">
+        <section className="w-full text-white p-10 rounded-3xl text-center">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4">
+            Welcome to EmpyreanUI Blogs
+          </h1>
+          <p className="text-lg lg:text-xl mb-6">
+            Discover the latest news, tips, and insights from our experts. Stay
+            updated with the newest trends and stories that matter to you.
+          </p>
+        </section>
+      </Vortex>
+      <section className="w-full py-3 z-10 max-md:p-2">
         <Input
           placeholder="Search blogs..."
-          className="w-full focus-visible:outline-none focus-within:outline-none focus-visible:border-none   text-black p-4 border border-gray-300 rounded-xl bg-white shadow-sm focus:outline-none focus:border-indigo-500"
+          className="w-full bg-white/20 focus-visible:outline-none focus-within:outline-none focus-visible:border-none p-4 border border-white placeholder:text-white rounded-xl shadow-sm focus:outline-none"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={handleFocus}
@@ -81,11 +86,14 @@ function BlogsListing() {
           style={{ fontSize: "var(--input-font-size, inherit)" }}
         />
       </section>
+
       {filteredBlogs.length > 0 ? (
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-          {filteredBlogs.map((item: BlogsTypes, index: number) => (
-            <BlogCard key={index} data={item} />
-          ))}
+        <section className="w-dvw max-md:p-2 bg-black/10 backdrop-blur-md backdrop-blur-safari md:p-6">
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full lg:w-4/5 mx-auto">
+            {filteredBlogs.map((item: BlogsTypes, index: number) => (
+              <BlogCard key={index} data={item} />
+            ))}
+          </section>
         </section>
       ) : (
         <div className="w-full text-center flex flex-col items-center justify-center gap-4 text-gray-500 p-6 border border-dashed border-gray-300 rounded-lg">

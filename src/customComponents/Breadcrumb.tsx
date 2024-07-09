@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -33,7 +31,6 @@ const Breadcrumbs: React.FC = () => {
           <BreadcrumbLink
             className=" hover:text-black capitalize flex items-center gap-2"
             href={`/${mainSegment}`}>
-            <BookOpenIcon className="size-3" />
             {mainSegment}
           </BreadcrumbLink>
         </BreadcrumbItem>

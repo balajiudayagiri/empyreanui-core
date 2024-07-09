@@ -33,7 +33,7 @@ export const JSIcon: FC<IconProps> = ({ size }) => {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       fill="#f5cf0f">
-      <g id="SVGRepo_bgCarrier" stroke-width="0" />
+      <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
       <g
         id="SVGRepo_tracerCarrier"

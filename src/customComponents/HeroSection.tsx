@@ -6,7 +6,9 @@ import Link from "next/link";
 // import { Vortex } from "empyreanui/components/ui/vortex";
 import dynamic from "next/dynamic";
 
-const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"));
+const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"), {
+  ssr: false,
+});
 
 function HeroSection() {
   const words = [
@@ -27,11 +29,11 @@ function HeroSection() {
   ];
 
   return (
-    <Vortex
-      backgroundColor="black"
-      baseHue={320}
-      className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full">
-      <main className="relative h-[calc(100dvh-208px)] flex items-center justify-center overflow-y-auto p-8 md:p-24">
+    <main className="relative h-[100dvh] flex items-center justify-center overflow-y-auto p-8 md:p-24">
+      <Vortex
+        backgroundColor="black"
+        baseHue={320}
+        className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full">
         <div className="h-full w-full space-y-6 flex  items-center">
           <div>
             <div className="flex items-center font-semibold text-6xl">
@@ -64,8 +66,8 @@ function HeroSection() {
             </div>
           </div>
         </div>
-      </main>
-    </Vortex>
+      </Vortex>
+    </main>
   );
 }
 

@@ -17,13 +17,13 @@ function ColorPalletSvg({
       viewBox="0 0 1088 547"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_9_38)">
+      <g clipPath="url(#clip0_9_38)">
         <rect
           width="1088"
           height="124"
           rx="15"
           fill="white"
-          fill-opacity="0.2"
+          fillOpacity="0.2"
         />
         <rect x="14" y="17" width="97" height="90" rx="15" fill="#FF7F7F" />
         <rect x="14" y="17" width="97" height="90" rx="15" fill="#FF7F7F" />
@@ -50,7 +50,7 @@ function ColorPalletSvg({
           height="124"
           rx="15"
           fill="white"
-          fill-opacity="0.2"
+          fillOpacity="0.2"
         />
         <rect x="14" y="158" width="97" height="90" rx="15" fill="#FF7F7F" />
         <rect x="14" y="158" width="97" height="90" rx="15" fill="#FEFCE8" />
@@ -77,7 +77,7 @@ function ColorPalletSvg({
           height="124"
           rx="15"
           fill="white"
-          fill-opacity="0.2"
+          fillOpacity="0.2"
         />
         <rect x="14" y="299" width="97" height="90" rx="15" fill="#FF7F7F" />
         <rect x="14" y="299" width="97" height="90" rx="15" fill="#F7FEE7" />
@@ -104,7 +104,7 @@ function ColorPalletSvg({
           height="124"
           rx="15"
           fill="white"
-          fill-opacity="0.2"
+          fillOpacity="0.2"
         />
         <rect x="14" y="440" width="97" height="90" rx="15" fill="#FF7F7F" />
         <rect x="14" y="440" width="97" height="90" rx="15" fill="#F0FDFA" />

@@ -1,15 +1,17 @@
 "use client";
 import dynamic from "next/dynamic";
 import React from "react";
-const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"));
+const Vortex = dynamic(() => import("empyreanui/components/ui/vortex"), {
+  ssr: false,
+});
 
 function BrowseHeroSection() {
   return (
-    <Vortex
-      backgroundColor="black"
-      baseHue={10}
-      className="px-2 md:px-10 py-4 w-full h-full">
-      <main className="pt-20 md:pt-40 pb-10 md:h-[80dvh]">
+    <main className="pt-20 md:pt-40 pb-10 md:h-[80dvh]">
+      <Vortex
+        backgroundColor="black"
+        baseHue={10}
+        className="px-2 md:px-10 py-4 w-full h-full">
         <div className="container mx-auto px-6 text-center md:text-left">
           <h1 className="text-4xl md:text-6xl font-bold  leading-tight mb-4">
             Welcome to Empyrean
@@ -45,8 +47,8 @@ function BrowseHeroSection() {
             </div>
           </div>
         </div>
-      </main>
-    </Vortex>
+      </Vortex>
+    </main>
   );
 }
 

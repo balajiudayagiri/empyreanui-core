@@ -1,0 +1,14 @@
+{
+  "email_exists": "This email address is already registered.",
+  "username_exists": "This username is already taken. Please choose a different one.",
+  "email_invalid": "Please provide a valid email address.",
+  "password_lesser_er": "Your password must be at least 8 characters long.",
+  "password_great_er": "Your password must be at below 16 characters long.",
+  "password_required": "Please enter your password",
+  "username_required": "Please provide a username.",
+  "name_required": "Please provide a name.",
+  "email_required": "Please provide an email address.",
+  "email_not_verified": "Email is not verified.",
+  "server_error": "Internal server error. Please try again later.",
+  "user_not_found": "User not found. Please check your credentials."
+}

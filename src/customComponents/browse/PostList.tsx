@@ -231,7 +231,7 @@ const PostList: React.FC = () => {
       <Popover>
         <aside
           className={cn(
-            "fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border-2 border-solid border-primary z-10",
+            "fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border-2 border-solid border-primary z-30",
             " bg-primary/20 backdrop-blur-xl backdrop-blur-safari rounded-full flex shadow shadow-primary"
           )}>
           <PopoverTrigger asChild>

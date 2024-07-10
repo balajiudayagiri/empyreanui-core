@@ -3,7 +3,6 @@ import React from "react";
 import { Button } from "empyreanui/components/ui/button";
 import { FlipWords } from "empyreanui/components/ui/flip-words";
 import Link from "next/link";
-// import { Vortex } from "empyreanui/components/ui/vortex";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 

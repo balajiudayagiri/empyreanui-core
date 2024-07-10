@@ -27,7 +27,7 @@ function HeaderNavLink() {
       <>
         <Link href="/">
           <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-            Empyrean<span className="text-purple-400">UI</span>
+            Empyrean<span className="text-purple-500">UI</span>
           </h1>
         </Link>
         <div className="h-auto border-[1.2px] mx-2 border-solid border-white/60" />

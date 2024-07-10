@@ -53,7 +53,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             framework={post.code.styleType as "css" | "tailwind"}
           />
         </span>
-        <Link href={`/viewcomponent/${post._id}`}>
+        <Link href={`/browse/${post._id}`}>
           <div className="absolute bg-primary text-black font-bold opacity-0 group-hover:opacity-100 flex items-center p-2 gap-2 rounded-xl bottom-2 right-2 transition-opacity">
             <CodeXml size={20} />
             <span>Code</span>

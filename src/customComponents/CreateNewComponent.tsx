@@ -11,7 +11,7 @@ const CreateNewComponent: React.FC<{ className?: string }> = ({
   const router = useRouter();
   const pathname = usePathname();
   const isEmpyreanUIComponentsRoute = pathname === "/browse";
-  const isviewcomponent = pathname.split("/")[1] === "viewcomponent";
+  const isviewcomponent = pathname.split("/")[1] === "browse";
 
   const handlePostComponentClick = () => {
     router.push("/postcomponent");

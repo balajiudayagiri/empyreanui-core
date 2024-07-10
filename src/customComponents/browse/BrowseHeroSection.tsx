@@ -14,8 +14,8 @@ const HeroHighlight = dynamic(
 
 function BrowseHeroSection() {
   return (
-    <main className="md:h-dvh">
-      <HeroHighlight className="h-dvh">
+    <main className="md:h-[70dvh] h-fit">
+      <HeroHighlight className="md:h-[70dvh]">
         <motion.div
           initial={{
             opacity: 0,
@@ -29,10 +29,10 @@ function BrowseHeroSection() {
             duration: 0.5,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className="h-full justify-stretch">
-          <div className="z-[-1] h-svh absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          className="md:h-full h-fit md:flex md:items-center">
+          <div className="z-[-1] md:h-[70dvh] h-auto absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
-          <div className="container mx-auto px-6 text-center md:text-left  pt-20 md:pt-40 pb-10 ">
+          <div className="container mx-auto px-6 text-center md:text-left  pt-20 h-fit pb-10 ">
             <h1 className="text-4xl md:text-6xl font-bold  leading-tight mb-4">
               Welcome to Empyrean
               <span className="text-primary text-shadow">UI</span> Gallery

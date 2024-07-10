@@ -21,7 +21,7 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
     months[parseInt(date.split("/")[1], 10)] + " / " + date.split("/")[2];
 
   return (
-    <Link href={`/viewblog/${makeUrlFriendly(data.title)}-${data._id}`}>
+    <Link href={`/blogs/${makeUrlFriendly(data.title)}-${data._id}`}>
       <div
         key={key}
         className="hover:outline-2 hover:outline hover:outline-purple-500 group h-full max-md:h-fit shadow-sm rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out w-full max-w-md mx-auto bg-white cursor-pointer flex flex-col"

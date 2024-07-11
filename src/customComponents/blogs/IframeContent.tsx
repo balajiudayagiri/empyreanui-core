@@ -22,6 +22,8 @@ const IframeContent: React.FC<IframeContentProps> = ({
       if (doc) {
         doc.open();
         doc.write(`
+          <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
           <style>
             * {
               scrollbar-width: none;
@@ -59,15 +61,17 @@ const IframeContent: React.FC<IframeContentProps> = ({
                 line-height: 2 !important;
               
               }
-              /* General styling for the blog container */
+             /* General styling for the blog container */
 .blog-container {
-  font-family: 'Merriweather', serif !important;
+  font-family: 'Roboto', sans-serif !important;
   line-height: 1.8 !important;
   color: #2c3e50 !important;
   padding: 20px !important;
   max-width: 800px !important;
   margin: 0 auto !important;
-  background: #ffffff !important;
+  background: #f9f9f9 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Headings styling */
@@ -76,40 +80,35 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1.5em !important;
   margin-bottom: 0.5em !important;
   line-height: 1.2 !important;
+  color: #34495e !important;
 }
 
 h1 {
   font-size: 2.5em !important;
-  color: #34495e !important;
   border-bottom: 2px solid #ecf0f1 !important;
   padding-bottom: 0.3em !important;
 }
 
 h2 {
   font-size: 2em !important;
-  color: #16a085 !important;
   border-bottom: 1px solid #ecf0f1 !important;
   padding-bottom: 0.2em !important;
 }
 
 h3 {
   font-size: 1.75em !important;
-  color: #2980b9 !important;
 }
 
 h4 {
   font-size: 1.5em !important;
-  color: #8e44ad !important;
 }
 
 h5 {
   font-size: 1.25em !important;
-  color: #e67e22 !important;
 }
 
 h6 {
   font-size: 1em !important;
-  color: #e74c3c !important;
 }
 
 /* Paragraph styling */
@@ -122,13 +121,15 @@ p {
 
 /* Preformatted text styling */
 pre {
-  background: #0e0e0e !important;
+  font-family: 'Fira Code', monospace !important;
+  background: #272822 !important;
+  color: #f8f8f2 !important;
   border-left: 5px solid #3498db !important;
   padding: 15px !important;
   overflow-x: auto !important;
   font-size: 0.95em !important;
   border-radius: 5px !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Inline code styling */
@@ -138,9 +139,7 @@ code {
   border-radius: 4px !important;
   font-family: 'Courier New', Courier, monospace !important;
   font-size: 0.95em !important;
-  color: #c0392b !important;
-      padding: 2px 6px !important;
-    border-radius: 5px !important;
+  color: #e74c3c !important;
 }
 
 /* Blockquote styling */

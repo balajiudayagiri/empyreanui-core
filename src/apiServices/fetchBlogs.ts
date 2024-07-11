@@ -18,7 +18,7 @@ export const useFetchBlogs = () => {
 
       try {
         const res = await fetch(blogsRoute, {
-          next: { revalidate: 3600 },
+          cache: "force-cache",
           headers: {
             "Cache-Control": "public, s-maxage=3600", // Cache for 1 hour
             "CDN-Cache-Control": "public, s-maxage=3600",

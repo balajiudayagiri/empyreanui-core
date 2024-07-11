@@ -19,9 +19,11 @@ export const useFetchBlogs = () => {
       try {
         const res = await fetch(blogsRoute, {
           headers: {
-            "Cache-Control": "public, s-maxage=3600", // Cache for 1 hour
-            "CDN-Cache-Control": "public, s-maxage=3600",
-            "Vercel-CDN-Cache-Control": "public, s-maxage=3600",
+            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
           },
         });
         if (!res.ok) {

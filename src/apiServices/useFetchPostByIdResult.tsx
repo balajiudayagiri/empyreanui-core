@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { postRoute } from "./constant";
 
 interface Post {
   _id: string;
@@ -35,7 +36,7 @@ export const useFetchPostById = (): UseFetchPostByIdResult => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/posts?id=${id}`);
+      const response = await fetch(`${postRoute}?id=${id}`);
       const result = await response.json();
       if (response.ok) {
         setPost(result.data);

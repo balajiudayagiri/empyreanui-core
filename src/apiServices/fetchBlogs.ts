@@ -18,12 +18,12 @@ export const useFetchBlogs = () => {
 
       try {
         const res = await fetch(blogsRoute, {
-          next: { revalidate: 3600, tags: ["blogs"] },
-          // headers: {
-          //   "Cache-Control": "public, s-maxage=3600", // Cache for 1 hour
-          //   "CDN-Cache-Control": "public, s-maxage=3600",
-          //   "Vercel-CDN-Cache-Control": "public, s-maxage=3600",
-          // },
+          next: { revalidate: 3600},
+          headers: {
+            "Cache-Control": "public, s-maxage=3600", // Cache for 1 hour
+            "CDN-Cache-Control": "public, s-maxage=3600",
+            "Vercel-CDN-Cache-Control": "public, s-maxage=3600",
+          },
         });
         if (!res.ok) {
           throw new Error("Network response was not ok");

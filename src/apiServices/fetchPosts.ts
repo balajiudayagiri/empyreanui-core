@@ -17,15 +17,7 @@ export const useFetchPosts = () => {
       setError(null);
 
       try {
-        const res = await fetch(postRoute, {
-          cache: "force-cache",
-          next: { revalidate: 1 },
-          headers: {
-            "Cache-Control": "public, s-maxage=3600", // Cache for 1 hour
-            "CDN-Cache-Control": "public, s-maxage=3600",
-            "Vercel-CDN-Cache-Control": "public, s-maxage=3600",
-          },
-        });
+        const res = await fetch(postRoute, { next: { revalidate: 3600 } });
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }

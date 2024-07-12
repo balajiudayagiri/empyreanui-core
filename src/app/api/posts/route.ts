@@ -16,10 +16,34 @@ export async function GET(req: NextRequest) {
           { status: 404 }
         );
       }
-      return NextResponse.json({ success: true, data: post });
+      return NextResponse.json(
+        { success: true, data: post },
+        {
+          status: 200,
+          headers: {
+            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+          },
+        }
+      );
     } else {
       const posts = await Post.find({});
-      return NextResponse.json({ success: true, data: posts });
+      return NextResponse.json(
+        { success: true, data: posts },
+        {
+          status: 200,
+          headers: {
+            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+          },
+        }
+      );
     }
   } catch (error) {
     if (error instanceof Error) {

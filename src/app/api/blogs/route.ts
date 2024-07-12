@@ -16,10 +16,30 @@ export async function GET(req: NextRequest) {
           { status: 404 }
         );
       }
-      return NextResponse.json({ success: true, data: blog });
+      return NextResponse.json(
+        { success: true, data: blog },
+        {
+          status: 200,
+         headers: {
+            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+          },
+        }
+      );
     } else {
       const blogs = await Blog.find({});
-      return NextResponse.json({ success: true, data: blogs });
+      return NextResponse.json(
+        { success: true, data: blogs },
+        {
+          status: 200,
+         headers: {
+            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+          },
+        }
+      );
     }
   } catch (error) {
     if (error instanceof Error) {

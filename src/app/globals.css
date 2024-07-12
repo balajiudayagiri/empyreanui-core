@@ -176,3 +176,9 @@
   -webkit-line-clamp: 10;
   line-clamp: 10;
 }
+
+.truncate-single-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

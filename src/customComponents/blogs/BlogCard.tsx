@@ -18,7 +18,7 @@ import {
 function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   const date = new Date(data.date).toLocaleDateString();
   const formattedDate =
-    months[parseInt(date.split("/")[1], 10)] + " / " + date.split("/")[2];
+    months[parseInt(date.split("/")[0], 10) - 1] + " / " + date.split("/")[2];
 
   return (
     <Link href={`/blogs/${makeUrlFriendly(data.title)}-${data._id}`}>
@@ -64,13 +64,12 @@ function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
                 </AvatarFallback>
               </Avatar>
               <span>
-                <h2 className="text-[12px] text-gray-600">{data.author}</h2>
+                <h2 className="text-[10px] text-gray-600 text-nowrap overflow-x-hidden">
+                  {data.author}
+                </h2>
                 <h5 className="text-[10px] text-gray-600">{formattedDate}</h5>
               </span>
             </div>
-            <Button className="border-2 border-solid border-black bg-transparent font-semibold rounded-full hover:bg-black/20">
-              Read More
-            </Button>
           </div>
         </div>
       </div>

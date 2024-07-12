@@ -60,17 +60,14 @@ function BlogsListing() {
     <main className="flex flex-col items-center gap-8 lg:w-4/5 mx-auto p-4">
       <section className="w-full  p-10 rounded-3xl text-center">
         <h1 className="text-4xl lg:text-6xl font-bold mb-4">
-          Welcome to{" "}
-          <Highlight>
-            Empyrean<span className="text-purple-800">UI</span> Blogs
-          </Highlight>
+          Welcome to Empyrean<span className="text-purple-800">UI</span> Blogs
         </h1>
         <p className="text-lg lg:text-xl mb-6">
           Discover the latest news, tips, and insights from our experts. Stay
           updated with the newest trends and stories that matter to you.
         </p>
       </section>
-      <section className="sticky top-28 w-full z-30 py-3">
+      <section className="w-full z-30 py-3">
         <Input
           placeholder="Search blogs..."
           className="w-full text-black p-4 border border-gray-300 rounded-xl bg-white shadow-sm focus:outline-none focus:border-indigo-500"

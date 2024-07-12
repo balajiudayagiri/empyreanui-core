@@ -100,6 +100,7 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
           initialCssContent={post.code.cssCode}
           initialCssFramework={post.code.styleType}
           initialHtmlContent={post.code.htmlCode}
+          initialJsContent={post.code.javascriptCode}
         />
       </div>
       <div className="mt-5">

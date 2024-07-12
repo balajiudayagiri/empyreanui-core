@@ -1,3 +1,23 @@
+/**
+ * Formats error messages based on a predefined error map.
+ *
+ * This function takes a comma-separated string of error messages in the format
+ * "key: message" and maps each key to a more user-friendly error message based
+ * on a predefined error map. If a key does not exist in the error map, it uses
+ * the provided message. The resulting error messages are joined by newline characters.
+ *
+ * @function
+ * @param {string} errorMessages - A comma-separated string of error messages in the format "key: message".
+ * @returns {string} - A string of user-friendly error messages joined by newline characters.
+ *
+ * @example
+ * // Example usage:
+ * const formattedErrors = formatErrors("user.firstName: , code.htmlCode: ");
+ * console.log(formattedErrors);
+ * // Output:
+ * // "First Name is required.
+ * // HTML Code is required."
+ */
 export const formatErrors = (errorMessages: string): string => {
   const errorMap: { [key: string]: string } = {
     "user.firstName": "First Name is required.",

@@ -182,3 +182,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Apply yellow highlight color for text selection */
+::selection {
+  background-color: hsla(48, 96%, 53%, 0.773);
+  color: black;
+  /* Ensure the text color remains readable */
+}
+
+/* For compatibility with Firefox */
+::-moz-selection {
+  background-color: hsl(47.9 95.8% 53.1%);
+  color: black;
+  /* Ensure the text color remains readable */
+}

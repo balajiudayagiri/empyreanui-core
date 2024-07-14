@@ -8,7 +8,6 @@ import { validateInputs, validateUser } from "./_helpers";
 
 import mongoConnection from "empyreanui/services/db2connect";
 
-
 export async function POST(request: NextRequest) {
   try {
     await mongoConnection();

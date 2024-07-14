@@ -38,9 +38,9 @@ export const validateUser = async (email: string, password: string) => {
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
       if (validPassword) {
-        const { isVerified, username, _id, name } = user;
-        if (isVerified) {
-          const payload = { username, email, _id, name, isVerified };
+        const { is_verified, username, _id, name } = user;
+        if (is_verified) {
+          const payload = { username, email, _id, name, is_verified };
           const token = jwt.sign(payload, process.env.MY_SECRET_TOKEN!);
           return token;
         } else {

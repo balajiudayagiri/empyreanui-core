@@ -16,7 +16,7 @@ const usersSchema = new mongoose.Schema(
     expiresAt: {
       type: Date,
       default: Date.now,
-      expires: 60 * 2,
+      expires: 60 * 10,
     },
     user_verification_id: {
       type: String,
@@ -28,4 +28,4 @@ const usersSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-export default mongoose.models.OTPs || mongoose.model("OTPs", usersSchema);
+export default mongoose.models.OTP || mongoose.model("OTP", usersSchema);

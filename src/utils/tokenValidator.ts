@@ -1,10 +1,14 @@
 import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
+
 import jwt from "jsonwebtoken";
+
 import { NextRequest } from "next/server";
 
 const tokenValidator = async (request: NextRequest) => {
   let jwtToken;
+
   const bearerToken = request.headers.get("authorization");
+
   if (bearerToken) {
     jwtToken = bearerToken.split(" ")[1];
   }

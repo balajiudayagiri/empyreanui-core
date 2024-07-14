@@ -10,5 +10,7 @@
   "email_required": "Please provide an email address.",
   "email_not_verified": "Email is not verified.",
   "server_error": "Internal server error. Please try again later.",
-  "user_not_found": "User not found. Please check your credentials."
+  "user_not_found": "User not found. Please check your credentials.",
+  "invalid_otp": "Invalid OTP. Please enter the correct OTP.",
+  "internal_error": "Internal server Error"
 }

@@ -54,10 +54,10 @@ function BlogRenderedView({ id }: { id: string }) {
 
   const date = new Date(blog.date).toLocaleDateString();
   const formattedDate =
-    months[parseInt(date.split("/")[1])] + " / " + date.split("/")[2];
-
+    months[parseInt(date.split("/")[0])] + " / " + date.split("/")[2];
+  console.log({ formattedDate });
   return (
-    <div className="flex flex-col items-center bg-white p-4 md:p-8 lg:p-12 max-w-4xl mx-auto">
+    <div className="flex flex-col items-center bg-white p-4 md:p-8 lg:p-12 max-w-5xl mx-auto">
       <header className="text-center mb-6 bg-gradient-to-r from-purple-500 to-indigo-500 p-4 rounded-lg shadow-md w-full">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold capitalize text-white">
           {blog.title}
@@ -82,7 +82,7 @@ function BlogRenderedView({ id }: { id: string }) {
       <hr className="w-full my-4" />
       <IframeContent
         content={blog.data}
-        className="w-full shadow-md rounded-lg"
+        className="w-full"
         style={{ height: iframeHeight }}
       />
     </div>

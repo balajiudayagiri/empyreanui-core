@@ -78,7 +78,7 @@ const IframeContent: React.FC<IframeContentProps> = ({
   margin: 0 auto !important;
   background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%) !important;
   border-radius: 15px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Headings styling */
@@ -91,13 +91,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.8em !important;
+  font-size: 3.5em !important;
   border-bottom: 3px solid #dfe6e9 !important;
   padding-bottom: 0.5em !important;
 }
 
 h2 {
-  font-size: 2.2em !important;
+  font-size: 2.9em !important;
   border-bottom: 2px solid #dfe6e9 !important;
   padding-bottom: 0.3em !important;
 }
@@ -136,7 +136,7 @@ pre {
   overflow-x: auto !important;
   font-size: 1em !important;
   border-radius: 5px !important;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) !important;
+  // box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Inline code styling */

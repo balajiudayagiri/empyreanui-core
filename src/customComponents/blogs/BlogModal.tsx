@@ -98,7 +98,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
         <DialogDescription className=" mb-4">
           Fill in the details to post your code.
         </DialogDescription>
-        <div className="flex flex-col gap-3">
+        <form name="blog-post" className="flex flex-col gap-3">
           <div className="flex gap-3">
             <div className="flex-1">
               <label className="required text-sm font-semibold">
@@ -187,7 +187,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
               Cancel
             </Button>
           </DialogClose>
-        </div>
+        </form>
       </DialogContent>
       <style jsx>{`
         .required label::after {

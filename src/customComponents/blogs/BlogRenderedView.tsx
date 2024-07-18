@@ -5,6 +5,7 @@ import { Loader } from "lucide-react";
 import IframeContent from "./IframeContent";
 import { months } from "empyreanui/utils";
 import Image from "next/image";
+import RedmeRenderer from "../_readmegenerator/RedmeRenderer";
 
 function BlogRenderedView({ id }: { id: string }) {
   const { blog, isLoading, error, fetchBlogById } = useFetchBlogById();
@@ -80,11 +81,16 @@ function BlogRenderedView({ id }: { id: string }) {
         <p className="line-clamp-3 text-gray-700">{blog.content}</p>
       </section>
       <hr className="w-full my-4" />
-      <IframeContent
-        content={blog.data}
-        className="w-full"
-        style={{ height: iframeHeight }}
-      />
+
+      {blog.blogType ? (
+        <RedmeRenderer markdown={blog.data} />
+      ) : (
+        <IframeContent
+          content={blog.data}
+          className="w-full"
+          style={{ height: iframeHeight }}
+        />
+      )}
     </div>
   );
 }

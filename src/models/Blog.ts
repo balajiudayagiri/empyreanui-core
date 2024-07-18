@@ -13,6 +13,10 @@ const BlogSchema = new Schema({
     type: String,
     required: true,
   },
+  blogType: {
+    type: String,
+    require: false,
+  },
   data: {
     type: String,
     required: true,

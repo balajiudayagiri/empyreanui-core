@@ -6,7 +6,7 @@ import "./styles.css";
 function RedmeRenderer({ markdown }: { markdown: string }) {
   return (
     <div className="preview w-full">
-      <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
     </div>
   );
 }

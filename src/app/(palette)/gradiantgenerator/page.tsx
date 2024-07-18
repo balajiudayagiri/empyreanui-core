@@ -4,6 +4,7 @@ import React from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    authors: [{ name: "Balaji Udayagiri" }],
     title: "Gradient Color Generator",
     description:
       "Generate your own gradient colors and get the CSS values for your projects.",

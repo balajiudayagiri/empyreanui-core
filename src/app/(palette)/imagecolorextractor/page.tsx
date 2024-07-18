@@ -4,6 +4,7 @@ import React from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    authors: [{ name: "Balaji Udayagiri" }],
     title: "Image Color Extractor",
     description:
       "Upload an image to extract colors and generate a color palette using base64 encoding.",

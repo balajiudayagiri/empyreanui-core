@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   Dialog,
   DialogTrigger,
@@ -17,12 +17,14 @@ interface PostBlogDialogProps {
   onSubmit: (data: Blog, closeDialog: () => void) => void;
   isLoading: boolean;
   disabled?: boolean;
+  children?: ReactNode;
 }
 
 const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
   onSubmit,
   isLoading,
   disabled,
+  children,
 }) => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -84,12 +86,20 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild disabled={disabled}>
-        <Button
-          disabled={disabled}
-          onClick={() => setIsOpen(true)}
-          className="fixed z-50 top-16 right-4 font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300">
-          Post Blog
-        </Button>
+        {children ? (
+          <span
+            className="fixed z-50 top-16 right-4 font-bold rounded shadow-md hover:shadow-lg transition duration-300"
+            onClick={() => setIsOpen(true)}>
+            {children}
+          </span>
+        ) : (
+          <Button
+            disabled={disabled}
+            onClick={() => setIsOpen(true)}
+            className="fixed z-50 top-16 right-4 font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300">
+            Post Blog
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="max-w-lg mx-auto p-6 rounded-lg shadow-lg">
         <DialogTitle className="text-2xl font-bold mb-2">

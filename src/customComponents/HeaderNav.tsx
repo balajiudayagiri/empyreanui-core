@@ -44,16 +44,28 @@ function HeaderNavLink() {
       <>
         <Link href="/">
           <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-            Empyrean<span className="text-yellow-500">UI</span>
+            Empyrean<span className="text-blue-500">UI</span>
           </h1>
         </Link>
         <div className="h-auto border-[1.2px] mx-2 border-solid border-white/60" />
-        <Link href="/blogs">
+        <Link href="/readmegenerator">
           <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-            <span className="text-yellow-500">Readme</span>.md
+            Readme.<span className="text-blue-500">md</span>
           </h1>
         </Link>
       </>
+    );
+  }
+  if (
+    param === "/readmegenerator/editor" ||
+    param === "/readmegenerator/learn-more"
+  ) {
+    return (
+      <Link href="/readmegenerator">
+        <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
+          Readme.<span className="text-blue-500">md</span>
+        </h1>
+      </Link>
     );
   }
   return (

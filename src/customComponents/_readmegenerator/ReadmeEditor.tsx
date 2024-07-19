@@ -8,7 +8,7 @@ import {
   ResizablePanelGroup,
 } from "empyreanui/components/ui/resizable";
 import { snippets } from "./snippits";
-import { MenuIcon } from "lucide-react";
+import { Download, MenuIcon } from "lucide-react";
 
 import {
   Sheet,
@@ -93,52 +93,83 @@ You can edit this text to see a live preview of your README file.
       }
     );
   };
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([markdown], { type: "text/markdown" });
+    element.href = URL.createObjectURL(file);
+    element.download = "README.md";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
 
   return (
     <div className="relative readme-container min-h-[calc(100dvh-56px)] w-vw mt-14 flex flex-col lg:flex-row">
       <div className="p-1">
-        <Sheet>
+        {/* left options */}
+        <div className="flex lg:flex-col flex-row items-start gap-2">
+          <Sheet>
+            <TooltipProvider>
+              <Tooltip>
+                <SheetTrigger asChild>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline" className="p-2">
+                      <MenuIcon />
+                    </Button>
+                  </TooltipTrigger>
+                </SheetTrigger>
+                <TooltipContent side="right">
+                  <p>Add Snippit</p>
+                  <TooltipArrow className="TooltipArrow" />
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <SheetContent side={"left"}>
+              <SheetHeader>
+                <SheetTitle>Select snippits</SheetTitle>
+                <SheetDescription>
+                  Make changes to your Readme by clicking on the required
+                  snippit in here
+                </SheetDescription>
+              </SheetHeader>
+              <ul className="h-[calc(100dvh-200px)] overflow-y-scroll">
+                {Object.keys(snippets).map((snippet) => (
+                  <li key={snippet} className="my-2">
+                    <button
+                      className="w-full text-white p-2 rounded hover:bg-primary hover:text-black hover:font-bold text-left"
+                      onClick={() => addSnippet(snippet)}>
+                      {snippet.replace(/([A-Z])/g, " $1").trim()}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </SheetContent>
+          </Sheet>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <SheetTrigger asChild>
-                  <Button variant="outline" className="p-2">
-                    <MenuIcon />
-                  </Button>
-                </SheetTrigger>
+                <Button
+                  variant="outline"
+                  className="p-2"
+                  onClick={handleDownload}>
+                  <Download />
+                </Button>
               </TooltipTrigger>
               <TooltipContent side="right">
-                <p>Add Snippit</p>
+                <p>Download Readme.md</p>
                 <TooltipArrow className="TooltipArrow" />
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <SheetContent side={"left"}>
-            <SheetHeader>
-              <SheetTitle>Select snippits</SheetTitle>
-              <SheetDescription>
-                Make changes to your Readme by clicking on the required snippit
-                in here
-              </SheetDescription>
-            </SheetHeader>
-            <ul className="h-[calc(100dvh-200px)] overflow-y-scroll">
-              {Object.keys(snippets).map((snippet) => (
-                <li key={snippet} className="my-2">
-                  <button
-                    className="w-full text-white p-2 rounded hover:bg-primary hover:text-black hover:font-bold text-left"
-                    onClick={() => addSnippet(snippet)}>
-                    {snippet.replace(/([A-Z])/g, " $1").trim()}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </SheetContent>
-        </Sheet>
+        </div>
+
         <PostBlogDialog
           onSubmit={handlePostCode}
           isLoading={isLoading}
-          disabled={!markdown}
-        />
+          disabled={!markdown}>
+          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold">
+            post this as a blog
+          </Button>
+        </PostBlogDialog>
       </div>
       <ResizablePanelGroup direction="horizontal" className="flex-grow">
         <ResizablePanel defaultSize={50}>
@@ -155,7 +186,7 @@ You can edit this text to see a live preview of your README file.
             }}
           />
         </ResizablePanel>
-        <ResizableHandle />
+        <ResizableHandle className="w-1" />
         <ResizablePanel defaultSize={50}>
           <div className="preview p-4 h-[calc(100dvh-56px)] overflow-y-scroll text-black">
             <RedmeRenderer markdown={markdown} />

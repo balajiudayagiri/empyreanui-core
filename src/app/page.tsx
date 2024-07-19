@@ -12,9 +12,9 @@ export default function Home() {
       <HeroSection />
       {/* bottom animated component */}
       <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-12 mt-12 gap-8">
-        <UiGalleryHero />
-        <BlogHomePageSection />
+        {/* <UiGalleryHero /> */}
         <ReadmeHeroSection />
+        <BlogHomePageSection />
         <ColorPaletteHero />
         <GradientPaletteHero />
         <ImageColorExtractorHero />

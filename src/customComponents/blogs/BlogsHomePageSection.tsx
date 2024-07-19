@@ -7,8 +7,7 @@ const BlogsSvg = dynamic(() => import("./BlogsSvg"), { ssr: false });
 
 function BlogHomePageSection() {
   return (
-    <div className="flex max-lg:flex-col md:mx-5 gap-6  max-md:px-4">
-      <BlogsSvg className="lg:w-1/2 max-w-full  max-lg:h-fit" />
+    <div className="flex max-lg:flex-col-reverse md:mx-5 gap-6  max-md:px-4">
       <div className="lg:w-1/2 lg:h-[inherit] flex justify-center items-center">
         <div className="text-primary">
           <h1 className="text-3xl md:text-6xl font-bold  leading-tight mb-4 text-purple-500 flex items-center text-center justify-center gap-2">
@@ -27,6 +26,7 @@ function BlogHomePageSection() {
           </div>
         </div>
       </div>
+      <BlogsSvg className="lg:w-1/2 max-w-full  max-lg:h-fit" />
     </div>
   );
 }

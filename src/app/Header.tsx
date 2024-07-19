@@ -9,7 +9,13 @@ import {
   DrawerTrigger,
 } from "empyreanui/components/ui/drawer";
 import { CreateNewComponent } from "@customcomponent";
-import HeaderNavLink from "empyreanui/customComponents/HeaderNav";
+import dynamic from "next/dynamic";
+// import HeaderNavLink from "empyreanui/customComponents/HeaderNav";
+
+const HeaderNavLink = dynamic(
+  () => import("empyreanui/customComponents/HeaderNav"),
+  { ssr: false }
+);
 
 function Header() {
   return (

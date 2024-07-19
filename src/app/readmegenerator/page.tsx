@@ -1,6 +1,23 @@
 import Link from "next/link";
+// import { Metadata } from "next";
 
-export default function pgae() {
+export async function generateMetadata() {
+  return {
+    title: "Readme Editor",
+    description: "Edit your README files with ease using the Readme Editor.",
+    keywords: "Readme, Editor, React, Next.js, EmpyreanUI",
+    authors: [{ name: "Balaji Udayagiri" }],
+  };
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: "no",
+};
+
+export default function page() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-500 to-indigo-700 text-white p-5">
       <div className="max-w-4xl text-center">
@@ -24,16 +41,6 @@ export default function pgae() {
           </Link>
         </div>
       </div>
-      {/* <div className="mt-12 w-full max-w-4xl mx-auto">
-        <Image
-          src="/images/hero-image.png"
-          alt="Hero Image"
-          width={1200}
-          height={800}
-          layout="responsive"
-          className="rounded-lg shadow-lg"
-        />
-      </div> */}
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import { Button } from "empyreanui/components/ui/button";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
-import Imagecolorextractor from "./Imagecolorextractor";
+
+const Imagecolorextractor = dynamic(() => import("./Imagecolorextractor"), {
+  ssr: false,
+});
 
 function ImageColorExtractorHero() {
   return (

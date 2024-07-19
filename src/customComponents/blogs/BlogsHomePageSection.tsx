@@ -1,7 +1,9 @@
-import { Button } from "empyreanui/components/ui/button";
-import Link from "next/link";
 import React from "react";
-import BlogsSvg from "./BlogsSvg";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { Button } from "empyreanui/components/ui/button";
+
+const BlogsSvg = dynamic(() => import("./BlogsSvg"), { ssr: false });
 
 function BlogHomePageSection() {
   return (

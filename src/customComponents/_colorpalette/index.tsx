@@ -1,8 +1,12 @@
 import React from "react";
-import ColorPalletSvg from "./ColorPalletSvg";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Palette } from "lucide-react";
 import { Button } from "empyreanui/components/ui/button";
-import Link from "next/link";
+
+const ColorPalletSvg = dynamic(() => import("./ColorPalletSvg"), {
+  ssr: false,
+});
 
 function ColorPaletteHero() {
   return (

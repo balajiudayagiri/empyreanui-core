@@ -1,6 +1,9 @@
 import ColorPaletteHero from "empyreanui/customComponents/_colorpalette";
 import GradientPaletteHero from "empyreanui/customComponents/_gradientpalette";
 import ImageColorExtractorHero from "empyreanui/customComponents/_imagecolorextractor";
+import ReadmeHeroSection from "empyreanui/customComponents/_readmegenerator/ReadmeHeroSection";
+import UiGalleryHero from "empyreanui/customComponents/_uigallery";
+import BlogHomePageSection from "empyreanui/customComponents/blogs/BlogsHomePageSection";
 import HeroSection from "empyreanui/customComponents/HeroSection";
 
 export default function Home() {
@@ -8,8 +11,10 @@ export default function Home() {
     <>
       <HeroSection />
       {/* bottom animated component */}
-      <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-12 mt-12">
+      <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-12 mt-12 gap-8">
         {/* <UiGalleryHero /> */}
+        <ReadmeHeroSection />
+        <BlogHomePageSection />
         <ColorPaletteHero />
         <GradientPaletteHero />
         <ImageColorExtractorHero />

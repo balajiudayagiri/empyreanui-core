@@ -6,6 +6,7 @@ import BrowseHeroSection from "empyreanui/customComponents/browse/BrowseHeroSect
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    authors: [{ name: "Balaji Udayagiri" }],
     title: "Empyrean UI Gallery",
     description:
       "Explore our extensive UI Gallery, crafted by users like you. Add your own components or use and download others for free. Support for Tailwind CSS and plain CSS.",

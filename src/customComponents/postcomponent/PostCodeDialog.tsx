@@ -70,7 +70,7 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
         <DialogDescription>
           Fill in the details to post your code.
         </DialogDescription>
-        <div className="flex flex-col gap-2 mt-4">
+        <form name="post-code-form" className="flex flex-col gap-2 mt-4">
           <Input
             type="text"
             value={firstName}
@@ -120,7 +120,7 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
               Cancel
             </Button>
           </DialogClose>
-        </div>
+        </form>
       </DialogContent>
     </Dialog>
   );

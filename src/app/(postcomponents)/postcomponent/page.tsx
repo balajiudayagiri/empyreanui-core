@@ -4,6 +4,7 @@ import { EditorExporter } from "empyreanui/customComponents";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    authors: [{ name: "Balaji Udayagiri" }],
     title: "Create a Component",
     description:
       "Create HTML elements using CSS, Tailwind CSS, and JavaScript with our easy-to-use editor.",

@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useFetchPostById } from "@apiservices";
 import ViewEditorRenderer from "./ViewEditorRenderer";
-import { Download, Loader } from "lucide-react";
+import { Download, Loader, Maximize2 } from "lucide-react";
 import { GetIconFramework } from "empyreanui/utils/getIconFramwork";
 import { useDownloadZip } from "@hooks";
 import { Button } from "empyreanui/components/ui/button";
@@ -18,7 +18,11 @@ import {
 } from "empyreanui/components/ui/dialog";
 import { CreateNewComponent } from "@customcomponent";
 
-const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
+interface PostDetailsProps {
+  postId: string;
+}
+
+const PostDetails: React.FC<PostDetailsProps> = ({ postId }) => {
   const { post, isLoading, error, fetchPostById } = useFetchPostById();
   const { downloadZip } = useDownloadZip();
 
@@ -52,6 +56,39 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
     );
   };
 
+  const handleFullScreen = () => {
+    const fullScreenHtml = `
+      <html>
+        <head>
+        <title>${post.componentName}</title>
+          <style>
+            ${post.code.cssCode}
+            body {
+              display: flex;
+              align-items: center;
+              height: 100dvh;
+              margin: 0px;
+            }
+            body > * {
+              margin: 0px auto;
+            }
+          </style>
+        </head>
+        <body>
+          ${post.code.htmlCode}
+          <script>
+            ${post.code.javascriptCode}
+          </script>
+        </body>
+      </html>
+    `;
+    const newWindow = window.open();
+    if (newWindow) {
+      newWindow.document.write(fullScreenHtml);
+      newWindow.document.close();
+    }
+  };
+
   return (
     <div>
       <div className="flex max-lg:flex-col lg:items-center max-lg:pl-4 gap-2 mb-2">
@@ -66,34 +103,42 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
         <span>
           By {post.user.firstName} {post.user.lastName}
         </span>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="ml-auto flex gap-2 rounded-full">
-              <Download size={16} />
-              <span>Download code</span>
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Download</DialogTitle>
+        <div className="ml-auto flex gap-2 items-center">
+          <Button
+            onClick={handleFullScreen}
+            className="text-primary bg-primary/20 ml-2 flex gap-2 rounded-full max-md:py-1 max-md:px-2.5 hover:bg-primary/20 border-2 border-solid border-primary/20 hover:border-primary">
+            <Maximize2 size={16} />
+            <span className="max-md:hidden">View in full screen</span>
+          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="flex gap-2 rounded-full">
+                <Download size={16} />
+                <span>Download code</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Download</DialogTitle>
 
-              <DialogDescription>
-                Note: Make sure extract the zip file and then use them
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button onClick={handleDownload} className="flex gap-2">
-                  <Download size={16} />
-                  <span>Download</span>
-                </Button>
-              </DialogClose>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+                <DialogDescription>
+                  Note: Make sure to extract the zip file and then use them
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button onClick={handleDownload} className="flex gap-2">
+                    <Download size={16} />
+                    <span>Download</span>
+                  </Button>
+                </DialogClose>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
       <div>
         <ViewEditorRenderer
@@ -103,10 +148,12 @@ const PostDetails: React.FC<{ postId: string }> = ({ postId }) => {
           initialJsContent={post.code.javascriptCode}
         />
       </div>
-      <div className="mt-5">
-        <h1 className="font-semibold text-xl">Description:</h1>
-        <span>{post.description}</span>
-      </div>
+      {post.description ? (
+        <div className="mt-5">
+          <h1 className="font-semibold text-xl">Description:</h1>
+          <span>{post.description}</span>
+        </div>
+      ) : null}
 
       <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl backdrop-blur-safari rounded-full flex max-lg:hidden">
         <CreateNewComponent className="px-3 rounded-full" />

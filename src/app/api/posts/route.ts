@@ -21,11 +21,11 @@ export async function GET(req: NextRequest) {
         {
           status: 200,
           headers: {
-            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=59",
             "CDN-Cache-Control":
-              "public, s-maxage=1, stale-while-revalidate=59",
+              "public, s-maxage=3600, stale-while-revalidate=59",
             "Vercel-CDN-Cache-Control":
-              "public, s-maxage=1, stale-while-revalidate=59",
+              "public, s-maxage=3600, stale-while-revalidate=59",
           },
         }
       );
@@ -36,11 +36,11 @@ export async function GET(req: NextRequest) {
         {
           status: 200,
           headers: {
-            "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=59",
             "CDN-Cache-Control":
-              "public, s-maxage=1, stale-while-revalidate=59",
+              "public, s-maxage=3600, stale-while-revalidate=59",
             "Vercel-CDN-Cache-Control":
-              "public, s-maxage=1, stale-while-revalidate=59",
+              "public, s-maxage=3600, stale-while-revalidate=59",
           },
         }
       );

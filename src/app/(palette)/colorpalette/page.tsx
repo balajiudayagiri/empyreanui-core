@@ -4,6 +4,7 @@ import React from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    authors: [{ name: "Balaji Udayagiri" }],
     title: "Color Palette",
     description:
       "Explore and find almost 1600 colors, perfect for your design projects.",

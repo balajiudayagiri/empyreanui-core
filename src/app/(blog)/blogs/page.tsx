@@ -7,6 +7,7 @@ import React from "react";
 
 export async function generateMetadata() {
   return {
+    authors: [{ name: "Balaji Udayagiri" }],
     title: "EmpyreanUI Blogs",
     description:
       "Explore and write blogs on various topics. Share your thoughts with the world.",

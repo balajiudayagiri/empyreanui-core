@@ -6,4 +6,5 @@ export interface BlogsTypes {
   data: string;
   date: Date;
   thumbnail: string;
+  blogType: string;
 }

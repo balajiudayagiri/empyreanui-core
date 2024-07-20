@@ -9,15 +9,19 @@ import {
   DrawerTrigger,
 } from "empyreanui/components/ui/drawer";
 import { CreateNewComponent } from "@customcomponent";
-import HeaderNavLink from "empyreanui/customComponents/HeaderNav";
+import dynamic from "next/dynamic";
+// import HeaderNavLink from "empyreanui/customComponents/HeaderNav";
+
+const HeaderNavLink = dynamic(
+  () => import("empyreanui/customComponents/HeaderNav"),
+  { ssr: false }
+);
 
 function Header() {
   return (
     <header className="h-14 border-b flex items-center px-5 md:px-9 justify-between bg-background/70 backdrop-blur-lg backdrop-blur-safari fixed w-full top-0 z-50">
       <span className="flex">
-       
         <HeaderNavLink />
-        
       </span>
       <nav className="hidden md:flex items-center gap-3 md:gap-5">
         <Link
@@ -39,6 +43,11 @@ function Header() {
           href="/blogs"
           className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           Blogs
+        </Link>
+        <Link
+          href="/readmegenerator"
+          className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
+          Readme Generator
         </Link>
       </nav>
       <div className="md:hidden block">

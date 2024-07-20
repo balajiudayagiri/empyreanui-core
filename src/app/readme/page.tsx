@@ -30,12 +30,12 @@ export default function page() {
         </p>
         <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
           <Link
-            href="/readmegenerator/editor"
+            href="/readme/editor"
             className="bg-white text-blue-500 font-semibold hover:bg-gray-200 px-8 py-4 rounded-full shadow-md transition duration-300">
             Get Started by generating one
           </Link>
           <Link
-            href="/readmegenerator/learn-more"
+            href="/readme/learn-more"
             className="bg-blue-700 font-semibold hover:bg-blue-800 px-8 py-4 rounded-full shadow-md transition duration-300">
             Learn More
           </Link>

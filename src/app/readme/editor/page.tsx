@@ -1,4 +1,4 @@
-import ReadmeEditor from "empyreanui/customComponents/_readmegenerator/ReadmeEditor";
+import ReadmeEditor from "empyreanui/customComponents/_readme/ReadmeEditor";
 import React from "react";
 
 function page() {

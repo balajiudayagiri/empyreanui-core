@@ -41,7 +41,7 @@ const navLinks: { [key: string]: JSX.Element } = {
       </Link>
     </>
   ),
-  "/readmegenerator": (
+  "/readme": (
     <>
       <Link href="/">
         <h1
@@ -50,7 +50,7 @@ const navLinks: { [key: string]: JSX.Element } = {
         </h1>
       </Link>
       <div className="h-auto border-[1.2px] mx-2 border-solid border-white/60" />
-      <Link href="/readmegenerator">
+      <Link href="/readme">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
           Readme.<span className="text-blue-500">md</span>
@@ -58,16 +58,16 @@ const navLinks: { [key: string]: JSX.Element } = {
       </Link>
     </>
   ),
-  "/readmegenerator/editor": (
-    <Link href="/readmegenerator">
+  "/readme/editor": (
+    <Link href="/readme">
       <h1
         className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
         Readme.<span className="text-blue-500">md</span>
       </h1>
     </Link>
   ),
-  "/readmegenerator/learn-more": (
-    <Link href="/readmegenerator">
+  "/readme/learn-more": (
+    <Link href="/readme">
       <h1
         className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
         Readme.<span className="text-blue-500">md</span>
@@ -92,7 +92,7 @@ const HeaderNavLink: React.FC = () => {
     [param]
   );
 
-  return <>{renderNavLinks}</>;
+  return <div className="flex">{renderNavLinks}</div>;
 };
 
 export default HeaderNavLink;

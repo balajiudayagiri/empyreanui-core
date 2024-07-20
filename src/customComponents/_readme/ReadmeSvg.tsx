@@ -10,7 +10,7 @@ function ReadmeSvg({ className }: { className: string }) {
       viewBox="0 0 1498 978"
       className={className}
       fill="none">
-      <g clip-path="url(#clip0_44_2)">
+      <g clipPath="url(#clip0_44_2)">
         <rect
           width="1498"
           height="978"
@@ -32,7 +32,7 @@ function ReadmeSvg({ className }: { className: string }) {
           height="646"
           rx="16"
           fill="white"
-          fill-opacity="0.4"
+          fillOpacity="0.4"
         />
         <rect
           x="150"
@@ -60,8 +60,8 @@ function ReadmeSvg({ className }: { className: string }) {
           x2="1299.5"
           y2="869.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#007BFF" />
-          <stop offset="1" stop-color="#004A99" />
+          <stop stopColor="#007BFF" />
+          <stop offset="1" stopColor="#004A99" />
         </linearGradient>
         <clipPath id="clip0_44_2">
           <rect width="1498" height="978" rx="16" fill="white" />

@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ListItem from "empyreanui/components/ui/list-item";
 import {
@@ -10,12 +11,22 @@ import {
 } from "empyreanui/components/ui/dropdown-menu";
 import CommandMenu from "./_command_menu/CommandMenu";
 import { Grid2X2, Image, LayoutPanelTop, Palette } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 function HeaderMenu() {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen1(false);
+    setOpen2(false);
+  }, [pathname]);
   return (
     <nav className="hidden md:block items-center gap-3 md:gap-5">
       <CommandMenu />
-      <DropdownMenu>
+      <DropdownMenu open={open1} onOpenChange={setOpen1}>
         <DropdownMenuTrigger className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           Getting started
         </DropdownMenuTrigger>
@@ -83,7 +94,7 @@ function HeaderMenu() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-      <DropdownMenu>
+      <DropdownMenu open={open2} onOpenChange={setOpen2}>
         <DropdownMenuTrigger className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">
           Tools
         </DropdownMenuTrigger>

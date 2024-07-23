@@ -40,7 +40,7 @@ function HeaderMenu() {
                     href="/">
                     <div className="mb-2 text-lg font-medium">
                       <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-                        Empyrean<span className="text-yellow-500">UI</span>
+                        Empyrean<span className="text-primary">UI</span>
                       </h1>
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
@@ -56,7 +56,7 @@ function HeaderMenu() {
                   href="/browse"
                   title={
                     <>
-                      <span className="text-yellow-500">UI </span>Gallery
+                      <span className="text-primary">UI </span>Gallery
                     </>
                   }>
                   Explore our extensive Gallery, crafted by users like you. Add
@@ -69,7 +69,7 @@ function HeaderMenu() {
                   href="/blogs"
                   title={
                     <>
-                      EmpyreanUI <span className="text-yellow-500">Blogs</span>
+                      EmpyreanUI <span className="text-primary">Blogs</span>
                     </>
                   }>
                   Discover the latest news, tips, and insights from our experts.
@@ -82,8 +82,7 @@ function HeaderMenu() {
                   href="/readme"
                   title={
                     <>
-                      Readme.<span className="text-yellow-500">md</span>{" "}
-                      Generator
+                      Readme.<span className="text-primary">md</span> Generator
                     </>
                   }>
                   Use our powerful README generator to craft professional and

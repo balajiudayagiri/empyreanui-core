@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "empyreanui/components/ui/theme-provider";
 import Header from "./Header";
 import { cn } from "empyreanui/lib/utils";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "empyreanui/components/ui/toaster";
 import Footer from "./Footer";
+import { NextThemesProviders } from "empyreanui/Providers/theme-provider";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -24,15 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(montserrat.className, "h-dvh")}>
         <SpeedInsights />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange>
+        <NextThemesProviders>
           <Header />
           {children}
           <Footer />
-        </ThemeProvider>
+        </NextThemesProviders>
         <Toaster />
       </body>
     </html>

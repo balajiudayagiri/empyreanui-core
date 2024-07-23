@@ -12,10 +12,10 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-purple-400">UI</span>
+          Empyrean<span className="text-primary">UI</span>
         </h1>
       </Link>
-      <div className="h-auto border-[1.2px] mx-2 border-solid border-white/60" />
+      <div className="h-auto border-[1.2px] mx-2 border-solid" />
       <Link href="/blogs">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
@@ -29,10 +29,10 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-purple-500">UI</span>
+          Empyrean<span className="text-primary">UI</span>
         </h1>
       </Link>
-      <div className="h-auto border-[1.2px] mx-2 border-solid border-white/60" />
+      <div className="h-auto border-[1.2px] mx-2 border-solid" />
       <Link href="/blogs">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
@@ -46,14 +46,14 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-blue-500">UI</span>
+          Empyrean<span className="text-primary">UI</span>
         </h1>
       </Link>
-      <div className="h-auto border-[1.2px] mx-2 border-solid border-white/60" />
+      <div className="h-auto border-[1.2px] mx-2 border-solid" />
       <Link href="/readme">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Readme.<span className="text-blue-500">md</span>
+          Readme.<span className="text-primary">md</span>
         </h1>
       </Link>
     </>
@@ -62,7 +62,7 @@ const navLinks: { [key: string]: JSX.Element } = {
     <Link href="/readme">
       <h1
         className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-        Readme.<span className="text-blue-500">md</span>
+        Readme.<span className="text-primary">md</span>
       </h1>
     </Link>
   ),
@@ -70,7 +70,7 @@ const navLinks: { [key: string]: JSX.Element } = {
     <Link href="/readme">
       <h1
         className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-        Readme.<span className="text-blue-500">md</span>
+        Readme.<span className="text-primary">md</span>
       </h1>
     </Link>
   ),

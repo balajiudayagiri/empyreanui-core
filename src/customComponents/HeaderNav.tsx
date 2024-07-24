@@ -70,11 +70,13 @@ const navLinks: { [key: string]: JSX.Element } = {
       <div className="h-auto border-[1.2px] mx-2 border-solid" />
       <Link href="/readme">
         <h1
-          className={`text-2xl flex gap-1 font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          <span className="text-primary flex mr-2">
-            AI <Sparkle className="mx-1" /> README
-          </span>{" "}
-          Generator
+          className={`md:text-2xl text-lg  font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
+          <span className="max-md:hidden flex gap-1">
+            <span className="text-primary flex mr-2">
+              AI <Sparkle className="mx-1" /> README
+            </span>{" "}
+            Generator
+          </span>
         </h1>
       </Link>
     </>

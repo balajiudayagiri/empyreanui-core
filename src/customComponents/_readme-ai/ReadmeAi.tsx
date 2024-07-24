@@ -89,7 +89,7 @@ function ReadmeAi() {
       <div className="flex-grow flex flex-col items-center  p-6 pt-16 justify-center overflow-auto mb-16">
         {!readme ? (
           <>
-            <h1 className="text-4xl font-extrabold mb-6 flex text-center ">
+            <h1 className="text-4xl font-extrabold mb-6 flex max-md:flex-col text-center ">
               <span className="text-primary flex mr-2">
                 AI <Sparkle className="mx-1" /> README
               </span>{" "}

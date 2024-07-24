@@ -1,7 +1,11 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 function Footer() {
+  const param = usePathname();
+  if (param === "/readme-ai") return null;
   return (
     <footer className="p-6 md:p-12">
       <div className="container mx-auto">

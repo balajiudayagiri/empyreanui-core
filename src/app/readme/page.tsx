@@ -39,6 +39,11 @@ export default function page() {
             className="bg-blue-700 font-semibold hover:bg-blue-800 px-8 py-4 rounded-full shadow-md transition duration-300">
             Learn More
           </Link>
+          <Link
+            href="/readme-ai"
+            className="bg-blue-700 font-semibold hover:bg-blue-800 px-8 py-4 rounded-full shadow-md transition duration-300">
+            Use Readme.ai
+          </Link>
         </div>
       </div>
     </div>

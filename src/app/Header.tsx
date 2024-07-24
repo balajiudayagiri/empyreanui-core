@@ -35,7 +35,7 @@ function Header() {
             <DrawerContent className="h-dvh">
               <DrawerTitle className="mt-10">
                 <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-center">
-                  Empyrean<span className="text-yellow-500">UI</span>
+                  Empyrean<span className="text-primary">UI</span>
                 </h1>
               </DrawerTitle>
               <nav className="flex flex-col items-center gap-3 p-4 justify-between h-[calc(100dvh-77.04px)]">

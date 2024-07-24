@@ -89,6 +89,18 @@ function HeaderMenu() {
                   eye-catching README files for your projects.
                 </ListItem>
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <ListItem
+                  href="/readme-ai"
+                  title={
+                    <>
+                      <span className="text-primary">AI README</span> Generator
+                    </>
+                  }>
+                  Generate a professional README for your project in seconds
+                  with the power of AI.
+                </ListItem>
+              </DropdownMenuItem>
             </ul>
           </DropdownMenuGroup>
         </DropdownMenuContent>

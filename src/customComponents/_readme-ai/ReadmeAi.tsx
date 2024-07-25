@@ -24,7 +24,7 @@ import {
   TooltipTrigger,
 } from "empyreanui/components/ui/tooltip";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
-import { getRandomPrompts, prompts } from "./samplePromts";
+import { getRandomPrompts } from "./samplePromts";
 
 type Message = {
   role: string;

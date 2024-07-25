@@ -51,11 +51,14 @@
 
 .preview pre {
     font-family: monospace;
-    background-color: #bebebe93;
     color: #000000;
-    padding: 10px;
     border-radius: 4px;
     overflow-x: auto;
+}
+
+.preview>pre>div {
+    margin-top: 0px !important;
+    border-radius: 8px;
 }
 
 .preview pre code {

@@ -7,7 +7,14 @@ import {
   TabsTrigger,
 } from "empyreanui/components/ui/tabs";
 import { Textarea } from "empyreanui/components/ui/textarea";
-import { Clipboard, Loader, RefreshCcwIcon, Send, Sparkle } from "lucide-react";
+import {
+  Clipboard,
+  Loader,
+  MessageSquareDiff,
+  RefreshCcwIcon,
+  Send,
+  Sparkle,
+} from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 import RedmeRenderer from "../_readme/RedmeRenderer";
 import {
@@ -17,6 +24,7 @@ import {
   TooltipTrigger,
 } from "empyreanui/components/ui/tooltip";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
+import { getRandomPrompts, prompts } from "./samplePromts";
 
 type Message = {
   role: string;
@@ -28,13 +36,14 @@ function ReadmeAi() {
   const [readme, setReadme] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [conversation, setConversation] = useState<Message[]>([]);
-
+  const [randomPrompts, setRandomPrompts] = useState<string[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      textareaRef.current.style.overflowY = "scroll";
     }
   }, [prompt]);
 
@@ -84,8 +93,17 @@ function ReadmeAi() {
     navigator.clipboard.writeText(readme);
   };
 
+  useEffect(() => {
+    setRandomPrompts(getRandomPrompts(4));
+  }, []);
+
+  const handleCardClick = (selectedPrompt: string) => {
+    setPrompt(selectedPrompt);
+    handleGenerateReadme();
+  };
+
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between lg:w-3/4 mx-auto">
       <div className="flex-grow flex flex-col items-center  p-6 pt-16 justify-center overflow-auto mb-16">
         {!readme ? (
           <>
@@ -99,6 +117,29 @@ function ReadmeAi() {
               Generate a professional README for your project in seconds with
               the power of AI.
             </p>
+            <div className="mb-6 w-full ">
+              <h2 className="font-bold mb-4 text-center">Try these prompts</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 p-4">
+                {randomPrompts.map((prompt, index) => (
+                  <div
+                    key={index}
+                    className="border border-solid border-gray-300 p-4 rounded-lg cursor-pointer transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <p
+                      onClick={() => handleCardClick(prompt)}
+                      className="md:line-clamp-2 line-clamp-1 text-sm leading-snug text-muted-foreground">
+                      {prompt}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center mt-4">
+                <div
+                  className="rounded-full p-3 border border-solid hover:border-primary group cursor-pointer transition-transform duration-300"
+                  onClick={() => setRandomPrompts(getRandomPrompts(4))}>
+                  <RefreshCcwIcon className="size-4 group-hover:rotate-180 transition-transform duration-300" />
+                </div>
+              </div>
+            </div>
           </>
         ) : (
           <Tabs defaultValue="rendered" className="w-full pt-5">
@@ -117,9 +158,8 @@ function ReadmeAi() {
       </div>
       <TooltipProvider>
         <div className="fixed bottom-0 p-1 w-full">
-          <div className="mx-auto bg-background flex items-end p-2 border rounded-[32px] shadow-2xl gap-1 lg:w-3/4 max-lg:w-4/5 max-sm:w-full">
+          <div className="bg-background flex items-end p-2 border rounded-[32px] shadow-2xl gap-1 lg:w-3/4 w-full">
             {readme ? (
-              // refresh button
               <>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -127,11 +167,11 @@ function ReadmeAi() {
                       className="px-2 size-12 rounded-3xl"
                       variant={"ghost"}
                       onClick={handleStartNewChat}>
-                      <RefreshCcwIcon size={18} />
+                      <MessageSquareDiff size={18} />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Start new Blog</p>
+                    <p>Start new Readme</p>
                     <TooltipArrow />
                   </TooltipContent>
                 </Tooltip>
@@ -154,7 +194,7 @@ function ReadmeAi() {
             <div className="grow">
               <Textarea
                 ref={textareaRef}
-                className="w-full py-4 bg-background placeholder:max-md:text-nowrap border-none rounded-3xl focus:outline-none focus:ring-none transition duration-300 resize-none overflow-hidden"
+                className="w-full max-h-72 overflow-y-scroll py-4 bg-background placeholder:max-md:text-nowrap border-none rounded-3xl focus:outline-none focus:ring-none transition duration-300 resize-none overflow-hidden"
                 rows={1}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}

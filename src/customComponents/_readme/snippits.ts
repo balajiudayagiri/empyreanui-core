@@ -243,4 +243,422 @@ This project is used by the following companies:
 - Company 1
 - Company 2
 `,
+  TableOfContents: `
+## Table of Contents
+
+- [Acknowledgements](#acknowledgements)
+- [API Reference](#api-reference)
+- [Appendix](#appendix)
+- [Authors](#authors)
+- [Badges](#badges)
+- [Color Reference](#color-reference)
+- [Contributing](#contributing)
+- [Demo](#demo)
+- [Deployment](#deployment)
+- [Documentation](#documentation)
+- [Environment Variables](#environment-variables)
+- [FAQ](#faq)
+- [Features](#features)
+- [Feedback](#feedback)
+- [Installation](#installation)
+- [Lessons](#lessons)
+- [License](#license)
+- [Logo](#logo)
+- [Optimizations](#optimizations)
+- [Related](#related)
+- [Roadmap](#roadmap)
+- [Run Locally](#run-locally)
+- [Screenshots](#screenshots)
+- [Support](#support)
+- [Tech Stack](#tech-stack)
+- [Running Tests](#running-tests)
+- [Usage/Examples](#usageexamples)
+- [Used By](#used-by)
+`,
+  Security: `
+## Security
+
+Please report any security issues to [email@example.com](mailto:email@example.com).
+`,
+  CodeOfConduct: `
+## Code of Conduct
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+`,
+  Changelog: `
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for details.
+`,
+  Acknowledgement: `
+## Acknowledgement
+
+We would like to thank all the contributors and the open-source community.
+`,
+  Donations: `
+## Donations
+
+If you find this project useful, consider donating:
+
+- [PayPal](https://www.paypal.com/)
+- [Patreon](https://www.patreon.com/)
+`,
+  Contact: `
+## Contact
+
+For any inquiries, please reach out to [email@example.com](mailto:email@example.com).
+`,
+  SocialMedia: `
+## Social Media
+
+Follow us on [Twitter](https://twitter.com/), [LinkedIn](https://linkedin.com/), [Facebook](https://facebook.com/).
+`,
+  Contributors: `
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+- [@contributor1](https://github.com/contributor1)
+- [@contributor2](https://github.com/contributor2)
+`,
+  References: `
+## References
+
+- [Reference 1](https://link1.com)
+- [Reference 2](https://link2.com)
+`,
+  Prerequisites: `
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- You have installed the latest version of \`node.js\` and \`npm\`.
+- You have a \`<Windows/Linux/Mac>\` machine.
+`,
+  CommonIssues: `
+## Common Issues
+
+Here are some common issues you might face and how to resolve them:
+
+- Issue 1: Solution
+- Issue 2: Solution
+`,
+  HowItWorks: `
+## How It Works
+
+A brief explanation of how the project works.
+`,
+  Background: `
+## Background
+
+The background information or context for the project.
+`,
+  SystemArchitecture: `
+## System Architecture
+
+![System Architecture](https://via.placeholder.com/468x300?text=System+Architecture+Diagram)
+`,
+  GettingStarted: `
+## Getting Started
+
+Instructions to get the project up and running on your local machine.
+`,
+  JavaScript: `
+\`\`\`javascript
+// JavaScript example
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+console.log(greet('World'));
+\`\`\`
+`,
+  TypeScript: `
+\`\`\`typescript
+// TypeScript example
+function greet(name: string): string {
+  return \`Hello, \${name}!\`;
+}
+console.log(greet('World'));
+\`\`\`
+`,
+  Python: `
+\`\`\`python
+# Python example
+def greet(name):
+    return f"Hello, {name}!"
+print(greet('World'))
+\`\`\`
+`,
+  Java: `
+\`\`\`java
+// Java example
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(greet("World"));
+    }
+
+    public static String greet(String name) {
+        return "Hello, " + name + "!";
+    }
+}
+\`\`\`
+`,
+  CSharp: `
+\`\`\`csharp
+// C# example
+using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine(Greet("World"));
+    }
+
+    static string Greet(string name) {
+        return $"Hello, {name}!";
+    }
+}
+\`\`\`
+`,
+  CPlusPlus: `
+\`\`\`cpp
+// C++ example
+#include <iostream>
+#include <string>
+
+std::string greet(const std::string& name) {
+    return "Hello, " + name + "!";
+}
+
+int main() {
+    std::cout << greet("World") << std::endl;
+    return 0;
+}
+\`\`\`
+`,
+  Ruby: `
+\`\`\`ruby
+# Ruby example
+def greet(name)
+  "Hello, \#{name}!"
+end
+
+puts greet('World')
+\`\`\`
+`,
+  PHP: `
+\`\`\`php
+<?php
+// PHP example
+function greet($name) {
+    return "Hello, " . $name . "!";
+}
+
+echo greet("World");
+?>
+\`\`\`
+`,
+  Go: `
+\`\`\`go
+// Go example
+package main
+
+import "fmt"
+
+func greet(name string) string {
+    return "Hello, " + name + "!"
+}
+
+func main() {
+    fmt.Println(greet("World"))
+}
+\`\`\`
+`,
+  Swift: `
+\`\`\`swift
+// Swift example
+func greet(name: String) -> String {
+    return "Hello, \\\(name)!"
+}
+
+print(greet(name: "World"))
+\`\`\`
+`,
+  Kotlin: `
+\`\`\`kotlin
+// Kotlin example
+fun greet(name: String): String {
+    return "Hello, \\\$name!"
+}
+
+fun main() {
+    println(greet("World"))
+}
+\`\`\`
+`,
+  R: `
+\`\`\`r
+# R example
+greet <- function(name) {
+  paste("Hello,", name, "!")
+}
+
+cat(greet("World"))
+\`\`\`
+`,
+  Rust: `
+\`\`\`rust
+// Rust example
+fn greet(name: &str) -> String {
+    format!("Hello, {}!", name)
+}
+
+fn main() {
+    println!("{}", greet("World"));
+}
+\`\`\`
+`,
+  Dart: `
+\`\`\`dart
+// Dart example
+String greet(String name) {
+  return 'Hello, \${name}!';
+}
+
+void main() {
+  print(greet('World'));
+}
+\`\`\`
+`,
+  Scala: `
+\`\`\`scala
+// Scala example
+object Main extends App {
+  def greet(name: String): String = s"Hello, \${name}!"
+  println(greet("World"))
+}
+\`\`\`
+`,
+  Shell: `
+\`\`\`sh
+# Shell example
+greet() {
+  echo "Hello, \$1!"
+}
+
+greet "World"
+\`\`\`
+`,
+  Perl: `
+\`\`\`perl
+# Perl example
+sub greet {
+  my \$name = shift;
+  return "Hello, \$name!";
+}
+
+print greet("World"), "\n";
+\`\`\`
+`,
+  SQL: `
+\`\`\`sql
+-- SQL example
+SELECT 'Hello, World!' AS greeting;
+\`\`\`
+`,
+  HTML: `
+\`\`\`html
+<!-- HTML example -->
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello, World!</h1>
+</body>
+</html>
+\`\`\`
+`,
+  CSS: `
+\`\`\`css
+/* CSS example */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+}
+\`\`\`
+`,
+  JSON: `
+\`\`\`json
+{
+  "greeting": "Hello, World!"
+}
+\`\`\`
+`,
+  YAML: `
+\`\`\`yaml
+# YAML example
+greeting: "Hello, World!"
+\`\`\`
+`,
+  Markdown: `
+\`\`\`markdown
+# Markdown example
+Hello, World!
+\`\`\`
+`,
+  LaTeX: `
+\`\`\`latex
+% LaTeX example
+\\documentclass{article}
+\\begin{document}
+Hello, World!
+\\end{document}
+\`\`\`
+`,
+  Haskell: `
+\`\`\`haskell
+-- Haskell example
+greet :: String -> String
+greet name = "Hello, " ++ name ++ "!"
+
+main = putStrLn (greet "World")
+\`\`\`
+`,
+  Lisp: `
+\`\`\`lisp
+;; Lisp example
+(defun greet (name)
+  (format t "Hello, ~a!" name))
+
+(greet "World")
+\`\`\`
+`,
+  Elixir: `
+\`\`\`elixir
+# Elixir example
+defmodule Greeter do
+  def greet(name) do
+    "Hello, \#{name}!"
+  end
+end
+
+IO.puts Greeter.greet("World")
+\`\`\`
+`,
+  Erlang: `
+\`\`\`erlang
+% Erlang example
+greet(Name) ->
+    io:format("Hello, ~s!~n", [Name]).
+
+greet("World").
+\`\`\`
+`,
+  Clojure: `
+\`\`\`clojure
+;; Clojure example
+(defn greet [name]
+  (str "Hello, " name "!"))
+
+(println (greet "World"))
+\`\`\`
+`,
 };

@@ -110,6 +110,13 @@ function ReadmeAi() {
     handleGenerateReadme();
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey && prompt.trim() !== "") {
+      event.preventDefault();
+      handleGenerateReadme();
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between lg:w-3/4 mx-auto">
       <div className="flex-grow flex flex-col items-center  p-6 pt-16 justify-center overflow-auto mb-16">
@@ -207,6 +214,7 @@ function ReadmeAi() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="How can we help"
+                onKeyDown={handleKeyDown}
               />
             </div>
             <Tooltip>

@@ -1,11 +1,7 @@
 "use client";
-import { Button } from "empyreanui/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "empyreanui/components/ui/tabs";
+import React, { useEffect, useRef, useState } from "react";
+import { getRandomPrompts } from "../_readme-ai/samplePromts";
+
 import { Textarea } from "empyreanui/components/ui/textarea";
 import {
   Clipboard,
@@ -15,7 +11,6 @@ import {
   Send,
   Sparkle,
 } from "lucide-react";
-import React, { useState, useRef, useEffect } from "react";
 import RedmeRenderer from "../_readme/RedmeRenderer";
 import {
   Tooltip,
@@ -24,14 +19,14 @@ import {
   TooltipTrigger,
 } from "empyreanui/components/ui/tooltip";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
-import { getRandomPrompts } from "./samplePromts";
+import { Button } from "empyreanui/components/ui/button";
 
 type Message = {
   role: string;
   content: string;
 };
 
-function ReadmeAi() {
+function JsDocGenerator() {
   const [prompt, setPrompt] = useState<string>("");
   const [readme, setReadme] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,7 +46,7 @@ function ReadmeAi() {
     setLoading(true);
     setReadme("");
     try {
-      const response = await fetch("/api/generateReadme", {
+      const response = await fetch("/api/generateJsDocs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +58,7 @@ function ReadmeAi() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to generate README");
+        throw new Error("Failed to generate JsDoc");
       }
 
       const reader = response.body?.getReader();
@@ -109,7 +104,6 @@ function ReadmeAi() {
     setPrompt(selectedPrompt);
     handleGenerateReadme();
   };
-
   return (
     <div className="min-h-screen flex flex-col justify-between lg:w-3/4 mx-auto">
       <div className="flex-grow flex flex-col items-center  p-6 pt-16 justify-center overflow-auto mb-16">
@@ -117,51 +111,17 @@ function ReadmeAi() {
           <>
             <h1 className="text-4xl font-extrabold mb-6 flex max-md:flex-col text-center ">
               <span className="text-primary flex mr-2">
-                AI <Sparkle className="mx-1" /> README
+                AI <Sparkle className="mx-1" /> JsDocs
               </span>{" "}
               Generator
             </h1>
             <p className="text-lg mb-8 text-center">
-              Generate a professional README for your project in seconds with
-              the power of AI.
+              Generate professional JsDocs for your code in seconds with the
+              power of AI.
             </p>
-            <div className="mb-6 w-full ">
-              <h2 className="font-bold mb-4 text-center">Try these prompts</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 p-4">
-                {randomPrompts.map((prompt, index) => (
-                  <div
-                    key={index}
-                    className="border border-solid border-gray-300 p-4 rounded-lg cursor-pointer transition-transform transform hover:scale-105 hover:shadow-lg">
-                    <p
-                      onClick={() => handleCardClick(prompt)}
-                      className="md:line-clamp-2 line-clamp-1 text-sm leading-snug text-muted-foreground">
-                      {prompt}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <div className="flex justify-center mt-4">
-                <div
-                  className="rounded-full p-3 border border-solid hover:border-primary group cursor-pointer transition-transform duration-300"
-                  onClick={() => setRandomPrompts(getRandomPrompts(4))}>
-                  <RefreshCcwIcon className="size-4 group-hover:rotate-180 transition-transform duration-300" />
-                </div>
-              </div>
-            </div>
           </>
         ) : (
-          <Tabs defaultValue="rendered" className="w-full pt-5">
-            <TabsList className="flex justify-center mb-4  fixed  z-10 top-16">
-              <TabsTrigger value="rendered">Rendered</TabsTrigger>
-              <TabsTrigger value="raw">Raw</TabsTrigger>
-            </TabsList>
-            <TabsContent value="rendered">
-              <RedmeRenderer markdown={readme} />
-            </TabsContent>
-            <TabsContent value="raw">
-              <pre className="whitespace-pre-wrap  pt-5">{readme}</pre>
-            </TabsContent>
-          </Tabs>
+          <RedmeRenderer markdown={readme} />
         )}
       </div>
       <TooltipProvider>
@@ -215,7 +175,7 @@ function ReadmeAi() {
                   variant={"ghost"}
                   onClick={handleGenerateReadme}
                   disabled={loading}
-                  className="px-2 text-primary size-12 rounded-3xl flex items-center justify-center">
+                  className="px-2 size-12 text-primary rounded-3xl flex items-center justify-center">
                   {loading ? (
                     <Loader className="animate-spin" size={18} />
                   ) : (
@@ -235,4 +195,4 @@ function ReadmeAi() {
   );
 }
 
-export default ReadmeAi;
+export default JsDocGenerator;

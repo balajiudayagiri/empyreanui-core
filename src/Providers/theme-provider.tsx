@@ -27,6 +27,7 @@ export const NextThemesProviders: React.FC<ProvidersProps> = ({
     blogs: "violet-theme",
     readme: "blue-theme",
     "readme-ai": "blue-theme",
+    "jsdoc-ai": "green-theme",
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export const NextThemesProviders: React.FC<ProvidersProps> = ({
       forcedTheme={theme}
       attribute="class"
       defaultTheme="dark"
-      themes={["light", "dark", "blue-theme", "violet-theme"]}
+      themes={["light", "dark", "blue-theme", "violet-theme", "green-theme"]}
       enableSystem={false}
       disableTransitionOnChange
       {...rest}>

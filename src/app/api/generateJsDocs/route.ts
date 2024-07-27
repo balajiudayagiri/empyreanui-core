@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Groq from "groq-sdk";
-import { readmePrompting } from "empyreanui/promptEngineering/readmePrompting";
+import { jsDocsPrompting } from "empyreanui/promptEngineering/jsDocsPrompting";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     ];
 
     const response = await groq.chat.completions.create({
-      messages: [readmePrompting, ...newConversation],
+      messages: [jsDocsPrompting, ...newConversation],
       model: "gemma2-9b-it",
       temperature: 0.7,
       max_tokens: 1024,
@@ -45,9 +45,9 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("Error generating README:", error);
+    console.error("Error generating JSDocs:", error);
     return NextResponse.json(
-      { message: "Failed to generate README" },
+      { message: "Failed to generate JSDocs" },
       { status: 500 }
     );
   }

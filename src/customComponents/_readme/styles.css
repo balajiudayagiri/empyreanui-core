@@ -56,7 +56,7 @@
     overflow-x: auto;
 }
 
-.preview>pre>div {
+.preview pre div {
     margin-top: 0px !important;
     border-radius: 8px;
 }

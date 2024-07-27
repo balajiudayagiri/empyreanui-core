@@ -91,6 +91,18 @@ function HeaderMenu() {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <ListItem
+                  href="/jsdoc-ai"
+                  title={
+                    <>
+                      <span className="text-primary">AI JsDocs</span> Generator
+                    </>
+                  }>
+                  Generate a professional JsDocs for your project in seconds
+                  with the power of AI.
+                </ListItem>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <ListItem
                   href="/readme-ai"
                   title={
                     <>

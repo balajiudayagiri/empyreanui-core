@@ -81,6 +81,28 @@ const navLinks: { [key: string]: JSX.Element } = {
       </Link>
     </>
   ),
+  "/jsdoc-ai": (
+    <>
+      <Link href="/">
+        <h1
+          className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
+          Empyrean<span className="text-primary">UI</span>
+        </h1>
+      </Link>
+      <div className="h-auto border-[1.2px] mx-2 border-solid" />
+      <Link href="/jsdoc-ai">
+        <h1
+          className={`md:text-2xl text-lg  font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
+          <span className="max-md:hidden flex gap-1">
+            <span className="text-primary flex mr-2">
+              AI <Sparkle className="mx-1" /> JsDocs
+            </span>{" "}
+            Generator
+          </span>
+        </h1>
+      </Link>
+    </>
+  ),
   "/readme/editor": (
     <Link href="/readme">
       <h1

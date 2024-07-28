@@ -5,7 +5,7 @@ import { Loader } from "lucide-react";
 import IframeContent from "./IframeContent";
 import { months } from "empyreanui/utils";
 import Image from "next/image";
-import RedmeRenderer from "../_readmegenerator/RedmeRenderer";
+import RedmeRenderer from "../_readme/RedmeRenderer";
 
 function BlogRenderedView({ id }: { id: string }) {
   const { blog, isLoading, error, fetchBlogById } = useFetchBlogById();

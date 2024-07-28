@@ -8,7 +8,7 @@ import {
   ResizablePanelGroup,
 } from "empyreanui/components/ui/resizable";
 import { snippets } from "./snippits";
-import { Download, MenuIcon } from "lucide-react";
+import { Download, FileText, MenuIcon } from "lucide-react";
 
 import {
   Sheet,
@@ -31,6 +31,7 @@ import { toast } from "empyreanui/components/ui/use-toast";
 import { Blog } from "../blogs/Blogtypes";
 import PostBlogDialog from "../blogs/BlogModal";
 import RedmeRenderer from "./RedmeRenderer";
+import { readmeTemplates } from "../_readme-templates/readme-templates";
 
 const ReadmeEditor: React.FC = () => {
   const [markdown, setMarkdown] =
@@ -131,14 +132,53 @@ You can edit this text to see a live preview of your README file.
                   snippit in here
                 </SheetDescription>
               </SheetHeader>
-              <ul className="h-[calc(100dvh-200px)] overflow-y-scroll">
+              <ul className="h-[calc(100dvh-109px)] overflow-y-scroll">
                 {Object.keys(snippets).map((snippet) => (
                   <li key={snippet} className="my-2">
-                    <button
-                      className="w-full text-white p-2 rounded hover:bg-primary hover:text-black hover:font-bold text-left"
+                    <Button
+                      variant={"ghost"}
+                      className="w-full p-2 rounded hover:font-bold hover:bg-primary hover:text-white text-left"
                       onClick={() => addSnippet(snippet)}>
                       {snippet.replace(/([A-Z])/g, " $1").trim()}
-                    </button>
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </SheetContent>
+          </Sheet>
+          <Sheet>
+            <TooltipProvider>
+              <Tooltip>
+                <SheetTrigger asChild>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline" className="p-2">
+                      <FileText />
+                    </Button>
+                  </TooltipTrigger>
+                </SheetTrigger>
+                <TooltipContent side="right">
+                  <p>Select Template</p>
+                  <TooltipArrow className="TooltipArrow" />
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <SheetContent side={"left"}>
+              <SheetHeader>
+                <SheetTitle>Select Templates</SheetTitle>
+                <SheetDescription>
+                  Add the best premade templates to your README by clicking on
+                  the required template from the list below.
+                </SheetDescription>
+              </SheetHeader>
+              <ul className="h-[calc(100dvh-129px)] overflow-y-scroll">
+                {Object.values(readmeTemplates).map((template) => (
+                  <li key={template.id} className="my-2">
+                    <Button
+                      variant={"ghost"}
+                      className="w-full p-2 rounded hover:font-bold hover:bg-primary hover:text-white text-left"
+                      onClick={() => setMarkdown(template.snippets)}>
+                      {template.title}
+                    </Button>
                   </li>
                 ))}
               </ul>

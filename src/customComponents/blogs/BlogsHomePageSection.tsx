@@ -18,7 +18,7 @@ function BlogHomePageSection() {
             updated with the newest trends and stories that matter to you.
           </p>
           <div className="w-full text-center">
-            <Link href={"/readmegenerator"}>
+            <Link href={"/readme"}>
               <Button className="font-semibold bg-purple-500 hover:bg-purple-700 text-white">
                 Go to EmpyreanUI Blogs
               </Button>

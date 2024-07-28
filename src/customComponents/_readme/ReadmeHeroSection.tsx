@@ -19,7 +19,7 @@ function ReadmeHeroSection() {
             eye-catching README files for your projects.
           </p>
           <div className="w-full text-center">
-            <Link href={"/readmegenerator"}>
+            <Link href={"/readme"}>
               <Button className="font-semibold bg-blue-500 hover:bg-blue-700 text-white">
                 Go to Readme Generator
               </Button>

@@ -1,8 +1,7 @@
 import ColorPaletteHero from "empyreanui/customComponents/_colorpalette";
 import GradientPaletteHero from "empyreanui/customComponents/_gradientpalette";
 import ImageColorExtractorHero from "empyreanui/customComponents/_imagecolorextractor";
-import ReadmeHeroSection from "empyreanui/customComponents/_readmegenerator/ReadmeHeroSection";
-import UiGalleryHero from "empyreanui/customComponents/_uigallery";
+import ReadmeHeroSection from "empyreanui/customComponents/_readme/ReadmeHeroSection";
 import BlogHomePageSection from "empyreanui/customComponents/blogs/BlogsHomePageSection";
 import HeroSection from "empyreanui/customComponents/HeroSection";
 

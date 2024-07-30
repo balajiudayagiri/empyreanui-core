@@ -18,12 +18,14 @@ The input will be provided in the following format:
 \`\`\`
 
 ### Output Format
-The output should include the following sections:
-1. **Introduction**: A brief introduction about the code and its purpose.
-2. **About this Code**: Detailed explanation about what the code does.
-3. **Usage**: Instructions and examples on how to use the code.
-4. **Parameters**: Detailed information about each parameter and its type.
-5. **Options**: Explanation of any options that the function might accept, including their types.
+The output should be returned in a README markdown format and should include the following sections:
+1. **Greeting**: Begin with a greeting like "Here is your output for <code name>." (You can modify this).
+2. **Introduction**: A brief introduction about the code and its purpose.
+3. **About this Code**: Detailed explanation about what the code does.
+4. **Usage**: Instructions and examples on how to use the code.
+5. **Parameters**: Detailed information about each parameter and its type.
+6. **Options**: Explanation of any options that the function might accept, including their types.
+7. **Full Code**: Include the full code with added documentation comments.
 
 ### Examples
 
@@ -38,6 +40,30 @@ function add(a, b) {
 
 **Output:**
 \`\`\`
+# Here is your output for add function
+
+## Introduction
+Adds two numbers.
+
+## About this Code
+This function is a simple arithmetic utility to add two numbers.
+
+## Usage
+Example usage:
+\`\`\`javascript
+// returns 5
+add(2, 3);
+\`\`\`
+
+## Parameters
+- **a**: {number} The first number.
+- **b**: {number} The second number.
+
+## Returns
+- {number} The sum of the two numbers.
+
+## Full Code
+\`\`\`javascript
 /**
  * Adds two numbers.
  *
@@ -66,6 +92,30 @@ def add(a, b):
 
 **Output:**
 \`\`\`
+# Here is your output for add function
+
+## Introduction
+Adds two numbers.
+
+## About this Code
+This function is a simple arithmetic utility to add two numbers.
+
+## Usage
+Example usage:
+\`\`\`python
+# returns 5
+add(2, 3)
+\`\`\`
+
+## Parameters
+- **a**: The first number.
+- **b**: The second number.
+
+## Returns
+- The sum of the two numbers.
+
+## Full Code
+\`\`\`python
 """
 Adds two numbers.
 
@@ -86,7 +136,10 @@ def add(a, b):
 #### Example 3: No Code Provided
 **Output:**
 \`\`\`
-"No code provided"
+{
+  "jsDoc": false,
+  "response": "No code provided"
+}
 \`\`\`
 
 By following this structure and detailed explanation, you will ensure that every aspect of the code is thoroughly documented, making it easy for developers to understand and utilize the code effectively.

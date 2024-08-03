@@ -161,6 +161,15 @@ function ReadmeAi() {
             <TabsList className="flex justify-center mb-4  fixed  z-10 top-16">
               <TabsTrigger value="rendered">Rendered</TabsTrigger>
               <TabsTrigger value="raw">Raw</TabsTrigger>
+              <Button
+                className="px-2 size-12 rounded-3xl hover:bg-transparent group"
+                variant={"ghost"}
+                onClick={copyToClipboard}>
+                <Clipboard
+                  size={18}
+                  className="group-hover:scale-105 group-hover:text-primary"
+                />
+              </Button>
             </TabsList>
             <TabsContent value="rendered">
               <RedmeRenderer markdown={readme} />
@@ -172,7 +181,7 @@ function ReadmeAi() {
         )}
       </div>
       <TooltipProvider>
-        <div className="fixed bottom-0 p-1 w-full">
+        <div className="fixed bottom-0 z-10 p-1 w-full">
           <div className="bg-background flex items-end p-2 border rounded-[32px] shadow-2xl gap-1 lg:w-3/4 w-full">
             {readme ? (
               <>
@@ -190,7 +199,7 @@ function ReadmeAi() {
                     <TooltipArrow />
                   </TooltipContent>
                 </Tooltip>
-                <Tooltip>
+                {/* <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
                       className="px-2 size-12 rounded-3xl"
@@ -203,7 +212,7 @@ function ReadmeAi() {
                     <p>Copy</p>
                     <TooltipArrow />
                   </TooltipContent>
-                </Tooltip>
+                </Tooltip> */}
               </>
             ) : null}
             <div className="grow">
@@ -213,7 +222,11 @@ function ReadmeAi() {
                 rows={1}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="How can we help"
+                placeholder={
+                  conversation
+                    ? "Do you need to update something"
+                    : "How can we help"
+                }
                 onKeyDown={handleKeyDown}
               />
             </div>

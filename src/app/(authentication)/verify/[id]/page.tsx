@@ -1,4 +1,4 @@
-import { VerifyForm } from "empyreanui/customComponents/VerifyForm";
+import { VerifyForm } from "empyreanui/customComponents/_authentication/VerifyForm";
 import React from "react";
 
 function Signup() {

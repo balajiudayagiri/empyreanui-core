@@ -1,12 +1,13 @@
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState, useCallback } from "react";
 
-const useSignin = () => {
+const VerifyOTP = () => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
   const router = useRouter();
-  const submitLoginForm = useCallback(async (formData: any): Promise<void> => {
+  const { id } = useParams();
+  const submitOTP = useCallback(async (formData: any): Promise<void> => {
     setLoading(true);
     setError(null);
 
@@ -18,14 +19,11 @@ const useSignin = () => {
         },
         body: JSON.stringify(formData),
       };
-
-      const response = await fetch(`api/users/signin`, options);
+      const response = await fetch(`api/users/verify/${id}`, options);
       const json = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", json.token);
         setData(json);
-        router.push("/");
       } else {
         setError(json);
       }
@@ -36,7 +34,7 @@ const useSignin = () => {
     }
   }, []);
 
-  return [data, loading, error, submitLoginForm];
+  return [data, loading, error, submitOTP];
 };
 
-export default useSignin;
+export default VerifyOTP;

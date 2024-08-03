@@ -1,4 +1,4 @@
-import Register from "empyreanui/customComponents/RegisterForm";
+import Register from "empyreanui/customComponents/_authentication/RegisterForm";
 import React from "react";
 
 function Signup() {

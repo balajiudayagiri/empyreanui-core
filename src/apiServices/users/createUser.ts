@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import { useState, useCallback } from "react";
 
 const useSignup = () => {
-
   const [data, setData] = useState<any>(null);
 
   const [loading, setLoading] = useState(false);
@@ -13,10 +12,9 @@ const useSignup = () => {
   const router = useRouter();
 
   const submitRegisterForm = useCallback(
-
     async (formData: any): Promise<void> => {
       setLoading(true);
-      
+
       setError(null);
 
       try {
@@ -35,7 +33,7 @@ const useSignup = () => {
         if (response.ok) {
           setData(json);
 
-          router.push(`/verify/${json.verification_id}`);
+          // router.push(`/verify/${json.verification_id}`);
         } else {
           setError(json);
         }

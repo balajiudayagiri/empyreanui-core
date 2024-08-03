@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-
+import mongoose, { Schema } from "mongoose";
 import users from "empyreanui/models/Empyrean_users";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -7,27 +6,30 @@ import { NextRequest, NextResponse } from "next/server";
 import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
 
 import mongoConnection from "empyreanui/services/db2connect";
+
 import tokenValidator from "empyreanui/utils/tokenValidator";
 
-const { ObjectId } = mongoose.Types;
-
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: NextRequest) {
   try {
     await mongoConnection();
 
-    const { id } = params;
+    const { _id, user_role = "USER" } = await tokenValidator(request);
 
-    await tokenValidator(request);
-    const getUser = await users.findOne({ _id: new ObjectId(id) });
+    let getusers;
 
-    if (getUser) {
-      return NextResponse.json(
-        { ...getUser._doc },
-        { status: HTTP_STATUS.ACCEPTED }
-      );
+    if (user_role.toUpperCase() === "ADMIN") {
+      getusers = await users.find();
+
+      return NextResponse.json(getusers, { status: HTTP_STATUS.OK });
+    } else {
+      getusers = await users.findOne({ _id });
+
+      if (getusers) {
+        return NextResponse.json(
+          { ...getusers._doc },
+          { status: HTTP_STATUS.OK }
+        );
+      }
     }
 
     return NextResponse.json(

@@ -19,15 +19,17 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "empyreanui/components/ui/input-otp";
-import { toast } from "empyreanui/components/ui/use-toast";
+import VerifyOTP from "empyreanui/apiServices/users/verifyOTP";
 
+// Define the schema for OTP validation using zod
 const FormSchema = z.object({
-  pin: z.string().min(6, {
-    message: "Your one-time password must be 6 characters.",
+  pin: z.string().length(6, {
+    message: "Your one-time password must be exactly 6 characters.",
   }),
 });
 
 export function VerifyForm() {
+  const [data, loading, error, submitOTP] = VerifyOTP();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -35,20 +37,14 @@ export function VerifyForm() {
     },
   });
 
+  // Function to handle form submission
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "OTP Submitted",
-      //   description: (
-      //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-      //     </pre>
-      //   ),
-    });
+    submitOTP(data);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="pin"
@@ -58,25 +54,27 @@ export function VerifyForm() {
               <FormControl>
                 <InputOTP maxLength={6} {...field}>
                   <InputOTPGroup className="*:border-primary">
-                    <InputOTPSlot index={0} />
-                    <InputOTPSlot index={1} />
-                    <InputOTPSlot index={2} />
-                    <InputOTPSlot index={3} />
-                    <InputOTPSlot index={4} />
-                    <InputOTPSlot index={5} />
+                    {/* Render OTP slots */}
+                    {[...Array(6)].map((_, index) => (
+                      <InputOTPSlot key={index} index={index} />
+                    ))}
                   </InputOTPGroup>
                 </InputOTP>
               </FormControl>
               <FormDescription>
-                Please enter the one-time password sent to your mail.
+                Please enter the one-time password sent to your email.
               </FormDescription>
-              <FormMessage />
+              <FormMessage>{form.formState.errors.pin?.message}</FormMessage>
             </FormItem>
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={loading} className="w-full">
+          {loading ? "Verifying..." : "Submit"}
+        </Button>
       </form>
+      {data && <p className="text-green-500">OTP Verified Successfully!</p>}
+      {error && <p className="text-red-500">Error: {error.message}</p>}
     </Form>
   );
 }

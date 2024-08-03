@@ -124,7 +124,9 @@ function JsDocGenerator() {
             </p>
           </>
         ) : (
-          <RedmeRenderer markdown={readme} />
+          <>
+            <RedmeRenderer markdown={readme} />
+          </>
         )}
       </div>
       <TooltipProvider>

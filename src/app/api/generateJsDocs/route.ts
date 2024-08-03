@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     const response = await groq.chat.completions.create({
       messages: [jsDocsPrompting, ...newConversation],
-      model: "gemma2-9b-it",
+      model: "llama3-groq-70b-8192-tool-use-preview",
       temperature: 0.7,
       max_tokens: 1024,
       top_p: 1,

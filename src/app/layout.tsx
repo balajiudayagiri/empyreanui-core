@@ -7,7 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "empyreanui/components/ui/toaster";
 import Footer from "./Footer";
 import { NextThemesProviders } from "empyreanui/Providers/theme-provider";
-import Head from "next/head";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -86,22 +85,20 @@ export const metadata: Metadata = {
     siteName: "EmpyreanUI",
     images: [
       {
-        url: "https://empyreanui-core.vercel.app/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/seo/HomePage.png", // Path to the image in your public folder
         alt: "EmpyreanUI - The Ultimate UI Library",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@EmpyreanUI",
-    creator: "@EmpyreanUI",
-    title: "EmpyreanUI - The Ultimate UI Library",
-    description:
-      "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
-    images: ["https://empyreanui-core.vercel.app/twitter-image.jpg"],
-  },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   site: "@EmpyreanUI",
+  //   creator: "@EmpyreanUI",
+  //   title: "EmpyreanUI - The Ultimate UI Library",
+  //   description:
+  //     "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
+  //   images: ["/public/seo/HomePage.png"],
+  // },
   // verification: {
   //   google: "1234567890",
   //   yandex: "1234567890",
@@ -121,9 +118,9 @@ export const metadata: Metadata = {
   bookmarks: ["https://empyreanui-core.vercel.app/bookmarks"],
   category: "Web Development",
   classification: "UI Library",
-  other: {
-    customMeta: "Custom Meta Value",
-  },
+  // other: {
+  //   customMeta: "Custom Meta Value",
+  // },
 };
 
 export default function RootLayout({

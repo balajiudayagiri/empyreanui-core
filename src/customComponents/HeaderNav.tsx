@@ -130,13 +130,22 @@ const navLinks: { [key: string]: JSX.Element } = {
 };
 
 const HeaderNavLink: React.FC = () => {
-  const param = usePathname();
+  const pathname = usePathname();
 
-  const renderNavLinks = useMemo(
-    () => navLinks[param] || navLinks["default"],
-    [param]
-  );
+  // Function to find the best match for the pathname
+  const findNavLink = (pathname: string) => {
+    // Iterate through navLinks to find the most specific match
+    const match = Object.keys(navLinks).reduce((acc, key) => {
+      if (pathname.startsWith(key) && key.length > acc.length) {
+        return key;
+      }
+      return acc;
+    }, "");
 
+    return navLinks[match] || navLinks["default"];
+  };
+
+  const renderNavLinks = useMemo(() => findNavLink(pathname), [pathname]);
   return <div className="flex">{renderNavLinks}</div>;
 };
 

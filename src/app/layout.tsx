@@ -37,15 +37,22 @@ export const metadata: Metadata = {
     "React",
   ],
   referrer: "origin",
-  viewport: "width=device-width, initial-scale=1",
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
   creator: "Balaji Udayagiri",
   publisher: "EmpyreanUI",
   robots: {
     index: true,
     follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
   },
   alternates: {
     canonical: "https://empyreanui-core.vercel.app",
+    languages: {
+      "en-US": "https://empyreanui-core.vercel.app/en",
+      "es-ES": "https://empyreanui-core.vercel.app/es",
+    },
   },
   icons: {
     icon: [
@@ -83,26 +90,34 @@ export const metadata: Metadata = {
     description:
       "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
     siteName: "EmpyreanUI",
+    locale: "en_US",
     images: [
       {
-        url: "/seo/HomePage.png", // Path to the image in your public folder
+        url: "/public/HomePage.png",
+        alt: "EmpyreanUI - The Ultimate UI Library",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@EmpyreanUI",
+    creator: "@EmpyreanUI",
+    title: "EmpyreanUI - The Ultimate UI Library",
+    description:
+      "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
+    images: [
+      {
+        url: "/public/HomePage.png",
         alt: "EmpyreanUI - The Ultimate UI Library",
       },
     ],
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   site: "@EmpyreanUI",
-  //   creator: "@EmpyreanUI",
-  //   title: "EmpyreanUI - The Ultimate UI Library",
-  //   description:
-  //     "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
-  //   images: ["/public/seo/HomePage.png"],
-  // },
-  // verification: {
-  //   google: "1234567890",
-  //   yandex: "1234567890",
-  // },
+  verification: {
+    google: "1234567890", // Update with actual verification code
+    yandex: "1234567890", // Update with actual verification code
+  },
   appleWebApp: {
     capable: true,
     title: "EmpyreanUI",
@@ -110,6 +125,8 @@ export const metadata: Metadata = {
   },
   formatDetection: {
     telephone: false,
+    address: false,
+    email: false,
   },
   abstract:
     "EmpyreanUI - The best user-created UI library with AI-powered README and JSDocs generators.",
@@ -118,9 +135,80 @@ export const metadata: Metadata = {
   bookmarks: ["https://empyreanui-core.vercel.app/bookmarks"],
   category: "Web Development",
   classification: "UI Library",
-  // other: {
-  //   customMeta: "Custom Meta Value",
-  // },
+  other: {
+    "theme-color": "#000000", // Customize your theme color
+    "msapplication-TileColor": "#000000",
+    "msapplication-config": "/browserconfig.xml", // Add a browser config file if needed
+    "structured-data": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      url: "https://empyreanui-core.vercel.app/",
+      potentialAction: {
+        "@type": "SearchAction",
+        target:
+          "https://empyreanui-core.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+      name: "EmpyreanUI",
+      description: "The Ultimate UI Library",
+      mainEntityOfPage: "https://empyreanui-core.vercel.app",
+      inLanguage: "en-US",
+      alternateName: "EmpyreanUI - The Ultimate User Interface Library",
+      keywords: [
+        "UI library",
+        "EmpyreanUI",
+        "animated UI elements",
+        "web development",
+      ],
+      sitelinks: {
+        "@type": "ItemList",
+        itemListElement: [
+          {
+            "@type": "SiteNavigationElement",
+            position: 1,
+            name: "Gallery",
+            url: "https://empyreanui-core.vercel.app/browse",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            position: 2,
+            name: "Create a Component",
+            url: "https://empyreanui-core.vercel.app/postcomponent",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            position: 3,
+            name: "Blogs",
+            url: "https://empyreanui-core.vercel.app/blogs",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            position: 4,
+            name: "Readme Editor",
+            url: "https://empyreanui-core.vercel.app/readme",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            position: 5,
+            name: "About Us",
+            url: "https://empyreanui-core.vercel.app/about",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            position: 6,
+            name: "AI Docs Generator",
+            url: "https://empyreanui-core.vercel.app/jsdoc-ai",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            position: 7,
+            name: "AI Readme Generator",
+            url: "https://empyreanui-core.vercel.app/readme-ai",
+          },
+        ],
+      },
+    }),
+  },
 };
 
 export default function RootLayout({

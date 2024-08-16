@@ -135,80 +135,80 @@ export const metadata: Metadata = {
   bookmarks: ["https://empyreanui-core.vercel.app/bookmarks"],
   category: "Web Development",
   classification: "UI Library",
-  other: {
-    "theme-color": "#000000", // Customize your theme color
-    "msapplication-TileColor": "#000000",
-    "msapplication-config": "/browserconfig.xml", // Add a browser config file if needed
-    "structured-data": JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: "https://empyreanui-core.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target:
-          "https://empyreanui-core.vercel.app/search?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
-      name: "EmpyreanUI",
-      description: "The Ultimate UI Library",
-      mainEntityOfPage: "https://empyreanui-core.vercel.app",
-      inLanguage: "en-US",
-      alternateName: "EmpyreanUI - The Ultimate User Interface Library",
-      keywords: [
-        "UI library",
-        "EmpyreanUI",
-        "animated UI elements",
-        "web development",
-      ],
-      sitelinks: {
-        "@type": "ItemList",
-        itemListElement: [
-          {
-            "@type": "SiteNavigationElement",
-            position: 1,
-            name: "Gallery",
-            url: "https://empyreanui-core.vercel.app/browse",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            position: 2,
-            name: "Create a Component",
-            url: "https://empyreanui-core.vercel.app/postcomponent",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            position: 3,
-            name: "Blogs",
-            url: "https://empyreanui-core.vercel.app/blogs",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            position: 4,
-            name: "Readme Editor",
-            url: "https://empyreanui-core.vercel.app/readme",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            position: 5,
-            name: "About Us",
-            url: "https://empyreanui-core.vercel.app/about",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            position: 6,
-            name: "AI Docs Generator",
-            url: "https://empyreanui-core.vercel.app/jsdoc-ai",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            position: 7,
-            name: "AI Readme Generator",
-            url: "https://empyreanui-core.vercel.app/readme-ai",
-          },
-        ],
-      },
-    }),
-  },
+  // other: {
+  //   "theme-color": "#000000", // Customize your theme color
+  //   "msapplication-TileColor": "#000000",
+  //   "msapplication-config": "/browserconfig.xml", // Add a browser config file if needed
+  //   "structured-data": JSON.stringify({
+  //     "@context": "https://schema.org",
+  //     "@type": "WebSite",
+  //     url: "https://empyreanui-core.vercel.app/",
+  //     potentialAction: {
+  //       "@type": "SearchAction",
+  //       target:
+  //         "https://empyreanui-core.vercel.app/search?q={search_term_string}",
+  //       "query-input": "required name=search_term_string",
+  //     },
+  //     name: "EmpyreanUI",
+  //     description: "The Ultimate UI Library",
+  //     mainEntityOfPage: "https://empyreanui-core.vercel.app",
+  //     inLanguage: "en-US",
+  //     alternateName: "EmpyreanUI - The Ultimate User Interface Library",
+  //     keywords: [
+  //       "UI library",
+  //       "EmpyreanUI",
+  //       "animated UI elements",
+  //       "web development",
+  //     ],
+  //     sitelinks: {
+  //       "@type": "ItemList",
+  //       itemListElement: [
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 1,
+  //           name: "Gallery",
+  //           url: "https://empyreanui-core.vercel.app/browse",
+  //         },
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 2,
+  //           name: "Create a Component",
+  //           url: "https://empyreanui-core.vercel.app/postcomponent",
+  //         },
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 3,
+  //           name: "Blogs",
+  //           url: "https://empyreanui-core.vercel.app/blogs",
+  //         },
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 4,
+  //           name: "Readme Editor",
+  //           url: "https://empyreanui-core.vercel.app/readme",
+  //         },
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 5,
+  //           name: "About Us",
+  //           url: "https://empyreanui-core.vercel.app/about",
+  //         },
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 6,
+  //           name: "AI Docs Generator",
+  //           url: "https://empyreanui-core.vercel.app/jsdoc-ai",
+  //         },
+  //         {
+  //           "@type": "SiteNavigationElement",
+  //           position: 7,
+  //           name: "AI Readme Generator",
+  //           url: "https://empyreanui-core.vercel.app/readme-ai",
+  //         },
+  //       ],
+  //     },
+  //   }),
+  // },
 };
 
 export default function RootLayout({

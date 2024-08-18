@@ -12,6 +12,8 @@ import mongoConnection from "empyreanui/services/db2connect";
 
 import OTP from "empyreanui/models/OTP";
 
+import jwt from "jsonwebtoken";
+
 /**
  * Validates the One-Time Password (OTP) provided in the request body.
  *
@@ -29,18 +31,19 @@ import OTP from "empyreanui/models/OTP";
 
 const validateOTP = async (
   id: string,
-  body: { otp?: number }
+  body: { pin?: number | string }
 ): Promise<void> => {
-  const errors: { otp?: string } = {};
+  const errors: { pin?: string } = {};
 
   const status: number = HTTP_STATUS.BAD_REQUEST;
 
-  errors.otp = ERROR_MESSAGES.invalid_otp;
-
-  if (body?.otp && typeof body?.otp === "number") {
+  errors.pin = ERROR_MESSAGES.invalid_otp;
+  const { pin } = body;
+  const otp = Number(pin);
+  if (otp && typeof otp === "number") {
     const isValidOtp = await OTP.findOne({
       user_verification_id: id,
-      otp: body?.otp,
+      otp,
     });
 
     if (isValidOtp) {
@@ -75,18 +78,26 @@ export async function POST(
 ): Promise<NextResponse> {
   try {
     const { id } = params;
-
     const body = await request.json();
 
     await mongoConnection();
 
     await validateOTP(id, body);
 
+    const D = new Date();
+
     const findIdAndVerify = await User.findOneAndUpdate(
       { verification_id: id, is_verified: false },
       {
         is_verified: true,
         verification_id: v4(),
+        $push: {
+          user_logs: {
+            event: "Verified",
+            description: `User verified at ${D.toString()}`,
+            time: D,
+          },
+        },
       },
       {
         new: true,
@@ -94,8 +105,21 @@ export async function POST(
     );
 
     if (findIdAndVerify) {
+      const { is_verified, firstname, _id, name, user_role, email } =
+        findIdAndVerify;
+
+      const payload = {
+        firstname,
+        email,
+        _id,
+        name,
+        is_verified,
+        user_role,
+      };
+      const token = jwt.sign(payload, process.env.MY_SECRET_TOKEN!);
+
       return NextResponse.json(
-        { message: "Verified" },
+        { message: "Verified", token },
         { status: HTTP_STATUS.OK }
       );
     }

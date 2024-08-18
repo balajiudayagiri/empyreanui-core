@@ -19,7 +19,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "empyreanui/components/ui/input-otp";
-import VerifyOTP from "empyreanui/apiServices/users/verifyOTP";
+import VerifyOTP from "empyreanui/apiServices/users/ForgotVerifyOTP";
 
 // Define the schema for OTP validation using zod
 const FormSchema = z.object({
@@ -28,7 +28,7 @@ const FormSchema = z.object({
   }),
 });
 
-export function VerifyForm() {
+export function ForgotVerifyForm() {
   const [data, loading, error, submitOTP] = VerifyOTP();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),

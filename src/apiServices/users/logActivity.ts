@@ -20,7 +20,6 @@ const useLogActivity = () => {
         if (!response.ok) {
           throw { message: "Failed" };
         }
-
         return;
       } catch (error) {
         console.log(error);

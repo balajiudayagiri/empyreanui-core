@@ -56,8 +56,6 @@ export async function POST(
       }
     );
 
-    console.log(changePassword);
-
     // Check if the password was successfully changed
     if (changePassword) {
       return NextResponse.json(

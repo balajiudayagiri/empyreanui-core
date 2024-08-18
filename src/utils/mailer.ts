@@ -13,10 +13,9 @@ const transporter: nodemailer.Transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.MY_EMAIL,
-    pass: process.env.MY_PASS,
+    pass: process.env.MY_PASSCODE,
   },
 });
-
 /**
  * Generates the email subject and content based on the mail type.
  *
@@ -38,7 +37,7 @@ const mail = (
     name?: string;
   }
 ) => {
-  const { firstname, otp, name } = data;
+  const { firstname, otp } = data;
 
   switch (mailType) {
     case "Resend":
@@ -86,31 +85,23 @@ Your OTP (One-Time Password) for verification is: ${otp}`,
     case "ForgotPassword":
       return {
         subject: "Reset Your Password",
-        text: `Hi ${firstname},
-
-We received a request to reset your password. To proceed, please use the following link:
-
-${data.resetLink}
-
-If you didn't request a password reset, please ignore this email.
-
-Best regards,
-The Empyrean UI Team`,
+        text: `Hi ${firstname}, 
+Your OTP (One-Time Password) to reset your password is: ${otp}`,
         html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-                  <div style="background-color: #000; color: #fff; padding: 10px; text-align: center; border-radius: 8px 8px 0 0;">
-                      <h2 style=" color: #fff;">Empyrean <span style=" color: #eab308;">UI</span></h2>
-                  </div>
-                  <div style="padding: 20px;">
-                      <p>Dear ${firstname},</p>
-                      <p>We received a request to reset your password. To proceed, please use the following link:</p>
-                      <p><a href="${data.resetLink}" style="color: #eab308; text-decoration: none;">${data.resetLink}</a></p>
-                      <p>If you didn't request a password reset, please ignore this email.</p>
-                      <p>If you need further assistance, please contact our support team.</p>
-                  </div>
-                  <div style="text-align: center; margin-top: 20px; color: #555;">
-                      <p>This email was sent automatically. Please do not reply to this email.</p>
-                  </div>
-              </div>`,
+                <div style="background-color: #000; color: #fff; padding: 10px; text-align: center; border-radius: 8px 8px 0 0;">
+                    <h2 style=" color: #fff;">Empyrean <span  style=" color: #eab308;">UI</span></h2>
+                </div>
+                <div style="padding: 20px;">
+                    <p>Dear ${firstname},</p>
+                    <p>Your OTP (One-Time Password) to reset your password is:</p>
+                    <h3 style="font-size:26px;"> <strong>${otp}</strong></h3>
+                    <p>Please use this OTP to proceed with your action.</p>
+                    <p>If you did not request this OTP, please ignore this email.</p>
+                </div>
+                <div style="text-align: center; margin-top: 20px; color: #555;">
+                    <p>This email was sent automatically. Please do not reply to this email.</p>
+                </div>
+            </div>`,
       };
     default:
       return {};
@@ -140,11 +131,9 @@ The Empyrean UI Team`,
  *   // Handle errors, e.g., log error or notify user
  * }
  */
-const sendMail = async (user: any, mailType: MailTypes) => {
+const sendMail = async (user: any, mailType: MailTypes): Promise<void> => {
   try {
-    console.log(user);
     const mailBody = mail(mailType, user);
-    console.log(mailBody);
     await transporter.sendMail({
       from: process.env.MY_EMAIL,
       to: user.email,

@@ -1,6 +1,8 @@
+import modal_conts from "empyreanui/constants/MODAL_CONSTANTS.json";
 import { useRouter } from "next/navigation";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 import uselogActivity from "./logActivity";
+import { UserContext } from "empyreanui/Providers/user-provider";
 
 /**
  * A custom hook for handling user sign-in.
@@ -12,13 +14,13 @@ import uselogActivity from "./logActivity";
  * - `submitLoginForm` - A function to submit the login form.
  */
 
-const useSignin = () => {
+const useSignin = (): Array<any> => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
   const router = useRouter();
   const [submitActivity] = uselogActivity();
-
+  const { setToken, setModalInfo } = useContext(UserContext);
   /**
    * Submits the login form data and handles sign-in.
    *
@@ -51,10 +53,17 @@ const useSignin = () => {
 
       if (response.ok) {
         localStorage.setItem("token", json.token);
-        submitActivity(1, json.token);
+        setToken(json?.token);
+        submitActivity("login", json.token);
         setData(json);
-        // router.push("/");
       } else {
+        if (response.status === 403) {
+          sessionStorage.setItem("verification_id", json.verification_id);
+          setModalInfo({
+            isOpen: true,
+            modalName: modal_conts.VERIFICATION_MODAL,
+          });
+        }
         setError(json);
       }
     } catch (error) {

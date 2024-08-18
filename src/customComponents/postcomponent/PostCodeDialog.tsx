@@ -1,5 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, {
+  /**useEffect, */ useState,
+  useRef,
+  useContext,
+  useEffect,
+} from "react";
 import {
   Dialog,
   DialogTrigger,
@@ -13,6 +18,7 @@ import { Loader } from "lucide-react";
 import { Input } from "empyreanui/components/ui/input";
 import { Label } from "@radix-ui/react-select";
 import { Textarea } from "empyreanui/components/ui/textarea";
+import { UserContext } from "empyreanui/Providers/user-provider";
 
 interface User {
   firstName: string;
@@ -37,12 +43,15 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
   isLoading,
   disabled,
 }) => {
+  const { user, userToken, setModalInfo } = useContext(UserContext);
+  const clickRef = useRef(false);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [componentName, setComponentName] = useState<string>("");
   const [componentCategory, setComponentCategory] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
+  const btnRef = useRef<HTMLButtonElement | null>(null);
   const handleSubmit = () => {
     onSubmit(
       {
@@ -58,10 +67,43 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
     );
   };
 
+  const handlePostBTN = () => {
+    clickRef.current = true;
+    console.log(clickRef);
+    if (userToken) {
+      setIsOpen(true);
+    } else {
+      setModalInfo({ isOpen: true, modalName: "SIGNIN_MODAL" });
+    }
+  };
+
+  useEffect(() => {
+    if (clickRef.current && Object.keys(user)?.length !== 0) {
+      btnRef?.current?.click();
+    }
+
+    setFirstName(user?.firstname ?? "");
+    setLastName(user?.lastname ?? "");
+  }, [user]);
+
+  if (!userToken) {
+    return (
+      <Button onClick={handlePostBTN} disabled={disabled}>
+        Post Code
+      </Button>
+    );
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild disabled={disabled}>
-        <Button disabled={disabled} onClick={() => setIsOpen(true)}>
+        <Button
+          ref={btnRef}
+          disabled={disabled}
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        >
           Post Code
         </Button>
       </DialogTrigger>

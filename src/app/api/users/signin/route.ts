@@ -36,7 +36,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     // Authenticate the user and generate a token
     const token = await validateUser(body.email, body.password);
-
     // Return a JSON response with the token and HTTP status 200
     return NextResponse.json({ token }, { status: HTTP_STATUS.OK });
   } catch (error: any) {

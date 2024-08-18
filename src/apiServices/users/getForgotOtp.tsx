@@ -1,13 +1,17 @@
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { useState, useCallback, useContext } from "react";
+import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 
-const VerifyOTP = () => {
+const useGetForgotOtp = () => {
   const [data, setData] = useState<any>(null);
+
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState<any>(null);
-  const id = sessionStorage.getItem("verification_id");
-  const { setToken } = useContext(UserContext)
-  const submitOTP = useCallback(async (formData: any): Promise<void> => {
+
+  const { setModalInfo } = useContext(UserContext);
+
+  const submitMail = useCallback(async (formData: any): Promise<void> => {
     setLoading(true);
     setError(null);
 
@@ -17,16 +21,15 @@ const VerifyOTP = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData }),
       };
-      const response = await fetch(`api/users/verify/${id}`, options);
+      const response = await fetch(`api/users/forgot-password/getOTP`, options);
       const json = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", json.token);
-        setToken(json?.token);
         setData(json);
-        sessionStorage.removeItem("verification_id");
+        sessionStorage.setItem("verification_id", json?.verification_id);
+        setModalInfo({ isOpen: true, modalName: MODAL_CONSTANTS.FP_OTP_MODAL });
       } else {
         setError(json);
       }
@@ -37,7 +40,7 @@ const VerifyOTP = () => {
     }
   }, []);
 
-  return [data, loading, error, submitOTP];
+  return [data, loading, error, submitMail];
 };
 
-export default VerifyOTP;
+export default useGetForgotOtp;

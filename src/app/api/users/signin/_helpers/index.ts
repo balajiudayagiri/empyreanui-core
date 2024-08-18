@@ -3,6 +3,9 @@ import ERROR_MESSAGES from "empyreanui/constants/ERROR_MESSAGES.json";
 import users from "empyreanui/models/Empyrean_users";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import OTP from "empyreanui/models/OTP";
+import generateOTP from "empyreanui/utils/generateOTP";
+import sendMail from "empyreanui/utils/mailer";
 
 /**
  * Validates the input data for user login.
@@ -61,8 +64,15 @@ export const validateInputs = async (body: {
  * - `status` (number): HTTP status code indicating the type of error.
  * @returns {Promise<string>} A promise that resolves to the authentication token if the user is authenticated successfully.
  */
-export const validateUser = async (email: string, password: string): Promise<string> => {
-  const errors: { email?: string; password?: string } = {};
+export const validateUser = async (
+  email: string,
+  password: string
+): Promise<string> => {
+  const errors: {
+    email?: string;
+    password?: string;
+    verification_id?: string;
+  } = {};
 
   let status: number = HTTP_STATUS.INTERNAL_SERVER_ERROR;
 
@@ -72,12 +82,33 @@ export const validateUser = async (email: string, password: string): Promise<str
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
       if (validPassword) {
-        const { is_verified, username, _id, name } = user;
+        const { is_verified, firstname, _id, name, user_role } = user;
         if (is_verified) {
-          const payload = { username, email, _id, name, is_verified };
+          const payload = {
+            firstname,
+            email,
+            _id,
+            name,
+            is_verified,
+            user_role,
+          };
           const token = jwt.sign(payload, process.env.MY_SECRET_TOKEN!);
           return token;
         } else {
+          const otp = generateOTP();
+
+          // Create a new OTP record in the database associated with the created user
+          await OTP.create({
+            user_id: user._id,
+            otp,
+            user_verification_id: user._doc.verification_id,
+          });
+
+          // Send a verification email to the user with the generated OTP
+          await sendMail({ ...user?._doc, otp }, "Resend");
+
+          errors.email = ERROR_MESSAGES.email_invalid;
+          errors.verification_id = user.verification_id;
           errors.email = ERROR_MESSAGES.email_not_verified;
           status = HTTP_STATUS.FORBIDDEN;
           throw { ...errors, status };
@@ -88,7 +119,6 @@ export const validateUser = async (email: string, password: string): Promise<str
         throw { ...errors, status };
       }
     } else {
-      errors.email = ERROR_MESSAGES.email_invalid;
       status = HTTP_STATUS.NOT_FOUND;
       throw { ...errors, status };
     }

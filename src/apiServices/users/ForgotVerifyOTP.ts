@@ -1,3 +1,4 @@
+import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { useState, useCallback, useContext } from "react";
 
@@ -5,8 +6,8 @@ const VerifyOTP = () => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
+  const { setModalInfo } = useContext(UserContext);
   const id = sessionStorage.getItem("verification_id");
-  const { setToken } = useContext(UserContext)
   const submitOTP = useCallback(async (formData: any): Promise<void> => {
     setLoading(true);
     setError(null);
@@ -17,16 +18,20 @@ const VerifyOTP = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, verification_id: id }),
       };
-      const response = await fetch(`api/users/verify/${id}`, options);
+      const response = await fetch(
+        `api/users/forgot-password/allow-changing`,
+        options
+      );
       const json = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", json.token);
-        setToken(json?.token);
         setData(json);
-        sessionStorage.removeItem("verification_id");
+        setModalInfo({
+          isOpen: true,
+          modalName: MODAL_CONSTANTS.FP_CHANGE_PWD_MODAL,
+        });
       } else {
         setError(json);
       }

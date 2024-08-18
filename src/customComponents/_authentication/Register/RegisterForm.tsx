@@ -17,7 +17,10 @@ import { Loader2 } from "lucide-react";
 import useSignup from "empyreanui/apiServices/users/createUser";
 import { Button } from "empyreanui/components/ui/button";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
+import { useContext } from "react";
+import { UserContext } from "empyreanui/Providers/user-provider";
+import MODALS_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 // Define the schema for form validation using zod
 const formSchema = z
   .object({
@@ -53,7 +56,8 @@ const formSchema = z
  */
 export default function Register(): JSX.Element {
   const [data, loading, error, submitRegisterForm] = useSignup();
-
+  const pathname = usePathname();
+  const { setModalInfo } = useContext(UserContext);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -61,19 +65,15 @@ export default function Register(): JSX.Element {
   // Function to handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
     submitRegisterForm(values);
-    console.log(values);
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid gap-2 max-w-[400px] p-3 py-5 rounded-2xl w-full"
+        className="grid gap-2 max-w-[400px] px-3  rounded-2xl w-full"
       >
-        <div>
-          <h1 className="text-3xl font-medium uppercase">Register</h1>
-          {/* Optional description */}
-        </div>
+        <div>{/* Optional description */}</div>
         <FormField
           control={form.control}
           name="firstname"
@@ -84,7 +84,8 @@ export default function Register(): JSX.Element {
                 <Input placeholder="Firstname" type="text" {...field} />
               </FormControl>
               <FormMessage>
-                {form.formState.errors.firstname?.message}
+                {form.formState.errors.firstname?.message ||
+                  (error?.firstname && error?.firstname)}
               </FormMessage>
             </FormItem>
           )}
@@ -99,7 +100,8 @@ export default function Register(): JSX.Element {
                 <Input placeholder="Lastname" type="text" {...field} />
               </FormControl>
               <FormMessage>
-                {form.formState.errors.lastname?.message}
+                {form.formState.errors.lastname?.message ||
+                  (error?.lastname && error?.lastname)}
               </FormMessage>
             </FormItem>
           )}
@@ -114,7 +116,8 @@ export default function Register(): JSX.Element {
                 <Input placeholder="Username" type="text" {...field} />
               </FormControl>
               <FormMessage>
-                {form.formState.errors.username?.message}
+                {form.formState.errors.username?.message ||
+                  (error?.username && error?.username)}
               </FormMessage>
             </FormItem>
           )}
@@ -128,7 +131,10 @@ export default function Register(): JSX.Element {
               <FormControl>
                 <Input placeholder="Email" type="email" {...field} />
               </FormControl>
-              <FormMessage>{form.formState.errors.email?.message}</FormMessage>
+              <FormMessage>
+                {form.formState.errors.email?.message ||
+                  (error?.email && error?.email)}
+              </FormMessage>
             </FormItem>
           )}
         />
@@ -142,7 +148,8 @@ export default function Register(): JSX.Element {
                 <Input placeholder="Password" type="password" {...field} />
               </FormControl>
               <FormMessage>
-                {form.formState.errors.password?.message}
+                {form.formState.errors.password?.message ||
+                  (error?.password && error?.password)}
               </FormMessage>
             </FormItem>
           )}
@@ -180,11 +187,25 @@ export default function Register(): JSX.Element {
           )}
         </Button>
       </form>
-      <p>
+      <p className="mt-1 ml-3 text-xs">
         Have an account?{" "}
-        <Link className="text-blue-700" href="/signin">
-          Sign in
-        </Link>
+        {pathname === "/signup" ? (
+          <Link className="text-blue-700" href="/signin">
+            Sign in
+          </Link>
+        ) : (
+          <span
+            className="text-blue-700 cursor-pointer"
+            onClick={() =>
+              setModalInfo({
+                isOpen: true,
+                modalName: MODALS_CONSTANTS.SIGNIN_MODAL,
+              })
+            }
+          >
+            Sign in
+          </span>
+        )}
       </p>
     </Form>
   );

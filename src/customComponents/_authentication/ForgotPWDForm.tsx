@@ -13,27 +13,43 @@ import {
   FormMessage,
 } from "empyreanui/components/ui/form";
 import { Input } from "empyreanui/components/ui/input";
-import useSignin from "empyreanui/apiServices/users/loginUser";
+import setNewPWD from "empyreanui/apiServices/users/setNewPwd";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
+import { useContext } from "react";
+import { UserContext } from "empyreanui/Providers/user-provider";
+import MODALS_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 // Define the schema for form validation using zod
-const formSchema = z.object({
-  email: z.string().email("Invalid email address."),
-  password: z
-    .string()
-    .min(8, {
-      message: "Password must be at least 8 characters.",
-    })
-    .max(16, {
-      message: "Password must be below 16 characters.",
-    }),
-});
+const formSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, {
+        message: "Password must be at least 8 characters.",
+      })
+      .max(16, {
+        message: "Password must be below 16 characters.",
+      }),
+    confirm: z
+      .string()
+      .min(8, {
+        message: "Password must be at least 8 characters.",
+      })
+      .max(16, {
+        message: "Password must be below 16 characters.",
+      }),
+  })
+  .refine((data) => data.password === data.confirm, {
+    message: "Passwords don't match",
+    path: ["confirm"],
+  });
 
-export default function Login() {
+export default function SETFORGOTPWD() {
   // Destructure state and functions from the useSignin hook
-  const [data, loading, error, submitLoginForm] = useSignin();
-
+  const [data, loading, error, setPWD] = setNewPWD();
+  const pathname = usePathname();
+  const { setModalInfo } = useContext(UserContext);
   // Initialize form handling with react-hook-form and zod for validation
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,8 +57,7 @@ export default function Login() {
 
   // Function to handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
-    submitLoginForm(values);
-    console.log(values);
+    setPWD(values);
   }
 
   return (
@@ -51,24 +66,10 @@ export default function Login() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 max-w-[400px] rounded-2xl w-full"
       >
-        <h1 className="text-3xl font-medium">LOGIN</h1>
+        {/* <h1 className="text-3xl font-medium">LOGIN</h1>
         <p className="!mt-1 text-xs">
           Enter your email and password to login to your account
-        </p>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" type="email" {...field} />
-              </FormControl>
-              {/* Display error message if any */}
-              <FormMessage>{form.formState.errors.email?.message}</FormMessage>
-            </FormItem>
-          )}
-        />
+        </p> */}
         <FormField
           control={form.control}
           name="password"
@@ -80,11 +81,30 @@ export default function Login() {
               </FormControl>
               {/* Display error message if any */}
               <FormMessage>
-                {form.formState.errors.password?.message}
+                {form.formState.errors.password?.message ||
+                  (error?.password && error?.password)}
               </FormMessage>
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="confirm"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Confirm</FormLabel>
+              <FormControl>
+                <Input placeholder="Confirm" type="password" {...field} />
+              </FormControl>
+              {/* Display error message if any */}
+              <FormMessage>
+                {form.formState.errors.confirm?.message ||
+                  (error?.confirm && error?.confirm)}
+              </FormMessage>
+            </FormItem>
+          )}
+        />
+
         <button
           className="bg-primary p-1 py-1.5 w-full rounded-md text-primary-foreground font-semibold disabled:opacity-70"
           type="submit"
@@ -98,13 +118,10 @@ export default function Login() {
             "Submit"
           )}
         </button>
+        <span className="text-sm text-red-700">
+          {error?.message && error?.message}
+        </span>
       </form>
-      <p className="mt-1.5">
-        Don&apos;t Have an account?{" "}
-        <Link className="text-blue-700" href="/signup">
-          Sign up
-        </Link>{" "}
-      </p>
     </Form>
   );
 }

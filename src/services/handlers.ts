@@ -1,6 +1,6 @@
 // src/services/handlers.ts
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "./dbConnect";
+import dbConnect from "./db2connect";
 import Post from "../models/Post";
 
 const handlers = {

@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "empyreanui/services/dbConnect";
+import dbConnect from "empyreanui/services/db2connect";
 import Post from "empyreanui/models/Post";
 import { generateCustomUUID } from "empyreanui/utils";
+import tokenValidator from "empyreanui/utils/tokenValidator";
+import { updatePostActivity } from "../_helpers";
 
 export async function GET(req: NextRequest) {
   try {
@@ -62,13 +64,15 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     await dbConnect();
+    const { _id } = await tokenValidator(req);
     const body = await req.json();
     const customId = generateCustomUUID(10);
     const postData = {
       customId,
       ...body,
     };
-    const post = await Post.create(postData);
+    const post: Record<string, any> = await Post.create(postData);
+    updatePostActivity(_id, "component_ids", post?._id);
     return NextResponse.json({ success: true, data: post }, { status: 201 });
   } catch (error) {
     if (error instanceof Error) {

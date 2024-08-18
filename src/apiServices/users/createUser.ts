@@ -1,6 +1,8 @@
+import modal_conts from "empyreanui/constants/MODAL_CONSTANTS.json";
+import { UserContext } from "empyreanui/Providers/user-provider";
 import { useRouter } from "next/navigation";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 
 const useSignup = () => {
   const [data, setData] = useState<any>(null);
@@ -8,6 +10,8 @@ const useSignup = () => {
   const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState<any>(null);
+
+  const { setModalInfo } = useContext(UserContext);
 
   const router = useRouter();
 
@@ -32,8 +36,11 @@ const useSignup = () => {
 
         if (response.ok) {
           setData(json);
-
-          // router.push(`/verify/${json.verification_id}`);
+          sessionStorage.setItem("verification_id", json.verification_id);
+          setModalInfo({
+            isOpen: true,
+            modalName: modal_conts.VERIFICATION_MODAL,
+          });
         } else {
           setError(json);
         }

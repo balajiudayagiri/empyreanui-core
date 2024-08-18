@@ -1,10 +1,12 @@
-import { checkUserAndEmail } from "./../../signup/_helpers/index";
+import { checkUserAndEmail } from "../../signup/_helpers/index";
 import users from "empyreanui/models/Empyrean_users";
 import { NextRequest, NextResponse } from "next/server";
 import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
 import mongoConnection from "empyreanui/services/db2connect";
 import User from "empyreanui/models/User";
 import sendMail from "empyreanui/utils/mailer";
+import generateOTP from "empyreanui/utils/generateOTP";
+import OTP from "empyreanui/models/OTP";
 
 /**
  * Checks if a user with the given email exists and allows password reset.
@@ -20,29 +22,33 @@ import sendMail from "empyreanui/utils/mailer";
  * - `message` (string): A descriptive error message.
  * @returns {Promise<void>} A promise that resolves when the email has been sent successfully, or an error is thrown.
  */
-const checkExistingAndSetAllow = async (email: string): Promise<void> => {
+const createOTPandSend = async (email: string): Promise<void> => {
   try {
     // Update the user's record to allow password changes and retrieve the updated document
-    const setOnExisting = await users.findOneAndUpdate(
-      { email },
-      { pass_change_allowed: true },
-      {
-        new: true,
-      }
-    );
+    const user = await users.findOne({ email });
 
     // If the user exists, send a password reset email
-    if (setOnExisting) {
-      await sendMail(
-        { ...setOnExisting._doc, resetLinks: "000000" }, // 'resetLinks' is placeholder and should be replaced with actual reset link
-        "ForgotPassword"
-      );
-      return;
+    if (user) {
+      // Generate a new OTP for the user
+      const otp = generateOTP();
+
+      // Create a new OTP record in the database associated with the created user
+      await OTP.create({
+        user_id: user._doc._id,
+        otp,
+        user_verification_id: user._doc.verification_id,
+      });
+
+      await sendMail({ ...user._doc, otp }, "ForgotPassword");
+      return user._doc.verification_id;
     }
 
     // If no user is found, throw an error
     const status = HTTP_STATUS.BAD_REQUEST;
-    throw { status, message: "User not found or password change not allowed" };
+    throw {
+      status,
+      email: "User not found with this mail or password change not allowed",
+    };
   } catch (error: any) {
     // Throw the error with the message and status code
     throw { ...error, message: error.message };
@@ -79,13 +85,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const { email } = body;
 
     // Check if the user exists and allow password reset
-    await checkExistingAndSetAllow(email);
+    const verification_id = await createOTPandSend(email);
 
     // Return a JSON response with a success message and HTTP status 200
-    return NextResponse.json(
-      { message: "Mail sent" },
-      { status: HTTP_STATUS.OK }
-    );
+    return NextResponse.json({ verification_id }, { status: HTTP_STATUS.OK });
   } catch (error: any) {
     // Extract status and other details from the error object
     const { status = HTTP_STATUS.INTERNAL_SERVER_ERROR, ...err } = error;

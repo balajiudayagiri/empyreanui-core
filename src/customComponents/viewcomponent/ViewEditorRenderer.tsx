@@ -55,7 +55,7 @@ const ViewEditorRenderer: React.FC<EditorRendererProps> = ({
   }, []);
 
   return (
-    <div className="">
+    <div className="max-md:mb-28">
       <div className="hidden md:block">
         <ResizablePanelGroup
           direction={isHorizontal ? "horizontal" : "vertical"}

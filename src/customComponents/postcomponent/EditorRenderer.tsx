@@ -131,7 +131,7 @@ const EditorRenderer: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="max-md:mb-28">
       <h1 className="text-3xl font-black mb-4 text-center text-primary">
         Editor
       </h1>

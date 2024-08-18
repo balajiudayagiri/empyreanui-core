@@ -32,6 +32,12 @@ import { Blog } from "../blogs/Blogtypes";
 import PostBlogDialog from "../blogs/BlogModal";
 import RedmeRenderer from "./RedmeRenderer";
 import { readmeTemplates } from "../_readme-templates/readme-templates";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "empyreanui/components/ui/tabs";
 
 const ReadmeEditor: React.FC = () => {
   const [markdown, setMarkdown] =
@@ -211,28 +217,61 @@ You can edit this text to see a live preview of your README file.
           </Button>
         </PostBlogDialog>
       </div>
-      <ResizablePanelGroup direction="horizontal" className="flex-grow">
-        <ResizablePanel defaultSize={50}>
-          <Editor
-            height="calc(100dvh - 56px)"
-            defaultLanguage="markdown"
-            value={markdown}
-            onChange={handleEditorChange}
-            options={{
-              minimap: { enabled: false },
-              wordWrap: "on",
-              scrollBeyondLastLine: false,
-              automaticLayout: true,
-            }}
-          />
-        </ResizablePanel>
-        <ResizableHandle className="w-1" />
-        <ResizablePanel defaultSize={50}>
-          <div className="preview p-4 h-[calc(100dvh-56px)] overflow-y-scroll text-black">
-            <RedmeRenderer markdown={markdown} />
-          </div>
-        </ResizablePanel>
-      </ResizablePanelGroup>
+      <div className="max-md:hidden">
+        <ResizablePanelGroup direction="horizontal" className="flex-grow">
+          <ResizablePanel defaultSize={50}>
+            <Editor
+              height="calc(100dvh - 56px)"
+              defaultLanguage="markdown"
+              value={markdown}
+              onChange={handleEditorChange}
+              options={{
+                minimap: { enabled: false },
+                wordWrap: "on",
+                scrollBeyondLastLine: false,
+                automaticLayout: true,
+              }}
+            />
+          </ResizablePanel>
+          <ResizableHandle className="w-1" />
+          <ResizablePanel defaultSize={50}>
+            <div className="preview p-4 h-[calc(100dvh-56px)] overflow-y-scroll text-black">
+              <RedmeRenderer markdown={markdown} />
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+      <div className="md:hidden">
+        <Tabs defaultValue="editor">
+          <TabsList className="m-1">
+            <TabsTrigger value="editor" className="flex items-center gap-2">
+              Editor
+            </TabsTrigger>
+            <TabsTrigger value="preview" className="flex items-center gap-2">
+              Preview
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="editor" className="mt-0">
+            <Editor
+              height="calc(100dvh - 56px)"
+              defaultLanguage="markdown"
+              value={markdown}
+              onChange={handleEditorChange}
+              options={{
+                minimap: { enabled: false },
+                wordWrap: "on",
+                scrollBeyondLastLine: false,
+                automaticLayout: true,
+              }}
+            />
+          </TabsContent>
+          <TabsContent value="preview" className="mt-0">
+            <div className="preview p-4 h-[calc(100dvh-56px)] overflow-y-scroll text-black">
+              <RedmeRenderer markdown={markdown} />
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };

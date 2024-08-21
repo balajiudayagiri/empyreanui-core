@@ -130,6 +130,7 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
           <Input
             type="text"
             value={componentName}
+            autoFocus
             onChange={(e) => setComponentName(e.target.value)}
             placeholder="Component Name"
             className="w-full mt-2"

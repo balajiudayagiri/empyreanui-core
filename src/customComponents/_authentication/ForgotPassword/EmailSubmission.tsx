@@ -1,8 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useForm } from "react-hook-form";
+
 import { z } from "zod";
+
 import {
   Form,
   FormControl,
@@ -11,11 +14,13 @@ import {
   FormLabel,
   FormMessage,
 } from "empyreanui/components/ui/form";
+
 import { Input } from "empyreanui/components/ui/input";
+
 import useGetForgotOtp from "empyreanui/apiServices/users/getForgotOtp";
+
 import { Loader2 } from "lucide-react";
-import { useContext } from "react";
-import { UserContext } from "empyreanui/Providers/user-provider";
+
 // Define the schema for form validation using zod
 const formSchema = z.object({
   email: z.string().email("Invalid email address."),

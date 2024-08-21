@@ -1,26 +1,28 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useForm } from "react-hook-form";
+
 import { z } from "zod";
+
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "empyreanui/components/ui/form";
+
 import { Input } from "empyreanui/components/ui/input";
-import setNewPWD from "empyreanui/apiServices/users/setNewPwd";
+
+import setNewPWD from "empyreanui/apiServices/users/useNewPassword";
+
 import { Loader2 } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useContext } from "react";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import MODALS_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
+
 // Define the schema for form validation using zod
+
 const formSchema = z
   .object({
     password: z
@@ -48,8 +50,6 @@ const formSchema = z
 export default function SETFORGOTPWD() {
   // Destructure state and functions from the useSignin hook
   const [data, loading, error, setPWD] = setNewPWD();
-  const pathname = usePathname();
-  const { setModalInfo } = useContext(UserContext);
   // Initialize form handling with react-hook-form and zod for validation
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

@@ -1,25 +1,24 @@
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 import { UserContext } from "empyreanui/Providers/user-provider";
-import { setSessionValue } from "empyreanui/utils/storageValues/sessionValues";
-import { useRouter } from "next/navigation";
+
+import { setLocalValue } from "empyreanui/utils/storageValues/localValues";
+import { getSessionValue, removeSessionValue } from "empyreanui/utils/storageValues/sessionValues";
 
 import { useState, useCallback, useContext } from "react";
 
-const useSignup = () => {
+const VerifyOTP = () => {
   const [data, setData] = useState<any>(null);
 
   const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState<any>(null);
 
-  const { setModalInfo } = useContext(UserContext);
+  const id = getSessionValue("verification_id");
 
-  const router = useRouter();
+  const { setToken } = useContext(UserContext);
 
-  const submitRegisterForm = useCallback(
+  const submitOTP = useCallback(
     async (formData: any): Promise<void> => {
       setLoading(true);
-
       setError(null);
 
       try {
@@ -30,18 +29,15 @@ const useSignup = () => {
           },
           body: JSON.stringify(formData),
         };
-
-        const response = await fetch(`api/users/signup`, options);
+        const response = await fetch(`api/users/verify/${id}`, options);
 
         const json = await response.json();
 
         if (response.ok) {
+          setLocalValue("token", json.token);
+          setToken(json?.token);
           setData(json);
-          setSessionValue("verification_id", json.verification_id);
-          setModalInfo({
-            isOpen: true,
-            modalName: MODAL_CONSTANTS.VERIFICATION_MODAL,
-          });
+          removeSessionValue("verification_id");
         } else {
           setError(json);
         }
@@ -51,10 +47,10 @@ const useSignup = () => {
         setLoading(false);
       }
     },
-    [setModalInfo]
+    [id, setToken]
   );
 
-  return [data, loading, error, submitRegisterForm];
+  return [data, loading, error, submitOTP];
 };
 
-export default useSignup;
+export default VerifyOTP;

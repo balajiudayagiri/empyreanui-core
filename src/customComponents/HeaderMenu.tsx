@@ -12,7 +12,7 @@ import {
 import CommandMenu from "./_command_menu/CommandMenu";
 import { Grid2X2, Image, LayoutPanelTop, Palette } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import Signup from "./_authentication/Signup";
+import Signup from "./_authentication/AuthButton";
 
 function HeaderMenu() {
   const [open1, setOpen1] = useState(false);

@@ -1,14 +1,15 @@
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { useState, useCallback, useContext } from "react";
+import SessionKeys from "empyreanui/constants/SessionKeys.json";
+import { getSessionValue, removeSessionValue } from "empyreanui/utils/storageValues/sessionValues";
 
-const VerifyOTP = () => {
+const SetPassword = () => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
   const { setModalInfo } = useContext(UserContext);
-  const id = sessionStorage.getItem("verification_id");
-  const submitOTP = useCallback(async (formData: any): Promise<void> => {
+  const id = getSessionValue(SessionKeys.forgotPasswordVerificationId);
+  const setPWD = useCallback(async (formData: any): Promise<void> => {
     setLoading(true);
     setError(null);
 
@@ -18,20 +19,18 @@ const VerifyOTP = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, verification_id: id }),
+        body: JSON.stringify({ ...formData }),
       };
       const response = await fetch(
-        `api/users/forgot-password/allow-changing`,
+        `api/users/forgot-password/change-password/${id}`,
         options
       );
       const json = await response.json();
 
       if (response.ok) {
         setData(json);
-        setModalInfo({
-          isOpen: true,
-          modalName: MODAL_CONSTANTS.FP_CHANGE_PWD_MODAL,
-        });
+        removeSessionValue(SessionKeys.forgotPasswordVerificationId);
+        setModalInfo({ isOpen: false, modalName: "" });
       } else {
         setError(json);
       }
@@ -40,9 +39,9 @@ const VerifyOTP = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [id, setModalInfo]);
 
-  return [data, loading, error, submitOTP];
+  return [data, loading, error, setPWD];
 };
 
-export default VerifyOTP;
+export default SetPassword;

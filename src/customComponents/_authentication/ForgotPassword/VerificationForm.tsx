@@ -1,10 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useForm } from "react-hook-form";
+
 import { z } from "zod";
 
 import { Button } from "empyreanui/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -14,12 +17,14 @@ import {
   FormLabel,
   FormMessage,
 } from "empyreanui/components/ui/form";
+
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "empyreanui/components/ui/input-otp";
-import VerifyOTP from "empyreanui/apiServices/users/ForgotVerifyOTP";
+
+import VerifyOTP from "empyreanui/apiServices/users/userVerificationPassword";
 
 // Define the schema for OTP validation using zod
 const FormSchema = z.object({
@@ -29,7 +34,8 @@ const FormSchema = z.object({
 });
 
 export function ForgotVerifyForm() {
-  const [data, loading, error, submitOTP] = VerifyOTP();
+  const [data, loading, error, verifyOtp] = VerifyOTP();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -39,7 +45,7 @@ export function ForgotVerifyForm() {
 
   // Function to handle form submission
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    submitOTP(data);
+    verifyOtp(data);
   }
 
   return (

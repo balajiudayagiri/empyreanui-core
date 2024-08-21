@@ -33,7 +33,7 @@ const useUsers = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [userToken]);
 
   return [data, loading, error, getUsers];
 };

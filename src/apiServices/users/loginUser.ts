@@ -1,8 +1,10 @@
-import modal_conts from "empyreanui/constants/MODAL_CONSTANTS.json";
+import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 import { useRouter } from "next/navigation";
 import { useState, useCallback, useContext } from "react";
 import uselogActivity from "./logActivity";
 import { UserContext } from "empyreanui/Providers/user-provider";
+import { setLocalValue } from "empyreanui/utils/storageValues/localValues";
+import { setSessionValue } from "empyreanui/utils/storageValues/sessionValues";
 
 /**
  * A custom hook for handling user sign-in.
@@ -52,16 +54,16 @@ const useSignin = (): Array<any> => {
       const json = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", json.token);
+        setLocalValue("token", json.token);
         setToken(json?.token);
         submitActivity("login", json.token);
         setData(json);
       } else {
         if (response.status === 403) {
-          sessionStorage.setItem("verification_id", json.verification_id);
+          setSessionValue("verification_id", json.verification_id);
           setModalInfo({
             isOpen: true,
-            modalName: modal_conts.VERIFICATION_MODAL,
+            modalName: MODAL_CONSTANTS.VERIFICATION_MODAL,
           });
         }
         setError(json);

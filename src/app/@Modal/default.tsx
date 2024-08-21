@@ -13,9 +13,9 @@ import Login from "empyreanui/customComponents/_authentication/Login/LoginForm";
 import Register from "empyreanui/customComponents/_authentication/Register/RegisterForm";
 import USER from "empyreanui/customComponents/_authentication/User/users";
 import { VerifyForm } from "empyreanui/customComponents/_authentication/VerifyForm";
-import ForgotEmail from "empyreanui/customComponents/_authentication/ForgotEmailForm";
-import { ForgotVerifyForm } from "empyreanui/customComponents/_authentication/ForgotVerifyForm";
-import SETFORGOTPWD from "empyreanui/customComponents/_authentication/ForgotPWDForm";
+import ForgotEmail from "empyreanui/customComponents/_authentication/ForgotPassword/EmailSubmission";
+import { ForgotVerifyForm } from "empyreanui/customComponents/_authentication/ForgotPassword/VerificationForm";
+import SETFORGOTPWD from "empyreanui/customComponents/_authentication/ForgotPassword/PasswordChangeForm";
 
 function ModalPage() {
   const { modalInfo, setModalInfo } = useContext(UserContext);
@@ -62,7 +62,9 @@ function ModalPage() {
               return (
                 <>
                   <DialogTitle>Your email</DialogTitle>
-                  <DialogDescription>you will receive otp to this mail</DialogDescription>
+                  <DialogDescription>
+                    you will receive otp to this mail
+                  </DialogDescription>
                   <ForgotEmail />
                 </>
               );

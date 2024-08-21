@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useEffect, useState } from "react";
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
+import { getLocalValue } from "empyreanui/utils/storageValues/localValues";
 interface ModalInfo {
   isOpen: boolean;
   modalName: string;
@@ -17,7 +17,7 @@ interface UserContextType {
 }
 
 export const UserContext = createContext<UserContextType>({
-  userToken: localStorage.getItem("token") ?? "",
+  userToken: getLocalValue("token") ?? "",
   // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJIYXJzaGl0aCIsImVtYWlsIjoicmVkZHliaGFyc2hpdGgzQGdtYWlsLmNvbSIsIl9pZCI6IjY2OWJjZTJmMTMyMjQwYTI4OTY2YjViMSIsImlzX3ZlcmlmaWVkIjp0cnVlLCJ1c2VyX3JvbGUiOiJVU0VSIiwiaWF0IjoxNzIzMzU0OTM1fQ._l_OyHjg4WZRchmoe_54_CNiIIiAIkJyPop5uwIyEaE",
   user: {},
   setToken: () => {},
@@ -30,7 +30,7 @@ export const UserContext = createContext<UserContextType>({
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userToken, setToken] = useState(localStorage.getItem("token") ?? "");
+  const [userToken, setToken] = useState(getLocalValue("token") ?? "");
   const [user, setUser] = useState({});
   const [modalInfo, setModalInfo] = useState<ModalInfo>({
     isOpen: false,

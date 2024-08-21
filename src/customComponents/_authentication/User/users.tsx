@@ -1,6 +1,7 @@
 import { Button } from "empyreanui/components/ui/button";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { getAvatarBgColor, getAvatarInitials } from "empyreanui/utils";
+import { removeLocalValue } from "empyreanui/utils/storageValues/localValues";
 import React, { CSSProperties, useContext, useMemo } from "react";
 
 function USER() {
@@ -10,7 +11,7 @@ function USER() {
   const colorOFAvatar = useMemo(() => getAvatarBgColor(), []);
 
   const logoutUser = () => {
-    localStorage.removeItem("token");
+    removeLocalValue("token");
     setToken("");
     setModalInfo({ isOpen: false, modalName: "" });
   };
@@ -36,7 +37,10 @@ function USER() {
         </div>
       </div>
 
-      <Button onClick={logoutUser} className=" text-center focus-visible:ring-0">
+      <Button
+        onClick={logoutUser}
+        className=" text-center focus-visible:ring-0"
+      >
         Logout
       </Button>
     </div>

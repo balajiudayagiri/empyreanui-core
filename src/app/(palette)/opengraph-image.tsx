@@ -11,24 +11,14 @@ export default async function Image() {
   return new ImageResponse(
     (
       <div
-        style={{
-          fontSize: 64,
-          background: "#000000",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#ffffff",
-          fontWeight: "bold",
-        }}>
+        tw="flex flex-col w-full h-full items-center justify-center bg-black text-white font-bold"
+        style={{ fontSize: 64 }}>
         <span>
-          Empyrean<span style={{ color: "#edcd4b" }}>UI</span>
+          Empyrean<span tw="text-yellow-400">UI</span>
         </span>
         <div
+          tw="mt-5 text-transparent bg-clip-text"
           style={{
-            marginTop: "20px",
             fontSize: 48,
             background:
               "linear-gradient(to right, #FFB3B3, #FFD180, #FFFF99, #B3FFB3, #B3D9FF, #C299FF, #E6B3FF)",

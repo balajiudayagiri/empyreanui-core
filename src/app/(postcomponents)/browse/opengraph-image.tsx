@@ -11,18 +11,9 @@ export default async function Image({ params }: { params: { id: string } }) {
   return new ImageResponse(
     (
       <div
-        style={{
-          fontSize: 64,
-          background: "#000000",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#ffffff",
-          fontWeight: "bold",
-        }}>
-        Empyrean<span style={{ color: "#edcd4b" }}>UI</span> Gallery
+        tw="flex w-full h-full items-center justify-center bg-black text-white font-bold"
+        style={{ fontSize: 64 }}>
+        Empyrean<span tw="text-yellow-400">UI</span> Gallery
       </div>
     ),
     {

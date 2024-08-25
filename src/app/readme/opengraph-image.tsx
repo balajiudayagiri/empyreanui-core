@@ -11,18 +11,10 @@ export default async function Image() {
   return new ImageResponse(
     (
       <div
-        style={{
-          fontSize: 64,
-          background: "#ffffff",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#000000",
-          fontWeight: "bold",
-        }}>
-        Empyrean<span style={{ color: "#4864e2" }}>UI</span> Readme.md editor
+        tw="flex w-full h-full items-center justify-center bg-white text-black font-bold"
+        style={{ fontSize: 64 }}>
+        Empyrean
+        <span tw="text-blue-600">UI</span> Readme.md editor
       </div>
     ),
     {

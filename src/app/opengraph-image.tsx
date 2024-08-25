@@ -10,19 +10,11 @@ export const contentType = "image/png";
 export default async function Image() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          fontSize: 64,
-          background: "#000000",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#ffffff",
-          fontWeight: "bold",
-        }}>
-        Empyrean<span style={{ color: "#edcd4b" }}>UI</span>
+      <div tw="flex flex-col w-full h-full items-center justify-center bg-black text-white font-bold">
+        <div tw="flex">
+          <span tw="text-6xl">Empyrean</span>
+          <span tw="text-6xl text-yellow-400">UI</span>
+        </div>
       </div>
     ),
     {

@@ -20,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
         "LinkedInBot",
         "Pinterest",
       ],
-      allow: "/",
+      allow: ["/", "/api/og/*"],
       disallow: "/private/",
     },
     sitemap: "https://empyreanui-core.vercel.app//sitemap.xml",

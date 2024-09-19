@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "empyreanui/services/db2connect";
+import dbConnect from "empyreanui/services/dbConnect";
 import Blog from "empyreanui/models/Blog";
 import { generateCustomUUID } from "empyreanui/utils";
 

@@ -1,5 +1,5 @@
 import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
-import mongoConnection from "empyreanui/services/db2connect";
+import mongoConnection from "empyreanui/services/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 import User from "empyreanui/models/Empyrean_users";
 import OTP from "empyreanui/models/OTP";

@@ -1,5 +1,5 @@
 import users from "empyreanui/models/Empyrean_users";
-import mongoConnection from "empyreanui/services/db2connect";
+import mongoConnection from "empyreanui/services/dbConnect";
 
 export const updatePostActivity = async (
   userID: string,

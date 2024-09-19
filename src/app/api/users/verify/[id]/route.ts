@@ -8,7 +8,7 @@ import { v4 } from "uuid";
 
 import User from "empyreanui/models/Empyrean_users";
 
-import mongoConnection from "empyreanui/services/db2connect";
+import mongoConnection from "empyreanui/services/dbConnect";
 
 import OTP from "empyreanui/models/OTP";
 

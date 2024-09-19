@@ -2,7 +2,7 @@ import { checkUserAndEmail } from "../../signup/_helpers/index";
 import users from "empyreanui/models/Empyrean_users";
 import { NextRequest, NextResponse } from "next/server";
 import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
-import mongoConnection from "empyreanui/services/db2connect";
+import mongoConnection from "empyreanui/services/dbConnect";
 import User from "empyreanui/models/User";
 import sendMail from "empyreanui/utils/mailer";
 import generateOTP from "empyreanui/utils/generateOTP";

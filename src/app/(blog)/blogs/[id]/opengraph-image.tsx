@@ -14,21 +14,12 @@ export default async function Image({ params }: { params: { id: string } }) {
   return new ImageResponse(
     (
       <div
-        style={{
-          fontSize: 64,
-          background: "#ffffff",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#000000",
-          fontWeight: "bold",
-        }}>
+        tw="flex flex-col w-full h-full items-center justify-center bg-white text-black font-bold"
+        style={{ fontSize: 64 }}>
         <span>
-          Empyrean<span style={{ color: "#9c5dee" }}>UI</span> Blogs
+          Empyrean<span tw="text-purple-500">UI</span> Blogs
         </span>
-        <span>{combinedSubSegments}</span>
+        <span tw="mt-4">{combinedSubSegments}</span>
       </div>
     ),
     {

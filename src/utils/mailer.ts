@@ -45,68 +45,90 @@ const mail = (
         subject: "Resent OTP for Verification",
         text: `Hi ${firstname}, 
 Your OTP (One-Time Password) for verification is: ${otp}`,
-        html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-                <div style="background-color: #000; color: #fff; padding: 10px; text-align: center; border-radius: 8px 8px 0 0;">
-                    <h2 style=" color: #fff;">Empyrean <span  style=" color: #eab308;">UI</span></h2>
-                </div>
-                <div style="padding: 20px;">
-                    <p>Dear ${firstname},</p>
-                    <p>Your OTP (One-Time Password) for verification is:</p>
-                    <h3 style="font-size:26px;"> <strong>${otp}</strong></h3>
-                    <p>Please use this OTP to proceed with your action.</p>
-                    <p>If you did not request this OTP, please ignore this email.</p>
-                </div>
-                <div style="text-align: center; margin-top: 20px; color: #555;">
-                    <p>This email was sent automatically. Please do not reply to this email.</p>
-                </div>
-            </div>`,
+        html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color: #333;">
+          <!-- Header Section -->
+          <div style="background-color: #000; color: #fff; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">Empyrean<span style="color: #facc14;">UI</span></h2>
+          </div>
+
+          <!-- Body Section -->
+          <div style="padding: 30px;">
+              <p style="font-size: 18px;">Hello <strong>${firstname}</strong>,</p>
+              <p style="font-size: 16px; line-height: 1.6;">Your OTP (One-Time Password) for verification is:</p>
+              <h2 style="font-size: 32px; color: #facc14; text-align: center; margin: 30px 0;">${otp}</h2>
+              <p style="font-size: 16px; line-height: 1.6;">Please enter this OTP to proceed with your request. This code is valid for a limited time.</p>
+              <p style="font-size: 16px; color: #d9534f;">If you did not request this, please ignore this message or contact our support team immediately.</p>
+          </div>
+
+          <!-- Footer Section -->
+          <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 0 0 10px 10px;">
+              <p style="font-size: 14px; color: #777; margin: 0;">This is an automated message. Please do not reply.</p>
+              <p style="font-size: 14px; color: #777; margin: 5px 0;">Need help? <a href="#" style="color: #facc14; text-decoration: none;">Contact Support</a></p>
+          </div>
+      </div>`,
       };
+
     case "Verify":
       return {
         subject: "Your OTP for Verification",
         text: `Hi ${firstname}, 
 Your OTP (One-Time Password) for verification is: ${otp}`,
-        html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-                <div style="background-color: #000; color: #fff; padding: 10px; text-align: center; border-radius: 8px 8px 0 0;">
-                    <h2 style=" color: #fff;">Empyrean <span  style=" color: #eab308;">UI</span></h2>
-                </div>
-                <div style="padding: 20px;">
-                    <p>Dear ${firstname},</p>
-                    <p>Your OTP (One-Time Password) for verification is:</p>
-                    <h3 style="font-size:26px;"> <strong>${otp}</strong></h3>
-                    <p>Please use this OTP to proceed with your action.</p>
-                    <p>If you did not request this OTP, please ignore this email.</p>
-                </div>
-                <div style="text-align: center; margin-top: 20px; color: #555;">
-                    <p>This email was sent automatically. Please do not reply to this email.</p>
-                </div>
-            </div>`,
+        html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color: #333;">
+          <!-- Header Section -->
+          <div style="background-color: #000; color: #fff; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">Empyrean<span style="color: #facc14;">UI</span></h2>
+          </div>
+
+          <!-- Body Section -->
+          <div style="padding: 30px;">
+              <p style="font-size: 18px;">Hello <strong>${firstname}</strong>,</p>
+              <p style="font-size: 16px; line-height: 1.6;">Your OTP (One-Time Password) for verification is:</p>
+              <h2 style="font-size: 32px; color: #facc14; text-align: center; margin: 30px 0;">${otp}</h2>
+              <p style="font-size: 16px; line-height: 1.6;">Please enter this OTP to proceed with your request. This code is valid for a limited time.</p>
+              <p style="font-size: 16px; color: #d9534f;">If you did not request this, please ignore this message or contact our support team immediately.</p>
+          </div>
+
+          <!-- Footer Section -->
+          <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 0 0 10px 10px;">
+              <p style="font-size: 14px; color: #777; margin: 0;">This is an automated message. Please do not reply.</p>
+              <p style="font-size: 14px; color: #777; margin: 5px 0;">Need help? <a href="#" style="color: #facc14; text-decoration: none;">Contact Support</a></p>
+          </div>
+      </div>`,
       };
+
     case "ForgotPassword":
       return {
         subject: "Reset Your Password",
         text: `Hi ${firstname}, 
 Your OTP (One-Time Password) to reset your password is: ${otp}`,
-        html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-                <div style="background-color: #000; color: #fff; padding: 10px; text-align: center; border-radius: 8px 8px 0 0;">
-                    <h2 style=" color: #fff;">Empyrean <span  style=" color: #eab308;">UI</span></h2>
-                </div>
-                <div style="padding: 20px;">
-                    <p>Dear ${firstname},</p>
-                    <p>Your OTP (One-Time Password) to reset your password is:</p>
-                    <h3 style="font-size:26px;"> <strong>${otp}</strong></h3>
-                    <p>Please use this OTP to proceed with your action.</p>
-                    <p>If you did not request this OTP, please ignore this email.</p>
-                </div>
-                <div style="text-align: center; margin-top: 20px; color: #555;">
-                    <p>This email was sent automatically. Please do not reply to this email.</p>
-                </div>
-            </div>`,
+        html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color: #333;">
+          <!-- Header Section -->
+          <div style="background-color: #000; color: #fff; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">Empyrean<span style="color: #facc14;">UI</span></h2>
+          </div>
+
+          <!-- Body Section -->
+          <div style="padding: 30px;">
+              <p style="font-size: 18px;">Hello <strong>${firstname}</strong>,</p>
+              <p style="font-size: 16px; line-height: 1.6;">You requested to reset your password. Your One-Time Password (OTP) to complete the process is:</p>
+              <h2 style="font-size: 32px; color: #facc14; text-align: center; margin: 30px 0;">${otp}</h2>
+              <p style="font-size: 16px; line-height: 1.6;">Please enter this OTP to proceed with your request. This code is valid for a limited time.</p>
+              <p style="font-size: 16px; color: #d9534f;">If you did not request a password reset, please ignore this message or contact our support team immediately.</p>
+          </div>
+
+          <!-- Footer Section -->
+          <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 0 0 10px 10px;">
+              <p style="font-size: 14px; color: #777; margin: 0;">This is an automated message. Please do not reply.</p>
+              <p style="font-size: 14px; color: #777; margin: 5px 0;">Need help? <a href="#" style="color: #facc14; text-decoration: none;">Contact Support</a></p>
+          </div>
+      </div>`,
       };
+
     default:
       return {};
   }
 };
+
 
 /**
  * Sends an email using the configured transporter based on the provided mail type and data.

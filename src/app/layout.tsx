@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "empyreanui/components/ui/toaster";
 import Footer from "./Footer";
 import { NextThemesProviders } from "empyreanui/Providers/theme-provider";
+import { UserProvider } from "empyreanui/Providers/user-provider";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -213,8 +214,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  Modal,
 }: Readonly<{
   children: React.ReactNode;
+  Modal?: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -254,9 +257,12 @@ export default function RootLayout({
       <body className={cn(montserrat.className, "h-dvh")}>
         <SpeedInsights />
         <NextThemesProviders>
-          <Header />
-          {children}
-          <Footer />
+          <UserProvider>
+            <Header />
+            {Modal}
+            {children}
+            <Footer />
+          </UserProvider>
         </NextThemesProviders>
         <Toaster />
       </body>

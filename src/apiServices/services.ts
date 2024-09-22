@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formatErrors } from "empyreanui/utils";
+import { UserContext } from "empyreanui/Providers/user-provider";
 
 export const usePostCode = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { userToken } = useContext(UserContext);
 
   const postCode = async (
     postData: any,
@@ -16,6 +18,7 @@ export const usePostCode = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(postData),
       });

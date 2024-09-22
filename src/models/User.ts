@@ -6,7 +6,7 @@ interface IUser extends Document {
   lastName: string;
   password: string;
   comparePassword: (password: string) => Promise<boolean>;
-}
+} 
 
 const userSchema: Schema<IUser> = new Schema({
   userID: { type: String, required: true, unique: true },

@@ -1,4 +1,10 @@
-import React, { ReactNode, useState } from "react";
+import React, {
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   Dialog,
   DialogTrigger,
@@ -12,6 +18,7 @@ import { Loader } from "lucide-react";
 import { Input } from "empyreanui/components/ui/input";
 import { Textarea } from "empyreanui/components/ui/textarea";
 import { Blog } from "./Blogtypes";
+import { UserContext } from "empyreanui/Providers/user-provider";
 
 interface PostBlogDialogProps {
   onSubmit: (data: Blog, closeDialog: () => void) => void;
@@ -26,6 +33,8 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
   disabled,
   children,
 }) => {
+  const { user, userToken, setModalInfo } = useContext(UserContext);
+  const clickRef = useRef(false);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [title, setTitle] = useState<string>("");
@@ -33,6 +42,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [thumbnail, setThumbnail] = useState<string>("");
   const [isThumbnailValid, setIsThumbnailValid] = useState<boolean>(true);
+  const btnRef = useRef<HTMLButtonElement | null>(null);
 
   const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const base64 = e.target.value;
@@ -83,20 +93,54 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
     }
   };
 
+  const handlePostBTN = () => {
+    clickRef.current = true;
+    console.log(clickRef);
+    if (userToken) {
+      setIsOpen(true);
+    } else {
+      setModalInfo({ isOpen: true, modalName: "SIGNIN_MODAL" });
+    }
+  };
+
+  useEffect(() => {
+    if (clickRef.current && Object.keys(user)?.length !== 0) {
+      btnRef?.current?.click();
+    }
+
+    setFirstName(user?.firstname ?? "");
+    setLastName(user?.lastname ?? "");
+  }, [user]);
+
+  if (!userToken) {
+    return (
+      <Button
+        onClick={handlePostBTN}
+        className="fixed z-50 top-16 right-4 font-bold rounded shadow-md hover:shadow-lg transition duration-300"
+        disabled={disabled}
+      >
+        Post Code
+      </Button>
+    );
+  }
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild disabled={disabled}>
         {children ? (
           <span
             className="fixed z-50 top-16 right-4 font-bold rounded shadow-md hover:shadow-lg transition duration-300"
-            onClick={() => setIsOpen(true)}>
+            onClick={() => setIsOpen(true)}
+            ref={btnRef}
+          >
             {children}
           </span>
         ) : (
           <Button
             disabled={disabled}
+            ref={btnRef}
             onClick={() => setIsOpen(true)}
-            className="fixed z-50 top-16 right-4 font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300">
+            className="fixed z-50 top-16 right-4 font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300"
+          >
             Post Blog
           </Button>
         )}
@@ -182,7 +226,8 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
           <Button
             onClick={handleSubmit}
             disabled={isLoading}
-            className="mt-4  font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300">
+            className="mt-4  font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300"
+          >
             {isLoading ? (
               <span className="flex items-center gap-2">
                 <Loader className="animate-spin" size={16} />

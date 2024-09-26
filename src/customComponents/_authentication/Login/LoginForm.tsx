@@ -52,8 +52,7 @@ export default function Login() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 max-w-[400px] rounded-2xl w-full"
-      >
+        className="space-y-6 max-w-[400px] rounded-2xl w-full">
         {/* <h1 className="text-3xl font-medium">LOGIN</h1>
         <p className="!mt-1 text-xs">
           Enter your email and password to login to your account
@@ -95,8 +94,7 @@ export default function Login() {
         <button
           className="bg-primary p-1 py-1.5 w-full rounded-md text-primary-foreground font-semibold disabled:opacity-70"
           type="submit"
-          disabled={loading}
-        >
+          disabled={loading}>
           {loading ? (
             <p className="flex items-center justify-center gap-1.5">
               Submitting <Loader2 size={14} className="animate-spin" />
@@ -106,33 +104,31 @@ export default function Login() {
           )}
         </button>
         <span
-          className="text-xs text-blue-700 cursor-pointer"
+          className="text-xs text-primary cursor-pointer"
           onClick={() => {
             setModalInfo({
               isOpen: true,
               modalName: MODALS_CONSTANTS.FP_EMAIL_MODAL,
             });
-          }}
-        >
+          }}>
           Forgot password?
         </span>
       </form>
       <p className="mt-1.5 text-xs">
         Don&apos;t Have an account?{" "}
         {pathname === "/signup" ? (
-          <Link className="text-blue-700" href="/signup">
+          <Link className="text-primary" href="/signup">
             Sign up
           </Link>
         ) : (
           <span
-            className="text-blue-700 cursor-pointer"
+            className="text-primary cursor-pointer"
             onClick={() =>
               setModalInfo({
                 isOpen: true,
                 modalName: MODALS_CONSTANTS.SIGNUP_MODAL,
               })
-            }
-          >
+            }>
             Sign up
           </span>
         )}

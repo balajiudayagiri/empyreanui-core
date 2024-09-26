@@ -190,12 +190,12 @@ export default function Register(): JSX.Element {
       <p className="mt-1 ml-3 text-xs">
         Have an account?{" "}
         {pathname === "/signup" ? (
-          <Link className="text-blue-700" href="/signin">
+          <Link className="text-primary" href="/signin">
             Sign in
           </Link>
         ) : (
           <span
-            className="text-blue-700 cursor-pointer"
+            className="text-primary cursor-pointer"
             onClick={() =>
               setModalInfo({
                 isOpen: true,

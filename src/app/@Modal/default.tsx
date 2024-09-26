@@ -33,14 +33,14 @@ function ModalPage() {
                   <Login />
                 </>
               );
-            case modal_conts.USER_MODAL:
-              return (
-                <>
-                  <DialogTitle>USER INFO</DialogTitle>
-                  <DialogDescription></DialogDescription>
-                  <USER />{" "}
-                </>
-              );
+            // case modal_conts.USER_MODAL:
+            //   return (
+            //     <>
+            //       <DialogTitle>USER INFO</DialogTitle>
+            //       <DialogDescription></DialogDescription>
+            //       <USER />{" "}
+            //     </>
+            //   );
 
             case modal_conts.SIGNUP_MODAL:
               return (

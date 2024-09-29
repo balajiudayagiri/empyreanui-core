@@ -24,6 +24,6 @@ export const updatePostActivity = async (
     );
     return;
   } catch (error: any) {
-    console.log(`unable to update due to --> ${error}`);
+    console.error(`unable to update due to --> ${error}`);
   }
 };

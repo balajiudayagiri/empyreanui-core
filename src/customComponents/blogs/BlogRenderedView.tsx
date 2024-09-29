@@ -56,7 +56,6 @@ function BlogRenderedView({ id }: { id: string }) {
   const date = new Date(blog.date).toLocaleDateString();
   const formattedDate =
     months[parseInt(date.split("/")[0])] + " / " + date.split("/")[2];
-  console.log({ formattedDate });
   return (
     <div className="flex flex-col items-center bg-white p-4 md:p-8 lg:p-12 max-w-5xl mx-auto">
       <header className="text-center mb-6 bg-gradient-to-r from-purple-500 to-indigo-500 p-4 rounded-lg shadow-md w-full">

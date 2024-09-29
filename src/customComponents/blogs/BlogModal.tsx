@@ -95,7 +95,6 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
 
   const handlePostBTN = () => {
     clickRef.current = true;
-    console.log(clickRef);
     if (userToken) {
       setIsOpen(true);
     } else {
@@ -117,8 +116,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
       <Button
         onClick={handlePostBTN}
         className="fixed z-50 top-16 right-4 font-bold rounded shadow-md hover:shadow-lg transition duration-300"
-        disabled={disabled}
-      >
+        disabled={disabled}>
         Post Code
       </Button>
     );
@@ -130,8 +128,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
           <span
             className="fixed z-50 top-16 right-4 font-bold rounded shadow-md hover:shadow-lg transition duration-300"
             onClick={() => setIsOpen(true)}
-            ref={btnRef}
-          >
+            ref={btnRef}>
             {children}
           </span>
         ) : (
@@ -139,8 +136,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
             disabled={disabled}
             ref={btnRef}
             onClick={() => setIsOpen(true)}
-            className="fixed z-50 top-16 right-4 font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300"
-          >
+            className="fixed z-50 top-16 right-4 font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300">
             Post Blog
           </Button>
         )}
@@ -226,8 +222,7 @@ const PostBlogDialog: React.FC<PostBlogDialogProps> = ({
           <Button
             onClick={handleSubmit}
             disabled={isLoading}
-            className="mt-4  font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300"
-          >
+            className="mt-4  font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-300">
             {isLoading ? (
               <span className="flex items-center gap-2">
                 <Loader className="animate-spin" size={16} />

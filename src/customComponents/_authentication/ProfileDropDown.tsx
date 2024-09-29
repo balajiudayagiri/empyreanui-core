@@ -65,7 +65,7 @@ function ProfileDropDown({ children }: { children: React.ReactNode }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           {/* Add onClick handlers to navigate to respective pages */}
-          <DropdownMenuItem onClick={() => router.push("/profile")} disabled>
+          <DropdownMenuItem onClick={() => router.push("/profile")}>
             Profile
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push("/settings")} disabled>

@@ -1,22 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formatErrors } from "empyreanui/utils";
 import { blogsRoute } from "./constant";
+import { UserContext } from "empyreanui/Providers/user-provider";
 
 export const useFetchBlog = () => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const { userToken } = useContext(UserContext);
   const postBlog = async (
     blogData: any,
     onSuccess: (result: any) => void,
     onError: (error: any) => void
   ) => {
-    console.log({ blogData });
     setIsLoading(true);
     try {
       const response = await fetch(blogsRoute, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(blogData),
       });

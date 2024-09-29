@@ -55,7 +55,7 @@ const BlogPage: React.FC = () => {
           description: "Code posted successfully!",
         });
         closeDialog();
-        console.log(result);
+        console.info(result);
       },
       (error: string) => {
         toast({

@@ -89,7 +89,7 @@ You can edit this text to see a live preview of your README file.
           description: "Code posted successfully!",
         });
         closeDialog();
-        console.log(result);
+        console.info(result);
       },
       (error: string) => {
         toast({

@@ -69,7 +69,6 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
 
   const handlePostBTN = () => {
     clickRef.current = true;
-    console.log(clickRef);
     if (userToken) {
       setIsOpen(true);
     } else {
@@ -102,8 +101,7 @@ const PostCodeDialog: React.FC<PostCodeDialogProps> = ({
           disabled={disabled}
           onClick={() => {
             setIsOpen(true);
-          }}
-        >
+          }}>
           Post Code
         </Button>
       </DialogTrigger>

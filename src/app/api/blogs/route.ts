@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "empyreanui/services/dbConnect";
 import Blog from "empyreanui/models/Blog";
 import { generateCustomUUID } from "empyreanui/utils";
+import tokenValidator from "empyreanui/utils/tokenValidator";
+import { updatePostActivity } from "../_helpers";
 
 export async function GET(req: NextRequest) {
   try {
@@ -20,10 +22,12 @@ export async function GET(req: NextRequest) {
         { success: true, data: blog },
         {
           status: 200,
-         headers: {
+          headers: {
             "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
-            "CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
-            "Vercel-CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
           },
         }
       );
@@ -33,10 +37,12 @@ export async function GET(req: NextRequest) {
         { success: true, data: blogs },
         {
           status: 200,
-         headers: {
+          headers: {
             "Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
-            "CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
-            "Vercel-CDN-Cache-Control": "public, s-maxage=1, stale-while-revalidate=59",
+            "CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
+            "Vercel-CDN-Cache-Control":
+              "public, s-maxage=1, stale-while-revalidate=59",
           },
         }
       );
@@ -58,13 +64,15 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     await dbConnect();
+    const { _id } = await tokenValidator(req);
     const body = await req.json();
     const customId = generateCustomUUID(10);
     const blogData = {
       customId,
       ...body,
     };
-    const blog = await Blog.create(blogData);
+    const blog: Record<string, any> = await Blog.create(blogData);
+    updatePostActivity(_id, "blog_ids", blog?._id);
     return NextResponse.json({ success: true, data: blog }, { status: 201 });
   } catch (error) {
     if (error instanceof Error) {

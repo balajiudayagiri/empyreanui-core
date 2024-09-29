@@ -19,6 +19,14 @@ import {
 import { Button } from "empyreanui/components/ui/button";
 import { History } from "lucide-react";
 import ProfileDetailsLoading from "./profile-loader";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "empyreanui/components/ui/accordion";
+import ProfileDataListing from "./ProfileDataListing";
+import BlogsDataListing from "./BlogsDataListing";
 
 const ProfileDetails = () => {
   const { user } = useContext(UserContext);
@@ -106,35 +114,38 @@ const ProfileDetails = () => {
             <CardTitle className="text-2xl mb-2 font-bold text-primary">
               {fullName}
             </CardTitle>
-            <CardDescription className="text-primary/60">
+            <CardDescription className="text-primary/80 font-medium">
               {user?.email || "Email not available"}
+            </CardDescription>
+            <CardDescription className="text-primary/80 font-medium">
+              {user?.username || "N/A"}
             </CardDescription>
           </div>
         </CardHeader>
 
         {/* Profile Details */}
-        <CardContent className="bg-card-foreground/20 rounded-md pt-3">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <h3 className="font-semibold text-lg">Username</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                {user?.username || "N/A"}
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-semibold text-lg">Total Blogs</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                {user?.blog_ids?.length || 0}
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-semibold text-lg">Total Components</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                {user?.component_ids?.length || 0}
-                {/* {user?.component_ids || null} */}
-              </p>
-            </div>
-          </div>
+        <CardContent className="bg-card/20 rounded-md pt-3">
+          <Accordion type="single" collapsible>
+            {/* Total Blogs */}
+            <AccordionItem value="blogs">
+              <AccordionTrigger className="font-semibold text-lg">
+                Blogs ( {user?.blog_ids?.length || 0} )
+              </AccordionTrigger>
+              <AccordionContent className="max-h-80 overflow-y-scroll">
+                <BlogsDataListing />
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Total Components */}
+            <AccordionItem value="components">
+              <AccordionTrigger className="font-semibold text-lg">
+                Components ( {user?.component_ids?.length || 0} )
+              </AccordionTrigger>
+              <AccordionContent className="max-h-80 overflow-y-scroll">
+                <ProfileDataListing />
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </CardContent>
         {user?.is_verified && (
           <Badge className="bg-green-500 text-white text-xs absolute -top-3 left-3 px-3 py-1 rounded-md">

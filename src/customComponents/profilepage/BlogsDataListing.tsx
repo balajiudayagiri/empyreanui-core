@@ -1,6 +1,5 @@
 "use client";
 import { usefetchBlogsByIds } from "empyreanui/apiServices/getblogslist";
-import { useFetchPostsByIds } from "empyreanui/apiServices/getpostslist";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { makeUrlFriendly } from "empyreanui/utils";
 import { Loader } from "lucide-react";
@@ -11,7 +10,6 @@ import React, { useContext, useEffect } from "react";
 function BlogsDataListing() {
   const { user } = useContext(UserContext);
   const { blogs, isLoading, error, fetchBlogsByIds } = usefetchBlogsByIds();
-  // console.log({ user });
 
   useEffect(() => {
     fetchBlogsByIds(user.blog_ids);
@@ -32,7 +30,6 @@ function BlogsDataListing() {
   if (!blogs) {
     return <div>No post found</div>;
   }
-  console.log({ blogs });
 
   return (
     <div className="">

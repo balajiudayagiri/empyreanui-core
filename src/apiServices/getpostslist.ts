@@ -37,11 +37,10 @@ export const useFetchPostsByIds = (): UseFetchPostByIdResult => {
     try {
       const idsQuery = ids.join(",");
       const response = await fetch(`/api/postslist?ids=${idsQuery}`);
-      console.log({ idsQuery });
       const result = await response.json();
       if (response.ok) {
         setPost(result.data);
-        console.log(result.data)
+        console.log(result.data);
       } else {
         setError(result.error || "Failed to fetch post");
       }
@@ -55,6 +54,6 @@ export const useFetchPostsByIds = (): UseFetchPostByIdResult => {
       setIsLoading(false);
     }
   }, []);
-console.log({posts})
+  console.log({ posts });
   return { posts, isLoading, error, fetchPostsByIds };
 };

@@ -6,6 +6,8 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { UserContext } from "empyreanui/Providers/user-provider";
+import UserItemsHeroSection from "./UserItemsHeroSection";
+import HeroCarosel from "./HeroCarosel";
 
 const HeroHighlight = dynamic(
   () =>
@@ -37,14 +39,14 @@ function HeroSection() {
   ];
 
   return (
-    <main className="relative md:h-screen h-fit flex items-center justify-center overflow-hidden bg-background">
+    <main className="relative h-fit flex items-center justify-center overflow-hidden bg-background">
       <HeroHighlight className="w-full h-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: [20, -5, 0] }}
           transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
           className="w-full h-full p-8 md:p-24 text-center">
-          <div className="relative z-10 space-y-6 max-md:pt-10">
+          <div className="relative z-10 space-y-6 max-md:pt-10 md:pt-28 md:pb-14 pt-24">
             <div className="text-4xl md:text-6xl font-extrabold text-foreground">
               Build{" "}
               <FlipWords words={words} className="font-bold text-primary" />{" "}
@@ -76,40 +78,12 @@ function HeroSection() {
               </Link>
             </div>
           </div>
-
-          {/* Feature Overview Section */}
-          <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 border rounded-lg shadow-lg bg-white/10 backdrop-blur-safari">
-              <h3 className="text-xl font-bold text-foreground">
-                Build with HTML
-              </h3>
-              <p className="text-md text-foreground mt-2">
-                Use the power of HTML to create dynamic, reusable components
-                that work across browsers.
-              </p>
-            </div>
-            <div className="p-6 border rounded-lg shadow-lg bg-white/10 backdrop-blur-safari">
-              <h3 className="text-xl font-bold text-foreground">
-                Style with CSS/Tailwind
-              </h3>
-              <p className="text-md text-foreground mt-2">
-                Customize your components with CSS or Tailwind&apos;s
-                utility-first framework for a seamless design.
-              </p>
-            </div>
-            <div className="p-6 border rounded-lg shadow-lg bg-white/10 backdrop-blur-safari">
-              <h3 className="text-xl font-bold text-foreground">
-                Integrate with JavaScript
-              </h3>
-              <p className="text-md text-foreground mt-2">
-                Add functionality to your components using JavaScript, making
-                them interactive and engaging.
-              </p>
-            </div>
-          </section>
+          <HeroCarosel />
 
           {/* Interactive Showcase Panel */}
-          {userToken && Object.keys(user).length !== 0 ? null : (
+          {userToken && Object.keys(user).length !== 0 ? (
+            <UserItemsHeroSection />
+          ) : (
             <section className="mt-12 ">
               <h3 className="text-2xl font-bold">
                 Create Your First Component

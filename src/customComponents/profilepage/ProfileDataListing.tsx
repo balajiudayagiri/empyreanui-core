@@ -1,15 +1,13 @@
 "use client";
+import React, { useContext, useEffect } from "react";
 import { useFetchPostsByIds } from "empyreanui/apiServices/getpostslist";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { Loader } from "lucide-react";
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
-// import { UserContext } from "empyreanui/Providers/user-provider";
 
 function ProfileDataListing() {
   const { user } = useContext(UserContext);
   const { posts, isLoading, error, fetchPostsByIds } = useFetchPostsByIds();
-  console.log({ user });
 
   useEffect(() => {
     fetchPostsByIds(user.component_ids);
@@ -30,7 +28,6 @@ function ProfileDataListing() {
   if (!posts) {
     return <div>No post found</div>;
   }
-  console.log({ posts });
 
   return (
     <div className="max-h-60 overflow-y-auto space-y-4 p-2">

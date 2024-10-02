@@ -64,14 +64,14 @@ function UserItemsHeroSection() {
 
       {/* Fallback if there are less than 2 items in either section */}
       {(randomComponents.length < 2 || randomBlogs.length < 2) && (
-        <div className="mt-8 text-center">
+        <div className="mt-20 text-center">
           <p className="mb-4">
             It looks like you&apos;re just getting started. Why not add more
             content?
           </p>
           <Link
             href="/browse"
-            className="bg-primary text-black font-semibold py-2 px-4 rounded-lg hover:bg-secondary transition-colors">
+            className="bg-primary text-black font-semibold py-2 px-4 rounded-lg transition-colors">
             Explore Ideas and Create More
           </Link>
         </div>

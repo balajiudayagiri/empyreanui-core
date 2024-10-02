@@ -46,7 +46,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: [20, -5, 0] }}
           transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
           className="w-full h-full p-8 md:p-24 text-center">
-          <div className="relative z-10 space-y-6 max-md:pt-10 md:pt-28 md:pb-14 pt-24">
+          <div className="relative z-10 space-y-6 max-md:pt-10 md:pt-40 md:pb-28 pt-24">
             <div className="text-4xl md:text-6xl font-extrabold text-foreground">
               Build{" "}
               <FlipWords words={words} className="font-bold text-primary" />{" "}
@@ -84,7 +84,7 @@ function HeroSection() {
           {userToken && Object.keys(user).length !== 0 ? (
             <UserItemsHeroSection />
           ) : (
-            <section className="mt-12 ">
+            <section className="mt-28 ">
               <h3 className="text-2xl font-bold">
                 Create Your First Component
               </h3>

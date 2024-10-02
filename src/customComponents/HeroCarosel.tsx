@@ -71,7 +71,7 @@ const features: Feature[] = [
 function FeatureCarousel() {
   return (
     <motion.div
-      className="carousel-container overflow-hidden w-fit relative mt-12"
+      className="carousel-container overflow-hidden w-fit relative mt-12 mb-20"
       variants={carouselVariants}
       animate="animate">
       {/* Wrap the carousel in a container to control the looping */}

@@ -8,7 +8,7 @@ function Footer() {
   if (param === "/readme-ai") return null;
   if (param === "/jsdoc-ai") return null;
   return (
-    <footer className="p-6 md:p-12">
+    <footer className="p-6 md:p-12 md:pb-28">
       <div className="container mx-auto">
         <div className="text-center md:text-start">
           <Link href="/">

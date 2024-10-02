@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "empyreanui/components/ui/button";
 import { FlipWords } from "empyreanui/components/ui/flip-words";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { UserContext } from "empyreanui/Providers/user-provider";
 
 const HeroHighlight = dynamic(
   () =>
@@ -17,6 +18,7 @@ const HeroHighlight = dynamic(
 );
 
 function HeroSection() {
+  const { userToken, user } = useContext(UserContext);
   const words = [
     "Better",
     "Elegant",
@@ -35,57 +37,92 @@ function HeroSection() {
   ];
 
   return (
-    <main className="relative h-[100dvh] flex items-center justify-center overflow-y-auto">
-      <HeroHighlight className="h-dvh">
+    <main className="relative md:h-screen h-fit flex items-center justify-center overflow-hidden bg-background">
+      <HeroHighlight className="w-full h-full">
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: [20, -5, 0],
-          }}
-          transition={{
-            duration: 0.5,
-            ease: [0.4, 0.0, 0.2, 1],
-          }}
-          className="h-dvh p-8 md:p-24">
-          <div className="z-[-1] h-svh absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-          <div className="h-full w-full space-y-6 flex  items-center">
-            <div>
-              <div className="flex items-center font-semibold text-6xl">
-                <div className="md:text-6xl text-2xl mb-5">
-                  Build
-                  <FlipWords words={words} className="font-bold" /> <br />
-                  websites with{" "}
-                  <span className="font-extrabold">
-                    Empyrean
-                    <span className="text-primary text-shadow">UI</span>
-                  </span>
-                </div>
-              </div>
-              {/* <p className="text-md md:text-lg font-medium mb-5">
-                EmpyreanUI is a robust UI library offering a range of
-                components, hooks, and animating wrappers to streamline
-                development and ensure consistent, high-quality user interfaces.
-              </p> */}
-              <div className="flex flex-col md:flex-row gap-4 md:gap-6mb-5">
-                <Link href="/browse">
-                  <Button className="bg-primary text-black px-5 py-3 md:px-7 md:py-3 text-lg rounded-full font-semibold hover:bg-yellow-500 hover:scale-105 transition-all duration-200 h-full">
-                    Explore UI Gallery
-                  </Button>
-                </Link>
-                <Link href="/blogs">
-                  <Button
-                    variant={"ghost"}
-                    className="text-primary px-5 py-3 md:px-7 md:py-3 text-lg rounded-full hover:bg-transparent border-2 border-solid border-transparent hover:border-primary hover:text-primary font-semibold hover:scale-105 transition-all duration-200 h-full">
-                    Explore Blogs
-                  </Button>
-                </Link>
-              </div>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: [20, -5, 0] }}
+          transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
+          className="w-full h-full p-8 md:p-24 text-center">
+          <div className="relative z-10 space-y-6 max-md:pt-10">
+            <div className="text-4xl md:text-6xl font-extrabold text-foreground">
+              Build{" "}
+              <FlipWords words={words} className="font-bold text-primary" />{" "}
+              <br />
+              Components with{" "}
+              <span className="text-primary font-extrabold">
+                Empyrean<span className="text-foreground">UI</span>
+              </span>
+            </div>
+            <p className="text-lg md:text-xl font-medium text-foreground">
+              Create, customize, and share UI components effortlessly using
+              HTML, CSS/Tailwind, and JavaScript.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <Link href="/postcomponent">
+                <Button className="bg-primary text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-200">
+                  Create a New Component
+                </Button>
+              </Link>
+              <Link href="/browse">
+                <Button className="bg-transparent border-primary text-primary px-6 py-3 rounded-full font-semibold hover:border-primary hover:text-black transition-all duration-200">
+                  Explore UI Gallery
+                </Button>
+              </Link>
+              <Link href="/blogs">
+                <Button className="bg-transparent border-2 text-foreground px-6 py-3 rounded-full font-semibold hover:border-primary hover:bg-transparent hover:text-primary transition-all duration-200">
+                  Explore Blogs
+                </Button>
+              </Link>
             </div>
           </div>
+
+          {/* Feature Overview Section */}
+          <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 border rounded-lg shadow-lg bg-white/10 backdrop-blur-safari">
+              <h3 className="text-xl font-bold text-foreground">
+                Build with HTML
+              </h3>
+              <p className="text-md text-foreground mt-2">
+                Use the power of HTML to create dynamic, reusable components
+                that work across browsers.
+              </p>
+            </div>
+            <div className="p-6 border rounded-lg shadow-lg bg-white/10 backdrop-blur-safari">
+              <h3 className="text-xl font-bold text-foreground">
+                Style with CSS/Tailwind
+              </h3>
+              <p className="text-md text-foreground mt-2">
+                Customize your components with CSS or Tailwind&apos;s
+                utility-first framework for a seamless design.
+              </p>
+            </div>
+            <div className="p-6 border rounded-lg shadow-lg bg-white/10 backdrop-blur-safari">
+              <h3 className="text-xl font-bold text-foreground">
+                Integrate with JavaScript
+              </h3>
+              <p className="text-md text-foreground mt-2">
+                Add functionality to your components using JavaScript, making
+                them interactive and engaging.
+              </p>
+            </div>
+          </section>
+
+          {/* Interactive Showcase Panel */}
+          {userToken && Object.keys(user).length !== 0 ? null : (
+            <section className="mt-12 ">
+              <h3 className="text-2xl font-bold">
+                Create Your First Component
+              </h3>
+              <p className="text-md mt-2">
+                Use our intuitive editor to quickly build your first UI
+                component.
+              </p>
+              <Button className="bg-primary text-black mt-4 hover:scale-105 transition-transform">
+                Get Started
+              </Button>
+            </section>
+          )}
         </motion.div>
       </HeroHighlight>
     </main>

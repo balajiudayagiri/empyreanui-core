@@ -92,7 +92,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ postId }) => {
   return (
     <div>
       <div className="flex max-lg:flex-col lg:items-center max-lg:pl-4 gap-2 mb-2">
-        <span className="flex items-center gap-2 flex-wrap lg:text-4xl text-xl font-bold mb-2 text-primary">
+        <span className="flex items-center gap-2 flex-wrap lg:text-4xl text-xl font-bold mb-2 text-primary capitalize">
           {post.componentName}{" "}
           <GetIconFramework
             size={24}

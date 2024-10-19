@@ -39,17 +39,19 @@ function HeroSection() {
   ];
 
   return (
-    <main className="relative h-fit flex items-center justify-center overflow-hidden bg-background">
+    <main className="relative h-fit min-h-full flex items-center justify-center overflow-hidden bg-background">
       <HeroHighlight className="w-full h-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: [20, -5, 0] }}
           transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
-          className="w-full h-full p-8 md:p-24 text-center">
+          className="w-full h-full p-8 md:p-24 text-center pt-44">
           <div className="relative z-10 space-y-6 max-md:pt-10 md:pt-40 md:pb-28 pt-24">
-            <div className="text-4xl md:text-6xl font-extrabold text-foreground">
-              Build{" "}
-              <FlipWords words={words} className="font-bold text-primary" />{" "}
+            <div className="text-3xl md:text-6xl font-extrabold text-foreground">
+              <span className="inline-block md:w-1/2 w-3/4 text-left">
+                Build
+                <FlipWords words={words} className="font-bold text-primary" />
+              </span>
               <br />
               Components with{" "}
               <span className="text-primary font-extrabold">
@@ -78,7 +80,7 @@ function HeroSection() {
               </Link>
             </div>
           </div>
-          <HeroCarosel />
+          {/* <HeroCarosel /> */}
 
           {/* Interactive Showcase Panel */}
           {userToken && Object.keys(user).length !== 0 ? (
@@ -92,9 +94,11 @@ function HeroSection() {
                 Use our intuitive editor to quickly build your first UI
                 component.
               </p>
-              <Button className="bg-primary text-black mt-4 hover:scale-105 transition-transform">
-                Get Started
-              </Button>
+              <Link href={"/postcomponent"}>
+                <Button className="bg-primary text-black mt-4 hover:scale-105 transition-transform">
+                  Get Started
+                </Button>
+              </Link>
             </section>
           )}
         </motion.div>

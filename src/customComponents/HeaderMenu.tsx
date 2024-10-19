@@ -29,7 +29,7 @@ function HeaderMenu() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="hidden  md:flex items-center gap-3 md:gap-5">
+    <nav className="hidden  md:flex items-center gap-3 md:gap-5 ml-auto">
       <CommandMenu />
       <DropdownMenu open={open1} onOpenChange={setOpen1}>
         <DropdownMenuTrigger className="hover:bg-primary/20 hover:text-primary font-semibold px-4 py-2 md:px-6 md:py-2 rounded-lg transition-all duration-200">

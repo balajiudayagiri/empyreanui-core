@@ -1,96 +1,72 @@
+import { InfiniteMovingCards } from "empyreanui/components/ui/infinite-moving-cards";
 import { motion } from "framer-motion";
 
 interface Feature {
+  quote: string;
+  name: string;
   title: string;
-  description: string;
 }
-
-const carouselVariants = {
-  animate: {
-    x: [0, -1000], // Initial translation, will be adjusted dynamically
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 20, // Adjust the duration to control the speed
-        ease: "linear",
-      },
-    },
-  },
-};
-
 // Carousel Data
 const features: Feature[] = [
   {
-    title: "Build with HTML",
-    description:
+    quote:
       "Use the power of HTML to create dynamic, reusable components that work across browsers.",
+    name: "Build with HTML",
+    title: "Feature",
   },
   {
-    title: "Style with CSS/Tailwind",
-    description:
+    quote:
       "Customize your components with CSS or Tailwind's utility-first framework for a seamless design.",
+    name: "Style with CSS/Tailwind",
+    title: "Feature",
   },
   {
-    title: "Integrate with JavaScript",
-    description:
+    quote:
       "Add functionality to your components using JavaScript, making them interactive and engaging.",
+    name: "Integrate with JavaScript",
+    title: "Feature",
   },
   {
-    title: "README Generator",
-    description:
+    quote:
       "Easily generate professional README files based on prompts or documents. Simply input the details, and download the generated README with ease.",
+    name: "README Generator",
+    title: "Feature",
   },
   {
-    title: "JSDoc Generator",
-    description:
+    quote:
       "Automatically generate detailed JSDoc comments for your JavaScript code, enhancing your code's documentation and readability.",
+    name: "JSDoc Generator",
+    title: "Feature",
   },
   {
-    title: "README Editor",
-    description:
+    quote:
       "Edit your existing README files with a simple editor, allowing for quick modifications and updates to your project documentation.",
+    name: "README Editor",
+    title: "Feature",
   },
   {
-    title: "Color Palette",
-    description:
+    quote:
       "Discover vibrant color palettes to enhance your designs, offering a wide selection of colors for creative projects.",
+    name: "Color Palette",
+    title: "Feature",
   },
   {
-    title: "Image Color Extractor",
-    description:
+    quote:
       "Extract prominent colors from images for your design inspiration and use the color palette in your projects.",
+    name: "Image Color Extractor",
+    title: "Feature",
   },
   {
-    title: "Gradient Generator",
-    description:
+    quote:
       "Create beautiful gradient backgrounds easily by adjusting color stops and direction.",
+    name: "Gradient Generator",
+    title: "Feature",
   },
 ];
 
 function FeatureCarousel() {
   return (
-    <motion.div
-      className="carousel-container overflow-hidden w-fit relative mt-12 mb-20"
-      variants={carouselVariants}
-      animate="animate">
-      {/* Wrap the carousel in a container to control the looping */}
-      <div className="flex space-x-6 w-fit">
-        {/* Duplicate the features array to allow seamless looping */}
-        {[...features, ...features].map((feature, index) => (
-          <div
-            key={index}
-            className="p-6 min-w-[400px] border rounded-lg shadow-lg bg-primary/10 text-primary backdrop-blur-safari">
-            <h3 className="text-xl font-bold text-foreground">
-              {feature.title}
-            </h3>
-            <p className="text-md text-foreground mt-2">
-              {feature.description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </motion.div>
+    <InfiniteMovingCards items={features} direction="right" speed="slow" />
   );
 }
 

@@ -5,7 +5,8 @@ import uselogActivity from "./logActivity";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { setLocalValue } from "empyreanui/utils/storageValues/localValues";
 import { setSessionValue } from "empyreanui/utils/storageValues/sessionValues";
-
+import localKeys from "empyreanui/constants/localKeys.json";
+import SessionKeys from "empyreanui/constants/SessionKeys.json";
 /**
  * A custom hook for handling user sign-in.
  *
@@ -54,13 +55,13 @@ const useSignin = (): Array<any> => {
       const json = await response.json();
 
       if (response.ok) {
-        setLocalValue("token", json.token);
+        setLocalValue(localKeys.token, json.token);
         setToken(json?.token);
         submitActivity("login", json.token);
         setData(json);
       } else {
         if (response.status === 403) {
-          setSessionValue("verification_id", json.verification_id);
+          setSessionValue(SessionKeys.verification_id, json.verification_id);
           setModalInfo({
             isOpen: true,
             modalName: MODAL_CONSTANTS.VERIFICATION_MODAL,

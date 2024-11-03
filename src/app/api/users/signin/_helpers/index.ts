@@ -119,6 +119,7 @@ export const validateUser = async (
         throw { ...errors, status };
       }
     } else {
+      errors.email = "Email not found";
       status = HTTP_STATUS.NOT_FOUND;
       throw { ...errors, status };
     }

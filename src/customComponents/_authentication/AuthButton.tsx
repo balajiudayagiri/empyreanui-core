@@ -14,7 +14,8 @@ function AuthButton() {
       onClick={() => {
         setModalInfo({ isOpen: true, modalName: MODAL_CONSTANTS.SIGNIN_MODAL });
       }}
-      className="">
+      className=""
+    >
       Sign in
     </Button>
   );

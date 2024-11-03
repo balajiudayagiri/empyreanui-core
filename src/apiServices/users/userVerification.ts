@@ -1,7 +1,11 @@
+import SessionKeys from "empyreanui/constants/SessionKeys.json";
 import { UserContext } from "empyreanui/Providers/user-provider";
 
 import { setLocalValue } from "empyreanui/utils/storageValues/localValues";
-import { getSessionValue, removeSessionValue } from "empyreanui/utils/storageValues/sessionValues";
+import {
+  getSessionValue,
+  removeSessionValue,
+} from "empyreanui/utils/storageValues/sessionValues";
 
 import { useState, useCallback, useContext } from "react";
 
@@ -12,7 +16,7 @@ const VerifyOTP = () => {
 
   const [error, setError] = useState<any>(null);
 
-  const id = getSessionValue("verification_id");
+  const id = getSessionValue(SessionKeys.verification_id);
 
   const { setToken } = useContext(UserContext);
 
@@ -37,7 +41,7 @@ const VerifyOTP = () => {
           setLocalValue("token", json.token);
           setToken(json?.token);
           setData(json);
-          removeSessionValue("verification_id");
+          removeSessionValue(SessionKeys.verification_id);
         } else {
           setError(json);
         }

@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "empyreanui/components/ui/form";
 import { Input } from "empyreanui/components/ui/input";
-import { Loader2 } from "lucide-react";
+import { Loader, Loader2 } from "lucide-react";
 import useSignup from "empyreanui/apiServices/users/createUser";
 import { Button } from "empyreanui/components/ui/button";
 import Link from "next/link";
@@ -180,7 +180,7 @@ export default function Register(): JSX.Element {
         >
           {loading ? (
             <p className="flex items-center justify-center gap-1.5">
-              Submitting <Loader2 size={14} className="animate-spin" />
+           <Loader size={14} className="animate-spin" />   Submitting 
             </p>
           ) : (
             "Submit"

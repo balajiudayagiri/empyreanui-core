@@ -18,7 +18,13 @@ import { UserContext } from "empyreanui/Providers/user-provider";
 import { removeLocalValue } from "empyreanui/utils/storageValues/localValues";
 import { useRouter } from "next/navigation"; // Import the useRouter hook from next/navigation
 
-function ProfileDropDown({ children }: { children: React.ReactNode }) {
+function ProfileDropDown({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const [isMac, setIsMac] = useState<boolean>(false);
   const { setToken } = useContext(UserContext);
   const router = useRouter(); // Initialize the useRouter hook
@@ -59,7 +65,9 @@ function ProfileDropDown({ children }: { children: React.ReactNode }) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
+      <DropdownMenuTrigger className={className} asChild>
+        {children}
+      </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />

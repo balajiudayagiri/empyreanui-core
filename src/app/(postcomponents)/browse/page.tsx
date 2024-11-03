@@ -39,7 +39,7 @@ function page() {
   return (
     <div className="w-full relative">
       <BrowseHeroSection />
-      <section className="">
+      <section className="max-sm:pt-9">
         <Suspense fallback={<Loader className="animate-spin" />}>
           <PostList />
         </Suspense>

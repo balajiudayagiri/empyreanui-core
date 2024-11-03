@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "empyreanui/components/ui/button";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import React, { useContext } from "react";
@@ -14,8 +15,7 @@ function AuthButton() {
       onClick={() => {
         setModalInfo({ isOpen: true, modalName: MODAL_CONSTANTS.SIGNIN_MODAL });
       }}
-      className=""
-    >
+      className="">
       Sign in
     </Button>
   );

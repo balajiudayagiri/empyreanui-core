@@ -14,7 +14,7 @@ import React from "react";
 
 function BrowseHeroSection() {
   return (
-    <main className="h-fit">
+    <main className="h-fit max-sm:hidden">
       {/* <HeroHighlight className="md:h-[70dvh]">
         <motion.div
           initial={{

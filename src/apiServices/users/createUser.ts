@@ -1,3 +1,4 @@
+import SessionKeys from "empyreanui/constants/SessionKeys.json";
 import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { setSessionValue } from "empyreanui/utils/storageValues/sessionValues";
@@ -37,7 +38,7 @@ const useSignup = () => {
 
         if (response.ok) {
           setData(json);
-          setSessionValue("verification_id", json.verification_id);
+          setSessionValue(SessionKeys.verification_id, json.verification_id);
           setModalInfo({
             isOpen: true,
             modalName: MODAL_CONSTANTS.VERIFICATION_MODAL,

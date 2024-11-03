@@ -14,7 +14,7 @@ import {
 } from "empyreanui/components/ui/form";
 import { Input } from "empyreanui/components/ui/input";
 import useSignin from "empyreanui/apiServices/users/loginUser";
-import { Loader2 } from "lucide-react";
+import { Loader } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
@@ -97,7 +97,7 @@ export default function Login() {
           disabled={loading}>
           {loading ? (
             <p className="flex items-center justify-center gap-1.5">
-              Submitting <Loader2 size={14} className="animate-spin" />
+              <Loader size={14} className="animate-spin" /> Submitting
             </p>
           ) : (
             "Submit"

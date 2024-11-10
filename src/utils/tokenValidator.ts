@@ -1,6 +1,7 @@
 import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
 import jwt from "jsonwebtoken";
 import { NextRequest } from "next/server";
+import { ENV } from "./env_constants";
 
 /**
  * Middleware function to validate JWT tokens from the request.
@@ -41,7 +42,7 @@ const tokenValidator = async (request: NextRequest) => {
   } else {
     try {
       // Verify the JWT using the secret token
-      const data = jwt.verify(jwtToken, process.env.MY_SECRET_TOKEN!);
+      const data = jwt.verify(jwtToken, ENV.MY_SECRET_TOKEN!);
       return data as {
         username: string;
         email: string;

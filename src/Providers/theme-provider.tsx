@@ -26,7 +26,7 @@ export const NextThemesProviders: React.FC<ProvidersProps> = ({
   const themeRoutes: { [key: string]: string } = {
     blogs: "violet-theme",
     readme: "blue-theme",
-    profile: "blue-theme",
+    // profile: "blue-theme",
     "readme-ai": "blue-theme",
     "jsdoc-ai": "green-theme",
   };

@@ -13,6 +13,7 @@ import mongoConnection from "empyreanui/services/dbConnect";
 import OTP from "empyreanui/models/OTP";
 
 import jwt from "jsonwebtoken";
+import { ENV } from "empyreanui/utils";
 
 /**
  * Validates the One-Time Password (OTP) provided in the request body.
@@ -116,7 +117,7 @@ export async function POST(
         is_verified,
         user_role,
       };
-      const token = jwt.sign(payload, process.env.MY_SECRET_TOKEN!);
+      const token = jwt.sign(payload, ENV.MY_SECRET_TOKEN!);
 
       return NextResponse.json(
         { message: "Verified", token },

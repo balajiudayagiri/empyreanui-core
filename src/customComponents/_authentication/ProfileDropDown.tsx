@@ -17,6 +17,7 @@ import {
 import { UserContext } from "empyreanui/Providers/user-provider";
 import { removeLocalValue } from "empyreanui/utils/storageValues/localValues";
 import { useRouter } from "next/navigation"; // Import the useRouter hook from next/navigation
+import { ENV } from "empyreanui/utils";
 
 function ProfileDropDown({
   children,
@@ -62,6 +63,10 @@ function ProfileDropDown({
     const platform = navigator.platform.toLowerCase();
     setIsMac(platform.includes("mac"));
   }, []);
+
+  const openExternalLink = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <DropdownMenu>
@@ -109,16 +114,25 @@ function ProfileDropDown({
         <DropdownMenuSeparator />
         {/* Add other navigations or actions */}
         <DropdownMenuItem
-          onClick={() => router.push("https://github.com")}
-          disabled>
-          GitHub
+          onClick={() => openExternalLink("https://discord.gg/PGQ68Bbv")}>
+          Discord
         </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() =>
+            openExternalLink("https://www.instagram.com/empyreanui/")
+          }>
+          Instagram
+        </DropdownMenuItem>
+        {/* <DropdownMenuItem
+          onClick={() => openExternalLink("https://github.com")}>
+          GitHub
+        </DropdownMenuItem> */}
         <DropdownMenuItem onClick={() => router.push("/support")} disabled>
           Support
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logoutUser}>
-          Log out{" "}
+          Log out
           <DropdownMenuShortcut>
             ⇧+{isMac ? "⌘" : "Ctrl"}+Q
           </DropdownMenuShortcut>

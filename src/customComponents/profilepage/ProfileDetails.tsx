@@ -34,12 +34,10 @@ const ProfileDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      if (user) {
-        setLoading(false);
-      }
-    } catch (err) {
-      setError("An error occurred while fetching the user data.");
+    if (user) {
+      setLoading(false);
+    } else {
+      setError("Failed to fetch user data.");
       setLoading(false);
     }
   }, [user]);
@@ -48,112 +46,159 @@ const ProfileDetails = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-full">
-        <div className="text-red-600 font-semibold">{error}</div>
+      <div className="flex justify-center items-center min-h-[50vh]">
+        <p className="text-red-500 font-semibold">{error}</p>
       </div>
     );
   }
 
-  if (!user) return <div>No user data available</div>;
+  if (!user) {
+    return (
+      <div className="text-center text-gray-500">No user data available</div>
+    );
+  }
 
-  const fullName = `${user?.firstname || ""} ${user?.lastname || ""}`;
-  const avatar1 = getAvatarInitials(user?.firstname || "U");
-  const avatar2 = getAvatarInitials(user?.lastname || "N");
+  const fullName = `${user.firstname || ""} ${user.lastname || ""}`;
+  const avatar1 = getAvatarInitials(user.firstname || "U");
+  const avatar2 = getAvatarInitials(user.lastname || "N");
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-4xl mx-auto p-8 space-y-10">
       {/* Profile Card */}
-      <Card className="shadow-lg rounded-lg bg-card p-4 relative">
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button className="flex items-center space-x-2 absolute right-4 top-4 bg-transparent hover:bg-primary/20">
-              <History className="w-5 h-5 text-primary" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent className="w-96 bg-card">
-            <h2 className="text-xl text-primary font-semibold mb-4">
-              User Activity Logs
-            </h2>
-            <ul className="space-y-4 p-4 h-[calc(100dvh-71px)] overflow-y-scroll">
-              {user?.user_logs?.length > 0 ? (
-                user.user_logs.map((log: any) => (
-                  <li
-                    key={log._id}
-                    className="flex items-center justify-between p-3 bg-card-foreground/10 rounded-lg">
-                    <div>
-                      <h4 className="font-semibold text-primary">
-                        {log.event || "Event"}
-                      </h4>
-                      <p className="text-sm text-gray-500">
-                        {log.description || "No description available"}
-                      </p>
-                    </div>
-                    <span className="text-xs text-gray-400">
-                      {log.time
-                        ? new Date(log.time).toLocaleString()
-                        : "Time not available"}
-                    </span>
-                  </li>
-                ))
-              ) : (
-                <li className="text-gray-500 dark:text-gray-400">
-                  No activity logs available.
-                </li>
-              )}
-            </ul>
-          </SheetContent>
-        </Sheet>
-        <CardHeader className="flex flex-col items-center space-y-4">
-          <Avatar className="w-24 h-24">
-            <AvatarFallback>
-              {avatar1}
-              {avatar2}
-            </AvatarFallback>
-          </Avatar>
-          <div className="text-center">
-            <CardTitle className="text-2xl mb-2 font-bold text-primary">
-              {fullName}
-            </CardTitle>
-            <CardDescription className="text-primary/80 font-medium">
-              {user?.email || "Email not available"}
-            </CardDescription>
-            <CardDescription className="text-primary/80 font-medium">
-              {user?.username || "N/A"}
-            </CardDescription>
-          </div>
-        </CardHeader>
+      <ProfileCard
+        fullName={fullName}
+        avatar1={avatar1}
+        avatar2={avatar2}
+        email={user.email}
+        username={user.username}
+        isVerified={user.is_verified}
+        logs={user.user_logs}
+      />
 
-        {/* Profile Details */}
-        <CardContent className="bg-card/20 rounded-md pt-3">
+      {/* Accordion Section */}
+      <Card className="shadow-lg rounded-xl bg-card p-6 transition-all hover:shadow-2xl">
+        <CardContent>
           <Accordion type="single" collapsible>
-            {/* Total Blogs */}
+            {/* Blogs Section */}
             <AccordionItem value="blogs">
-              <AccordionTrigger className="font-semibold text-lg">
-                Blogs ( {user?.blog_ids?.length || 0} )
+              <AccordionTrigger className="font-semibold text-xl text-primary hover:text-primary/80 transition-colors">
+                Blogs ({user.blog_ids?.length || 0})
               </AccordionTrigger>
-              <AccordionContent className="max-h-80 overflow-y-scroll">
+              <AccordionContent className="p-4 rounded-lg mt-2">
                 <BlogsDataListing />
               </AccordionContent>
             </AccordionItem>
 
-            {/* Total Components */}
+            {/* Components Section */}
             <AccordionItem value="components">
-              <AccordionTrigger className="font-semibold text-lg">
-                Components ( {user?.component_ids?.length || 0} )
+              <AccordionTrigger className="font-semibold text-xl text-primary hover:text-primary/80 transition-colors">
+                Components ({user.component_ids?.length || 0})
               </AccordionTrigger>
-              <AccordionContent className="max-h-80 overflow-y-scroll">
+              <AccordionContent className="p-4 rounded-lg mt-2">
                 <ProfileDataListing />
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </CardContent>
-        {user?.is_verified && (
-          <Badge className="bg-green-500 text-white text-xs absolute -top-3 left-3 px-3 py-1 rounded-md">
-            Verified User
-          </Badge>
-        )}
       </Card>
     </div>
+  );
+};
+
+// Profile Card Component
+const ProfileCard = ({
+  fullName,
+  avatar1,
+  avatar2,
+  email,
+  username,
+  isVerified,
+  logs,
+}: {
+  fullName: string;
+  avatar1: string;
+  avatar2: string;
+  email: string;
+  username: string;
+  isVerified: boolean;
+  logs: any[];
+}) => {
+  return (
+    <Card className="relative shadow-xl rounded-2xl bg-card p-8 hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+      {/* Activity Logs Button */}
+      <ActivityLogs logs={logs} />
+
+      <CardHeader className="flex flex-col items-center space-y-6">
+        <Avatar className="w-24 h-24 ring-4 ring-primary/20 rounded-full">
+          <AvatarFallback>
+            {avatar1}
+            {avatar2}
+          </AvatarFallback>
+        </Avatar>
+        <div className="text-center space-y-2">
+          <CardTitle className="text-3xl font-bold text-primary">
+            {fullName}
+          </CardTitle>
+          <CardDescription className="text-muted-foreground text-lg">
+            {email}
+          </CardDescription>
+          <CardDescription className="text-muted-foreground">
+            {username}
+          </CardDescription>
+        </div>
+      </CardHeader>
+
+      {isVerified && (
+        <Badge className="absolute -top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full shadow-lg">
+          Verified
+        </Badge>
+      )}
+    </Card>
+  );
+};
+
+// Activity Logs Sheet Component
+const ActivityLogs = ({ logs }: { logs: any[] }) => {
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button
+          className="absolute right-6 top-6 bg-transparent hover:bg-primary/10 p-2 rounded-full transition duration-300"
+          aria-label="View Activity Logs">
+          <History className="w-6 h-6 text-primary" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="w-96 bg-card shadow-2xl rounded-lg p-6">
+        <h2 className="text-2xl font-semibold text-primary mb-4">
+          Activity Logs
+        </h2>
+        <ul className="space-y-4 overflow-y-auto max-h-72">
+          {logs?.length > 0 ? (
+            logs.map((log) => (
+              <li
+                key={log._id}
+                className="flex justify-between items-center p-4 bg-gray-100 rounded-lg shadow-sm">
+                <div>
+                  <h4 className="font-semibold text-primary">
+                    {log.event || "Event"}
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    {log.description || "No description"}
+                  </p>
+                </div>
+                <span className="text-xs text-gray-500">
+                  {log.time
+                    ? new Date(log.time).toLocaleString()
+                    : "No time available"}
+                </span>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-500">No activity logs available.</li>
+          )}
+        </ul>
+      </SheetContent>
+    </Sheet>
   );
 };
 

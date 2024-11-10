@@ -35,13 +35,11 @@ function ProfileDataListing() {
         <Link
           href={`/browse/${post.componentName}-${post._id}`}
           key={post._id}
-          className="block">
-          <div className="bg-white rounded-md p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+          className="block  border rounded">
+          <div className="bg-background rounded-md p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <h3 className="text-lg font-semibold mb-1">{post.componentName}</h3>
-            <p className="text-sm text-gray-600 mb-2">
-              {post.componentCategory}
-            </p>
-            <p className="text-gray-700">
+            <p className="text-sm mb-2">{post.componentCategory}</p>
+            <p className="text-gray-500">
               By {post.user.firstName} {post.user.lastName}
             </p>
           </div>

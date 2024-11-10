@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import OTP from "empyreanui/models/OTP";
 import generateOTP from "empyreanui/utils/generateOTP";
 import sendMail from "empyreanui/utils/mailer";
+import { ENV } from "empyreanui/utils";
 
 /**
  * Validates the input data for user login.
@@ -92,7 +93,7 @@ export const validateUser = async (
             is_verified,
             user_role,
           };
-          const token = jwt.sign(payload, process.env.MY_SECRET_TOKEN!);
+          const token = jwt.sign(payload, ENV.MY_SECRET_TOKEN!);
           return token;
         } else {
           const otp = generateOTP();

@@ -8,3 +8,5 @@ export * from "empyreanui/utils/makeUrlFriendly";
 export * from "empyreanui/utils/extractId";
 export * from "empyreanui/utils/getAvatarInitials";
 export * from "empyreanui/utils/truncateText";
+
+export * from "empyreanui/utils/env_constants";

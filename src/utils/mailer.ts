@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { ENV } from "./env_constants";
 
 type MailTypes = "Verify" | "Resend" | "ForgotPassword";
 
@@ -12,8 +13,8 @@ const transporter: nodemailer.Transporter = nodemailer.createTransport({
   host: "SMTPConnection.gmail.com",
   service: "gmail",
   auth: {
-    user: process.env.MY_EMAIL,
-    pass: process.env.MY_PASSCODE,
+    user: ENV.MY_EMAIL,
+    pass: ENV.MY_PASSCODE,
   },
 });
 /**
@@ -129,7 +130,6 @@ Your OTP (One-Time Password) to reset your password is: ${otp}`,
   }
 };
 
-
 /**
  * Sends an email using the configured transporter based on the provided mail type and data.
  *
@@ -157,7 +157,7 @@ const sendMail = async (user: any, mailType: MailTypes): Promise<void> => {
   try {
     const mailBody = mail(mailType, user);
     await transporter.sendMail({
-      from: process.env.MY_EMAIL,
+      from: ENV.MY_EMAIL,
       to: user.email,
       ...mailBody,
     });

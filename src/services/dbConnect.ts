@@ -1,7 +1,8 @@
 // src/services/dbConnect.ts
 import mongoose from "mongoose";
+import { ENV } from "empyreanui/utils";
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
+const MONGODB_URI = ENV.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
   throw new Error(

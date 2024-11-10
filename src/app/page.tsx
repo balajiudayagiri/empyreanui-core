@@ -8,11 +8,9 @@ import HeroSection from "empyreanui/customComponents/HeroSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="scroll-bar-allowed">
       <HeroSection />
-      {/* bottom animated component */}
-      <div className="xl:mx-24 lg:mx-20 flex flex-col md:gap-12 mt-12 gap-8">
-        {/* <UiGalleryHero /> */}
+      <main className="xl:mx-24 lg:mx-20 flex flex-col gap-12 mt-12">
         <LazyMountWrapper>
           <ReadmeHeroSection />
         </LazyMountWrapper>
@@ -28,9 +26,7 @@ export default function Home() {
         <LazyMountWrapper>
           <ImageColorExtractorHero />
         </LazyMountWrapper>
-        {/* <GradientGeneratorHero /> */}
-        {/* <GradientPaletteHero /> */}
-      </div>
-    </>
+      </main>
+    </div>
   );
 }

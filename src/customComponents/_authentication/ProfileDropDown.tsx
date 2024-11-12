@@ -114,7 +114,7 @@ function ProfileDropDown({
         <DropdownMenuSeparator />
         {/* Add other navigations or actions */}
         <DropdownMenuItem
-          onClick={() => openExternalLink("https://discord.gg/PGQ68Bbv")}>
+          onClick={() => openExternalLink("https://discord.gg/qw6fYxcCcW")}>
           Discord
         </DropdownMenuItem>
         <DropdownMenuItem

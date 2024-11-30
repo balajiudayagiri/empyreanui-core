@@ -30,19 +30,34 @@ function ScrollToTopButton() {
 
   return (
     <div className="fixed bottom-4 right-4">
+      <style>{`
+      @keyframes slideIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out forwards;
+}
+      `}</style>
       {isVisible && (
         <Button
           className={cn(
             "p-0",
             "w-9 h-9 rounded-full border-none font-bold flex items-center justify-center cursor-pointer",
             "transition-all duration-300 overflow-hidden relative",
-            // when hover
             "lg:hover:w-28 lg:hover:rounded-[50px] lg:hover:duration-300 lg:hover:bg-primary",
-            // psuedo element
             "before:absolute before:bottom-[-20px] lg:before:content-['Back_to_Top'] before:text-current before:text-[0px]",
-            // on hover on psuedo element
             "hover:before:text-[13px] hover:before:opacity-100 hover:before:bottom-[unset] hover:before:duration-300",
-            "group"
+            "group",
+            // Add the slide-in animation
+            isVisible ? "animate-slideIn" : ""
           )}
           onClick={scrollToTop}>
           <svg

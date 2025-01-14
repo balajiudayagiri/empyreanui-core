@@ -8,7 +8,7 @@ import {
   ResizablePanelGroup,
 } from "empyreanui/components/ui/resizable";
 import { snippets } from "./snippits";
-import { Download, FileText, MenuIcon } from "lucide-react";
+import { Download, FileDown, FileText, MenuIcon } from "lucide-react";
 
 import {
   Sheet,
@@ -38,6 +38,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "empyreanui/components/ui/tabs";
+import useReadmeDownload from "./useReadmeDownload";
 
 const ReadmeEditor: React.FC = () => {
   const [markdown, setMarkdown] =
@@ -100,20 +101,26 @@ You can edit this text to see a live preview of your README file.
       }
     );
   };
-  const handleDownload = () => {
+
+  const handleDownloadMarkdown = () => {
     const element = document.createElement("a");
     const file = new Blob([markdown], { type: "text/markdown" });
     element.href = URL.createObjectURL(file);
     element.download = "README.md";
-    document.body.appendChild(element); // Required for this to work in FireFox
+    document.body.appendChild(element); // Required for this to work in Firefox
     element.click();
+    document.body.removeChild(element);
   };
+
+  // Use the custom hook
+  const { downloadPDF, downloadDOCX } = useReadmeDownload(markdown);
 
   return (
     <div className="relative readme-container min-h-[calc(100dvh-56px)] w-vw mt-14 flex flex-col lg:flex-row">
       <div className="p-1">
         {/* left options */}
         <div className="flex lg:flex-col flex-row items-start gap-2">
+          {/* Add Snippet Sheet */}
           <Sheet>
             <TooltipProvider>
               <Tooltip>
@@ -132,10 +139,10 @@ You can edit this text to see a live preview of your README file.
             </TooltipProvider>
             <SheetContent side={"left"}>
               <SheetHeader>
-                <SheetTitle>Select snippits</SheetTitle>
+                <SheetTitle>Select Snippets</SheetTitle>
                 <SheetDescription>
                   Make changes to your Readme by clicking on the required
-                  snippit in here
+                  snippet in here
                 </SheetDescription>
               </SheetHeader>
               <ul className="h-[calc(100dvh-109px)] overflow-y-scroll">
@@ -152,6 +159,8 @@ You can edit this text to see a live preview of your README file.
               </ul>
             </SheetContent>
           </Sheet>
+
+          {/* Select Template Sheet */}
           <Sheet>
             <TooltipProvider>
               <Tooltip>
@@ -190,13 +199,15 @@ You can edit this text to see a live preview of your README file.
               </ul>
             </SheetContent>
           </Sheet>
+
+          {/* Download Buttons */}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
                   variant="outline"
-                  className="p-2"
-                  onClick={handleDownload}>
+                  className="p-2 flex items-center gap-1 hover:text-indigo-500 hover:bg-indigo-500/20 hover:border-indigo-500"
+                  onClick={handleDownloadMarkdown}>
                   <Download />
                 </Button>
               </TooltipTrigger>
@@ -206,17 +217,56 @@ You can edit this text to see a live preview of your README file.
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
+
+          {/* Download as PDF */}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="p-2 flex items-center gap-1 hover:text-red-500 hover:bg-red-500/20 hover:border-red-500"
+                  onClick={downloadPDF}>
+                  <FileDown />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Download as PDF</p>
+                <TooltipArrow className="TooltipArrow" />
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          {/* Download as DOCX */}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="p-2 flex items-center gap-1 hover:text-blue-500 hover:bg-blue-500/20 hover:border-blue-500"
+                  onClick={downloadDOCX}>
+                  <FileDown />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Download as DOCX</p>
+                <TooltipArrow className="TooltipArrow" />
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
+        {/* Post as Blog Button */}
         <PostBlogDialog
           onSubmit={handlePostCode}
           isLoading={isLoading}
           disabled={!markdown}>
           <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold">
-            post this as a blog
+            Post this as a Blog
           </Button>
         </PostBlogDialog>
       </div>
+
+      {/* Editor and Preview Panels */}
       <div className="max-md:hidden">
         <ResizablePanelGroup direction="horizontal" className="flex-grow">
           <ResizablePanel defaultSize={50}>
@@ -241,6 +291,8 @@ You can edit this text to see a live preview of your README file.
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>
+
+      {/* Mobile Tabs for Editor and Preview */}
       <div className="md:hidden">
         <Tabs defaultValue="editor">
           <TabsList className="m-1">

@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
     const response = await groq.chat.completions.create({
       messages: [readmePrompting, ...newConversation],
-      model: "mixtral-8x7b-32768",
+      model: process.env.MODAL_TO_USE as unknown as string,
       temperature: 0.7,
       max_tokens: 1024,
       top_p: 1,

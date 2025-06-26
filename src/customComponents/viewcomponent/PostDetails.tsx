@@ -155,7 +155,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ postId }) => {
         </div>
       ) : null}
 
-      <aside className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl backdrop-blur-safari rounded-full flex max-lg:hidden">
+      <aside className="fixed bottom-3 left-1/2 z-20 transform -translate-x-1/2 p-3 border border-solid border-primary bg-primary/20 backdrop-blur-xl backdrop-blur-safari rounded-full flex max-lg:hidden">
         <CreateNewComponent className="px-3 rounded-full" />
       </aside>
     </div>

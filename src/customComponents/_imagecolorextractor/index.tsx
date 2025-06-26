@@ -1,4 +1,4 @@
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";

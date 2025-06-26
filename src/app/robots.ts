@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://empyreanui-core.vercel.app/sitemap.xml",
+    sitemap: "https://kodebloxui-core.vercel.app/sitemap.xml",
   };
 }

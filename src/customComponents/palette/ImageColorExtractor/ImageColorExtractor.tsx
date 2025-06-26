@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "empyreanui/components/ui/button";
-import { Slider } from "empyreanui/components/ui/slider";
-import { rgbStringToAllColors } from "empyreanui/utils";
+import { Button } from "kodebloxui/components/ui/button";
+import { Slider } from "kodebloxui/components/ui/slider";
+import { rgbStringToAllColors } from "kodebloxui/utils";
 import { Copy } from "lucide-react";
 import React, {
   useState,

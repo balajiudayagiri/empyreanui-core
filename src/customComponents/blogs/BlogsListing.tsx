@@ -1,13 +1,13 @@
 "use client";
-import { useFetchBlogs } from "empyreanui/apiServices/fetchBlogs";
+import { useFetchBlogs } from "kodebloxui/apiServices/fetchBlogs";
 import { Frown, Loader, SquarePen } from "lucide-react";
 import React, { useEffect, useState, useRef } from "react";
 import { BlogsTypes } from "./blogsTypes";
 import BlogCard from "./BlogCard";
-import { Input } from "empyreanui/components/ui/input";
+import { Input } from "kodebloxui/components/ui/input";
 import Link from "next/link";
-import { Button } from "empyreanui/components/ui/button";
-import { Highlight } from "empyreanui/components/ui/hero-highlight";
+import { Button } from "kodebloxui/components/ui/button";
+import { Highlight } from "kodebloxui/components/ui/hero-highlight";
 
 function BlogsListing() {
   const { fetchBlogs, isLoading, error } = useFetchBlogs();
@@ -60,7 +60,7 @@ function BlogsListing() {
     <main className="flex flex-col items-center gap-8 lg:w-4/5 mx-auto p-4">
       <section className="w-full  p-10 rounded-3xl text-center">
         <h1 className="text-4xl lg:text-6xl font-bold mb-4">
-          Welcome to Empyrean<span className="text-purple-800">UI</span> Blogs
+          Welcome to KodeBlox<span className="text-purple-800">UI</span> Blogs
         </h1>
         <p className="text-lg lg:text-xl mb-6">
           Discover the latest news, tips, and insights from our experts. Stay

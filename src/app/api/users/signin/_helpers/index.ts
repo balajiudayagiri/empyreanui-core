@@ -1,12 +1,12 @@
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
-import ERROR_MESSAGES from "empyreanui/constants/ERROR_MESSAGES.json";
-import users from "empyreanui/models/Empyrean_users";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
+import ERROR_MESSAGES from "kodebloxui/constants/ERROR_MESSAGES.json";
+import users from "kodebloxui/models/Empyrean_users";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import OTP from "empyreanui/models/OTP";
-import generateOTP from "empyreanui/utils/generateOTP";
-import sendMail from "empyreanui/utils/mailer";
-import { ENV } from "empyreanui/utils";
+import OTP from "kodebloxui/models/OTP";
+import generateOTP from "kodebloxui/utils/generateOTP";
+import sendMail from "kodebloxui/utils/mailer";
+import { ENV } from "kodebloxui/utils";
 
 /**
  * Validates the input data for user login.

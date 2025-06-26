@@ -1,4 +1,4 @@
-import ImageColorExtractor from "empyreanui/customComponents/palette/ImageColorExtractor/ImageColorExtractor";
+import ImageColorExtractor from "kodebloxui/customComponents/palette/ImageColorExtractor/ImageColorExtractor";
 import { Metadata } from "next";
 import React from "react";
 

@@ -4,7 +4,7 @@ import React from "react";
 // import { motion } from "framer-motion";
 // const HeroHighlight = dynamic(
 //   () =>
-//     import("empyreanui/components/ui/hero-highlight").then(
+//     import("kodebloxui/components/ui/hero-highlight").then(
 //       (mod) => mod.HeroHighlight
 //     ),
 //   {
@@ -34,7 +34,7 @@ function BrowseHeroSection() {
 
       <div className="container mx-auto px-6 text-center md:text-left  pt-20 h-fit pb-10 ">
         <h1 className="text-4xl md:text-6xl font-bold  leading-tight mb-4">
-          Welcome to Empyrean
+          Welcome to KodeBlox
           <span className="text-primary text-shadow">UI</span> Gallery
         </h1>
         <p className="text-lg md:text-xl  mb-8">

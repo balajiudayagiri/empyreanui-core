@@ -13,11 +13,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "empyreanui/components/ui/form";
+} from "kodebloxui/components/ui/form";
 
-import { Input } from "empyreanui/components/ui/input";
+import { Input } from "kodebloxui/components/ui/input";
 
-import setNewPWD from "empyreanui/apiServices/users/useNewPassword";
+import setNewPWD from "kodebloxui/apiServices/users/useNewPassword";
 
 import { Loader2 } from "lucide-react";
 
@@ -64,8 +64,7 @@ export default function SETFORGOTPWD() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 max-w-[400px] rounded-2xl w-full"
-      >
+        className="space-y-6 max-w-[400px] rounded-2xl w-full">
         {/* <h1 className="text-3xl font-medium">LOGIN</h1>
         <p className="!mt-1 text-xs">
           Enter your email and password to login to your account
@@ -108,8 +107,7 @@ export default function SETFORGOTPWD() {
         <button
           className="bg-primary p-1 py-1.5 w-full rounded-md text-primary-foreground font-semibold disabled:opacity-70"
           type="submit"
-          disabled={loading}
-        >
+          disabled={loading}>
           {loading ? (
             <p className="flex items-center justify-center gap-1.5">
               Submitting <Loader2 size={14} className="animate-spin" />

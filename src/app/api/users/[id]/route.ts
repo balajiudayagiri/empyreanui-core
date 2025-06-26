@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-import users from "empyreanui/models/Empyrean_users";
+import users from "kodebloxui/models/Empyrean_users";
 
 import { NextRequest, NextResponse } from "next/server";
 
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
 
-import mongoConnection from "empyreanui/services/dbConnect";
-import tokenValidator from "empyreanui/utils/tokenValidator";
+import mongoConnection from "kodebloxui/services/dbConnect";
+import tokenValidator from "kodebloxui/utils/tokenValidator";
 
 const { ObjectId } = mongoose.Types;
 

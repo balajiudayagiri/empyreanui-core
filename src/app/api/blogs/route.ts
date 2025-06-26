@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "empyreanui/services/dbConnect";
-import Blog from "empyreanui/models/Blog";
-import { generateCustomUUID } from "empyreanui/utils";
-import tokenValidator from "empyreanui/utils/tokenValidator";
+import dbConnect from "kodebloxui/services/dbConnect";
+import Blog from "kodebloxui/models/Blog";
+import { generateCustomUUID } from "kodebloxui/utils";
+import tokenValidator from "kodebloxui/utils/tokenValidator";
 import { updatePostActivity } from "../_helpers";
 
 export async function GET(req: NextRequest) {

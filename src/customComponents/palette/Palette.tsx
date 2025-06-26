@@ -1,5 +1,5 @@
 "use client";
-import { Tabs, TabsList, TabsTrigger } from "empyreanui/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "kodebloxui/components/ui/tabs";
 import React from "react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";

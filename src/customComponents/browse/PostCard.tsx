@@ -2,17 +2,17 @@ import React from "react";
 import Link from "next/link";
 import { IframeRenderer } from "@customcomponent";
 import { CodeXml } from "lucide-react";
-import { GetIconFramework } from "empyreanui/utils/getIconFramwork";
+import { GetIconFramework } from "kodebloxui/utils/getIconFramwork";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "empyreanui/components/ui/avatar";
+} from "kodebloxui/components/ui/avatar";
 import {
   getAvatarBgColor,
   getAvatarInitials,
   makeUrlFriendly,
-} from "empyreanui/utils";
+} from "kodebloxui/utils";
 
 export interface PostCardProps {
   post: {
@@ -37,15 +37,15 @@ export interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
   return (
-    <article className="group h-full max-w-full backdrop-blur-2xl backdrop-blur-safari bg-primary/10 rounded-xl cursor-pointer border border-solid border-primary/35">
+    <article className="group h-full max-w-full w-fit backdrop-blur-2xl backdrop-blur-safari bg-primary/10 rounded-xl cursor-pointer border border-solid border-primary/35">
       <div className="relative rounded-t-xl overflow-hidden">
         <IframeRenderer
           htmlContent={post.code.htmlCode}
           cssContent={post.code.cssCode}
           cssFramework={post.code.styleType}
           style={{
-            height: 460,
-            width: 360,
+            height: 300,
+            width: 300,
             border: "none",
             borderRadius: "12px 12px 0 0",
           }}

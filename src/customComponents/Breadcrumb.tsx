@@ -8,7 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "empyreanui/components/ui/breadcrumb";
+} from "kodebloxui/components/ui/breadcrumb";
 import { Book, BookOpenIcon } from "lucide-react";
 
 const Breadcrumbs: React.FC = () => {

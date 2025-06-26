@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 
 const ReadmeSvg = dynamic(() => import("./ReadmeSvg"), { ssr: false });
 

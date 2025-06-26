@@ -5,15 +5,15 @@ import {
   getAvatarInitials,
   makeUrlFriendly,
   months,
-} from "empyreanui/utils";
+} from "kodebloxui/utils";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "empyreanui/components/ui/avatar";
+} from "kodebloxui/components/ui/avatar";
 
 function BlogCard({ key, data }: { key: any; data: BlogsTypes }) {
   const date = new Date(data.date).toLocaleDateString();

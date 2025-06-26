@@ -1,8 +1,8 @@
 "use client";
-import { Button } from "empyreanui/components/ui/button";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { Button } from "kodebloxui/components/ui/button";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 import React, { useContext } from "react";
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
+import MODAL_CONSTANTS from "kodebloxui/constants/MODAL_CONSTANTS.json";
 import ProfileAvatar from "./ProfileAvatar";
 
 function AuthButton() {

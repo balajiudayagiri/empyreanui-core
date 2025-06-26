@@ -7,8 +7,8 @@ import {
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from "empyreanui/components/ui/sheet";
-import { Button } from "empyreanui/components/ui/button";
+} from "kodebloxui/components/ui/sheet";
+import { Button } from "kodebloxui/components/ui/button";
 import { Menu } from "lucide-react";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -146,7 +146,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({
               {selectedComponent.title}
             </h1>
             <p className="mb-6">{selectedComponent.description}</p>
-            <CopyableCode code={"npm i @empyreanui/core"} />
+            <CopyableCode code={"npm i @kodebloxui/core"} />
             <h2 className="text-2xl font-semibold mb-3">Preview</h2>
             <div className="p-4 border rounded-lg min-h-80">
               {selectedComponent.render

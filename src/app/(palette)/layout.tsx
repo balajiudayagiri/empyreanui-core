@@ -1,4 +1,4 @@
-import { Palette } from "empyreanui/customComponents";
+import { Palette } from "kodebloxui/customComponents";
 
 export default function PaletteLayout({
   children,

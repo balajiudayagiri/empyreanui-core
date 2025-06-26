@@ -1,4 +1,4 @@
-import GradientGenerator from "empyreanui/customComponents/palette/GradiantGenerator/GradiantGenerator";
+import GradientGenerator from "kodebloxui/customComponents/palette/GradiantGenerator/GradiantGenerator";
 import { Metadata } from "next";
 import React from "react";
 

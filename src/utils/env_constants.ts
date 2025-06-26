@@ -2,7 +2,7 @@ type EnvVariables = {
   MONGODB_URI: string;
   MY_EMAIL: string;
   MY_PASSCODE: string;
-  INSTAGRAM: string;
+  // INSTAGRAM: string; 
   DISCORD: string;
   JWT_SECRET: string;
   MY_SECRET_TOKEN: string;
@@ -20,7 +20,7 @@ export const ENV: EnvVariables = {
   MY_EMAIL: process.env.MY_EMAIL as string,
   MY_PASSCODE: process.env.MY_PASSCODE as string,
 
-  INSTAGRAM: process.env.INSTAGRAM as string,
+  // INSTAGRAM: process.env.INSTAGRAM as string,
   DISCORD: process.env.DISCORD as string,
 
   JWT_SECRET: process.env.JWT_SECRET as string,

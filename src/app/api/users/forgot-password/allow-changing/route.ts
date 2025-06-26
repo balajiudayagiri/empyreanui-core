@@ -1,13 +1,13 @@
 import { checkUserAndEmail } from "../../signup/_helpers/index";
-import users from "empyreanui/models/Empyrean_users";
+import users from "kodebloxui/models/Empyrean_users";
 import { NextRequest, NextResponse } from "next/server";
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
-import ERROR_MESSAGES from "empyreanui/constants/ERROR_MESSAGES.json";
-import mongoConnection from "empyreanui/services/dbConnect";
-import User from "empyreanui/models/User";
-import sendMail from "empyreanui/utils/mailer";
-import generateOTP from "empyreanui/utils/generateOTP";
-import OTP from "empyreanui/models/OTP";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
+import ERROR_MESSAGES from "kodebloxui/constants/ERROR_MESSAGES.json";
+import mongoConnection from "kodebloxui/services/dbConnect";
+import User from "kodebloxui/models/User";
+import sendMail from "kodebloxui/utils/mailer";
+import generateOTP from "kodebloxui/utils/generateOTP";
+import OTP from "kodebloxui/models/OTP";
 
 const validateOTP = async (
   id: string,

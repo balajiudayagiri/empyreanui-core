@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { Card, CardContent, CardHeader } from "empyreanui/components/ui/card";
-import { Skeleton } from "empyreanui/components/ui/skeleton";
+import { Card, CardContent, CardHeader } from "kodebloxui/components/ui/card";
+import { Skeleton } from "kodebloxui/components/ui/skeleton";
 
 const ProfileDetailsLoading = () => {
   return (

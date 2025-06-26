@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
 import { motion } from "framer-motion";
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 
 interface VortexProps {
   children?: any;

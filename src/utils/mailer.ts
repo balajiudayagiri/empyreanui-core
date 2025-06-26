@@ -49,7 +49,7 @@ Your OTP (One-Time Password) for verification is: ${otp}`,
         html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color: #333;">
           <!-- Header Section -->
           <div style="background-color: #000; color: #fff; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
-              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">Empyrean<span style="color: #facc14;">UI</span></h2>
+              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">KodeBlox<span style="color: #facc14;">UI</span></h2>
           </div>
 
           <!-- Body Section -->
@@ -77,7 +77,7 @@ Your OTP (One-Time Password) for verification is: ${otp}`,
         html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color: #333;">
           <!-- Header Section -->
           <div style="background-color: #000; color: #fff; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
-              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">Empyrean<span style="color: #facc14;">UI</span></h2>
+              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">KodeBlox<span style="color: #facc14;">UI</span></h2>
           </div>
 
           <!-- Body Section -->
@@ -105,7 +105,7 @@ Your OTP (One-Time Password) to reset your password is: ${otp}`,
         html: `<div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color: #333;">
           <!-- Header Section -->
           <div style="background-color: #000; color: #fff; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
-              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">Empyrean<span style="color: #facc14;">UI</span></h2>
+              <h2 style="margin: 0; font-size: 28px; font-weight: 900;">KodeBlox<span style="color: #facc14;">UI</span></h2>
           </div>
 
           <!-- Body Section -->

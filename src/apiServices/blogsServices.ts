@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { formatErrors } from "empyreanui/utils";
+import { formatErrors } from "kodebloxui/utils";
 import { blogsRoute } from "./constant";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 
 export const useFetchBlog = () => {
   const [isLoading, setIsLoading] = useState(false);

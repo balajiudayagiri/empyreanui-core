@@ -1,110 +1,76 @@
 "use client";
-import React, { useContext } from "react";
-import { Button } from "empyreanui/components/ui/button";
-import { FlipWords } from "empyreanui/components/ui/flip-words";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import UserItemsHeroSection from "./UserItemsHeroSection";
-import HeroCarosel from "./HeroCarosel";
+import React from "react";
+import {
+  Code2,
+  Component,
+  FileText,
+  MousePointerClick,
+  Puzzle,
+  CircleDot,
+  Type,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 
-const HeroHighlight = dynamic(
-  () =>
-    import("empyreanui/components/ui/hero-highlight").then(
-      (mod) => mod.HeroHighlight
-    ),
-  {
-    ssr: false,
-  }
+const IconWrapper = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <div
+    className={`absolute bg-muted/30 backdrop-blur-sm border border-border/20 rounded-lg flex items-center justify-center shadow-lg ${className}`}>
+    {children}
+  </div>
 );
 
-function HeroSection() {
-  const { userToken, user } = useContext(UserContext);
-  const words = [
-    "Better",
-    "Elegant",
-    "Beautiful",
-    "Modern",
-    "Innovative",
-    "Intuitive",
-    "Responsive",
-    "Modern",
-    "Elegant",
-    "Robust",
-    "Versatile",
-    "Fast",
-    "Customizable",
-    "Seamless",
-  ];
-
+const HeroSection: React.FC = () => {
+  const router = useRouter();
   return (
-    <main className="relative h-fit min-h-full flex items-center justify-center overflow-hidden bg-background">
-      <HeroHighlight className="w-full h-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: [20, -5, 0] }}
-          transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
-          className="w-full h-full p-8 md:p-24 text-center pt-44">
-          <div className="relative z-10 space-y-6 max-md:pt-10 md:pt-40 md:pb-28 pt-24">
-            <div className="text-3xl md:text-6xl font-extrabold text-foreground">
-              <span className="inline-block md:w-1/2 w-3/4 text-left">
-                Build
-                <FlipWords words={words} className="font-bold text-primary" />
-              </span>
-              <br />
-              Components with{" "}
-              <span className="text-primary font-extrabold">
-                Empyrean<span className="text-foreground">UI</span>
-              </span>
-            </div>
-            <p className="text-lg md:text-xl font-medium text-foreground">
-              Create, customize, and share UI components effortlessly using
-              HTML, CSS/Tailwind, and JavaScript.
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Link href="/postcomponent">
-                <Button className="bg-primary text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-200">
-                  Create a New Component
-                </Button>
-              </Link>
-              <Link href="/browse">
-                <Button className="bg-transparent border-primary text-primary px-6 py-3 rounded-full font-semibold hover:border-primary hover:text-black transition-all duration-200">
-                  Explore UI Gallery
-                </Button>
-              </Link>
-              <Link href="/blogs">
-                <Button className="bg-transparent border-2 text-foreground px-6 py-3 rounded-full font-semibold hover:border-primary hover:bg-transparent hover:text-primary transition-all duration-200">
-                  Explore Blogs
-                </Button>
-              </Link>
-            </div>
-          </div>
-          {/* <HeroCarosel /> */}
-
-          {/* Interactive Showcase Panel */}
-          {userToken && Object.keys(user).length !== 0 ? (
-            <UserItemsHeroSection />
-          ) : (
-            <section className="mt-28 ">
-              <h3 className="text-2xl font-bold">
-                Create Your First Component
-              </h3>
-              <p className="text-md mt-2">
-                Use our intuitive editor to quickly build your first UI
-                component.
-              </p>
-              <Link href={"/postcomponent"}>
-                <Button className="bg-primary text-black mt-4 hover:scale-105 transition-transform">
-                  Get Started
-                </Button>
-              </Link>
-            </section>
-          )}
-        </motion.div>
-      </HeroHighlight>
-    </main>
+    <div className="grid md:grid-cols-2 gap-10 items-center px-4 py-20 md:py-28">
+      <div className="relative h-80 w-full hidden md:flex items-center justify-center">
+        {/* A more dynamic and random-looking layout of icons */}
+        <IconWrapper className="w-28 h-28 top-0 left-10 transform -rotate-12">
+          <Component className="w-14 h-14 text-primary" />
+        </IconWrapper>
+        <IconWrapper className="w-20 h-20 top-12 right-8 transform rotate-6">
+          <Code2 className="w-10 h-10 text-primary" />
+        </IconWrapper>
+        <IconWrapper className="w-24 h-24 bottom-0 left-16 transform rotate-3">
+          <CircleDot className="w-12 h-12 text-primary" />
+        </IconWrapper>
+        <IconWrapper className="w-16 h-16 bottom-8 right-20 rounded-full transform -rotate-12">
+          <Type className="w-8 h-8 text-primary" />
+        </IconWrapper>
+        <IconWrapper className="w-32 h-32 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rotate-12">
+          <Puzzle className="w-16 h-16 text-primary" />
+        </IconWrapper>
+        <IconWrapper className="w-16 h-16 top-5 right-1/3 transform rotate-15">
+          <FileText className="w-8 h-8 text-primary" />
+        </IconWrapper>
+        <IconWrapper className="w-20 h-20 bottom-5 left-2/5 rounded-full transform -rotate-12">
+          <MousePointerClick className="w-10 h-10 text-primary" />
+        </IconWrapper>
+      </div>
+      <div className="flex flex-col gap-6 text-center md:text-left">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-tighter">
+            Build faster with reusable components
+          </h1>
+          <h2 className="text-muted-foreground text-base md:text-lg font-normal leading-relaxed">
+            KodeBloxUI is a collaborative platform for UI component sharing and
+            management. Build your next project faster with our library of
+            reusable components.
+          </h2>
+        </div>
+        <button
+          onClick={() => router.push("/browse")}
+          className="flex self-center md:self-start min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-primary-foreground text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+          <span className="truncate">Explore UI Gallery</span>
+        </button>
+      </div>
+    </div>
   );
-}
+};
 
 export default HeroSection;

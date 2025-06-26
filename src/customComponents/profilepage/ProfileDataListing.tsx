@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext, useEffect } from "react";
-import { useFetchPostsByIds } from "empyreanui/apiServices/getpostslist";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { useFetchPostsByIds } from "kodebloxui/apiServices/getpostslist";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 import { Loader } from "lucide-react";
 import Link from "next/link";
 

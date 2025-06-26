@@ -2,14 +2,14 @@ import Image from "next/image";
 import React from "react";
 import img from "../../../public/Gallery.png";
 import Link from "next/link";
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 
 function UiGalleryHero() {
   return (
     <div className="py-12 flex max-lg:flex-col-reverse md:mx-5 gap-6 max-md:px-4">
       <div className="container mx-auto px-6 text-center md:text-left  pt-20 h-fit pb-10 ">
         <h1 className="text-4xl md:text-6xl font-bold  leading-tight mb-4 text-center">
-          Empyrean
+          KodeBlox
           <span className="text-primary text-shadow">UI</span> Gallery
         </h1>
         <p className="text-lg md:text-xl  mb-8 text-center">

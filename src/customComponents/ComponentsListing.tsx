@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useFetchPostsByIds } from "empyreanui/apiServices/getpostslist";
+import { useFetchPostsByIds } from "kodebloxui/apiServices/getpostslist";
 import { Loader } from "lucide-react";
 import { motion } from "framer-motion";
 

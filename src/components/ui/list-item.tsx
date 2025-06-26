@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 import Link from "next/link";
 import { UrlObject } from "url";
 
@@ -9,7 +9,7 @@ interface ListItemProps
     "href" | "title"
   > {
   title: string | React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   href: string | UrlObject;
 }

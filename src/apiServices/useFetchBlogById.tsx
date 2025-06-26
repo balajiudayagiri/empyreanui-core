@@ -1,4 +1,4 @@
-import { BlogsTypes } from "empyreanui/customComponents/blogs/blogsTypes";
+import { BlogsTypes } from "kodebloxui/customComponents/blogs/blogsTypes";
 import { useState, useCallback } from "react";
 
 interface UseFetchBlogByIdResult {

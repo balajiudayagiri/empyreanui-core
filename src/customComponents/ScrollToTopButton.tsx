@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "empyreanui/components/ui/button";
-import { cn } from "empyreanui/lib/utils";
+import { Button } from "kodebloxui/components/ui/button";
+import { cn } from "kodebloxui/lib/utils";
 import React, { useEffect, useState } from "react";
 
 function ScrollToTopButton() {

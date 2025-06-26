@@ -7,8 +7,8 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from "empyreanui/components/ui/toast";
-import { useToast } from "empyreanui/components/ui/use-toast";
+} from "kodebloxui/components/ui/toast";
+import { useToast } from "kodebloxui/components/ui/use-toast";
 
 export function Toaster() {
   const { toasts } = useToast();

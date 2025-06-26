@@ -1,19 +1,19 @@
-import IframeRenderer from "empyreanui/customComponents/IframeRenderer";
-import PostCard from "empyreanui/customComponents/browse/PostCard";
-import PostList from "empyreanui/customComponents/browse/PostList";
-import EditorExporter from "empyreanui/customComponents/postcomponent/EditorExporter";
-import PostCodeDialog from "empyreanui/customComponents/postcomponent/PostCodeDialog";
-import PostDetails from "empyreanui/customComponents/viewcomponent/PostDetails";
-import BackButton from "empyreanui/customComponents/BackButton";
-import CreateNewComponent from "empyreanui/customComponents/CreateNewComponent";
+import IframeRenderer from "kodebloxui/customComponents/IframeRenderer";
+import PostCard from "kodebloxui/customComponents/browse/PostCard";
+import PostList from "kodebloxui/customComponents/browse/PostList";
+import EditorExporter from "kodebloxui/customComponents/postcomponent/EditorExporter";
+import PostCodeDialog from "kodebloxui/customComponents/postcomponent/PostCodeDialog";
+import PostDetails from "kodebloxui/customComponents/viewcomponent/PostDetails";
+import BackButton from "kodebloxui/customComponents/BackButton";
+import CreateNewComponent from "kodebloxui/customComponents/CreateNewComponent";
 
-import { Html5ColoredIcon } from "empyreanui/utils/getIconFramwork";
-import { CSSICON } from "empyreanui/utils/getIconFramwork";
-import { JSIcon } from "empyreanui/utils/getIconFramwork";
+import { Html5ColoredIcon } from "kodebloxui/utils/getIconFramwork";
+import { CSSICON } from "kodebloxui/utils/getIconFramwork";
+import { JSIcon } from "kodebloxui/utils/getIconFramwork";
 
-import Palette from "empyreanui/customComponents/palette/Palette";
-import { ScrollToTopButton } from "empyreanui/customComponents/ScrollToTopButton";
-import CopyableCode from "empyreanui/customComponents/CopyableCode";
+import Palette from "kodebloxui/customComponents/palette/Palette";
+import { ScrollToTopButton } from "kodebloxui/customComponents/ScrollToTopButton";
+import CopyableCode from "kodebloxui/customComponents/CopyableCode";
 export {
   IframeRenderer,
   PostCard,

@@ -12,8 +12,8 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import { cn } from "empyreanui/lib/utils";
-import { Label } from "empyreanui/components/ui/label";
+import { cn } from "kodebloxui/lib/utils";
+import { Label } from "kodebloxui/components/ui/label";
 
 const Form = FormProvider;
 
@@ -159,8 +159,7 @@ const FormMessage = React.forwardRef<
       ref={ref}
       id={formMessageId}
       className={cn("text-sm font-medium text-destructive", className)}
-      {...props}
-    >
+      {...props}>
       {body}
     </p>
   );

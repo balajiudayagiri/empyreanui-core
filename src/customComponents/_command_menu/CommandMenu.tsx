@@ -8,8 +8,8 @@ import {
   CommandList,
   CommandSeparator,
   // CommandShortcut,
-} from "empyreanui/components/ui/command";
-import { Button } from "empyreanui/components/ui/button";
+} from "kodebloxui/components/ui/command";
+import { Button } from "kodebloxui/components/ui/button";
 import { Search } from "lucide-react";
 import CommandKey from "./CommandKey";
 import { searchItems } from "./searchItems";
@@ -25,20 +25,20 @@ const CommandMenu: React.FC = () => {
     setOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "/" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((a) => !a);
-      }
-    };
+  // useEffect(() => {
+  //   const down = (e: KeyboardEvent) => {
+  //     if (e.key === "/" && (e.metaKey || e.ctrlKey)) {
+  //       e.preventDefault();
+  //       setOpen((a) => !a);
+  //     }
+  //   };
 
-    document.addEventListener("keydown", down);
+  //   document.addEventListener("keydown", down);
 
-    return () => {
-      document.removeEventListener("keydown", down);
-    };
-  }, [open]);
+  //   return () => {
+  //     document.removeEventListener("keydown", down);
+  //   };
+  // }, [open]);
 
   const handleSearchClick = () => {
     if (!open) {

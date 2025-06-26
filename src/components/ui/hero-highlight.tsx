@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 

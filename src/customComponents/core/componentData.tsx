@@ -311,7 +311,7 @@ export const components: ComponentDoc[] = [
     ),
     usage: `
       import React from 'react';
-      import { CodeEditor } from '@empyreanui/core';
+      import { CodeEditor } from '@kodebloxui/core';
 
       const ExampleCodeEditor = () => (
         <CodeEditor
@@ -383,7 +383,7 @@ export const components: ComponentDoc[] = [
     ),
     usage: `
     import React from 'react';
-    import { ScrollAnimationWrapper } from '@empyreanui/core';
+    import { ScrollAnimationWrapper } from '@kodebloxui/core';
     
     const Example = () => (
       <ScrollAnimationWrapper animationClass="fadeInUp" element="section">

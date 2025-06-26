@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { formatErrors } from "empyreanui/utils";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { formatErrors } from "kodebloxui/utils";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 
 export const usePostCode = () => {
   const [isLoading, setIsLoading] = useState(false);

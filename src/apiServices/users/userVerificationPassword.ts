@@ -1,25 +1,23 @@
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
+import MODAL_CONSTANTS from "kodebloxui/constants/MODAL_CONSTANTS.json";
 
-import SessionKeys from "empyreanui/constants/SessionKeys.json"
+import SessionKeys from "kodebloxui/constants/SessionKeys.json";
 
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { getSessionValue } from "empyreanui/utils/storageValues/sessionValues";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { getSessionValue } from "kodebloxui/utils/storageValues/sessionValues";
 
 import { useState, useCallback, useContext } from "react";
-
-
 
 const VerifyOTP = () => {
   const [data, setData] = useState<any>(null);
 
   const [loading, setLoading] = useState(false);
-  
+
   const [error, setError] = useState<any>(null);
-  
+
   const { setModalInfo } = useContext(UserContext);
-  
-  const id = getSessionValue( SessionKeys.forgotPasswordVerificationId );
-  
+
+  const id = getSessionValue(SessionKeys.forgotPasswordVerificationId);
+
   const verifyOtp = useCallback(
     async (formData: any): Promise<void> => {
       setLoading(true);

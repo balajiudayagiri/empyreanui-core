@@ -1,22 +1,22 @@
 "use client";
 import React, { useContext, useState, useEffect } from "react";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "empyreanui/components/ui/card";
-import { Avatar, AvatarFallback } from "empyreanui/components/ui/avatar";
-import { Badge } from "empyreanui/components/ui/badge";
-import { getAvatarInitials } from "empyreanui/utils";
+} from "kodebloxui/components/ui/card";
+import { Avatar, AvatarFallback } from "kodebloxui/components/ui/avatar";
+import { Badge } from "kodebloxui/components/ui/badge";
+import { getAvatarInitials } from "kodebloxui/utils";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
-} from "empyreanui/components/ui/sheet";
-import { Button } from "empyreanui/components/ui/button";
+} from "kodebloxui/components/ui/sheet";
+import { Button } from "kodebloxui/components/ui/button";
 import { History } from "lucide-react";
 import ProfileDetailsLoading from "./profile-loader";
 import {
@@ -24,7 +24,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "empyreanui/components/ui/accordion";
+} from "kodebloxui/components/ui/accordion";
 import ProfileDataListing from "./ProfileDataListing";
 import BlogsDataListing from "./BlogsDataListing";
 
@@ -74,33 +74,6 @@ const ProfileDetails = () => {
         isVerified={user.is_verified}
         logs={user.user_logs}
       />
-
-      {/* Accordion Section */}
-      <Card className="shadow-lg rounded-xl bg-card p-6 transition-all hover:shadow-2xl">
-        <CardContent>
-          <Accordion type="single" collapsible>
-            {/* Blogs Section */}
-            <AccordionItem value="blogs">
-              <AccordionTrigger className="font-semibold text-xl text-primary hover:text-primary/80 transition-colors">
-                Blogs ({user.blog_ids?.length || 0})
-              </AccordionTrigger>
-              <AccordionContent className="p-4 rounded-lg mt-2">
-                <BlogsDataListing />
-              </AccordionContent>
-            </AccordionItem>
-
-            {/* Components Section */}
-            <AccordionItem value="components">
-              <AccordionTrigger className="font-semibold text-xl text-primary hover:text-primary/80 transition-colors">
-                Components ({user.component_ids?.length || 0})
-              </AccordionTrigger>
-              <AccordionContent className="p-4 rounded-lg mt-2">
-                <ProfileDataListing />
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </CardContent>
-      </Card>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import GradientDisplay from "empyreanui/customComponents/palette/Gradientpalette/GradientDisplay";
+import GradientDisplay from "kodebloxui/customComponents/palette/Gradientpalette/GradientDisplay";
 import { Metadata } from "next";
 import React from "react";
 

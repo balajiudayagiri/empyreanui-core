@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useEffect, useState } from "react";
-import { getLocalValue } from "empyreanui/utils/storageValues/localValues";
+import { getLocalValue } from "kodebloxui/utils/storageValues/localValues";
 interface ModalInfo {
   isOpen: boolean;
   modalName: string;
@@ -65,8 +65,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <UserContext.Provider
-      value={{ userToken, user, setToken, fetchUser, setModalInfo, modalInfo }}
-    >
+      value={{ userToken, user, setToken, fetchUser, setModalInfo, modalInfo }}>
       {children}
     </UserContext.Provider>
   );

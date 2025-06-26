@@ -1,6 +1,6 @@
-import { Button } from "empyreanui/components/ui/button";
-import { ScrollToTopButton } from "empyreanui/customComponents";
-import BlogsListing from "empyreanui/customComponents/blogs/BlogsListing";
+import { Button } from "kodebloxui/components/ui/button";
+import { ScrollToTopButton } from "kodebloxui/customComponents";
+import BlogsListing from "kodebloxui/customComponents/blogs/BlogsListing";
 import { SquarePen } from "lucide-react";
 import Link from "next/link";
 import React from "react";

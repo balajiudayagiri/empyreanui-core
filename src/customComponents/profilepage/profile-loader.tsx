@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { Card, CardContent, CardHeader } from "empyreanui/components/ui/card";
-import { Skeleton } from "empyreanui/components/ui/skeleton";
-import { Button } from "empyreanui/components/ui/button";
+import { Card, CardContent, CardHeader } from "kodebloxui/components/ui/card";
+import { Skeleton } from "kodebloxui/components/ui/skeleton";
+import { Button } from "kodebloxui/components/ui/button";
 import { History } from "lucide-react";
 
 const ProfileDetailsLoading = () => {

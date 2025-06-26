@@ -13,11 +13,11 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "empyreanui/components/ui/dropdown-menu";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { removeLocalValue } from "empyreanui/utils/storageValues/localValues";
+} from "kodebloxui/components/ui/dropdown-menu";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { removeLocalValue } from "kodebloxui/utils/storageValues/localValues";
 import { useRouter } from "next/navigation"; // Import the useRouter hook from next/navigation
-import { ENV } from "empyreanui/utils";
+import { ENV } from "kodebloxui/utils";
 
 function ProfileDropDown({
   children,
@@ -117,12 +117,12 @@ function ProfileDropDown({
           onClick={() => openExternalLink("https://discord.gg/qw6fYxcCcW")}>
           Discord
         </DropdownMenuItem>
-        <DropdownMenuItem
+        {/* <DropdownMenuItem
           onClick={() =>
-            openExternalLink("https://www.instagram.com/empyreanui/")
+            openExternalLink("https://www.instagram.com/kodebloxui/")
           }>
           Instagram
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         {/* <DropdownMenuItem
           onClick={() => openExternalLink("https://github.com")}>
           GitHub

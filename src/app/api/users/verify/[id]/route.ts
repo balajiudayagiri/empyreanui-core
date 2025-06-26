@@ -1,19 +1,19 @@
-import ERROR_MESSAGES from "empyreanui/constants/ERROR_MESSAGES.json";
+import ERROR_MESSAGES from "kodebloxui/constants/ERROR_MESSAGES.json";
 
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
 
 import { NextRequest, NextResponse } from "next/server";
 
 import { v4 } from "uuid";
 
-import User from "empyreanui/models/Empyrean_users";
+import User from "kodebloxui/models/Empyrean_users";
 
-import mongoConnection from "empyreanui/services/dbConnect";
+import mongoConnection from "kodebloxui/services/dbConnect";
 
-import OTP from "empyreanui/models/OTP";
+import OTP from "kodebloxui/models/OTP";
 
 import jwt from "jsonwebtoken";
-import { ENV } from "empyreanui/utils";
+import { ENV } from "kodebloxui/utils";
 
 /**
  * Validates the One-Time Password (OTP) provided in the request body.

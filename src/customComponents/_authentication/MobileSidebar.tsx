@@ -1,12 +1,12 @@
 import React, { FC, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { Avatar, AvatarFallback } from "empyreanui/components/ui/avatar";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { getAvatarInitials } from "empyreanui/utils";
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
-import { Button } from "empyreanui/components/ui/button";
+import { Avatar, AvatarFallback } from "kodebloxui/components/ui/avatar";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { getAvatarInitials } from "kodebloxui/utils";
+import MODAL_CONSTANTS from "kodebloxui/constants/MODAL_CONSTANTS.json";
+import { Button } from "kodebloxui/components/ui/button";
 import clsx from "clsx";
-import { removeLocalValue } from "empyreanui/utils/storageValues/localValues";
+import { removeLocalValue } from "kodebloxui/utils/storageValues/localValues";
 
 function MobileSidebar() {
   const router = useRouter();

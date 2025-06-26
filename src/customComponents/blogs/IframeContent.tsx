@@ -1,4 +1,4 @@
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 import React, { CSSProperties, useEffect, useRef } from "react";
 
 interface IframeContentProps {

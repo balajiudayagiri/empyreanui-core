@@ -6,15 +6,15 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "empyreanui/components/ui/resizable";
-import IframeRenderer from "empyreanui/customComponents/IframeRenderer";
+} from "kodebloxui/components/ui/resizable";
+import IframeRenderer from "kodebloxui/customComponents/IframeRenderer";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "empyreanui/components/ui/tabs";
-import { CSSICON, Html5ColoredIcon, JSIcon } from "empyreanui/customComponents";
+} from "kodebloxui/components/ui/tabs";
+import { CSSICON, Html5ColoredIcon, JSIcon } from "kodebloxui/customComponents";
 
 interface EditorRendererProps {
   initialCssFramework?: string;

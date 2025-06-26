@@ -1,3 +1,3 @@
-import BlogPage from "empyreanui/customComponents/blogs/BlogPage";
+import BlogPage from "kodebloxui/customComponents/blogs/BlogPage";
 
 export { BlogPage };

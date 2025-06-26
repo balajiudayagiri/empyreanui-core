@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 import { v4 } from "uuid";
 
 /**
- * User Schema definition for the Empyrean application.
+ * User Schema definition for the KodeBlox application.
  *
  * This schema defines the structure of the user documents in the MongoDB database.
  * It includes fields for user information, roles, verification status, and more.
@@ -203,5 +203,5 @@ const usersSchema = new mongoose.Schema(
  *
  * @constant {Model}
  */
-export default mongoose.models.empyrean_user ||
-  mongoose.model("empyrean_user", usersSchema);
+export default mongoose.models.kodeblox_user ||
+  mongoose.model("kodeblox_user", usersSchema);

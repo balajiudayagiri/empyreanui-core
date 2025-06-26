@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "empyreanui/components/ui/button";
-import { Input } from "empyreanui/components/ui/input";
-import { Slider } from "empyreanui/components/ui/slider";
+import { Button } from "kodebloxui/components/ui/button";
+import { Input } from "kodebloxui/components/ui/input";
+import { Slider } from "kodebloxui/components/ui/slider";
 import { X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { HexAlphaColorPicker } from "react-colorful";

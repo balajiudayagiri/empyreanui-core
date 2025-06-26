@@ -1,4 +1,4 @@
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
 import jwt from "jsonwebtoken";
 import { NextRequest } from "next/server";
 import { ENV } from "./env_constants";

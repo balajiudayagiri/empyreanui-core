@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 import ComponentsListing from "./ComponentsListing";
 import BlogsListing from "./BlogsListing";
-import { getRandomItems } from "empyreanui/utils/getRandom";
+import { getRandomItems } from "kodebloxui/utils/getRandom";
 import Link from "next/link";
 
 function UserItemsHeroSection() {

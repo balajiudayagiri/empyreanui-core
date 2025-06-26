@@ -4,7 +4,7 @@ import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { Dot } from "lucide-react";
 
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
@@ -45,8 +45,7 @@ const InputOTPSlot = React.forwardRef<
         isActive && "z-10 ring-2 ring-ring ring-offset-background",
         className
       )}
-      {...props}
-    >
+      {...props}>
       {char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">

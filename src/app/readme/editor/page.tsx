@@ -1,15 +1,15 @@
-import ReadmeEditor from "empyreanui/customComponents/_readme/ReadmeEditor";
+import ReadmeEditor from "kodebloxui/customComponents/_readme/ReadmeEditor";
 import React from "react";
 
 export async function generateMetadata() {
   return {
-    title: "README Editor | Empyrean UI",
+    title: "README Editor | KodeBlox UI",
     description:
       "Manually edit and add snippets and templates to your README files effortlessly with our advanced editor.",
     keywords: [
       "README Editor",
       "README documentation",
-      "Empyrean UI",
+      "KodeBlox UI",
       "Next.js",
       "manual README editing",
       "snippets",
@@ -27,7 +27,7 @@ export async function generateMetadata() {
       "coding tools",
       "software project setup",
       "README examples",
-      "Empyrean UI tools",
+      "KodeBlox UI tools",
       "code documentation editor",
       "project setup editor",
       "README best practices",
@@ -46,7 +46,7 @@ export async function generateMetadata() {
     ],
     author: "Balaji Udayagiri",
     openGraph: {
-      title: "README Editor | Empyrean UI",
+      title: "README Editor | KodeBlox UI",
       description:
         "Manually edit and add snippets and templates to your README files effortlessly with our advanced editor.",
       type: "website",

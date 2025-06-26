@@ -6,7 +6,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "empyreanui/components/ui/resizable";
+} from "kodebloxui/components/ui/resizable";
 import { snippets } from "./snippits";
 import { Download, FileDown, FileText, MenuIcon } from "lucide-react";
 
@@ -17,17 +17,17 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "empyreanui/components/ui/sheet";
-import { Button } from "empyreanui/components/ui/button";
+} from "kodebloxui/components/ui/sheet";
+import { Button } from "kodebloxui/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "empyreanui/components/ui/tooltip";
+} from "kodebloxui/components/ui/tooltip";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
-import { useFetchBlog } from "empyreanui/apiServices/blogsServices";
-import { toast } from "empyreanui/components/ui/use-toast";
+import { useFetchBlog } from "kodebloxui/apiServices/blogsServices";
+import { toast } from "kodebloxui/components/ui/use-toast";
 import { Blog } from "../blogs/Blogtypes";
 import PostBlogDialog from "../blogs/BlogModal";
 import RedmeRenderer from "./RedmeRenderer";
@@ -37,7 +37,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "empyreanui/components/ui/tabs";
+} from "kodebloxui/components/ui/tabs";
 import useReadmeDownload from "./useReadmeDownload";
 
 const ReadmeEditor: React.FC = () => {

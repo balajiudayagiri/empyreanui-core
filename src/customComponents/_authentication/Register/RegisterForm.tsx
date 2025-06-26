@@ -11,16 +11,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "empyreanui/components/ui/form";
-import { Input } from "empyreanui/components/ui/input";
+} from "kodebloxui/components/ui/form";
+import { Input } from "kodebloxui/components/ui/input";
 import { Loader, Loader2 } from "lucide-react";
-import useSignup from "empyreanui/apiServices/users/createUser";
-import { Button } from "empyreanui/components/ui/button";
+import useSignup from "kodebloxui/apiServices/users/createUser";
+import { Button } from "kodebloxui/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import MODALS_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import MODALS_CONSTANTS from "kodebloxui/constants/MODAL_CONSTANTS.json";
 // Define the schema for form validation using zod
 const formSchema = z
   .object({
@@ -71,8 +71,7 @@ export default function Register(): JSX.Element {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid gap-2 max-w-[400px] px-3  rounded-2xl w-full"
-      >
+        className="grid gap-2 max-w-[400px] px-3  rounded-2xl w-full">
         <div>{/* Optional description */}</div>
         <FormField
           control={form.control}
@@ -176,11 +175,10 @@ export default function Register(): JSX.Element {
         <Button
           className="bg-primary p-1 py-1.5 w-full rounded-md text-primary-foreground font-semibold disabled:opacity-70"
           type="submit"
-          disabled={loading}
-        >
+          disabled={loading}>
           {loading ? (
             <p className="flex items-center justify-center gap-1.5">
-           <Loader size={14} className="animate-spin" />   Submitting 
+              <Loader size={14} className="animate-spin" /> Submitting
             </p>
           ) : (
             "Submit"
@@ -201,8 +199,7 @@ export default function Register(): JSX.Element {
                 isOpen: true,
                 modalName: MODALS_CONSTANTS.SIGNIN_MODAL,
               })
-            }
-          >
+            }>
             Sign in
           </span>
         )}

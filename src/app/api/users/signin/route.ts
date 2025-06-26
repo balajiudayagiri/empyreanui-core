@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
 import { validateInputs, validateUser } from "./_helpers";
-import mongoConnection from "empyreanui/services/dbConnect";
+import mongoConnection from "kodebloxui/services/dbConnect";
 
 /**
  * Handles POST requests for user login.

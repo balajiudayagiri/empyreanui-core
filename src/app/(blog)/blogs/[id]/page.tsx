@@ -1,7 +1,7 @@
 import React from "react";
-import BlogRenderedView from "empyreanui/customComponents/blogs/BlogRenderedView";
-import Breadcrumbs from "empyreanui/customComponents/Breadcrumb";
-import { extractId } from "empyreanui/utils";
+import BlogRenderedView from "kodebloxui/customComponents/blogs/BlogRenderedView";
+import Breadcrumbs from "kodebloxui/customComponents/Breadcrumb";
+import { extractId } from "kodebloxui/utils";
 
 function page({ params }: { params: { id: string } }) {
   const subSegments = params.id.split("-");

@@ -2,8 +2,8 @@
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "empyreanui/components/ui/button";
-import { cn } from "empyreanui/lib/utils";
+import { Button } from "kodebloxui/components/ui/button";
+import { cn } from "kodebloxui/lib/utils";
 
 const BackButton: React.FC<{ className?: string }> = ({ className }) => {
   const router = useRouter();

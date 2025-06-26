@@ -1,8 +1,8 @@
-import users from "empyreanui/models/Empyrean_users";
+import users from "kodebloxui/models/Empyrean_users";
 import { NextRequest, NextResponse } from "next/server";
-import HTTP_STATUS from "empyreanui/constants/HTTP_STATUS.json";
-import mongoConnection from "empyreanui/services/dbConnect";
-import tokenValidator from "empyreanui/utils/tokenValidator";
+import HTTP_STATUS from "kodebloxui/constants/HTTP_STATUS.json";
+import mongoConnection from "kodebloxui/services/dbConnect";
+import tokenValidator from "kodebloxui/utils/tokenValidator";
 
 /**
  * Extracts and formats the activity log based on the provided activity type.
@@ -78,7 +78,7 @@ const extractActivity = (
  * - `message` (string): A descriptive error message.
  */
 export async function POST(request: NextRequest): Promise<NextResponse> {
-  try { 
+  try {
     // Establish a connection to the MongoDB database
     await mongoConnection();
 

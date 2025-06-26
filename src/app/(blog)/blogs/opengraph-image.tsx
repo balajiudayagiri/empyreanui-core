@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Empyrean UI Core";
+export const alt = "KodeBlox UI Core";
 export const size = {
   width: 1200,
   height: 630,
@@ -13,7 +13,7 @@ export default async function Image() {
       <div
         tw="flex w-full h-full items-center justify-center bg-white text-black font-bold"
         style={{ fontSize: 64 }}>
-        Empyrean<span tw="text-purple-500">UI</span> Blogs
+        KodeBlox<span tw="text-purple-500">UI</span> Blogs
       </div>
     ),
     {

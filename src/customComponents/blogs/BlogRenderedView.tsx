@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useFetchBlogById } from "empyreanui/apiServices/useFetchBlogById";
+import { useFetchBlogById } from "kodebloxui/apiServices/useFetchBlogById";
 import { Loader } from "lucide-react";
 import IframeContent from "./IframeContent";
-import { months } from "empyreanui/utils";
+import { months } from "kodebloxui/utils";
 import Image from "next/image";
 import RedmeRenderer from "../_readme/RedmeRenderer";
 

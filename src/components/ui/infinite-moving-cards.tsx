@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({

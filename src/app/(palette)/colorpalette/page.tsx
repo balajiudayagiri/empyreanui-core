@@ -1,4 +1,4 @@
-import ColorDisplay from "empyreanui/customComponents/palette/ColorDisplay/ColorDisplay";
+import ColorDisplay from "kodebloxui/customComponents/palette/ColorDisplay/ColorDisplay";
 import { Metadata } from "next";
 import React from "react";
 

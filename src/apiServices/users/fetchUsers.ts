@@ -1,4 +1,4 @@
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 import { useState, useCallback, useContext } from "react";
 
 const useUsers = () => {

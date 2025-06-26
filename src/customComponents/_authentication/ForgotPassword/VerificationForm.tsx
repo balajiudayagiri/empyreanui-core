@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 import { z } from "zod";
 
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 
 import {
   Form,
@@ -16,15 +16,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "empyreanui/components/ui/form";
+} from "kodebloxui/components/ui/form";
 
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "empyreanui/components/ui/input-otp";
+} from "kodebloxui/components/ui/input-otp";
 
-import VerifyOTP from "empyreanui/apiServices/users/userVerificationPassword";
+import VerifyOTP from "kodebloxui/apiServices/users/userVerificationPassword";
 
 // Define the schema for OTP validation using zod
 const FormSchema = z.object({

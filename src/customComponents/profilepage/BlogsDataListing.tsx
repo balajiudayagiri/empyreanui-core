@@ -1,11 +1,11 @@
 "use client";
-import { usefetchBlogsByIds } from "empyreanui/apiServices/getblogslist";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { makeUrlFriendly } from "empyreanui/utils";
+import { usefetchBlogsByIds } from "kodebloxui/apiServices/getblogslist";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { makeUrlFriendly } from "kodebloxui/utils";
 import { Loader } from "lucide-react";
 import Link from "next/link";
 import React, { useContext, useEffect } from "react";
-// import { UserContext } from "empyreanui/Providers/user-provider";
+// import { UserContext } from "kodebloxui/Providers/user-provider";
 
 function BlogsDataListing() {
   const { user } = useContext(UserContext);

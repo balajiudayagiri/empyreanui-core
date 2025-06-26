@@ -1,6 +1,6 @@
 // src/services/dbConnect.ts
 import mongoose from "mongoose";
-import { ENV } from "empyreanui/utils";
+import { ENV } from "kodebloxui/utils";
 
 const MONGODB_URI = ENV.MONGODB_URI as string;
 

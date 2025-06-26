@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,13 +13,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "empyreanui/components/ui/form";
+} from "kodebloxui/components/ui/form";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "empyreanui/components/ui/input-otp";
-import VerifyOTP from "empyreanui/apiServices/users/userVerification";
+} from "kodebloxui/components/ui/input-otp";
+import VerifyOTP from "kodebloxui/apiServices/users/userVerification";
 
 // Define the schema for OTP validation using zod
 const FormSchema = z.object({

@@ -1,4 +1,4 @@
-import { InfiniteMovingCards } from "empyreanui/components/ui/infinite-moving-cards";
+import { InfiniteMovingCards } from "kodebloxui/components/ui/infinite-moving-cards";
 import { motion } from "framer-motion";
 
 interface Feature {

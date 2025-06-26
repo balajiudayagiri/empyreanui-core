@@ -1,5 +1,5 @@
-import Blog from "empyreanui/models/Blog";
-import dbConnect from "empyreanui/services/dbConnect";
+import Blog from "kodebloxui/models/Blog";
+import dbConnect from "kodebloxui/services/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

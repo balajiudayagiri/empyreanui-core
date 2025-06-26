@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { EditorExporter } from "empyreanui/customComponents";
+import { EditorExporter } from "kodebloxui/customComponents";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

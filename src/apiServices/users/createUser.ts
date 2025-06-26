@@ -1,7 +1,7 @@
-import SessionKeys from "empyreanui/constants/SessionKeys.json";
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { setSessionValue } from "empyreanui/utils/storageValues/sessionValues";
+import SessionKeys from "kodebloxui/constants/SessionKeys.json";
+import MODAL_CONSTANTS from "kodebloxui/constants/MODAL_CONSTANTS.json";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { setSessionValue } from "kodebloxui/utils/storageValues/sessionValues";
 import { useRouter } from "next/navigation";
 
 import { useState, useCallback, useContext } from "react";

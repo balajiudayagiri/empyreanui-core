@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "empyreanui/services/dbConnect";
-import Post from "empyreanui/models/Post";
-import { generateCustomUUID } from "empyreanui/utils";
-import tokenValidator from "empyreanui/utils/tokenValidator";
+import dbConnect from "kodebloxui/services/dbConnect";
+import Post from "kodebloxui/models/Post";
+import { generateCustomUUID } from "kodebloxui/utils";
+import tokenValidator from "kodebloxui/utils/tokenValidator";
 import { updatePostActivity } from "../_helpers";
 
 export async function GET(req: NextRequest) {
   try {
     await dbConnect();
     const id = req.nextUrl.searchParams.get("id");
+    const page = parseInt(req.nextUrl.searchParams.get("page") || "1");
+    const limit = parseInt(req.nextUrl.searchParams.get("limit") || "10");
+    const category = req.nextUrl.searchParams.get("category");
+    const styleType = req.nextUrl.searchParams.get("styleType");
+    const searchTerm = req.nextUrl.searchParams.get("searchTerm");
 
     if (id) {
       const post = await Post.findById(id);
@@ -32,20 +37,61 @@ export async function GET(req: NextRequest) {
         }
       );
     } else {
-      const posts = await Post.find({});
-      return NextResponse.json(
-        { success: true, data: posts },
-        {
-          status: 200,
-          headers: {
-            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=59",
-            "CDN-Cache-Control":
-              "public, s-maxage=3600, stale-while-revalidate=59",
-            "Vercel-CDN-Cache-Control":
-              "public, s-maxage=3600, stale-while-revalidate=59",
-          },
-        }
-      );
+      // Handle paginated and filtered list requests
+      const skip = (page - 1) * limit;
+      const query: any = {};
+
+      if (category && category !== "all") {
+        query.componentCategory = { $regex: new RegExp(category, "i") }; // Case-insensitive category search
+      }
+
+      if (styleType && styleType !== "all") {
+        // Assuming styleType is nested under 'code'
+        query["code.styleType"] = styleType;
+      }
+
+      if (searchTerm) {
+        // Use the text index for efficient searching instead of regex.
+        query.$text = { $search: searchTerm };
+      }
+
+      // Define sort options. Default to date, but use text score for search relevance.
+      const sortOptions: any = searchTerm
+        ? { score: { $meta: "textScore" } }
+        : { date: -1 };
+
+      // Define a projection to include the text score when searching.
+      const projection = searchTerm ? { score: { $meta: "textScore" } } : {};
+
+      // Run queries concurrently for better performance
+      const [posts, totalCount, categories] = await Promise.all([
+        Post.find(query, projection).sort(sortOptions).skip(skip).limit(limit),
+        Post.countDocuments(query),
+        // To optimize, only fetch the full category list on the first page request
+        page === 1 ? Post.distinct("componentCategory") : Promise.resolve(null),
+      ]);
+
+      const responsePayload: any = {
+        success: true,
+        data: posts,
+        totalCount,
+      };
+
+      // Include categories in the response only if they were fetched
+      if (categories) {
+        responsePayload.categories = categories;
+      }
+
+      return NextResponse.json(responsePayload, {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=59",
+          "CDN-Cache-Control":
+            "public, s-maxage=3600, stale-while-revalidate=59",
+          "Vercel-CDN-Cache-Control":
+            "public, s-maxage=3600, stale-while-revalidate=59",
+        },
+      });
     }
   } catch (error) {
     if (error instanceof Error) {

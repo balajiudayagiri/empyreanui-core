@@ -9,11 +9,11 @@ function Footer() {
   if (param === "/jsdoc-ai") return null;
   return (
     <footer className="p-6 md:p-12 md:pb-28">
-      <div className="container mx-auto">
+      <div className="container mx-auto bg-muted/30 backdrop-blur-sm border border-border/20 rounded-xl p-8 shadow-lg ">
         <div className="text-center md:text-start">
           <Link href="/">
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight">
-              Empyrean<span className="text-primary">UI</span>
+              KodeBlox<span className="text-primary">UI</span>
             </h1>
           </Link>
         </div>
@@ -58,7 +58,7 @@ function Footer() {
           <p className="text-xs md:text-sm font-medium">
             &copy; 2024{" "}
             <span className="font-bold">
-              Empyrean<span className="text-primary/50">UI</span>
+              KodeBlox<span className="text-primary/50">UI</span>
             </span>
             . All rights reserved.
           </p>

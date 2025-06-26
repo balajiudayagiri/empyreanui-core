@@ -8,8 +8,8 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "empyreanui/components/ui/context-menu";
-import { hexToColorCodes } from "empyreanui/utils";
+} from "kodebloxui/components/ui/context-menu";
+import { hexToColorCodes } from "kodebloxui/utils";
 import {
   Dialog,
   DialogTrigger,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogClose,
-} from "empyreanui/components/ui/dialog";
+} from "kodebloxui/components/ui/dialog";
 
 interface Colors {
   [key: string]: {
@@ -107,7 +107,9 @@ const ColorDisplay: React.FC = () => {
                   <div className="flex flex-wrap gap-6 p-6">
                     {Object.entries(shades).map(([shadeKey, value]) => (
                       <div
-                        title={`${colorKey.charAt(0).toUpperCase() + colorKey.slice(1)}-${shadeKey}`}
+                        title={`${
+                          colorKey.charAt(0).toUpperCase() + colorKey.slice(1)
+                        }-${shadeKey}`}
                         key={shadeKey}
                         className="flex flex-col items-center">
                         <ContextMenu>

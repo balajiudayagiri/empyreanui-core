@@ -1,5 +1,5 @@
-import { BackButton } from "empyreanui/customComponents";
-import { BlogPage } from "empyreanui/customComponents/blogs";
+import { BackButton } from "kodebloxui/customComponents";
+import { BlogPage } from "kodebloxui/customComponents/blogs";
 import React from "react";
 
 export async function generateMetadata() {

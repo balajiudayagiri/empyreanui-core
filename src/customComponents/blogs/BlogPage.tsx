@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from "react";
 import Editor from "./Editor";
 import IframeContent from "./IframeContent";
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "empyreanui/components/ui/tabs";
-import { useFetchBlog } from "empyreanui/apiServices/blogsServices";
-import { toast } from "empyreanui/components/ui/use-toast";
+} from "kodebloxui/components/ui/tabs";
+import { useFetchBlog } from "kodebloxui/apiServices/blogsServices";
+import { toast } from "kodebloxui/components/ui/use-toast";
 import { Blog } from "./Blogtypes";
 import PostBlogDialog from "./BlogModal";
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 
 const BlogPage: React.FC = () => {
   const [blogs, setBlogs] = useState<string>("");

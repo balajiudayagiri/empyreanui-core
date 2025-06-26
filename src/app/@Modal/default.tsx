@@ -5,17 +5,17 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "empyreanui/components/ui/dialog";
-import { UserContext } from "empyreanui/Providers/user-provider";
+} from "kodebloxui/components/ui/dialog";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 import React, { useContext, useEffect, useState } from "react";
-import modal_conts from "empyreanui/constants/MODAL_CONSTANTS.json";
-import Login from "empyreanui/customComponents/_authentication/Login/LoginForm";
-import Register from "empyreanui/customComponents/_authentication/Register/RegisterForm";
-import USER from "empyreanui/customComponents/_authentication/User/users";
-import { VerifyForm } from "empyreanui/customComponents/_authentication/VerifyForm";
-import ForgotEmail from "empyreanui/customComponents/_authentication/ForgotPassword/EmailSubmission";
-import { ForgotVerifyForm } from "empyreanui/customComponents/_authentication/ForgotPassword/VerificationForm";
-import SETFORGOTPWD from "empyreanui/customComponents/_authentication/ForgotPassword/PasswordChangeForm";
+import modal_conts from "kodebloxui/constants/MODAL_CONSTANTS.json";
+import Login from "kodebloxui/customComponents/_authentication/Login/LoginForm";
+import Register from "kodebloxui/customComponents/_authentication/Register/RegisterForm";
+import USER from "kodebloxui/customComponents/_authentication/User/users";
+import { VerifyForm } from "kodebloxui/customComponents/_authentication/VerifyForm";
+import ForgotEmail from "kodebloxui/customComponents/_authentication/ForgotPassword/EmailSubmission";
+import { ForgotVerifyForm } from "kodebloxui/customComponents/_authentication/ForgotPassword/VerificationForm";
+import SETFORGOTPWD from "kodebloxui/customComponents/_authentication/ForgotPassword/PasswordChangeForm";
 
 function ModalPage() {
   const { modalInfo, setModalInfo } = useContext(UserContext);

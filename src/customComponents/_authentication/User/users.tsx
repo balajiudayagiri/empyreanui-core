@@ -1,7 +1,7 @@
-import { Button } from "empyreanui/components/ui/button";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { getAvatarBgColor, getAvatarInitials } from "empyreanui/utils";
-import { removeLocalValue } from "empyreanui/utils/storageValues/localValues";
+import { Button } from "kodebloxui/components/ui/button";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { getAvatarBgColor, getAvatarInitials } from "kodebloxui/utils";
+import { removeLocalValue } from "kodebloxui/utils/storageValues/localValues";
 import React, { CSSProperties, useContext, useMemo } from "react";
 
 function USER() {
@@ -21,8 +21,7 @@ function USER() {
       <div className="flex  gap-2 items-center">
         <p
           style={{ "--bg-color": colorOFAvatar } as CSSProperties}
-          className="rounded-full p-2 text-xl  bg-[var(--bg-color)] hover:shadow-md hover:scale-[102%] cursor-pointer"
-        >
+          className="rounded-full p-2 text-xl  bg-[var(--bg-color)] hover:shadow-md hover:scale-[102%] cursor-pointer">
           {" "}
           {avatar1}
           {avatar2}{" "}
@@ -39,8 +38,7 @@ function USER() {
 
       <Button
         onClick={logoutUser}
-        className=" text-center focus-visible:ring-0"
-      >
+        className=" text-center focus-visible:ring-0">
         Logout
       </Button>
     </div>

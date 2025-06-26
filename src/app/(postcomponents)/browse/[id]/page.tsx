@@ -1,6 +1,6 @@
 import React from "react";
 import { PostDetails } from "@customcomponent";
-import { extractId } from "empyreanui/utils";
+import { extractId } from "kodebloxui/utils";
 
 function page({ params }: { params: { id: string } }) {
   return (

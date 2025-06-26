@@ -13,7 +13,7 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-primary">UI</span>
+          KodeBlox<span className="text-primary">UI</span>
         </h1>
       </Link>
       <div className="h-auto border-[1.2px] mx-2 border-solid" />
@@ -30,7 +30,7 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-primary">UI</span>
+          KodeBlox<span className="text-primary">UI</span>
         </h1>
       </Link>
       <div className="h-auto border-[1.2px] mx-2 border-solid" />
@@ -47,7 +47,7 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-primary">UI</span>
+          KodeBlox<span className="text-primary">UI</span>
         </h1>
       </Link>
       <div className="h-auto border-[1.2px] mx-2 border-solid" />
@@ -64,7 +64,7 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-primary">UI</span>
+          KodeBlox<span className="text-primary">UI</span>
         </h1>
       </Link>
       <div className="h-auto border-[1.2px] mx-2 border-solid" />
@@ -86,7 +86,7 @@ const navLinks: { [key: string]: JSX.Element } = {
       <Link href="/">
         <h1
           className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-          Empyrean<span className="text-primary">UI</span>
+          KodeBlox<span className="text-primary">UI</span>
         </h1>
       </Link>
       <div className="h-auto border-[1.2px] mx-2 border-solid" />
@@ -123,7 +123,7 @@ const navLinks: { [key: string]: JSX.Element } = {
     <Link href="/">
       <h1
         className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>
-        Empyrean<span className="text-yellow-500">UI</span>
+        KodeBlox<span className="text-yellow-500">UI</span>
       </h1>
     </Link>
   ),

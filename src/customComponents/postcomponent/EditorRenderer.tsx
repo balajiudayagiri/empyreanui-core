@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { usePostCode } from "@apiservices";
-import { useToast } from "empyreanui/components/ui/use-toast";
+import { useToast } from "kodebloxui/components/ui/use-toast";
 import PostCodeDialog, { PostData } from "./PostCodeDialog"; // Adjust the import path as needed
 import { Editor } from "@monaco-editor/react";
 import {
@@ -10,20 +10,20 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "empyreanui/components/ui/select";
+} from "kodebloxui/components/ui/select";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "empyreanui/components/ui/resizable";
-import IframeRenderer from "empyreanui/customComponents/IframeRenderer";
+} from "kodebloxui/components/ui/resizable";
+import IframeRenderer from "kodebloxui/customComponents/IframeRenderer";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "empyreanui/components/ui/tabs";
-import { CSSICON, Html5ColoredIcon, JSIcon } from "empyreanui/customComponents";
+} from "kodebloxui/components/ui/tabs";
+import { CSSICON, Html5ColoredIcon, JSIcon } from "kodebloxui/customComponents";
 
 const EditorRenderer: React.FC = () => {
   const [cssFramework, setCssFramework] = useState("tailwind");

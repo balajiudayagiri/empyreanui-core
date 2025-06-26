@@ -12,13 +12,13 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
-} from "empyreanui/components/ui/dialog";
-import { Button } from "empyreanui/components/ui/button";
+} from "kodebloxui/components/ui/dialog";
+import { Button } from "kodebloxui/components/ui/button";
 import { Loader } from "lucide-react";
-import { Input } from "empyreanui/components/ui/input";
+import { Input } from "kodebloxui/components/ui/input";
 import { Label } from "@radix-ui/react-select";
-import { Textarea } from "empyreanui/components/ui/textarea";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import { Textarea } from "kodebloxui/components/ui/textarea";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 
 interface User {
   firstName: string;

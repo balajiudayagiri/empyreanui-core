@@ -4,8 +4,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { cn } from "empyreanui/lib/utils";
-import { Button } from "empyreanui/components/ui/button";
+import { cn } from "kodebloxui/lib/utils";
+import { Button } from "kodebloxui/components/ui/button";
 import { Clipboard } from "lucide-react";
 import "./styles.css"; // Make sure this path is correct for your project
 

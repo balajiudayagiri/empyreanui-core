@@ -1,12 +1,12 @@
-import MODAL_CONSTANTS from "empyreanui/constants/MODAL_CONSTANTS.json";
+import MODAL_CONSTANTS from "kodebloxui/constants/MODAL_CONSTANTS.json";
 import { useRouter } from "next/navigation";
 import { useState, useCallback, useContext } from "react";
 import uselogActivity from "./logActivity";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { setLocalValue } from "empyreanui/utils/storageValues/localValues";
-import { setSessionValue } from "empyreanui/utils/storageValues/sessionValues";
-import localKeys from "empyreanui/constants/localKeys.json";
-import SessionKeys from "empyreanui/constants/SessionKeys.json";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { setLocalValue } from "kodebloxui/utils/storageValues/localValues";
+import { setSessionValue } from "kodebloxui/utils/storageValues/sessionValues";
+import localKeys from "kodebloxui/constants/localKeys.json";
+import SessionKeys from "kodebloxui/constants/SessionKeys.json";
 /**
  * A custom hook for handling user sign-in.
  *

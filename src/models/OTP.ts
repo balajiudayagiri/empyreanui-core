@@ -13,16 +13,16 @@ const usersSchema = new mongoose.Schema(
     /**
      * Reference to the associated user.
      *
-     * Links to the `empyrean_users` collection.
+     * Links to the `kodeblox_users` collection.
      * This is the user for whom the OTP was generated.
      *
      * @type {Schema.Types.ObjectId}
-     * @ref "empyrean_users"
+     * @ref "kodeblox_users"
      * @required
      */
     user_id: {
       type: Schema.Types.ObjectId,
-      ref: "empyrean_users",
+      ref: "kodeblox_users",
       required: true,
     },
 
@@ -59,16 +59,16 @@ const usersSchema = new mongoose.Schema(
     /**
      * User verification ID for associating with the OTP.
      *
-     * This is the verification ID from the `empyrean_users` collection
+     * This is the verification ID from the `kodeblox_users` collection
      * that the OTP is related to.
      *
      * @type {String}
-     * @ref "empyrean_users"
+     * @ref "kodeblox_users"
      * @required
      */
     user_verification_id: {
       type: String,
-      ref: "empyrean_users",
+      ref: "kodeblox_users",
       required: true,
     },
   },

@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback } from "empyreanui/components/ui/avatar";
+import { Avatar, AvatarFallback } from "kodebloxui/components/ui/avatar";
 // import { AvatarImage } from "@radix-ui/react-avatar";
-import { UserContext } from "empyreanui/Providers/user-provider";
-import { getAvatarInitials } from "empyreanui/utils";
+import { UserContext } from "kodebloxui/Providers/user-provider";
+import { getAvatarInitials } from "kodebloxui/utils";
 import React, { useContext } from "react";
 import ProfileDropDown from "./ProfileDropDown";
 import MobileSidebar from "./MobileSidebar";

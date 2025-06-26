@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "./Header";
-import { cn } from "empyreanui/lib/utils";
+import { cn } from "kodebloxui/lib/utils";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Toaster } from "empyreanui/components/ui/toaster";
+import { Toaster } from "kodebloxui/components/ui/toaster";
 import Footer from "./Footer";
-import { NextThemesProviders } from "empyreanui/Providers/theme-provider";
-import { UserProvider } from "empyreanui/Providers/user-provider";
-import { ENV } from "empyreanui/utils";
+import { NextThemesProviders } from "kodebloxui/Providers/theme-provider";
+import { UserProvider } from "kodebloxui/Providers/user-provider";
+import { ENV } from "kodebloxui/utils";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 

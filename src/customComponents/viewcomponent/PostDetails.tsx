@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import { useFetchPostById } from "@apiservices";
 import ViewEditorRenderer from "./ViewEditorRenderer";
 import { Download, Loader, Maximize2 } from "lucide-react";
-import { GetIconFramework } from "empyreanui/utils/getIconFramwork";
+import { GetIconFramework } from "kodebloxui/utils/getIconFramwork";
 import { useDownloadZip } from "@hooks";
-import { Button } from "empyreanui/components/ui/button";
+import { Button } from "kodebloxui/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,7 @@ import {
   DialogTrigger,
   DialogClose,
   DialogFooter,
-} from "empyreanui/components/ui/dialog";
+} from "kodebloxui/components/ui/dialog";
 import { CreateNewComponent } from "@customcomponent";
 
 interface PostDetailsProps {

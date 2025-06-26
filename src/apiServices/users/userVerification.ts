@@ -1,11 +1,11 @@
-import SessionKeys from "empyreanui/constants/SessionKeys.json";
-import { UserContext } from "empyreanui/Providers/user-provider";
+import SessionKeys from "kodebloxui/constants/SessionKeys.json";
+import { UserContext } from "kodebloxui/Providers/user-provider";
 
-import { setLocalValue } from "empyreanui/utils/storageValues/localValues";
+import { setLocalValue } from "kodebloxui/utils/storageValues/localValues";
 import {
   getSessionValue,
   removeSessionValue,
-} from "empyreanui/utils/storageValues/sessionValues";
+} from "kodebloxui/utils/storageValues/sessionValues";
 
 import { useState, useCallback, useContext } from "react";
 

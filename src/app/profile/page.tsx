@@ -1,14 +1,14 @@
-import ProfileDetails from "empyreanui/customComponents/profilepage/ProfileDetails";
+import ProfileDetails from "kodebloxui/customComponents/profilepage/ProfileDetails";
 import React from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "User Profile - Empyrean UI",
+  title: "User Profile - KodeBlox UI",
   description:
-    "View and manage your profile, activity logs, blogs, and settings on the Empyrean UI platform.",
+    "View and manage your profile, activity logs, blogs, and settings on the KodeBlox UI platform.",
   keywords: [
     "User Profile",
-    "Empyrean UI",
+    "KodeBlox UI",
     "Settings",
     "Activity Logs",
     "Dashboard",

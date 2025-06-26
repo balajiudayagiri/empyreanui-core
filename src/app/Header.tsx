@@ -16,7 +16,7 @@ function Header() {
   return (
     <header className="h-14 border-b flex items-center px-5 md:px-9 justify-between bg-background/70 backdrop-blur-lg backdrop-blur-safari fixed w-full top-0 z-50">
       <div className="flex">
-        <Link href="/">
+        <Link href="/" className="flex items-center">
           <KBUI size={32} className="mr-2" />
           <h1
             className={`text-2xl font-extrabold leading-tight tracking-tight ${montserrat.className}`}>

@@ -37,8 +37,8 @@ export const JSIcon: FC<IconProps> = ({ size }) => {
 
       <g
         id="SVGRepo_tracerCarrier"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
 
       <g id="SVGRepo_iconCarrier">

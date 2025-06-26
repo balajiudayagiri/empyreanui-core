@@ -3,25 +3,25 @@ import { Rocket, ShoppingCart, Cloud, BarChart } from "lucide-react"; // Import 
 
 const caseStudiesData = [
   {
-    icon: <Rocket className="size-full" strokeWidth={0.6} />,
+    icon: <Rocket className="size-full text-primary" strokeWidth={0.6} />,
     title: "Streamlining UI Development for Applications",
     description:
       "Learn how KodeBloxUI helped a tech startup accelerate their development process and improve product quality.",
   },
   {
-    icon: <ShoppingCart className="size-full" strokeWidth={0.6} />,
+    icon: <ShoppingCart className="size-full text-primary" strokeWidth={0.6} />,
     title: "Enhancing User Experience in E-commerce Platform",
     description:
       "Discover how an e-commerce platform leveraged KodeBloxUI to create a more engaging and intuitive user experience.",
   },
   {
-    icon: <Cloud className="size-full" strokeWidth={0.6} />,
+    icon: <Cloud className="size-full text-primary" strokeWidth={0.6} />,
     title: "Optimizing Performance for a SaaS Platform",
     description:
       "See how KodeBloxUI helped a SaaS company enhance their application's performance and scalability by leveraging modular UI components.",
   },
   {
-    icon: <BarChart className="size-full" strokeWidth={0.6} />,
+    icon: <BarChart className="size-full text-primary" strokeWidth={0.6} />,
     title: "Enhancing Data Analytics Integration",
     description:
       "Learn how KodeBloxUI facilitated seamless integration of complex data analytics tools, providing actionable insights for businesses.",

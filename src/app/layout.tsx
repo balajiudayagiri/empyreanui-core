@@ -18,22 +18,22 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: "EmpyreanUI - The Ultimate UI Library",
-      template: "%s | EmpyreanUI",
+      default: "KodeBloxUI - The Ultimate UI Library",
+      template: "%s | KodeBloxUI",
     },
     description:
-      "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
+      "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with KodeBloxUI.",
     openGraph: {
       type: "website",
       url: siteUrl,
-      title: "EmpyreanUI - The Ultimate UI Library",
+      title: "KodeBloxUI - The Ultimate UI Library",
       description:
-        "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
-      siteName: "EmpyreanUI",
+        "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with KodeBloxUI.",
+      siteName: "KodeBloxUI",
       images: [
         {
           url: `${siteUrl}/HomePage.png`,
-          alt: "EmpyreanUI - The Ultimate UI Library",
+          alt: "KodeBloxUI - The Ultimate UI Library",
           width: 1200,
           height: 630,
         },
@@ -41,15 +41,15 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      site: "@EmpyreanUI",
-      creator: "@EmpyreanUI",
-      title: "EmpyreanUI - The Ultimate UI Library",
+      site: "@KodeBloxUI",
+      creator: "@KodeBloxUI",
+      title: "KodeBloxUI - The Ultimate UI Library",
       description:
-        "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with EmpyreanUI.",
+        "Discover the best user-created UI elements including animated components, buttons, cards, loaders, and more with KodeBloxUI.",
       images: [
         {
           url: `${siteUrl}/HomePage.png`,
-          alt: "EmpyreanUI - The Ultimate UI Library",
+          alt: "KodeBloxUI - The Ultimate UI Library",
         },
       ],
     },

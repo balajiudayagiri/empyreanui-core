@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, TabsList, TabsTrigger } from "kodebloxui/components/ui/tabs";
 import { Button } from "kodebloxui/components/ui/button";
 import { RefreshCcw } from "lucide-react";
-import { CSSICON } from "@customcomponent";
+import { CreateNewComponent, CSSICON } from "@customcomponent";
 import { Tailwind } from "kodebloxui/utils/getIconFramwork";
 
 interface BrowseHeaderProps {
@@ -61,6 +61,7 @@ export const BrowseHeader = React.memo(
               Reset{" "}
             </span>
           </Button>
+          <CreateNewComponent />
         </div>
       </>
     );

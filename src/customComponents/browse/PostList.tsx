@@ -135,7 +135,7 @@ const PostList: React.FC = () => {
   return (
     <div className="group/design-root relative flex size-full min-h-screen flex-col overflow-x-hidden">
       <div className="layout-container flex h-full grow flex-col">
-        <div className="flex flex-1 justify-center gap-1 px-6 md:py-5">
+        <div className=" flex flex-1 justify-center gap-1 px-6 md:py-5">
           <Sidebar
             categories={categories}
             selectedCategory={selectedCategory}

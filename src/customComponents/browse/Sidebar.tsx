@@ -36,7 +36,7 @@ export const Sidebar = React.memo(
             <label key={category} className="flex flex-row gap-x-3 py-3">
               <input
                 type="checkbox"
-                className="h-5 w-5 rounded border-2 border-[#d0dde7] bg-transparent text-[#1990e5] checked:border-[#1990e5] checked:bg-[#1990e5] checked:bg-[image:var(--checkbox-tick-svg)] focus:border-[#d0dde7] focus:outline-none focus:ring-0 focus:ring-offset-0"
+                className="h-5 accent-primary w-5 rounded border-2 border-[#d0dde7] bg-transparent text-[#1990e5] checked:border-[#1990e5] checked:bg-[#1990e5] checked:bg-[image:var(--checkbox-tick-svg)] focus:border-[#d0dde7] focus:outline-none focus:ring-0 focus:ring-offset-0"
                 checked={
                   selectedCategory.toLowerCase() === category.toLowerCase()
                 }

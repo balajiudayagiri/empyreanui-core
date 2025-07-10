@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KodeBlox UI
 
-## Getting Started
+KodeBlox UI is a web application designed to help developers create, edit, and manage project documentation with ease. It features an intuitive README editor, allowing users to add templates, snippets, and customize their documentation to fit their project's needs. The app aims to streamline the process of writing and maintaining high-quality documentation, making it accessible and efficient for all developers.
 
-First, run the development server:
+## UI Component Library
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+KodeBlox UI is also a platform where users can add, create, and use UI components organized as atoms, molecules, and organisms. This approach helps developers build interfaces using reusable and well-structured components, making UI development faster and more maintainable.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Atoms:** The basic building blocks of the UI, such as buttons, inputs, and icons.
+- **Molecules:** Combinations of atoms that form more complex elements, like input groups or card headers.
+- **Organisms:** Groups of molecules and atoms working together to form distinct sections of an interface, such as navigation bars or feature panels.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Benefits
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Reusable Components:** Build your UI efficiently with a library of ready-to-use components.
+- **Customization:** Easily adapt components to fit your project's style and requirements.
+- **Consistency:** Maintain a consistent look and feel across your application.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+KodeBlox UI is ideal for developers and teams who want to accelerate UI development and maintain high-quality, consistent documentation.

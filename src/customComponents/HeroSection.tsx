@@ -69,7 +69,7 @@ const HeroSection: React.FC = () => {
           <span className="truncate">Explore UI Gallery</span>
         </button>
         <button
-          onClick={() => router.push("/browse")}
+          onClick={() => router.push("/postcomponent")}
           className="flex self-center md:self-start min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-primary-foreground text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
           <span className="truncate">Create a Component</span>
         </button>

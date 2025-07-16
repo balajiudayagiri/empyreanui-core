@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@empyreanui/core": "^1.0.5",
     "@google/generative-ai": "^0.16.0",
     "@hookform/resolvers": "^3.9.0",
+    "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.1.0",
